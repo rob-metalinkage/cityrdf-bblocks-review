@@ -11,8 +11,8 @@ OntoZoning is an ontology developed to represent relationships between zones and
     "ontoplot:Plot" ||--o{ "geo:Feature" : "rdfs:subClassOf"
     "ontoplot:Plot" ||--o{ "LandUseType" : hasLandUseType
     "LandUseType" {
-        "rdfs:label" name
-        "rdfs:comment" description
+        rdfs-label name
+        rdfs-comment description
     }
     "opr:LandUseRegulation" ||--o{ "LandUseType" : "opr:appliesTo"
     "opr:LandUseRegulation" ||--o{ "LandUse" : "opr:allowsUse"
