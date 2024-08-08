@@ -2,9 +2,6 @@
 ## 1. Introduction
 OntoZoning is an ontology developed to represent relationships between zones and their associated land use types and land uses, that is applicable across different planning contexts. A simple overview of the data model is illustrated in Figure 1. The detailed land use types and land uses is available within the ontology itself. Do note that the list is non-exhaustive.
 
-The namespace for this ontology is:
-
-<p align="center"><i>https://www.theworldavatar.com/kg/ontozoning/</i></p>
 
 *Figure 1. Data model for OntoZoning*
 ```mermaid

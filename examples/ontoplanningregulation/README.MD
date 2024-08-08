@@ -2,10 +2,6 @@
 ## 1. Introduction
 OntoPlanningRegulation is an ontology developed to describe the regulations imposed for urban planning purposes. A simple overview of the data model is illustrated in Figure 1. There are two types of regulations - standard planning regulations and land use regulations. **Land use regulations** are general guidelines for plots based on their land use type, but are more concerned with the allowable land uses in these plots. Specific regulations can be found within the ontology.
 
-The namespace for this ontology is:
-
-<p align="center"><i>https://www.theworldavatar.com/kg/ontoplanningregulation/</i></p>
-
 
 *Figure 1. Data model for OntoPlanningRegulation*
 ```mermaid
