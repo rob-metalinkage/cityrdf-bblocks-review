@@ -1,0 +1,463 @@
+@prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix gsp:   <http://www.opengis.net/ont/geosparql#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix plu:   <http://inspire.ec.europa.eu/ont/plu#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix lunom: <http://inspire.ec.europa.eu/ont/lunom#> .
+@prefix locn:  <https://www.w3.org/ns/locn#> .
+@prefix base:  <http://inspire.ec.europa.eu/ont/base#> .
+
+plu:ZoningElement.hilucsPresence_percentageList
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:ZoningElement ;
+        rdfs:label       "land use presence_percentageList"@en ;
+        rdfs:range       lunom:HILUCSPercentage ;
+        skos:definition  "Actual presence of a land use HILUCS category wihtin the object."@en .
+
+plu:DimensioningIndicationValue
+        a                owl:Class ;
+        rdfs:label       "Dimension Indication"@en ;
+        skos:definition  "Specifications about the dimensioning of the urban developments."@en .
+
+plu:SpatialPlan.restriction
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:SpatialPlan ;
+        rdfs:range       plu:SupplementaryRegulation ;
+        skos:definition  "Links to supplementary regulations providing information and/or limitations on the use of land/water that supplements the zoning as part of this spatial plan."@en .
+
+plu:DimensioningIndicationCharacterValue.value
+        a                owl:DatatypeProperty ;
+        rdfs:domain      plu:DimensioningIndicationCharacterValue ;
+        rdfs:range       xsd:string ;
+        skos:definition  "value of the dimension indications."@en .
+
+plu:ZoningElement.hilucsPresence_orderedList
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:ZoningElement ;
+        rdfs:label       "land use presence_orderedList"@en ;
+        rdfs:range       skos:Concept ;
+        rdfs:seeAlso     <http://inspire.ec.europa.eu/codeList/HILUCSValue> ;
+        skos:definition  "Actual presence of a land use HILUCS category wihtin the object."@en .
+
+plu:SupplementaryRegulation.specificRegulationNature
+        a                owl:DatatypeProperty ;
+        rdfs:comment     "On member state level the legal classification for plan regulations may be complex. A supplementary regulation may be principally \"bindingOnlyForAuthorities\" but according to national law this regulation have to be more specified to explain the specific degree of binding. (e.g. on state or regional planning level in Germany: principles of spatial planning, other spatial planning requirements or goals of spatial planning).\r\n\r\nNOTE This attribute complements the information provided by the attribute regulationNature."@en ;
+        rdfs:domain      plu:SupplementaryRegulation ;
+        rdfs:label       "specific regulation nature"@en ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Legal nature of the land use regulation from a national perspective."@en .
+
+plu:OrdinanceValue.ordinanceReference
+        a                owl:DatatypeProperty ;
+        rdfs:comment     "NOTE This attribute is multiple because, independently from the current legal status of the plan, there can be references to more than one ordinance, in relation to the different steps that the planning process has already undergone (e.g. ordinance for the preparation of a new plan, ordinance of adoption, ordinance of approval, etc.)."@en ;
+        rdfs:domain      plu:OrdinanceValue ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Reference to relevant administrative ordinance."@en .
+
+plu:SupplementaryRegulation.dimensioningIndication
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:SupplementaryRegulation ;
+        rdfs:range       plu:DimensioningIndicationValue ;
+        skos:definition  "Specifications about the dimensioning that are added to the dimensioning of the zoning elements that overlap the geometry of the supplementary regulation."@en .
+
+plu:BackgroundMapValue.backgroundMapDate
+        a                owl:DatatypeProperty ;
+        rdfs:domain      plu:BackgroundMapValue ;
+        rdfs:label       "background map date"@en ;
+        rdfs:range       xsd:dateTime ;
+        skos:definition  "Date of the background map used."@en .
+
+plu:DimensioningIndicationMeasureValue
+        a                owl:Class ;
+        rdfs:label       "dimension indication measure value"@en ;
+        rdfs:subClassOf  plu:DimensioningIndicationValue ;
+        skos:definition  "Dimensioning indication whose value is a measure."@en .
+
+plu:SpatialPlan.officialDocument
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:SpatialPlan ;
+        rdfs:range       plu:OfficialDocumentation ;
+        skos:definition  "Link to the official documents that relate to the spatial plan."@en .
+
+plu:SupplementaryRegulation.regulationNature
+        a                owl:ObjectProperty ;
+        rdfs:comment     "NOTE Indicates whether the land use regulation is legally binding or not."@en ;
+        rdfs:domain      plu:SupplementaryRegulation ;
+        rdfs:range       skos:Concept ;
+        rdfs:seeAlso     <http://inspire.ec.europa.eu/codelist/RegulationNatureValue> ;
+        skos:definition  "Legal nature of the land use regulation."@en .
+
+plu:OfficialDocumentation.planDocument
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:OfficialDocumentation ;
+        rdfs:range       base:DocumentCitation ;
+        skos:definition  "Citation of scanned plans and structural drawings which may sometimes be geo-referenced or not,. E.g. raster images, vector drawings or scanned text."@en .
+
+plu:SpatialPlan.planTypeName
+        a                owl:ObjectProperty ;
+        rdfs:comment     "NOTE The admissible values for this attribute are managed at the member state level via a code list\r\n\r\nEXAMPLE:\r\nFR: DTA, SCOT, PLU, etc.\r\nDE: Bebauungsplan, Flächennutzungsplan, Regionalplan, Landesentwicklungsplan \r\nNL:  bestemmingsplan, structuurvisie."@en ;
+        rdfs:domain      plu:SpatialPlan ;
+        rdfs:range       skos:Concept ;
+        rdfs:seeAlso     <http://inspire.ec.europa.eu/codelist/PlanTypeNameValue> ;
+        skos:definition  "Name of the type of plan that the Member State has given to the plan."@en .
+
+plu:ZoningElement.specificPresence_percentageList
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:ZoningElement ;
+        rdfs:label       "land use presence_percentageList"@en ;
+        rdfs:range       lunom:SpecificPercentage ;
+        skos:definition  "Actual presence of a land use category wihtin the object."@en .
+
+plu:SupplementaryRegulation.processStepGeneral
+        a                owl:ObjectProperty ;
+        rdfs:comment     "NOTE This enumeration contains values that are common to most planning systems."@en ;
+        rdfs:domain      plu:SupplementaryRegulation ;
+        rdfs:range       skos:Concept ;
+        rdfs:seeAlso     <http://inspire.ec.europa.eu/codelist/ProcessStepGeneralValue> ;
+        skos:definition  "General indication of the step of the planning process that the supplementary regulation is undergoing."@en .
+
+plu:SupplementaryRegulation.name
+        a                owl:DatatypeProperty ;
+        rdfs:domain      plu:SupplementaryRegulation ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Official name of the supplementary regulation"@en .
+
+plu:DimensioningIndicationRealValue.value
+        a            owl:DatatypeProperty ;
+        rdfs:domain  plu:DimensioningIndicationRealValue ;
+        rdfs:range   xsd:double .
+
+plu:SupplementaryRegulation.inheritedFromOtherPlans
+        a                owl:DatatypeProperty ;
+        rdfs:domain      plu:SupplementaryRegulation ;
+        rdfs:label       "inherited from other plans"@en ;
+        rdfs:range       xsd:boolean ;
+        skos:definition  "Indication whether the supplementary regulation is inherited from another spatial plan."@en .
+
+plu:SpatialPlan.officialTitle
+        a                owl:DatatypeProperty ;
+        rdfs:domain      plu:SpatialPlan ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Official title of the spatial plan."@en .
+
+plu:SpatialPlan.ordinance
+        a                owl:ObjectProperty ;
+        rdfs:comment     "NOTE This attribute is multiple because, independently from the current legal status of the plan, there can be references to more than one ordinance, in relation to the different steps that the planning process has already undergone (e.g. ordinance for the preparation of a new plan, ordinance of adoption, ordinance of approval, etc.)."@en ;
+        rdfs:domain      plu:SpatialPlan ;
+        rdfs:range       plu:OrdinanceValue ;
+        skos:definition  "Reference to relevant administrative ordinance."@en .
+
+plu:DimensioningIndicationRealValue
+        a                owl:Class ;
+        rdfs:label       "dimension indication real value"@en ;
+        rdfs:subClassOf  plu:DimensioningIndicationValue ;
+        skos:definition  "Dimensioning indication whose value is a floating point number."@en .
+
+plu:DimensioningIndicationMeasureValue.value
+        a            owl:DatatypeProperty ;
+        rdfs:domain  plu:DimensioningIndicationMeasureValue ;
+        rdfs:range   base:Measure .
+
+plu:SupplementaryRegulation.officialDocument
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:SupplementaryRegulation ;
+        rdfs:range       plu:OfficialDocumentation ;
+        skos:definition  "Link to the Textual regulations that correspond to this supplementary regulation."@en .
+
+plu:DimensioningIndicationValue.indicationReference
+        a                owl:DatatypeProperty ;
+        rdfs:domain      plu:DimensioningIndicationValue ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Description of the dimension indication."@en .
+
+plu:BackgroundMapValue.backgroudMapURI
+        a                owl:DatatypeProperty ;
+        rdfs:domain      plu:BackgroundMapValue ;
+        rdfs:label       "background map URI"@en ;
+        rdfs:range       xsd:anyURI ;
+        skos:definition  "URI referring to service that provides background map."@en .
+
+plu:SpatialPlan.processStepGeneral
+        a                owl:ObjectProperty ;
+        rdfs:comment     "NOTE This enumeration contains values that are common to most planning systems."@en ;
+        rdfs:domain      plu:SpatialPlan ;
+        rdfs:range       skos:Concept ;
+        rdfs:seeAlso     <http://inspire.ec.europa.eu/codelist/ProcessStepGeneralValue> ;
+        skos:definition  "General indication of the step of the planning process that the plan is undergoing."@en .
+
+plu:ZoningElement  a      owl:Class ;
+        rdfs:comment      "Zoning elements refer to the regulation of the kinds of activities which will be acceptable on particular lots (such as open space, residential, agricultural, commercial or industrial).  The intensity of use at which those activities can be performed (from low-density housing such as single family homes to high-density such as high-rise apartment buildings), the height of buildings, the amount of space that structures may occupy, the proportions of the types of space on a lot, such as how much landscaped space, impervious surface, traffic lanes, and parking may be provided."@en ;
+        rdfs:isDefinedBy  <http://inspire.ec.europa.eu/featureconcept/ZoningElement> ;
+        rdfs:label        "zoning element"@en ;
+        rdfs:subClassOf   gsp:Feature ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( [ a                   owl:Class ;
+                                             owl:intersectionOf  ( [ a                   owl:Restriction ;
+                                                                     owl:minCardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                     owl:onProperty      plu:ZoningElement.specificPresence_orderedList
+                                                                   ]
+                                                                   [ a                owl:Restriction ;
+                                                                     owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                     owl:onProperty   plu:ZoningElement.specificPresence_percentageList
+                                                                   ]
+                                                                 )
+                                           ]
+                                           [ a                   owl:Class ;
+                                             owl:intersectionOf  ( [ a                owl:Restriction ;
+                                                                     owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                     owl:onProperty   plu:ZoningElement.specificPresence_orderedList
+                                                                   ]
+                                                                   [ a                   owl:Restriction ;
+                                                                     owl:minCardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                     owl:onProperty      plu:ZoningElement.specificPresence_percentageList
+                                                                   ]
+                                                                 )
+                                           ]
+                                         )
+                          ] ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( [ a                   owl:Class ;
+                                             owl:intersectionOf  ( [ a                   owl:Restriction ;
+                                                                     owl:minCardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                     owl:onProperty      plu:ZoningElement.hilucsPresence_orderedList
+                                                                   ]
+                                                                   [ a                owl:Restriction ;
+                                                                     owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                     owl:onProperty   plu:ZoningElement.hilucsPresence_percentageList
+                                                                   ]
+                                                                 )
+                                           ]
+                                           [ a                   owl:Class ;
+                                             owl:intersectionOf  ( [ a                owl:Restriction ;
+                                                                     owl:cardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                     owl:onProperty   plu:ZoningElement.hilucsPresence_orderedList
+                                                                   ]
+                                                                   [ a                   owl:Restriction ;
+                                                                     owl:minCardinality  "0"^^xsd:nonNegativeInteger ;
+                                                                     owl:onProperty      plu:ZoningElement.hilucsPresence_percentageList
+                                                                   ]
+                                                                 )
+                                           ]
+                                         )
+                          ] ;
+        skos:definition   "A spatial object which is homogeneous regarding the permitted uses of land based on zoning which separate one set of land uses from another."@en .
+
+plu:OfficialDocumentation
+        a                      owl:Class ;
+        rdfs:comment           "NOTE: The LegislationCitation is the value type of the attribute regulation reference. An example of a regulation reference would be: http://www2.vlaanderen.be /ruimtelijk/grup/00350/00362_00001/data/ 212_00362_00001_d_0BVR.pdf."@en ;
+        rdfs:isDefinedBy       <https://inspire.ec.europa.eu/featureconcept/OfficialDocumentation> ;
+        rdfs:label             "official documentation"@en ;
+        rdfs:subClassOf        gsp:Feature ;
+        iso19150-2:constraint  "OneMustBeFilled: /*\r\n** At least one of the values must be populated with a non-void value\r\n*/" ;
+        skos:definition        "The official documentation that composes the spatial plan; it may be composed of, the applicable legislation, the regulations, cartographic elements, descriptive elements that may be associated with the complete spatial plan, a zoning element or a supplementary regulation . In some Member States the actual textual regulation will be part of the data set (and can be put in the regulationText attribute), in other Member States the text will not be part of the data set and will be referenced via a reference to a document or a legal act.\r\n\r\nAt least one of the three voidable values shall be provided."@en .
+
+plu:OrdinanceValue.ordinanceDate
+        a                owl:DatatypeProperty ;
+        rdfs:comment     "NOTE This attribute is multiple because, independently from the current legal status of the plan, there can be references to the dates of more than one ordinance, in relation to the different steps that the planning process has already undergone (e.g. ordinance for the preparation of a new plan, ordinance of adoption, ordinance of approval, etc.)."@en ;
+        rdfs:domain      plu:OrdinanceValue ;
+        rdfs:range       xsd:dateTime ;
+        skos:definition  "Date of the relevant administrative ordinance."@en .
+
+plu:ZoningElement.specificPresence_orderedList
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:ZoningElement ;
+        rdfs:label       "land use presence_orderedList"@en ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Actual presence of a land use category wihtin the object."@en .
+
+plu:BackgroundMapValue.backgroundMapReference
+        a                owl:DatatypeProperty ;
+        rdfs:domain      plu:BackgroundMapValue ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Reference to the background map that has been used."@en .
+
+plu:SupplementaryRegulation.specificSupplementaryRegulation
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:SupplementaryRegulation ;
+        rdfs:range       skos:Concept ;
+        rdfs:seeAlso     <http://inspire.ec.europa.eu/codelist/SpecificSupplementaryRegulationValue> ;
+        skos:definition  "Reference to a category of supplementary regulation provided in a specific nomenclature of supplementary regulations provided by the data provider."@en .
+
+plu:OfficialDocumentation.legislationCitation
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:OfficialDocumentation ;
+        rdfs:range       base:LegislationCitation ;
+        skos:definition  "Reference to the document that contains the text of the regulation."@en .
+
+plu:SpatialPlan.backgroundMap
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:SpatialPlan ;
+        rdfs:label       "background map"@en ;
+        rdfs:range       plu:BackgroundMapValue ;
+        skos:definition  "Identification of the background map that has been used for constructing this Plan."@en .
+
+plu:SupplementaryRegulation
+        a                 owl:Class ;
+        rdfs:comment      "NOTE the supplementary regulations affects all land use that overlap with the geometry\r\nEXAMPLE an air field generates restriction in its surroundings regarding aircraft landing, radar and telecommunication devices. It is the buffer around these artefacts that generates the supplementary regulation on the Land Use."@en ;
+        rdfs:isDefinedBy  <https://inspire.ec.europa.eu/featureconcept/SupplementaryRegulation> ;
+        rdfs:label        "supplementary regulation"@en ;
+        rdfs:subClassOf   gsp:Feature ;
+        skos:definition   "A spatial object (point, line or polygon) of a spatial plan that provides supplementary information and/or limitation of the use of land/water necessary for spatial planning reasons or to formalise external rules defined in legal text."@en .
+
+plu:ZoningElement.processStepGeneral
+        a                owl:ObjectProperty ;
+        rdfs:comment     "NOTE This enumeration contains values that are common to most planning systems."@en ;
+        rdfs:domain      plu:ZoningElement ;
+        rdfs:range       skos:Concept ;
+        rdfs:seeAlso     <http://inspire.ec.europa.eu/codelist/ProcessStepGeneralValue> ;
+        skos:definition  "General indication of the step of the planning process that the zoning element is undergoing."@en .
+
+<http://inspire.ec.europa.eu/ont/plu>
+        a                owl:Ontology ;
+        rdfs:label       "planned land use"@en ;
+        owl:imports      <http://def.isotc211.org/iso19150/-2/2012/base> , <https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/base/base.ttl> , <http://inspire.ec.europa.eu/ont/lunom> , <http://www.w3.org/2004/02/skos/core> , <https://www.w3.org/ns/locn.ttl> , <http://www.opengis.net/ont/geosparql> ;
+        owl:versionIRI   "http://inspire.ec.europa.eu/ont/plu/4.0" ;
+        owl:versionInfo  "4.0" .
+
+plu:SupplementaryRegulation.plan
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:SupplementaryRegulation ;
+        rdfs:range       plu:SpatialPlan ;
+        skos:definition  "Link to the plan this supplementary regulation is part of."@en .
+
+plu:ZoningElement.hilucsLandUse
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:ZoningElement ;
+        rdfs:range       skos:Concept ;
+        rdfs:seeAlso     <http://inspire.ec.europa.eu/codeList/HILUCSValue> ;
+        skos:definition  "Land use HILUCS class that is dominant in this land use object."@en .
+
+plu:ZoningElement.plan
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:ZoningElement ;
+        rdfs:range       plu:SpatialPlan ;
+        skos:definition  "SpatialPlan which this ZoningElement belongs to."@en .
+
+plu:DimensioningIndicationIntegerValue.value
+        a            owl:DatatypeProperty ;
+        rdfs:domain  plu:DimensioningIndicationIntegerValue ;
+        rdfs:range   xsd:integer .
+
+plu:SupplementaryRegulation.geometry
+        a                   owl:ObjectProperty ;
+        rdfs:domain         plu:SupplementaryRegulation ;
+        rdfs:range          gsp:Geometry ;
+        rdfs:subPropertyOf  locn:geometry , gsp:hasDefaultGeometry ;
+        skos:definition     "Geometry of the piece of land on which the supplementary regulation applies."@en .
+
+plu:ZoningElement.regulationNature
+        a                owl:ObjectProperty ;
+        rdfs:comment     "NOTE Indicates whether the land use indication is legally binding or not."@en ;
+        rdfs:domain      plu:ZoningElement ;
+        rdfs:range       skos:Concept ;
+        rdfs:seeAlso     <http://inspire.ec.europa.eu/codelist/RegulationNatureValue> ;
+        skos:definition  "Legal nature of the land use indication."@en .
+
+plu:SpatialPlan  a        owl:Class ;
+        rdfs:isDefinedBy  <https://inspire.ec.europa.eu/featureconcept/SpatialPlan> ;
+        rdfs:label        "spatial plan"@en ;
+        rdfs:subClassOf   gsp:Feature ;
+        skos:definition   "A set of documents that indicates a strategic direction for the development of a given geographic area, states the policies, priorities, programmes and land allocations that will implement the strategic direction and influences the distribution of people and activities in spaces of various scales. Spatial plans may be developed for urban planning, regional planning, environmental planning, landscape planning, national spatial plans, or spatial planning at the Union level."@en .
+
+plu:OfficialDocumentation.regulationText
+        a                owl:DatatypeProperty ;
+        rdfs:domain      plu:OfficialDocumentation ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Text of the regulation."@en .
+
+plu:ZoningElement.geometry
+        a                   owl:ObjectProperty ;
+        rdfs:domain         plu:ZoningElement ;
+        rdfs:range          gsp:Geometry ;
+        rdfs:subPropertyOf  locn:geometry , gsp:hasDefaultGeometry ;
+        skos:definition     "Geometry of this zoning element"@en .
+
+plu:SpatialPlan.member
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:SpatialPlan ;
+        rdfs:range       plu:ZoningElement ;
+        skos:definition  "Reference to the ZoningElements which belong to this SpatialPlan."@en .
+
+plu:BackgroundMapValue
+        a                owl:Class ;
+        skos:definition  "Information regarding the map that has been used as a background in the definition of a spatial plan, a zoning element or a supplementary regulation."@en .
+
+plu:ZoningElement.dimensioningIndication
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:ZoningElement ;
+        rdfs:range       plu:DimensioningIndicationValue ;
+        skos:definition  "Specifications about the dimensioning of the urban developments."@en .
+
+plu:ZoningElement.specificLandUse
+        a                owl:ObjectProperty ;
+        rdfs:comment     "Reference to an entry in the classfication that is part of the SpecificLandUseClassification."@en ;
+        rdfs:domain      plu:ZoningElement ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "Land Use Category according to the nomenclature specific to this data set."@en .
+
+plu:SpatialPlan.extent
+        a                   owl:ObjectProperty ;
+        rdfs:domain         plu:SpatialPlan ;
+        rdfs:range          gsp:Geometry ;
+        rdfs:subPropertyOf  locn:geometry , gsp:hasDefaultGeometry ;
+        skos:definition     "Geometrical union of all the instances of the spatial objects ZoningElement and SupplementaryRegulation. When a SpatialPlan is only composed of a document, the attribute extent is the border of the cartographic image that contains the land use information (i.e. the land use map extent)."@en .
+
+plu:DimensioningIndicationCharacterValue
+        a                owl:Class ;
+        rdfs:label       "dimension indication character value"@en ;
+        rdfs:subClassOf  plu:DimensioningIndicationValue ;
+        skos:definition  "Dimensioning indication whose value is of type CharacterString."@en .
+
+plu:SpatialPlan.alternativeTitle
+        a                owl:DatatypeProperty ;
+        rdfs:domain      plu:SpatialPlan ;
+        rdfs:range       xsd:string ;
+        skos:definition  "Alternative (unofficial) title of the spatial plan."@en .
+
+plu:ZoningElement.officialDocument
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:ZoningElement ;
+        rdfs:range       plu:OfficialDocumentation ;
+        skos:definition  "Textual Regulation that is part of this zoning element."@en .
+
+plu:ZoningElement.backgroundMap
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:ZoningElement ;
+        rdfs:label       "background map"@en ;
+        rdfs:range       plu:BackgroundMapValue ;
+        skos:definition  "Identification of the background map that has been used for constructing this zoning element."@en .
+
+plu:SupplementaryRegulation.supplementaryRegulation
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:SupplementaryRegulation ;
+        rdfs:range       skos:Concept ;
+        rdfs:seeAlso     <http://inspire.ec.europa.eu/codelist/SupplementaryRegulationValue> ;
+        skos:definition  "Code of the supplementary regulation from the hierarchical supplementary regulation code list agreed at the European level."@en .
+
+plu:DimensioningIndicationIntegerValue
+        a                owl:Class ;
+        rdfs:label       "dimension indication integer value"@en ;
+        rdfs:subClassOf  plu:DimensioningIndicationValue ;
+        skos:definition  "Dimensioning indication whose value is of type integer."@en .
+
+plu:OrdinanceValue  a    owl:Class ;
+        skos:definition  "Reference to administrative ordinance. Ordinance is a regulation/rule that is adopted by an authority that is legally mandated to take such ordinance."@en .
+
+plu:SupplementaryRegulation.backgroundMap
+        a                owl:ObjectProperty ;
+        rdfs:domain      plu:SupplementaryRegulation ;
+        rdfs:label       "background map"@en ;
+        rdfs:range       plu:BackgroundMapValue ;
+        skos:definition  "Identification of the background map that has been used for constructing the supplementary regulation."@en .
+
+plu:SpatialPlan.levelOfSpatialPlan
+        a                owl:ObjectProperty ;
+        rdfs:comment     "Member states should make a mapping to this enumeration."@en ;
+        rdfs:domain      plu:SpatialPlan ;
+        rdfs:label       "level of spatial plan"@en ;
+        rdfs:range       skos:Concept ;
+        rdfs:seeAlso     <http://inspire.ec.europa.eu/codelist/LevelOfSpatialPlanValue> ;
+        skos:definition  "Level of the administrative units covered by the plan."@en .

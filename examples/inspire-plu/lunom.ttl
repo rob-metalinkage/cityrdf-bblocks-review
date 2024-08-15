@@ -1,0 +1,43 @@
+@prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix lunom: <http://inspire.ec.europa.eu/ont/lunom#> .
+
+lunom:HILUCSPercentage.hilucsValue
+        a                owl:ObjectProperty ;
+        rdfs:domain      lunom:HILUCSPercentage ;
+        rdfs:range       skos:Concept ;
+        rdfs:seeAlso     <http://inspire.ec.europa.eu/codeList/HILUCSValue> ;
+        skos:definition  "HILUCS category for this HILUCS percentage."@en .
+
+lunom:SpecificPercentage
+        a                owl:Class ;
+        rdfs:label       "specific percentage"@en ;
+        skos:definition  "Percentage of land use object that is covered by this specific presence."@en .
+
+lunom:SpecificPercentage.specificValue
+        a                owl:ObjectProperty ;
+        rdfs:domain      lunom:SpecificPercentage ;
+        rdfs:range       skos:Concept ;
+        skos:definition  "specific value category for this specific percentage."@en .
+
+<http://inspire.ec.europa.eu/ont/lunom>
+        a                owl:Ontology ;
+        rdfs:label       "land use nomenclature"@en ;
+        owl:imports      <http://www.w3.org/2004/02/skos/core> , <http://def.isotc211.org/iso19150/-2/2012/base> ;
+        owl:versionIRI   "http://inspire.ec.europa.eu/ont/lunom/4.0" ;
+        owl:versionInfo  "4.0" .
+
+lunom:percentage  a      owl:DatatypeProperty ;
+        rdfs:comment     "NOTE The percentage is according to the socio-economic importance of the use. In section 5.2.1.1.2. examples of the use of percentages are given."@en ;
+        rdfs:range       xsd:integer ;
+        skos:definition  "Percentage of land use object that is covered by a specific presence."@en .
+
+lunom:HILUCSPercentage
+        a                owl:Class ;
+        rdfs:comment     "NOTE1:The percentage is according to the socio-economic or functional importance of the use.\r\n\r\nNOTE2:examples are provided in the narrative description part of the data specification."@en ;
+        rdfs:label       "HILUCS percentage"@en ;
+        skos:definition  "Percentage of land use object that is covered by this HILUCS presence."@en .
