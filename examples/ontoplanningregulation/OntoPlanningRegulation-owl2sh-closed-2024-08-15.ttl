@@ -1,0 +1,164 @@
+@prefix :                       <https://graphdb.accordproject.eu/kg/ontoplanningregulation/> .
+@prefix dash:                   <http://datashapes.org/dash#> .
+@prefix dc:                     <http://purl.org/dc/elements/1.1/> .
+@prefix dct:                    <http://purl.org/dc/terms/> .
+@prefix graphql:                <http://datashapes.org/graphql#> .
+@prefix ontoplanningregulation: <https://graphdb.accordproject.eu/kg/ontoplanningregulation/> .
+@prefix owl:                    <http://www.w3.org/2002/07/owl#> .
+@prefix owl2sh-closed:          <http://data.sparna.fr/ontologies/owl2sh-closed#> .
+@prefix rdf:                    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:                   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:                     <http://www.w3.org/ns/shacl#> .
+@prefix swa:                    <http://topbraid.org/swa#> .
+@prefix tosh:                   <http://topbraid.org/tosh#> .
+@prefix xsd:                    <http://www.w3.org/2001/XMLSchema#> .
+
+ontoplanningregulation:RoadCategory
+        rdf:type              rdfs:Class , sh:NodeShape ;
+        sh:closed             true ;
+        sh:ignoredProperties  ( rdf:type ) ;
+        sh:property           ontoplanningregulation:RoadCategory-https___graphdb.accordproject.eu_kg_ontoplanningregulation_requiresRoadBuffer .
+
+<https://graphdb.accordproject.eu/kg/ontoplot/Plot-https___graphdb.accordproject.eu_kg_ontoplanningregulation_isAwaitingDetailedGPREvaluation>
+        rdf:type     sh:PropertyShape ;
+        sh:datatype  xsd:boolean ;
+        sh:path      ontoplanningregulation:isAwaitingDetailedGPREvaluation .
+
+ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_requiresFloorToFloorHeight
+        rdf:type  sh:PropertyShape ;
+        sh:class  ontoplanningregulation:FloorToFloorHeight ;
+        sh:path   ontoplanningregulation:requiresFloorToFloorHeight .
+
+ontoplanningregulation:UseQuantum-https___graphdb.accordproject.eu_kg_ontoplanningregulation_applicableFor
+        rdf:type  sh:PropertyShape ;
+        sh:class  <https://graphdb.accordproject.eu/kg/ontozoning/LandUse> ;
+        sh:path   ontoplanningregulation:applicableFor .
+
+ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_forCornerPlot
+        rdf:type     sh:PropertyShape ;
+        sh:datatype  xsd:boolean ;
+        sh:path      ontoplanningregulation:forCornerPlot .
+
+ontoplanningregulation:RoadCategory-https___graphdb.accordproject.eu_kg_ontoplanningregulation_requiresRoadBuffer
+        rdf:type  sh:PropertyShape ;
+        sh:class  ontoplanningregulation:RoadBuffer ;
+        sh:path   ontoplanningregulation:requiresRoadBuffer .
+
+ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_allowsAbsoluteHeight
+        rdf:type  sh:PropertyShape ;
+        sh:class  ontoplanningregulation:AbsoluteHeight ;
+        sh:path   ontoplanningregulation:allowsAbsoluteHeight .
+
+ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_allowsBuildingMassRatio
+        rdf:type  sh:PropertyShape ;
+        sh:class  ontoplanningregulation:BuildingMassRatio ;
+        sh:path   ontoplanningregulation:allowsBuildingMassRatio .
+
+ontoplanningregulation:LandUseRegulation
+        rdf:type              rdfs:Class , sh:NodeShape ;
+        sh:closed             true ;
+        sh:ignoredProperties  ( ontoplanningregulation:allowsBuildingMassRatio ontoplanningregulation:isLegislatedBy ontoplanningregulation:appliesTo ontoplanningregulation:forCornerPlot ontoplanningregulation:requiresSetback ontoplanningregulation:forFringePlot rdf:type ontoplanningregulation:override ontoplanningregulation:requiresPartyWall ontoplanningregulation:allowsAbsoluteHeight ontoplanningregulation:allowsGrossPlotRatio ontoplanningregulation:allowsSiteCoverage ontoplanningregulation:requiresFloorToFloorHeight ontoplanningregulation:allowsBuildingHeight ) ;
+        sh:property           ontoplanningregulation:LandUseRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_appliesTo , ontoplanningregulation:LandUseRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_hasMinUseQuantum , ontoplanningregulation:LandUseRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_mayAllowUse , ontoplanningregulation:LandUseRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_doesNotAllowUse , ontoplanningregulation:LandUseRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_allowsUse , ontoplanningregulation:LandUseRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_hasMaxUseQuantum .
+
+<https://graphdb.accordproject.eu/kg/ontoplot/Plot>
+        rdf:type              sh:NodeShape , rdfs:Class ;
+        sh:closed             true ;
+        sh:ignoredProperties  ( rdf:type ) ;
+        sh:property           <https://graphdb.accordproject.eu/kg/ontoplot/Plot-https___graphdb.accordproject.eu_kg_ontoplanningregulation_isAwaitingDetailedGPREvaluation> .
+
+ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_requiresSetback
+        rdf:type  sh:PropertyShape ;
+        sh:class  ontoplanningregulation:Setback ;
+        sh:path   ontoplanningregulation:requiresSetback .
+
+ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_allowsBuildingHeight
+        rdf:type  sh:PropertyShape ;
+        sh:class  ontoplanningregulation:BuildingHeight ;
+        sh:path   ontoplanningregulation:allowsBuildingHeight .
+
+ontoplanningregulation:LandUseRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_hasMaxUseQuantum
+        rdf:type  sh:PropertyShape ;
+        sh:class  ontoplanningregulation:UseQuantum ;
+        sh:path   ontoplanningregulation:hasMaxUseQuantum .
+
+ontoplanningregulation:UseQuantum
+        rdf:type              rdfs:Class , sh:NodeShape ;
+        sh:closed             true ;
+        sh:ignoredProperties  ( rdf:type ) ;
+        sh:property           ontoplanningregulation:UseQuantum-https___graphdb.accordproject.eu_kg_ontoplanningregulation_applicableFor .
+
+ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_override
+        rdf:type  sh:PropertyShape ;
+        sh:class  ontoplanningregulation:PlanningRegulation ;
+        sh:path   ontoplanningregulation:override .
+
+ontoplanningregulation:LandUseRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_mayAllowUse
+        rdf:type  sh:PropertyShape ;
+        sh:class  <https://graphdb.accordproject.eu/kg/ontozoning/LandUse> ;
+        sh:path   ontoplanningregulation:mayAllowUse .
+
+ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_allowsSiteCoverage
+        rdf:type  sh:PropertyShape ;
+        sh:class  ontoplanningregulation:SiteCoverage ;
+        sh:path   ontoplanningregulation:allowsSiteCoverage .
+
+ontoplanningregulation:LandUseRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_appliesTo
+        rdf:type  sh:PropertyShape ;
+        sh:class  <https://graphdb.accordproject.eu/kg/ontozoning/LandUseType> ;
+        sh:path   ontoplanningregulation:appliesTo .
+
+ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_appliesTo
+        rdf:type  sh:PropertyShape ;
+        sh:path   ontoplanningregulation:appliesTo .
+
+ontoplanningregulation:LandUseRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_hasMinUseQuantum
+        rdf:type  sh:PropertyShape ;
+        sh:class  ontoplanningregulation:UseQuantum ;
+        sh:path   ontoplanningregulation:hasMinUseQuantum .
+
+ontoplanningregulation:BuildingHeight-https___graphdb.accordproject.eu_kg_ontoplanningregulation_isRelativeTo
+        rdf:type  sh:PropertyShape ;
+        sh:class  ontoplanningregulation:Datum ;
+        sh:path   ontoplanningregulation:isRelativeTo .
+
+ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_requiresPartyWall
+        rdf:type  sh:PropertyShape ;
+        sh:class  ontoplanningregulation:PartyWall ;
+        sh:path   ontoplanningregulation:requiresPartyWall .
+
+ontoplanningregulation:LandUseRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_doesNotAllowUse
+        rdf:type  sh:PropertyShape ;
+        sh:class  <https://graphdb.accordproject.eu/kg/ontozoning/LandUse> ;
+        sh:path   ontoplanningregulation:doesNotAllowUse .
+
+ontoplanningregulation:PlanningRegulation
+        rdf:type              sh:NodeShape , rdfs:Class ;
+        sh:closed             true ;
+        sh:ignoredProperties  ( ontoplanningregulation:appliesTo rdf:type ontoplanningregulation:mayAllowUse ontoplanningregulation:hasMaxUseQuantum ontoplanningregulation:allowsUse ontoplanningregulation:doesNotAllowUse ontoplanningregulation:hasMinUseQuantum ) ;
+        sh:property           ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_requiresSetback , ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_allowsBuildingMassRatio , ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_allowsAbsoluteHeight , ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_appliesTo , ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_allowsBuildingHeight , ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_allowsGrossPlotRatio , ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_override , ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_allowsSiteCoverage , ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_forFringePlot , ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_forCornerPlot , ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_isLegislatedBy , ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_requiresPartyWall , ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_requiresFloorToFloorHeight .
+
+ontoplanningregulation:LandUseRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_allowsUse
+        rdf:type  sh:PropertyShape ;
+        sh:class  <https://graphdb.accordproject.eu/kg/ontozoning/LandUse> ;
+        sh:path   ontoplanningregulation:allowsUse .
+
+ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_isLegislatedBy
+        rdf:type  sh:PropertyShape ;
+        sh:class  ontoplanningregulation:CompetentAuthority ;
+        sh:path   ontoplanningregulation:isLegislatedBy .
+
+ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_forFringePlot
+        rdf:type     sh:PropertyShape ;
+        sh:datatype  xsd:boolean ;
+        sh:path      ontoplanningregulation:forFringePlot .
+
+ontoplanningregulation:PlanningRegulation-https___graphdb.accordproject.eu_kg_ontoplanningregulation_allowsGrossPlotRatio
+        rdf:type  sh:PropertyShape ;
+        sh:class  ontoplanningregulation:GrossPlotRatio ;
+        sh:path   ontoplanningregulation:allowsGrossPlotRatio .
+
+ontoplanningregulation:BuildingHeight
+        rdf:type              sh:NodeShape , rdfs:Class ;
+        sh:closed             true ;
+        sh:ignoredProperties  ( rdf:type ) ;
+        sh:property           ontoplanningregulation:BuildingHeight-https___graphdb.accordproject.eu_kg_ontoplanningregulation_isRelativeTo .
