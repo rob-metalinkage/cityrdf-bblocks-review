@@ -1,0 +1,7 @@
+<rdfMapEntries xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1">
+  <!--  ISO 19136 basic types  -->
+        <RdfTypeMapEntry type="MeasureOrNilReasonList" target="iso19136-bt:MeasureOrNilReasonList"/>
+        <RdfTypeMapEntry type="DoubleOrNilReasonList" target="iso19136-bt:DoubleOrNilReasonList"/>
+        <RdfTypeMapEntry type="NilReason" target="iso19136-bt:NilReason"/>
+<!--  ... more to be added as required  -->
+</rdfMapEntries>

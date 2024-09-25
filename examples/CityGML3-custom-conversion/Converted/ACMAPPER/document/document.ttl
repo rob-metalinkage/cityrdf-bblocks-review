@@ -1,0 +1,138 @@
+@prefix core:       <https://ogcbblocks/CityGML/3.0/core#> .
+@prefix doc:        <https://ogcbblocks/CityGML/3.0/document#> .
+@prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
+@prefix owl:        <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time:       <http://www.w3.org/2006/time#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+
+doc:Reference.coveragePeriod
+        rdf:type     owl:ObjectProperty;
+        rdfs:domain  doc:Reference;
+        rdfs:label   "coveragePeriod"@en;
+        rdfs:range   time:Interval .
+
+doc:Tag.text  rdf:type  owl:DatatypeProperty;
+        rdfs:domain  doc:Tag;
+        rdfs:label   "text"@en;
+        rdfs:range   xsd:string .
+
+doc:Document.title  rdf:type  owl:DatatypeProperty;
+        rdfs:domain  doc:Document;
+        rdfs:label   "title"@en;
+        rdfs:range   xsd:string .
+
+doc:Reference.referringDate
+        rdf:type     owl:DatatypeProperty;
+        rdfs:domain  doc:Reference;
+        rdfs:label   "referringDate"@en;
+        rdfs:range   xsd:dateTime .
+
+doc:Tag  rdf:type        owl:Class;
+        rdfs:label       "Tag"@en;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:integer;
+                           owl:onProperty     doc:Tag.count
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     doc:Tag.text
+                         ] .
+
+<https://ogcbblocks/CityGML/3.0/document>
+        rdf:type     owl:Ontology;
+        rdfs:label   "Document"@en;
+        owl:imports  <https://ogcbblocks/CityGML/3.0/core> , <www.w3.org/2006/time> , <http://def.isotc211.org/iso19150/-2/2012/base> .
+
+doc:Reference.purposeType
+        rdf:type     owl:ObjectProperty;
+        rdfs:domain  doc:Reference;
+        rdfs:label   "purposeType"@en;
+        rdfs:range   <https://dataset-dl.liris.cnrs.fr/rdf-owl-urban-data-ontologies/Ontologies/Document/3.0/document#PurposeTypeValue> .
+
+doc:Reference  rdf:type  owl:Class;
+        rdfs:label       "Reference"@en;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  core:AbstractFeatureWithLifespan;
+                           owl:onProperty     doc:Reference.referringTo
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:dateTime;
+                           owl:onProperty     doc:Reference.referringDate
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     doc:Reference.referenceText
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  <https://dataset-dl.liris.cnrs.fr/rdf-owl-urban-data-ontologies/Ontologies/Document/3.0/document#PurposeTypeValue>;
+                           owl:onProperty     doc:Reference.purposeType
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     doc:Reference.purpose
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  time:Interval;
+                           owl:onProperty     doc:Reference.coveragePeriod
+                         ] .
+
+doc:Reference.referringTo
+        rdf:type     owl:ObjectProperty;
+        rdfs:domain  doc:Reference;
+        rdfs:label   "referringTo"@en;
+        rdfs:range   core:AbstractFeatureWithLifespan .
+
+doc:Document.referringTo
+        rdf:type     owl:ObjectProperty;
+        rdfs:domain  doc:Document;
+        rdfs:label   "referringTo"@en;
+        rdfs:range   doc:Reference .
+
+doc:Reference.purpose
+        rdf:type     owl:DatatypeProperty;
+        rdfs:domain  doc:Reference;
+        rdfs:label   "purpose"@en;
+        rdfs:range   xsd:string .
+
+doc:Document.tag  rdf:type  owl:ObjectProperty;
+        rdfs:domain  doc:Document;
+        rdfs:label   "tag"@en;
+        rdfs:range   doc:Tag .
+
+doc:Document  rdf:type   owl:Class;
+        rdfs:label       "Document"@en;
+        rdfs:subClassOf  core:AbstractFeatureWithLifespan;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  doc:Tag;
+                           owl:onProperty     doc:Document.tag
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  doc:Reference;
+                           owl:onProperty     doc:Document.referringTo
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:anyURI;
+                           owl:onProperty     doc:Document.uri
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     doc:Document.title
+                         ] .
+
+doc:Reference.referenceText
+        rdf:type     owl:DatatypeProperty;
+        rdfs:domain  doc:Reference;
+        rdfs:label   "referenceText"@en;
+        rdfs:range   xsd:string .
+
+doc:Tag.count  rdf:type  owl:DatatypeProperty;
+        rdfs:domain  doc:Tag;
+        rdfs:label   "count"@en;
+        rdfs:range   xsd:integer .
+
+doc:Document.uri  rdf:type  owl:DatatypeProperty;
+        rdfs:domain  doc:Document;
+        rdfs:label   "uri"@en;
+        rdfs:range   xsd:anyURI .

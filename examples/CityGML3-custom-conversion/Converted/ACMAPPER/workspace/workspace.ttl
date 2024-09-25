@@ -1,0 +1,105 @@
+@prefix core:       <https://ogcbblocks/CityGML/3.0/core#> .
+@prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
+@prefix owl:        <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
+@prefix vers:       <https://ogcbblocks/CityGML/3.0/versioning#> .
+@prefix wksp:       <https://ogcbblocks/CityGML/3.0/workspace#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+
+wksp:Workspace.spaceMember
+        rdf:type     owl:ObjectProperty;
+        rdfs:domain  wksp:Workspace;
+        rdfs:label   "spaceMember"@en;
+        rdfs:range   wksp:Space .
+
+wksp:PropositionSpace
+        rdf:type         owl:Class;
+        rdfs:label       "PropositionSpace"@en;
+        rdfs:subClassOf  wksp:Space .
+
+wksp:Scenario.versionMember
+        rdf:type     owl:ObjectProperty;
+        rdfs:domain  wksp:Scenario;
+        rdfs:label   "versionMember"@en;
+        rdfs:range   vers:Version .
+
+wksp:ConcensusSpace  rdf:type  owl:Class;
+        rdfs:label       "ConcensusSpace"@en;
+        rdfs:subClassOf  wksp:Space .
+
+wksp:Space  rdf:type     owl:Class;
+        rdfs:label       "Space"@en;
+        rdfs:subClassOf  core:AbstractFeatureWithLifespan;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  wksp:Scenario;
+                           owl:onProperty     wksp:Space.scenarioMember
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     wksp:Space.creator
+                         ] .
+
+wksp:Workspace.creator
+        rdf:type     owl:DatatypeProperty;
+        rdfs:domain  wksp:Workspace;
+        rdfs:label   "creator"@en;
+        rdfs:range   xsd:string .
+
+wksp:Scenario.creator
+        rdf:type     owl:DatatypeProperty;
+        rdfs:domain  wksp:Scenario;
+        rdfs:label   "creator"@en;
+        rdfs:range   xsd:string .
+
+wksp:Workspace  rdf:type  owl:Class;
+        rdfs:label       "Workspace"@en;
+        rdfs:subClassOf  core:AbstractFeatureWithLifespan;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  wksp:Space;
+                           owl:onProperty     wksp:Workspace.spaceMember
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     wksp:Workspace.creator
+                         ] .
+
+wksp:Space.scenarioMember
+        rdf:type     owl:ObjectProperty;
+        rdfs:domain  wksp:Space;
+        rdfs:label   "scenarioMember"@en;
+        rdfs:range   wksp:Scenario .
+
+wksp:Scenario.versionTransitionMember
+        rdf:type     owl:ObjectProperty;
+        rdfs:domain  wksp:Scenario;
+        rdfs:label   "versionTransitionMember"@en;
+        rdfs:range   vers:VersionTransition .
+
+wksp:Space.creator  rdf:type  owl:DatatypeProperty;
+        rdfs:domain  wksp:Space;
+        rdfs:label   "creator"@en;
+        rdfs:range   xsd:string .
+
+wksp:Scenario  rdf:type  owl:Class;
+        rdfs:label       "Scenario"@en;
+        rdfs:subClassOf  core:AbstractFeatureWithLifespan;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  vers:VersionTransition;
+                           owl:onProperty     wksp:Scenario.versionTransitionMember
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  vers:Version;
+                           owl:onProperty     wksp:Scenario.versionMember
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     wksp:Scenario.creator
+                         ] .
+
+<https://ogcbblocks/CityGML/3.0/workspace>
+        rdf:type         owl:Ontology;
+        rdfs:label       "Workspace"@en;
+        owl:imports      <https://ogcbblocks/CityGML/3.0/core> , <https://ogcbblocks/CityGML/3.0/versioning> , <http://def.isotc211.org/iso19150/-2/2012/base>;
+        skos:definition  "This pattern provides a starting point for modeling a GML Application Schema which is a specialized xml schema that uses the Geographic Markup Language to model Features to provide the basis for interoperability within a community of interest."@en .

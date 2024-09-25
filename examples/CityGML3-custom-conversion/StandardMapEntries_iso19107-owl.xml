@@ -1,0 +1,6 @@
+<rdfMapEntries xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1">
+  <!--  ISO 19136 basic types  -->
+  <RdfTypeMapEntry target="gmlowl:AbstractGeometry" type="GM_Object"/>
+
+<!--  ... more to be added as required  -->
+</rdfMapEntries>
