@@ -1,0 +1,157 @@
+@prefix core:       <https://ogcbblocks/CityGML/3.0/core#> .
+@prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
+@prefix owl:        <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
+@prefix wtr:        <https://ogcbblocks/CityGML/3.0/waterbody#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+
+wtr:WaterBody.function
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      wtr:WaterBody;
+        rdfs:label       "function"@en;
+        skos:definition  "Specifies the intended purposes of the WaterBody."@en .
+
+wtr:ADEOfAbstractWaterBoundarySurface
+        rdf:type               owl:Class;
+        rdfs:label             "ADEOfAbstractWaterBoundarySurface"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfAbstractWaterBoundarySurface acts as a hook to define properties within an ADE that are to be added to AbstractWaterBoundarySurface."@en .
+
+wtr:AbstractWaterBoundarySurface
+        rdf:type               owl:Class;
+        rdfs:label             "AbstractWaterBoundarySurface"@en;
+        rdfs:subClassOf        core:AbstractThematicSurface;
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  wtr:ADEOfAbstractWaterBoundarySurface;
+                                 owl:onProperty     wtr:AbstractWaterBoundarySurface.adeOfAbstractWaterBoundarySurface
+                               ];
+        iso19150-2:isAbstract  true;
+        skos:definition        "AbstractWaterBoundarySurface is the abstract superclass for all kinds of thematic surfaces bounding a water body."@en .
+
+wtr:ADEOfWaterSurface
+        rdf:type               owl:Class;
+        rdfs:label             "ADEOfWaterSurface"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfWaterSurface acts as a hook to define properties within an ADE that are to be added to a WaterSurface."@en .
+
+wtr:WaterGroundSurface
+        rdf:type         owl:Class;
+        rdfs:label       "WaterGroundSurface"@en;
+        rdfs:subClassOf  wtr:AbstractWaterBoundarySurface;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  wtr:ADEOfWaterGroundSurface;
+                           owl:onProperty     wtr:WaterGroundSurface.adeOfWaterGroundSurface
+                         ];
+        skos:definition  "A WaterGroundSurface represents the exterior boundary surface of the submerged bottom of a water body."@en .
+
+wtr:AbstractWaterBoundarySurface.adeOfAbstractWaterBoundarySurface
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      wtr:AbstractWaterBoundarySurface;
+        rdfs:label       "adeOfAbstractWaterBoundarySurface"@en;
+        skos:definition  "Augments AbstractWaterBoundarySurface with properties defined in an ADE."@en .
+
+wtr:ADEOfWaterGroundSurface
+        rdf:type               owl:Class;
+        rdfs:label             "ADEOfWaterGroundSurface"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfWaterGroundSurface acts as a hook to define properties within an ADE that are to be added to a WaterGroundSurface."@en .
+
+wtr:ADEOfWaterBody  rdf:type   owl:Class;
+        rdfs:label             "ADEOfWaterBody"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfWaterBody acts as a hook to define properties within an ADE that are to be added to a WaterBody."@en .
+
+wtr:WaterSurface  rdf:type  owl:Class;
+        rdfs:label       "WaterSurface"@en;
+        rdfs:subClassOf  wtr:AbstractWaterBoundarySurface;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  wtr:ADEOfWaterSurface;
+                           owl:onProperty     wtr:WaterSurface.adeOfWaterSurface
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  wtr:WaterLevelValue;
+                           owl:onProperty     wtr:WaterSurface.waterLevel
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  wtr:WaterLevelValue;
+                           owl:onProperty               wtr:WaterSurface.waterLevel
+                         ];
+        skos:definition  "A WaterSurface represents the upper exterior interface between a water body and the atmosphere."@en .
+
+wtr:WaterBody.class  rdf:type  owl:ObjectProperty;
+        rdfs:domain      wtr:WaterBody;
+        rdfs:label       "class"@en;
+        skos:definition  "Indicates the specific type of the WaterBody."@en .
+
+wtr:WaterSurface.waterLevel
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      wtr:WaterSurface;
+        rdfs:label       "waterLevel"@en;
+        skos:definition  "Specifies the level of the WaterSurface."@en .
+
+wtr:WaterBody.usage  rdf:type  owl:ObjectProperty;
+        rdfs:domain      wtr:WaterBody;
+        rdfs:label       "usage"@en;
+        skos:definition  "Specifies the actual uses of the WaterBody."@en .
+
+wtr:WaterBody.adeOfWaterBody
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      wtr:WaterBody;
+        rdfs:label       "adeOfWaterBody"@en;
+        skos:definition  "Augments the WaterBody with properties defined in an ADE."@en .
+
+wtr:WaterSurface.adeOfWaterSurface
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      wtr:WaterSurface;
+        rdfs:label       "adeOfWaterSurface"@en;
+        skos:definition  "Augments the WaterSurface with properties defined in an ADE."@en .
+
+wtr:WaterGroundSurface.adeOfWaterGroundSurface
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      wtr:WaterGroundSurface;
+        rdfs:label       "adeOfWaterGroundSurface"@en;
+        skos:definition  "Augments the WaterGroundSurface with properties defined in an ADE."@en .
+
+<https://ogcbblocks/CityGML/3.0/waterbody>
+        rdf:type         owl:Ontology;
+        rdfs:label       "WaterBody"@en;
+        owl:imports      <https://ogcbblocks/CityGML/3.0/core> , <http://def.isotc211.org/iso19150/-2/2012/base>;
+        skos:definition  "The WaterBody module supports representation of the thematic aspects and 3D geometry of rivers, canals, lakes, and basins. It does, however, not inherit any hydrological or other dynamic aspects of fluid flow."@en .
+
+wtr:WaterBody  rdf:type  owl:Class;
+        rdfs:label       "WaterBody"@en;
+        rdfs:subClassOf  core:AbstractOccupiedSpace;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  wtr:WaterBodyUsageValue;
+                           owl:onProperty     wtr:WaterBody.usage
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  wtr:WaterBodyClassValue;
+                           owl:onProperty     wtr:WaterBody.class
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  wtr:WaterBodyClassValue;
+                           owl:onProperty               wtr:WaterBody.class
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  wtr:WaterBodyFunctionValue;
+                           owl:onProperty     wtr:WaterBody.function
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  wtr:ADEOfWaterBody;
+                           owl:onProperty     wtr:WaterBody.adeOfWaterBody
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  wtr:AbstractWaterBoundarySurface;
+                           owl:onProperty     wtr:WaterBody.boundary
+                         ];
+        skos:definition  "A WaterBody represents significant and permanent or semi-permanent accumulations of surface water, usually covering a part of the Earth."@en .
+
+wtr:WaterBody.boundary
+        rdf:type     owl:ObjectProperty;
+        rdfs:domain  wtr:WaterBody;
+        rdfs:label   "boundary"@en .

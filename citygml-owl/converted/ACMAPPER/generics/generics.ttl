@@ -1,0 +1,540 @@
+@prefix core:        <https://ogcbblocks/CityGML/3.0/core#> .
+@prefix gen:         <https://ogcbblocks/CityGML/3.0/generics#> .
+@prefix iso19136-bt: <http://def.isotc211.org/iso19136/2007/BasicTypes#> .
+@prefix iso19150-2:  <http://def.isotc211.org/iso19150/-2/2012/base#> .
+@prefix owl:         <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:        <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sc:          <http://shapechange.net/resources/ont/base#> .
+@prefix skos:        <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
+
+gen:DoubleAttribute  rdf:type  owl:Class;
+        rdfs:label       "DoubleAttribute"@en;
+        rdfs:subClassOf  core:AbstractGenericAttribute;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:double;
+                           owl:onProperty     gen:DoubleAttribute.value
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:double;
+                           owl:onProperty            gen:DoubleAttribute.value;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     gen:DoubleAttribute.name
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:string;
+                           owl:onProperty            gen:DoubleAttribute.name;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        skos:definition  "DoubleAttribute is a data type used to define generic attributes of type \"Double\"."@en .
+
+gen:GenericUnoccupiedSpace.class
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericUnoccupiedSpace;
+        rdfs:label       "class"@en;
+        skos:definition  "Indicates the specific type of the GenericUnoccupiedSpace."@en .
+
+gen:MeasureAttribute.name
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:MeasureAttribute;
+        rdfs:label       "name"@en;
+        skos:definition  "Specifies the name of the MeasureAttribute."@en .
+
+gen:GenericAttributeSet.codeSpace
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:GenericAttributeSet;
+        rdfs:label       "codeSpace"@en;
+        skos:definition  "Associates the GenericAttributeSet with an authority that maintains the collection of generic attributes."@en .
+
+gen:GenericLogicalSpace.adeOfGenericLogicalSpace
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericLogicalSpace;
+        rdfs:label       "adeOfGenericLogicalSpace"@en;
+        skos:definition  "Augments the GenericLogicalSpace with properties defined in an ADE."@en .
+
+gen:MeasureAttribute  rdf:type  owl:Class;
+        rdfs:label       "MeasureAttribute"@en;
+        rdfs:subClassOf  core:AbstractGenericAttribute;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  sc:Measure;
+                           owl:onProperty     gen:MeasureAttribute.value
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               sc:Measure;
+                           owl:onProperty            gen:MeasureAttribute.value;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     gen:MeasureAttribute.name
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:string;
+                           owl:onProperty            gen:MeasureAttribute.name;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        skos:definition  "MeasureAttribute is a data type used to define generic attributes of type \"Measure\"."@en .
+
+gen:UriAttribute.name
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:UriAttribute;
+        rdfs:label       "name"@en;
+        skos:definition  "Specifies the name of the UriAttribute."@en .
+
+gen:IntAttribute.name
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:IntAttribute;
+        rdfs:label       "name"@en;
+        skos:definition  "Specifies the name of the IntAttribute."@en .
+
+gen:GenericLogicalSpace.class
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericLogicalSpace;
+        rdfs:label       "class"@en;
+        skos:definition  "Indicates the specific type of the GenericLogicalSpace."@en .
+
+gen:GenericThematicSurface.usage
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericThematicSurface;
+        rdfs:label       "usage"@en;
+        skos:definition  "Specifies the actual uses of the GenericThematicSurface."@en .
+
+gen:DateAttribute.name
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:DateAttribute;
+        rdfs:label       "name"@en;
+        skos:definition  "Specifies the name of the DateAttribute."@en .
+
+gen:GenericThematicSurface.adeOfGenericThematicSurface
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericThematicSurface;
+        rdfs:label       "adeOfGenericThematicSurface"@en;
+        skos:definition  "Augments the GenericThematicSurface with properties defined in an ADE."@en .
+
+gen:ADEOfGenericLogicalSpace
+        rdf:type               owl:Class;
+        rdfs:label             "ADEOfGenericLogicalSpace"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfGenericLogicalSpace acts as a hook to define properties within an ADE that are to be added to a GenericLogicalSpace."@en .
+
+gen:StringAttribute  rdf:type  owl:Class;
+        rdfs:label       "StringAttribute"@en;
+        rdfs:subClassOf  core:AbstractGenericAttribute;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     gen:StringAttribute.value
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:string;
+                           owl:onProperty            gen:StringAttribute.value;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     gen:StringAttribute.name
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:string;
+                           owl:onProperty            gen:StringAttribute.name;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        skos:definition  "StringAttribute is a data type used to define generic attributes of type \"String\"."@en .
+
+gen:GenericAttributeSet
+        rdf:type         owl:Class;
+        rdfs:label       "GenericAttributeSet"@en;
+        rdfs:subClassOf  core:AbstractGenericAttribute;
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  core:AbstractGenericAttribute;
+                           owl:onProperty               gen:GenericAttributeSet.genericAttribute
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     gen:GenericAttributeSet.name
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:string;
+                           owl:onProperty            gen:GenericAttributeSet.name;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:anyURI;
+                           owl:onProperty     gen:GenericAttributeSet.codeSpace
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  core:AbstractGenericAttribute;
+                           owl:onProperty     gen:GenericAttributeSet.genericAttribute
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  xsd:anyURI;
+                           owl:onProperty               gen:GenericAttributeSet.codeSpace
+                         ];
+        skos:definition  "A GenericAttributeSet is a named collection of generic attributes."@en .
+
+gen:IntAttribute.value
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:IntAttribute;
+        rdfs:label       "value"@en;
+        skos:definition  "Specifies the \"Integer\" value."@en .
+
+gen:UriAttribute  rdf:type  owl:Class;
+        rdfs:label       "UriAttribute"@en;
+        rdfs:subClassOf  core:AbstractGenericAttribute;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:anyURI;
+                           owl:onProperty     gen:UriAttribute.value
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:anyURI;
+                           owl:onProperty            gen:UriAttribute.value;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     gen:UriAttribute.name
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:string;
+                           owl:onProperty            gen:UriAttribute.name;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        skos:definition  "UriAttribute is a data type used to define generic attributes of type \"URI\"."@en .
+
+gen:CodeAttribute.value
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:CodeAttribute;
+        rdfs:label       "value"@en;
+        skos:definition  "Specifies the \"Code\" value."@en .
+
+gen:GenericThematicSurface.function
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericThematicSurface;
+        rdfs:label       "function"@en;
+        skos:definition  "Specifies the intended purposes of the GenericThematicSurface."@en .
+
+gen:DateAttribute  rdf:type  owl:Class;
+        rdfs:label       "DateAttribute"@en;
+        rdfs:subClassOf  core:AbstractGenericAttribute;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:date;
+                           owl:onProperty     gen:DateAttribute.value
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:date;
+                           owl:onProperty            gen:DateAttribute.value;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     gen:DateAttribute.name
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:string;
+                           owl:onProperty            gen:DateAttribute.name;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        skos:definition  "DateAttribute is a data type used to define generic attributes of type \"Date\"."@en .
+
+gen:ADEOfGenericUnoccupiedSpace
+        rdf:type               owl:Class;
+        rdfs:label             "ADEOfGenericUnoccupiedSpace"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfGenericUnoccupiedSpace acts as a hook to define properties within an ADE that are to be added to a GenericUnoccupiedSpace."@en .
+
+gen:GenericAttributeSet.name
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:GenericAttributeSet;
+        rdfs:label       "name"@en;
+        skos:definition  "Specifies the name of the GenericAttributeSet."@en .
+
+gen:GenericThematicSurface.class
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericThematicSurface;
+        rdfs:label       "class"@en;
+        skos:definition  "Indicates the specific type of the GenericThematicSurface."@en .
+
+gen:GenericLogicalSpace
+        rdf:type         owl:Class;
+        rdfs:label       "GenericLogicalSpace"@en;
+        rdfs:subClassOf  core:AbstractLogicalSpace;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:ADEOfGenericLogicalSpace;
+                           owl:onProperty     gen:GenericLogicalSpace.adeOfGenericLogicalSpace
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:GenericLogicalSpaceUsageValue;
+                           owl:onProperty     gen:GenericLogicalSpace.usage
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:GenericLogicalSpaceFunctionValue;
+                           owl:onProperty     gen:GenericLogicalSpace.function
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:GenericLogicalSpaceClassValue;
+                           owl:onProperty     gen:GenericLogicalSpace.class
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  gen:GenericLogicalSpaceClassValue;
+                           owl:onProperty               gen:GenericLogicalSpace.class
+                         ];
+        skos:definition  "A GenericLogicalSpace is a space that is not represented by any explicitly modelled AbstractLogicalSpace subclass within CityGML."@en .
+
+gen:UriAttribute.value
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:UriAttribute;
+        rdfs:label       "value"@en;
+        skos:definition  "Specifies the \"URI\" value."@en .
+
+gen:GenericOccupiedSpace
+        rdf:type         owl:Class;
+        rdfs:label       "GenericOccupiedSpace"@en;
+        rdfs:subClassOf  core:AbstractOccupiedSpace;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:ADEOfGenericOccupiedSpace;
+                           owl:onProperty     gen:GenericOccupiedSpace.adeOfGenericOccupiedSpace
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:GenericOccupiedSpaceUsageValue;
+                           owl:onProperty     gen:GenericOccupiedSpace.usage
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:GenericOccupiedSpaceFunctionValue;
+                           owl:onProperty     gen:GenericOccupiedSpace.function
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:GenericOccupiedSpaceClassValue;
+                           owl:onProperty     gen:GenericOccupiedSpace.class
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  gen:GenericOccupiedSpaceClassValue;
+                           owl:onProperty               gen:GenericOccupiedSpace.class
+                         ];
+        skos:definition  "A GenericOccupiedSpace is a space that is not represented by any explicitly modelled AbstractOccupiedSpace subclass within CityGML."@en .
+
+gen:GenericAttributeSet.genericAttribute
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericAttributeSet;
+        rdfs:label       "genericAttribute"@en;
+        skos:definition  "Relates to the generic attributes that are part of the GenericAttributeSet."@en .
+
+gen:GenericOccupiedSpace.adeOfGenericOccupiedSpace
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericOccupiedSpace;
+        rdfs:label       "adeOfGenericOccupiedSpace"@en;
+        skos:definition  "Augments the GenericOccupiedSpace with properties defined in an ADE."@en .
+
+gen:GenericOccupiedSpace.usage
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericOccupiedSpace;
+        rdfs:label       "usage"@en;
+        skos:definition  "Specifies the actual uses of the GenericOccupiedSpace."@en .
+
+gen:CodeAttribute  rdf:type  owl:Class;
+        rdfs:label       "CodeAttribute"@en;
+        rdfs:subClassOf  core:AbstractGenericAttribute;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  iso19136-bt:Code;
+                           owl:onProperty     gen:CodeAttribute.value
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               iso19136-bt:Code;
+                           owl:onProperty            gen:CodeAttribute.value;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     gen:CodeAttribute.name
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:string;
+                           owl:onProperty            gen:CodeAttribute.name;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        skos:definition  "CodeAttribute is a data type used to define generic attributes of type \"Code\"."@en .
+
+gen:StringAttribute.value
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:StringAttribute;
+        rdfs:label       "value"@en;
+        skos:definition  "Specifies the \"String\" value."@en .
+
+gen:CodeAttribute.name
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:CodeAttribute;
+        rdfs:label       "name"@en;
+        skos:definition  "Specifies the name of the CodeAttribute."@en .
+
+gen:GenericLogicalSpace.function
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericLogicalSpace;
+        rdfs:label       "function"@en;
+        skos:definition  "Specifies the intended purposes of the GenericLogicalSpace."@en .
+
+gen:GenericUnoccupiedSpace.usage
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericUnoccupiedSpace;
+        rdfs:label       "usage"@en;
+        skos:definition  "Specifies the actual uses of the GenericUnoccupiedSpace."@en .
+
+gen:GenericUnoccupiedSpace
+        rdf:type         owl:Class;
+        rdfs:label       "GenericUnoccupiedSpace"@en;
+        rdfs:subClassOf  core:AbstractUnoccupiedSpace;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:ADEOfGenericUnoccupiedSpace;
+                           owl:onProperty     gen:GenericUnoccupiedSpace.adeOfGenericUnoccupiedSpace
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:GenericUnoccupiedSpaceUsageValue;
+                           owl:onProperty     gen:GenericUnoccupiedSpace.usage
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:GenericUnoccupiedSpaceFunctionValue;
+                           owl:onProperty     gen:GenericUnoccupiedSpace.function
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:GenericUnoccupiedSpaceClassValue;
+                           owl:onProperty     gen:GenericUnoccupiedSpace.class
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  gen:GenericUnoccupiedSpaceClassValue;
+                           owl:onProperty               gen:GenericUnoccupiedSpace.class
+                         ];
+        skos:definition  "A GenericUnoccupiedSpace is a space that is not represented by any explicitly modelled AbstractUnoccupiedSpace subclass within CityGML."@en .
+
+gen:DoubleAttribute.value
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:DoubleAttribute;
+        rdfs:label       "value"@en;
+        skos:definition  "Specifies the \"Double\" value."@en .
+
+gen:GenericUnoccupiedSpace.adeOfGenericUnoccupiedSpace
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericUnoccupiedSpace;
+        rdfs:label       "adeOfGenericUnoccupiedSpace"@en;
+        skos:definition  "Augments the GenericUnoccupiedSpace with properties defined in an ADE."@en .
+
+gen:ADEOfGenericOccupiedSpace
+        rdf:type               owl:Class;
+        rdfs:label             "ADEOfGenericOccupiedSpace"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfGenericOccupiedSpace acts as a hook to define properties within an ADE that are to be added to a GenericOccupiedSpace."@en .
+
+gen:StringAttribute.name
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:StringAttribute;
+        rdfs:label       "name"@en;
+        skos:definition  "Specifies the name of the StringAttribute."@en .
+
+gen:ADEOfGenericThematicSurface
+        rdf:type               owl:Class;
+        rdfs:label             "ADEOfGenericThematicSurface"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfGenericThematicSurface acts as a hook to define properties within an ADE that are to be added to a GenericThematicSurface."@en .
+
+gen:IntAttribute  rdf:type  owl:Class;
+        rdfs:label       "IntAttribute"@en;
+        rdfs:subClassOf  core:AbstractGenericAttribute;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:integer;
+                           owl:onProperty     gen:IntAttribute.value
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:integer;
+                           owl:onProperty            gen:IntAttribute.value;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     gen:IntAttribute.name
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:string;
+                           owl:onProperty            gen:IntAttribute.name;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        skos:definition  "IntAttribute is a data type used to define generic attributes of type \"Integer\"."@en .
+
+gen:GenericUnoccupiedSpace.function
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericUnoccupiedSpace;
+        rdfs:label       "function"@en;
+        skos:definition  "Specifies the intended purposes of the GenericUnoccupiedSpace."@en .
+
+gen:GenericThematicSurface
+        rdf:type         owl:Class;
+        rdfs:label       "GenericThematicSurface"@en;
+        rdfs:subClassOf  core:AbstractThematicSurface;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:ADEOfGenericThematicSurface;
+                           owl:onProperty     gen:GenericThematicSurface.adeOfGenericThematicSurface
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:GenericThematicSurfaceUsageValue;
+                           owl:onProperty     gen:GenericThematicSurface.usage
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:GenericThematicSurfaceFunctionValue;
+                           owl:onProperty     gen:GenericThematicSurface.function
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gen:GenericThematicSurfaceClassValue;
+                           owl:onProperty     gen:GenericThematicSurface.class
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  gen:GenericThematicSurfaceClassValue;
+                           owl:onProperty               gen:GenericThematicSurface.class
+                         ];
+        skos:definition  "A GenericThematicSurface is a surface that is not represented by any explicitly modelled AbstractThematicSurface subclass within CityGML."@en .
+
+gen:DoubleAttribute.name
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:DoubleAttribute;
+        rdfs:label       "name"@en;
+        skos:definition  "Specifies the name of the DoubleAttribute."@en .
+
+gen:GenericLogicalSpace.usage
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericLogicalSpace;
+        rdfs:label       "usage"@en;
+        skos:definition  "Specifies the actual uses of the GenericLogicalSpace."@en .
+
+gen:GenericOccupiedSpace.function
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericOccupiedSpace;
+        rdfs:label       "function"@en;
+        skos:definition  "Specifies the intended purposes of the GenericOccupiedSpace."@en .
+
+gen:DateAttribute.value
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:DateAttribute;
+        rdfs:label       "value"@en;
+        skos:definition  "Specifies the \"Date\" value."@en .
+
+gen:GenericOccupiedSpace.class
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      gen:GenericOccupiedSpace;
+        rdfs:label       "class"@en;
+        skos:definition  "Indicates the specific type of the GenericOccupiedSpace."@en .
+
+gen:MeasureAttribute.value
+        rdf:type         owl:DatatypeProperty;
+        rdfs:domain      gen:MeasureAttribute;
+        rdfs:label       "value"@en;
+        skos:definition  "Specifies the value of the MeasureAttribute. The value is of type \"Measure\", which can additionally provide the units of measure. [cf. ISO 19103]"@en .
+
+<https://ogcbblocks/CityGML/3.0/generics>
+        rdf:type         owl:Ontology;
+        rdfs:label       "Generics"@en;
+        owl:imports      <http://shapechange.net/resources/ont/base> , <https://ogcbblocks/CityGML/3.0/core> , <http://def.isotc211.org/iso19150/-2/2012/base>;
+        skos:definition  "The Generics module supports application-specific extensions to the CityGML conceptual model. These extensions may be used to model and exchange additional attributes and features not covered by the predefined thematic classes of CityGML. Generic extensions shall only be used if appropriate thematic classes or attributes are not provided by any other CityGML module."@en .
