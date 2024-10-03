@@ -9,33 +9,35 @@
 @prefix skos:        <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
 
-bldg:AbstractBuilding.class
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:AbstractBuilding;
-        rdfs:label       "class"@en;
-        skos:definition  "Indicates the specific type of the Building or BuildingPart."@en .
+bldg:roofType  rdf:type  owl:ObjectProperty;
+        rdfs:label       "roofType"@en;
+        skos:definition  "Indicates the shape of the roof of the Building or BuildingPart."@en .
 
 bldg:BuildingInstallation
         rdf:type         owl:Class;
         rdfs:label       "BuildingInstallation"@en;
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  bldg:BuildingInstallationUsageValue;
-                           owl:onProperty     bldg:BuildingInstallation.usage
+                           owl:onProperty     bldg:usage
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  bldg:BuildingInstallationFunctionValue;
-                           owl:onProperty     bldg:BuildingInstallation.function
+                           owl:onProperty     bldg:function
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  bldg:BuildingInstallationClassValue;
-                           owl:onProperty     bldg:BuildingInstallation.class
+                           owl:onProperty     bldg:class
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  bldg:BuildingInstallationClassValue;
-                           owl:onProperty               bldg:BuildingInstallation.class
+                           owl:onProperty               bldg:class
                          ];
         skos:definition  "A BuildingInstallation is a permanent part of a Building (inside and/or outside) which has not the significance of a BuildingPart. Examples are stairs, antennas, balconies or small roofs."@en .
+
+bldg:class  rdf:type     owl:ObjectProperty;
+        rdfs:label       "class"@en;
+        skos:definition  "Indicates the specific type of the BuildingInstallation."@en .
 
 bldg:BuildingUnit.storey
         rdf:type         owl:ObjectProperty;
@@ -43,31 +45,25 @@ bldg:BuildingUnit.storey
         rdfs:label       "storey"@en;
         skos:definition  "Relates to the storeys on which the BuildingUnit is located."@en .
 
-bldg:AbstractBuilding.roofType
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:AbstractBuilding;
-        rdfs:label       "roofType"@en;
-        skos:definition  "Indicates the shape of the roof of the Building or BuildingPart."@en .
-
 bldg:BuildingFurniture
         rdf:type         owl:Class;
         rdfs:label       "BuildingFurniture"@en;
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  bldg:BuildingFurnitureUsageValue;
-                           owl:onProperty     bldg:BuildingFurniture.usage
+                           owl:allValuesFrom  bldg:BuildingInstallationUsageValue;
+                           owl:onProperty     bldg:usage
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  bldg:BuildingFurnitureFunctionValue;
-                           owl:onProperty     bldg:BuildingFurniture.function
+                           owl:allValuesFrom  bldg:BuildingInstallationFunctionValue;
+                           owl:onProperty     bldg:function
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  bldg:BuildingFurnitureClassValue;
-                           owl:onProperty     bldg:BuildingFurniture.class
+                           owl:allValuesFrom  bldg:BuildingInstallationClassValue;
+                           owl:onProperty     bldg:class
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  bldg:BuildingFurnitureClassValue;
-                           owl:onProperty               bldg:BuildingFurniture.class
+                           owl:onClass                  bldg:BuildingInstallationClassValue;
+                           owl:onProperty               bldg:class
                          ];
         skos:definition  "A BuildingFurniture is an equipment for occupant use, usually not fixed to the building. [cf. ISO 6707-1]"@en .
 
@@ -80,151 +76,119 @@ bldg:Storey  rdf:type    owl:Class;
                          ];
         skos:definition  "A Storey is typically a horizontal section of a Building. Storeys are not always defined according to the building structure, but can also be defined according to logical considerations."@en .
 
-bldg:AbstractBuilding.storeysAboveGround
-        rdf:type         owl:DatatypeProperty;
-        rdfs:domain      bldg:AbstractBuilding;
-        rdfs:label       "storeysAboveGround"@en;
-        skos:definition  "Indicates the number of storeys positioned above ground level."@en .
-
-bldg:AbstractBuilding.storeysBelowGround
-        rdf:type         owl:DatatypeProperty;
-        rdfs:domain      bldg:AbstractBuilding;
-        rdfs:label       "storeysBelowGround"@en;
-        skos:definition  "Indicates the number of storeys positioned below ground level."@en .
-
-bldg:BuildingInstallation.class
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:BuildingInstallation;
-        rdfs:label       "class"@en;
-        skos:definition  "Indicates the specific type of the BuildingInstallation."@en .
-
-bldg:AbstractBuildingSubdivision.usage
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:AbstractBuildingSubdivision;
-        rdfs:label       "usage"@en;
-        skos:definition  "Specifies the actual uses of the building subdivision."@en .
+bldg:lowReference  rdf:type  owl:ObjectProperty;
+        rdfs:label       "lowReference"@en;
+        skos:definition  "Indicates the low point used to calculate the value of the room height."@en .
 
 bldg:AbstractBuilding
         rdf:type               owl:Class;
         rdfs:label             "AbstractBuilding"@en;
+        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
+                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                                 owl:onClass                  bldg:RoofTypeValue;
+                                 owl:onProperty               bldg:roofType
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  iso19136-bt:MeasureOrNilReasonList;
+                                 owl:onProperty     bldg:storeyHeightsBelowGround
+                               ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
                                  owl:allValuesFrom  bldg:BuildingInstallation;
                                  owl:onProperty     bldg:AbstractBuilding.buildingInstallation
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  bldg:BuildingClassValue;
-                                 owl:onProperty     bldg:AbstractBuilding.class
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  xsd:integer;
-                                 owl:onProperty     bldg:AbstractBuilding.storeysBelowGround
+                                 owl:allValuesFrom  bldg:BuildingInstallationFunctionValue;
+                                 owl:onProperty     bldg:function
                                ];
         rdfs:subClassOf        [ rdf:type                     owl:Restriction;
                                  owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                                  owl:onClass                  xsd:integer;
-                                 owl:onProperty               bldg:AbstractBuilding.storeysBelowGround
+                                 owl:onProperty               bldg:storeysBelowGround
+                               ];
+        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
+                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                                 owl:onClass                  iso19136-bt:MeasureOrNilReasonList;
+                                 owl:onProperty               bldg:storeyHeightsAboveGround
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  xsd:integer;
+                                 owl:onProperty     bldg:storeysBelowGround
+                               ];
+        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
+                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                                 owl:onClass                  bldg:BuildingInstallationClassValue;
+                                 owl:onProperty               bldg:class
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
                                  owl:allValuesFrom  bldg:RoofTypeValue;
-                                 owl:onProperty     bldg:AbstractBuilding.roofType
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  bldg:BuildingUsageValue;
-                                 owl:onProperty     bldg:AbstractBuilding.usage
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  bldg:BuildingFunctionValue;
-                                 owl:onProperty     bldg:AbstractBuilding.function
-                               ];
-        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
-                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                                 owl:onClass                  iso19136-bt:MeasureOrNilReasonList;
-                                 owl:onProperty               bldg:AbstractBuilding.storeyHeightsAboveGround
+                                 owl:onProperty     bldg:roofType
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
                                  owl:allValuesFrom  iso19136-bt:MeasureOrNilReasonList;
-                                 owl:onProperty     bldg:AbstractBuilding.storeyHeightsBelowGround
+                                 owl:onProperty     bldg:storeyHeightsAboveGround
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  xsd:integer;
-                                 owl:onProperty     bldg:AbstractBuilding.storeysAboveGround
+                                 owl:allValuesFrom  bldg:BuildingInstallationClassValue;
+                                 owl:onProperty     bldg:class
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  bldg:BuildingInstallationUsageValue;
+                                 owl:onProperty     bldg:usage
                                ];
         rdfs:subClassOf        [ rdf:type                     owl:Restriction;
                                  owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                                  owl:onClass                  xsd:integer;
-                                 owl:onProperty               bldg:AbstractBuilding.storeysAboveGround
+                                 owl:onProperty               bldg:storeysAboveGround
                                ];
-        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
-                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                                 owl:onClass                  bldg:RoofTypeValue;
-                                 owl:onProperty               bldg:AbstractBuilding.roofType
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  xsd:integer;
+                                 owl:onProperty     bldg:storeysAboveGround
                                ];
         rdfs:subClassOf        [ rdf:type                     owl:Restriction;
                                  owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                                  owl:onClass                  iso19136-bt:MeasureOrNilReasonList;
-                                 owl:onProperty               bldg:AbstractBuilding.storeyHeightsBelowGround
-                               ];
-        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
-                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                                 owl:onClass                  bldg:BuildingClassValue;
-                                 owl:onProperty               bldg:AbstractBuilding.class
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  iso19136-bt:MeasureOrNilReasonList;
-                                 owl:onProperty     bldg:AbstractBuilding.storeyHeightsAboveGround
+                                 owl:onProperty               bldg:storeyHeightsBelowGround
                                ];
         iso19150-2:isAbstract  true;
         skos:definition        "AbstractBuilding is an abstract superclass representing the common attributes and associations of the classes Building and BuildingPart."@en .
 
-bldg:BuildingConstructiveElement.class
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:BuildingConstructiveElement;
-        rdfs:label       "class"@en;
-        skos:definition  "Indicates the specific type of the BuildingConstructiveElement."@en .
-
-bldg:BuildingRoom.roomHeight
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:BuildingRoom;
-        rdfs:label       "roomHeight"@en;
-        skos:definition  "Specifies qualified heights of the BuildingRoom."@en .
-
 bldg:RoomHeight  rdf:type  owl:Class;
         rdfs:label       "RoomHeight"@en;
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               con:HeightStatusValue;
-                           owl:onProperty            bldg:RoomHeight.status;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  bldg:RoomElevationReferenceValue;
+                           owl:onProperty     bldg:highReference
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  bldg:RoomElevationReferenceValue;
+                           owl:onProperty     bldg:lowReference
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  con:HeightStatusValue;
-                           owl:onProperty     bldg:RoomHeight.status
+                           owl:onProperty     bldg:status
                          ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  bldg:RoomElevationReferenceValue;
-                           owl:onProperty     bldg:RoomHeight.highReference
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               con:HeightStatusValue;
+                           owl:onProperty            bldg:status;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ];
         rdfs:subClassOf  [ rdf:type                  owl:Restriction;
                            owl:onClass               sc:Measure;
-                           owl:onProperty            bldg:RoomHeight.value;
+                           owl:onProperty            bldg:value;
                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ];
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               bldg:RoomElevationReferenceValue;
-                           owl:onProperty            bldg:RoomHeight.highReference;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ];
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               bldg:RoomElevationReferenceValue;
-                           owl:onProperty            bldg:RoomHeight.lowReference;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  bldg:RoomElevationReferenceValue;
-                           owl:onProperty     bldg:RoomHeight.lowReference
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  sc:Measure;
-                           owl:onProperty     bldg:RoomHeight.value
+                           owl:onProperty     bldg:value
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               bldg:RoomElevationReferenceValue;
+                           owl:onProperty            bldg:lowReference;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               bldg:RoomElevationReferenceValue;
+                           owl:onProperty            bldg:highReference;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ];
         skos:definition  "The RoomHeight represents a vertical distance (measured or estimated) between a low reference and a high reference. [cf. INSPIRE]"@en .
 
@@ -234,11 +198,9 @@ bldg:Storey.buildingUnit
         rdfs:label       "buildingUnit"@en;
         skos:definition  "Relates to the building units that belong to the Storey."@en .
 
-bldg:RoomHeight.highReference
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:RoomHeight;
-        rdfs:label       "highReference"@en;
-        skos:definition  "Indicates the high point used to calculate the value of the room height."@en .
+bldg:roomHeight  rdf:type  owl:ObjectProperty;
+        rdfs:label       "roomHeight"@en;
+        skos:definition  "Specifies qualified heights of the BuildingRoom."@en .
 
 <https://ogcbblocks/CityGML/3.0/building>
         rdf:type         owl:Ontology;
@@ -252,39 +214,17 @@ bldg:AbstractBuilding.buildingInstallation
         rdfs:label       "buildingInstallation"@en;
         skos:definition  "Relates the installation objects to the Building or BuildingPart."@en .
 
-bldg:BuildingFurniture.usage
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:BuildingFurniture;
-        rdfs:label       "usage"@en;
-        skos:definition  "Specifies the actual uses of the BuildingFurniture."@en .
+bldg:elevation  rdf:type  owl:ObjectProperty;
+        rdfs:label       "elevation"@en;
+        skos:definition  "Specifies qualified elevations of the building subdivision in relation to a well-defined surface which is commonly taken as origin (e.g. geoid or water level). [cf. INSPIRE]"@en .
 
-bldg:BuildingConstructiveElement.function
+bldg:storeyHeightsAboveGround
         rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:BuildingConstructiveElement;
-        rdfs:label       "function"@en;
-        skos:definition  "Specifies the intended purposes of the BuildingConstructiveElement."@en .
+        rdfs:label       "storeyHeightsAboveGround"@en;
+        skos:definition  "Lists the heights of each storey above ground. The first value in the list denotes the height of the storey closest to the ground level, the last value denotes the height furthest away."@en .
 
-bldg:BuildingFurniture.function
+bldg:storeyHeightsBelowGround
         rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:BuildingFurniture;
-        rdfs:label       "function"@en;
-        skos:definition  "Specifies the intended purposes of the BuildingFurniture."@en .
-
-bldg:AbstractBuildingSubdivision.function
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:AbstractBuildingSubdivision;
-        rdfs:label       "function"@en;
-        skos:definition  "Specifies the intended purposes of the building subdivision."@en .
-
-bldg:AbstractBuildingSubdivision.class
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:AbstractBuildingSubdivision;
-        rdfs:label       "class"@en;
-        skos:definition  "Indicates the specific type of the building subdivision."@en .
-
-bldg:AbstractBuilding.storeyHeightsBelowGround
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:AbstractBuilding;
         rdfs:label       "storeyHeightsBelowGround"@en;
         skos:definition  "Lists the height of each storey below ground. The first value in the list denotes the height of the storey closest to the ground level, the last value denotes the height furthest away."@en .
 
@@ -296,6 +236,10 @@ bldg:Building  rdf:type  owl:Class;
                            owl:onProperty     bldg:Building.buildingPart
                          ];
         skos:definition  "A Building is a free-standing, self-supporting construction that is roofed, usually walled, and can be entered by humans and is normally designed to stand permanently in one place. It is intended for human occupancy (e.g. a place of work or recreation), habitation and/or shelter of humans, animals or things."@en .
+
+bldg:function  rdf:type  owl:ObjectProperty;
+        rdfs:label       "function"@en;
+        skos:definition  "Specifies the intended purposes of the BuildingInstallation."@en .
 
 bldg:Building.buildingPart
         rdf:type         owl:ObjectProperty;
@@ -309,29 +253,19 @@ bldg:AbstractBuildingSubdivision.buildingFurniture
         rdfs:label       "buildingFurniture"@en;
         skos:definition  "Relates the furniture objects to the building subdivision."@en .
 
-bldg:AbstractBuilding.function
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:AbstractBuilding;
-        rdfs:label       "function"@en;
-        skos:definition  "Specifies the intended purposes of the Building or BuildingPart."@en .
-
-bldg:RoomHeight.value
-        rdf:type         owl:DatatypeProperty;
-        rdfs:domain      bldg:RoomHeight;
+bldg:value  rdf:type     owl:DatatypeProperty;
         rdfs:label       "value"@en;
         skos:definition  "Specifies the value of the room height."@en .
-
-bldg:BuildingRoom.usage
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:BuildingRoom;
-        rdfs:label       "usage"@en;
-        skos:definition  "Specifies the actual uses of the BuildingRoom."@en .
 
 bldg:BuildingRoom.buildingInstallation
         rdf:type         owl:ObjectProperty;
         rdfs:domain      bldg:BuildingRoom;
         rdfs:label       "buildingInstallation"@en;
         skos:definition  "Relates the installation objects to the BuildingRoom."@en .
+
+bldg:highReference  rdf:type  owl:ObjectProperty;
+        rdfs:label       "highReference"@en;
+        skos:definition  "Indicates the high point used to calculate the value of the room height."@en .
 
 bldg:BuildingUnit  rdf:type  owl:Class;
         rdfs:label       "BuildingUnit"@en;
@@ -342,18 +276,6 @@ bldg:BuildingUnit  rdf:type  owl:Class;
                          ];
         skos:definition  "A BuildingUnit is a logical subdivision of a Building. BuildingUnits are formed according to some homogeneous property like function, ownership, management, or accessibility. They may be separately sold, rented out, inherited, managed, etc."@en .
 
-bldg:BuildingFurniture.class
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:BuildingFurniture;
-        rdfs:label       "class"@en;
-        skos:definition  "Indicates the specific type of the BuildingFurniture."@en .
-
-bldg:AbstractBuilding.usage
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:AbstractBuilding;
-        rdfs:label       "usage"@en;
-        skos:definition  "Specifies the actual uses of the Building or BuildingPart."@en .
-
 bldg:AbstractBuildingSubdivision
         rdf:type               owl:Class;
         rdfs:label             "AbstractBuildingSubdivision"@en;
@@ -362,123 +284,104 @@ bldg:AbstractBuildingSubdivision
                                  owl:onProperty     bldg:AbstractBuildingSubdivision.buildingFurniture
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  bldg:BuildingSubdivisionFunctionValue;
-                                 owl:onProperty     bldg:AbstractBuildingSubdivision.function
+                                 owl:allValuesFrom  xsd:double;
+                                 owl:onProperty     bldg:sortKey
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  owl:Thing;
-                                 owl:onProperty     bldg:AbstractBuildingSubdivision.elevation
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  bldg:BuildingSubdivisionUsageValue;
-                                 owl:onProperty     bldg:AbstractBuildingSubdivision.usage
+                                 owl:allValuesFrom  bldg:BuildingInstallationUsageValue;
+                                 owl:onProperty     bldg:usage
                                ];
         rdfs:subClassOf        [ rdf:type                     owl:Restriction;
                                  owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                                  owl:onClass                  xsd:double;
-                                 owl:onProperty               bldg:AbstractBuildingSubdivision.sortKey
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  bldg:BuildingSubdivisionClassValue;
-                                 owl:onProperty     bldg:AbstractBuildingSubdivision.class
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  xsd:double;
-                                 owl:onProperty     bldg:AbstractBuildingSubdivision.sortKey
+                                 owl:onProperty               bldg:sortKey
                                ];
         rdfs:subClassOf        [ rdf:type                     owl:Restriction;
                                  owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                                 owl:onClass                  bldg:BuildingSubdivisionClassValue;
-                                 owl:onProperty               bldg:AbstractBuildingSubdivision.class
+                                 owl:onClass                  bldg:BuildingInstallationClassValue;
+                                 owl:onProperty               bldg:class
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  bldg:BuildingInstallationClassValue;
+                                 owl:onProperty     bldg:class
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  owl:Thing;
+                                 owl:onProperty     bldg:elevation
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  bldg:BuildingInstallationFunctionValue;
+                                 owl:onProperty     bldg:function
                                ];
         iso19150-2:isAbstract  true;
         skos:definition        "AbstractBuildingSubdivision is the abstract superclass for different kinds of logical building subdivisions."@en .
 
-bldg:RoomHeight.status
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:RoomHeight;
-        rdfs:label       "status"@en;
-        skos:definition  "Indicates the way the room height has been captured."@en .
+bldg:usage  rdf:type     owl:ObjectProperty;
+        rdfs:label       "usage"@en;
+        skos:definition  "Specifies the actual uses of the BuildingInstallation."@en .
 
 bldg:BuildingPart  rdf:type  owl:Class;
         rdfs:label       "BuildingPart"@en;
         rdfs:subClassOf  bldg:AbstractBuilding;
         skos:definition  "A BuildingPart is a physical or functional subdivision of a Building. It would be considered a Building, if it were not part of a collection of other BuildingParts."@en .
 
-bldg:AbstractBuildingSubdivision.elevation
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:AbstractBuildingSubdivision;
-        rdfs:label       "elevation"@en;
-        skos:definition  "Specifies qualified elevations of the building subdivision in relation to a well-defined surface which is commonly taken as origin (e.g. geoid or water level). [cf. INSPIRE]"@en .
+bldg:status  rdf:type    owl:ObjectProperty;
+        rdfs:label       "status"@en;
+        skos:definition  "Indicates the way the room height has been captured."@en .
 
 bldg:BuildingConstructiveElement
         rdf:type         owl:Class;
         rdfs:label       "BuildingConstructiveElement"@en;
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  bldg:BuildingConstructiveElementUsageValue;
-                           owl:onProperty     bldg:BuildingConstructiveElement.usage
+                           owl:allValuesFrom  bldg:BuildingInstallationUsageValue;
+                           owl:onProperty     bldg:usage
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  bldg:BuildingConstructiveElementFunctionValue;
-                           owl:onProperty     bldg:BuildingConstructiveElement.function
+                           owl:allValuesFrom  bldg:BuildingInstallationFunctionValue;
+                           owl:onProperty     bldg:function
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  bldg:BuildingConstructiveElementClassValue;
-                           owl:onProperty     bldg:BuildingConstructiveElement.class
+                           owl:allValuesFrom  bldg:BuildingInstallationClassValue;
+                           owl:onProperty     bldg:class
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  bldg:BuildingConstructiveElementClassValue;
-                           owl:onProperty               bldg:BuildingConstructiveElement.class
+                           owl:onClass                  bldg:BuildingInstallationClassValue;
+                           owl:onProperty               bldg:class
                          ];
         skos:definition  "A BuildingConstructiveElement is an element of a Building which is essential from a structural point of view. Examples are walls, slabs, staircases, beams."@en .
 
-bldg:AbstractBuilding.storeyHeightsAboveGround
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:AbstractBuilding;
-        rdfs:label       "storeyHeightsAboveGround"@en;
-        skos:definition  "Lists the heights of each storey above ground. The first value in the list denotes the height of the storey closest to the ground level, the last value denotes the height furthest away."@en .
-
-bldg:BuildingInstallation.usage
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:BuildingInstallation;
-        rdfs:label       "usage"@en;
-        skos:definition  "Specifies the actual uses of the BuildingInstallation."@en .
-
-bldg:RoomHeight.lowReference
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:RoomHeight;
-        rdfs:label       "lowReference"@en;
-        skos:definition  "Indicates the low point used to calculate the value of the room height."@en .
-
-bldg:AbstractBuildingSubdivision.sortKey
-        rdf:type         owl:DatatypeProperty;
-        rdfs:domain      bldg:AbstractBuildingSubdivision;
+bldg:sortKey  rdf:type   owl:DatatypeProperty;
         rdfs:label       "sortKey"@en;
         skos:definition  "Defines an order among the objects that belong to the building subdivision. An example is the sorting of storeys."@en .
+
+bldg:storeysAboveGround
+        rdf:type         owl:DatatypeProperty;
+        rdfs:label       "storeysAboveGround"@en;
+        skos:definition  "Indicates the number of storeys positioned above ground level."@en .
 
 bldg:BuildingRoom  rdf:type  owl:Class;
         rdfs:label       "BuildingRoom"@en;
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  bldg:RoomHeight;
-                           owl:onProperty     bldg:BuildingRoom.roomHeight
+                           owl:onProperty     bldg:roomHeight
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  bldg:BuildingRoomUsageValue;
-                           owl:onProperty     bldg:BuildingRoom.usage
+                           owl:allValuesFrom  bldg:BuildingInstallationUsageValue;
+                           owl:onProperty     bldg:usage
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  bldg:BuildingRoomFunctionValue;
-                           owl:onProperty     bldg:BuildingRoom.function
+                           owl:allValuesFrom  bldg:BuildingInstallationFunctionValue;
+                           owl:onProperty     bldg:function
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  bldg:BuildingRoomClassValue;
-                           owl:onProperty     bldg:BuildingRoom.class
+                           owl:allValuesFrom  bldg:BuildingInstallationClassValue;
+                           owl:onProperty     bldg:class
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  bldg:BuildingRoomClassValue;
-                           owl:onProperty               bldg:BuildingRoom.class
+                           owl:onClass                  bldg:BuildingInstallationClassValue;
+                           owl:onProperty               bldg:class
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  bldg:BuildingInstallation;
@@ -486,26 +389,7 @@ bldg:BuildingRoom  rdf:type  owl:Class;
                          ];
         skos:definition  "A BuildingRoom is a space within a Building or BuildingPart intended for human occupancy (e.g. a place of work or recreation) and/or containment of animals or things. A BuildingRoom is bounded physically and/or virtually (e.g. by ClosureSurfaces or GenericSurfaces)."@en .
 
-bldg:BuildingInstallation.function
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:BuildingInstallation;
-        rdfs:label       "function"@en;
-        skos:definition  "Specifies the intended purposes of the BuildingInstallation."@en .
-
-bldg:BuildingConstructiveElement.usage
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:BuildingConstructiveElement;
-        rdfs:label       "usage"@en;
-        skos:definition  "Specifies the actual uses of the BuildingConstructiveElement."@en .
-
-bldg:BuildingRoom.function
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:BuildingRoom;
-        rdfs:label       "function"@en;
-        skos:definition  "Specifies the intended purposes of the BuildingRoom."@en .
-
-bldg:BuildingRoom.class
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      bldg:BuildingRoom;
-        rdfs:label       "class"@en;
-        skos:definition  "Indicates the specific type of the BuildingRoom."@en .
+bldg:storeysBelowGround
+        rdf:type         owl:DatatypeProperty;
+        rdfs:label       "storeysBelowGround"@en;
+        skos:definition  "Indicates the number of storeys positioned below ground level."@en .
