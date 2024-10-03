@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><ShapeChangeResult xmlns="http://www.interactive-instruments.de/ShapeChange/Result" xmlns:r="http://www.interactive-instruments.de/ShapeChange/Result" config="CityGML3.0_to_OWL_lite_ontotextBuilding_config.xml" end="Wed Oct 02 18:17:45 EEST 2024" resultCode="0" start="Wed Oct 02 18:17:42 EEST 2024" version="3.1.1-SNAPSHOT">
+  <Messages>
+    <ProcessFlowInfo message="---------- Semantic validation of ShapeChange configuration: START ----------"/>
+    <ProcessFlowInfo message="--- Validating transformer with @id 'ACMAPPER' ..."/>
+    <ProcessFlowInfo message="--- Validating target with @class 'de.interactive_instruments.ShapeChange.Target.Ontology.OWLISO19150' and @inputs 'ACMAPPER' ..."/>
+    <ProcessFlowInfo message="---------- Semantic validation of ShapeChange configuration: COMPLETE ----------"/>
+    <Error message="The property 'buildingRoom' in class 'AbstractBuilding' has a sequence number that is already in use for another property (buildingSubdivision) which will be overwritten."/>
+    <Error message="The property 'buildingConstructiveElement' in class 'AbstractBuilding' has a sequence number that is already in use for another property (buildingRoom) which will be overwritten."/>
+    <Error message="The property 'buildingFurniture' in class 'AbstractBuilding' has a sequence number that is already in use for another property (buildingConstructiveElement) which will be overwritten."/>
+    <Error message="The property 'buildingInstallation' in class 'AbstractBuilding' has a sequence number that is already in use for another property (buildingFurniture) which will be overwritten."/>
+    <Error message="The property 'buildingInstallation' in class 'AbstractBuildingSubdivision' has a sequence number that is already in use for another property (buildingRoom) which will be overwritten."/>
+    <Error message="The property 'buildingConstructiveElement' in class 'AbstractBuildingSubdivision' has a sequence number that is already in use for another property (buildingInstallation) which will be overwritten."/>
+    <Error message="The property 'buildingFurniture' in class 'AbstractBuildingSubdivision' has a sequence number that is already in use for another property (buildingConstructiveElement) which will be overwritten."/>
+    <Error message="The property 'buildingInstallation' in class 'BuildingRoom' has a sequence number that is already in use for another property (buildingFurniture) which will be overwritten."/>
+    <ProcessFlowInfo message="Now processing transformation 'ACMAPPER' for input ID: 'INPUT'."/>
+    <ProcessFlowInfo message="---------- TransformationManager postprocessing: validating constraints ----------"/>
+    <ProcessFlowInfo message="Performed transformation for transformer ID 'ACMAPPER' for input ID: 'INPUT'.&#10;-------------------------------------------------"/>
+    <ProcessFlowInfo message="Application schema found, package name: 'Building', target namespace: 'http://www.opengis.net/citygml/building/3.0'"/>
+    <ProcessFlowInfo message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'ACMAPPER'."/>
+    <Error message="No RdfTypeMapEntry is defined for the value type 'Elevation'. Also, the value type was not found in the model. Cannot map the value type.">
+      <Detail message="--- Context - Property: EA Model::Building::AbstractBuildingSubdivision::elevation"/>
+    </Error>
+    <Warning message="Default type implementation is used as range of property 'elevation'.">
+      <Detail message="--- Context - Property: EA Model::Building::AbstractBuildingSubdivision::elevation"/>
+    </Warning>
+    <ProcessFlowInfo message="Executed target class 'de.interactive_instruments.ShapeChange.Target.Ontology.OWLISO19150' for input ID: 'ACMAPPER'.&#10;-------------------------------------------------"/>
+    <ProcessFlowInfo message="Transformation with ID 'FLATTENER2' is disabled (via the configuration). All transformations and targets that depend on this transformation will not be executed."/>
+    <ProcessFlowInfo message="Transformation with ID 'FLATTENER1' is disabled (via the configuration). All transformations and targets that depend on this transformation will not be executed."/>
+  </Messages>
+  <Results>
+    <Result href="file:/home/nata/work/gml3building/./converted/ACMAPPER/building/building.ttl" scope="https://ogcbblocks/CityGML/3.0/building" target="ISO 19150-2 OWL Ontology">building.ttl</Result>
+  </Results>
+</ShapeChangeResult>
