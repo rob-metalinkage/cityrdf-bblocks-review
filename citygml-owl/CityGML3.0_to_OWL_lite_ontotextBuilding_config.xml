@@ -158,7 +158,7 @@
           see https://shapechange.net/targets/ontology/uml-rdfowl-based-isois-19150-2/#rule-owl-prop-localScopeAll -->
 
           <rule name="rule-owl-prop-globalScopeAttributes"/>
-          <!-- <rule name="rule-owl-prop-globalScopeByUniquePropertyName"/> -->
+          <rule name="rule-owl-prop-globalScopeByUniquePropertyName"/>
           <!-- <rule name="rule-owl-prop-globalScopeByConversionParameter"/> -->
           <rule name="rule-owl-prop-multiplicityAsQualifiedCardinalityRestriction"/> 
           <!-- <rule name="rule-owl-prop-multiplicityAsUnqualifiedCardinalityRestriction"/> -->
