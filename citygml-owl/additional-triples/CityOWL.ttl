@@ -1,0 +1,20 @@
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+<https://ogcblocks.org/CityOWL> a owl:Ontology ;
+    owl:imports <https://ogcblocks.org/appearance>,
+        <https://ogcblocks.org/bridge>,
+        <https://ogcblocks.org/building>,
+        <https://ogcblocks.org/pointcloud>,
+        <https://ogcblocks.org/cityfurniture>,
+        <https://ogcblocks.org/cityobjectgroup>,
+        <https://ogcblocks.org/construction>,
+        <https://ogcblocks.org/core>,
+        <https://ogcblocks.org/dynamizer>,
+        <https://ogcblocks.org/generics>,
+        <https://ogcblocks.org/landuse>,
+        <https://ogcblocks.org/relief>,
+        <https://ogcblocks.org/transportation>,
+        <https://ogcblocks.org/tunnel>,
+        <https://ogcblocks.org/vegetation>,
+        <https://ogcblocks.org/versioning>,
+        <https://ogcblocks.org/waterbody> .

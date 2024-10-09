@@ -23,11 +23,15 @@ Resources described in CityGML WG proposal (thanks to Diego Vinasco-Alvarez)
 
 We use [CityGML_3.0-workspaces-documents_shapechange-export.xml](https://github.com/VCityTeam/UD-Graph/blob/master/Transformations/test-data/UML/CityGML_3.0-workspaces-documents_shapechange-export.xml) as a source of CityGML3.0 model.
 
-We addressed the missing `<<Union>>` stereotype conversion, added conversion for <<Enumeration>>, extended missing conversion for `iso19136` adding basic types for `MeasureOrNilReasonList, DoubleOrNilReasonList, NilReason` that was not available in the [original ShapeChange config from UD-Graph](https://github.com/VCityTeam/UD-Graph/blob/master/Transformations/ShapeChange/CityGML3.0_to_OWL_config.xml).
+We added `<<Union>>` stereotype conversion and experiment with `rule-owl-prop-globalScopeAttributes`.
 
 To run the conversion write in bash
 
 ```./run.sh```
 
 The results will be in the folder `converted`.
+To make the results better viewable in Protege, run
+```./ontologyPatcher.py input_file output_file```
+
+
 

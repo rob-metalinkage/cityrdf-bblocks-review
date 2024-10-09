@@ -1,0 +1,94 @@
+@prefix core: <https://ogcblocks.org/CityGML/3.0/core#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
+@prefix luse: <https://ogcblocks.org/CityGML/3.0/landuse#> .
+@prefix lusecode: <https://ogcblocks.org/CityGML/3.0/landuse/code#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://ogcblocks.org/CityGML/3.0/landuse> a owl:Ontology ;
+    rdfs:label "LandUse"@en ;
+    owl:imports <http://def.isotc211.org/iso19150/-2/2012/base>,
+        <https://ogcblocks.org/CityGML/3.0/core> ;
+    skos:definition "The LandUse module supports representation of areas of the earth’s surface dedicated to a specific land use."@en .
+
+luse:LandUse a owl:Class ;
+    rdfs:label "LandUse"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom luse:ADEOfLandUse ;
+            owl:onProperty luse:adeOfLandUse ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom luse:LandUseUsageValue ;
+            owl:onProperty luse:usage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom luse:LandUseFunctionValue ;
+            owl:onProperty luse:function ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom luse:LandUseClassValue ;
+            owl:onProperty luse:class ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass luse:LandUseClassValue ;
+            owl:onProperty luse:class ],
+        core:AbstractThematicSurface ;
+    skos:definition "A LandUse object is an area of the earth's surface dedicated to a specific land use or having a specific land cover with or without vegetation, such as sand, rock, mud flats, forest, grasslands, or wetlands."@en .
+
+<https://ogcblocks.org/CityGML/3.0/landuse/code> a owl:Ontology .
+
+lusecode:LandUseClassValue a skos:ConceptScheme ;
+    rdfs:label "LandUseClassValue"@en ;
+    dct:isFormatOf luse:LandUseClassValue ;
+    skos:definition "LandUseClassValue is a code list used to further classify a LandUse."@en .
+
+lusecode:LandUseFunctionValue a skos:ConceptScheme ;
+    rdfs:label "LandUseFunctionValue"@en ;
+    dct:isFormatOf luse:LandUseFunctionValue ;
+    skos:definition "LandUseFunctionValue is a code list that enumerates the different purposes of a LandUse."@en .
+
+lusecode:LandUseUsageValue a skos:ConceptScheme ;
+    rdfs:label "LandUseUsageValue"@en ;
+    dct:isFormatOf luse:LandUseUsageValue ;
+    skos:definition "LandUseUsageValue is a code list that enumerates the different uses of a LandUse."@en .
+
+luse:adeOfLandUse a owl:ObjectProperty ;
+    rdfs:label "adeOfLandUse"@en ;
+    rdfs:range luse:ADEOfLandUse ;
+    skos:definition "Augments the LandUse with properties defined in an ADE."@en .
+
+luse:function a owl:ObjectProperty ;
+    rdfs:label "function"@en ;
+    rdfs:range luse:LandUseFunctionValue ;
+    skos:definition "Specifies the intended purposes of the LandUse."@en .
+
+luse:usage a owl:ObjectProperty ;
+    rdfs:label "usage"@en ;
+    rdfs:range luse:LandUseUsageValue ;
+    skos:definition "Specifies the actual uses of the LandUse."@en .
+
+luse:ADEOfLandUse a owl:Class ;
+    rdfs:label "ADEOfLandUse"@en ;
+    iso19150-2:isAbstract true ;
+    skos:definition "ADEOfLandUse acts as a hook to define properties within an ADE that are to be added to a LandUse."@en .
+
+luse:class a owl:ObjectProperty ;
+    rdfs:label "class"@en ;
+    rdfs:range luse:LandUseClassValue ;
+    skos:definition "Indicates the specific type of the LandUse."@en .
+
+luse:LandUseFunctionValue a owl:Class ;
+    rdfs:label "LandUseFunctionValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "LandUseFunctionValue is a code list that enumerates the different purposes of a LandUse."@en .
+
+luse:LandUseUsageValue a owl:Class ;
+    rdfs:label "LandUseUsageValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "LandUseUsageValue is a code list that enumerates the different uses of a LandUse."@en .
+
+luse:LandUseClassValue a owl:Class ;
+    rdfs:label "LandUseClassValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "LandUseClassValue is a code list used to further classify a LandUse."@en .
+

@@ -1,8 +1,0 @@
-<rdfMapEntries xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1">
-  <RdfTypeMapEntry type="RelativeToTerrain" target="core:RelativeToTerrain" />
-  <RdfTypeMapEntry type="SpaceType" target="core:SpaceType" />
-  <RdfTypeMapEntry type="RelativeToWater" target="core:RelativeToWater" />
-  <RdfTypeMapEntry type="RelationToConstruction" target="core:RelationToConstruction" />
-  <RdfTypeMapEntry type="ConditionOfConstructionValue" target="core:ConditionOfConstructionValue" />
-  <RdfTypeMapEntry type="HeightStatusValue" target="con:HeightStatusValue" />
-</rdfMapEntries>
