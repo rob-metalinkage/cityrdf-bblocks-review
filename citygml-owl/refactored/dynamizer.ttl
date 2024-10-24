@@ -1,0 +1,849 @@
+@prefix core: <https://ogcblocks.org/CityGML/3.0/core#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dyn: <https://ogcblocks.org/CityGML/3.0/dynamizer#> .
+@prefix dyncode: <https://ogcblocks.org/CityGML/3.0/dynamizer/code#> .
+@prefix gmlowl: <http://www.opengis.net/ont/gml#> .
+@prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://ogcblocks.org/CityGML/3.0/dynamizer> a owl:Ontology ;
+    rdfs:label "Dynamizer"@en ;
+    owl:imports <file:///home/nata/work/gml3/cityrdf/citygml-owl/stage-1/ACMAPPER/dynamizer/www.w3.org/2006/time>,
+        <http://def.isotc211.org/iso19150/-2/2012/base>,
+        <http://www.opengis.net/ont/gml>,
+        <https://ogcblocks.org/CityGML/3.0/core> ;
+    skos:definition "The Dynamizer module supports the injection of timeseries data for individual attributes of CityGML features. Timeseries data can either be retrieved from external Sensor APIs (e.g. OGC SensorThings API, OGC Sensor Observation Services, MQTT, proprietary platforms), external standardized timeseries files (e.g. OGC TimeseriesML or OGC Observations & Measurements), external tabulated files (e.g CSV) or can be represented inline as basic time-value pairs."@en .
+
+<https://ogcblocks.org/CityGML/3.0/dynamizer/code> a owl:Ontology .
+
+dyncode:AuthenticationTypeValue a skos:ConceptScheme ;
+    rdfs:label "AuthenticationTypeValue"@en ;
+    dct:isFormatOf dyn:AuthenticationTypeValue ;
+    skos:definition "AuthenticationTypeValue is a code list used to specify the authentication method to be used to access the referenced sensor service. Each value provides enough information such that a software application could determine the required access credentials."@en .
+
+dyncode:SensorConnectionTypeValue a skos:ConceptScheme ;
+    rdfs:label "SensorConnectionTypeValue"@en ;
+    dct:isFormatOf dyn:SensorConnectionTypeValue ;
+    skos:definition "SensorConnectionTypeValue is a code list used to specify the type of the referenced sensor service. Each value provides enough information such that a software application would be able to identify the API type and version."@en .
+
+dyncode:StandardFileTypeValue a skos:ConceptScheme ;
+    rdfs:label "StandardFileTypeValue"@en ;
+    dct:isFormatOf dyn:StandardFileTypeValue ;
+    skos:definition "StandardFileTypeValue is a code list used to specify the type of the referenced external timeseries data file. Each value provides information about the standard and version."@en .
+
+dyncode:TabulatedFileTypeValue a skos:ConceptScheme ;
+    rdfs:label "TabulatedFileTypeValue"@en ;
+    dct:isFormatOf dyn:TabulatedFileTypeValue ;
+    skos:definition "TabulatedFileTypeValue is a code list used to specify the data format of the referenced external tabulated data file."@en .
+
+dyn:StandardFileTimeseries a owl:Class ;
+    rdfs:label "StandardFileTimeseries"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom dyn:StandardFileTypeValue ;
+            owl:onProperty dyn:fileType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty dyn:fileLocation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:MimeTypeValue ;
+            owl:onProperty dyn:mimeType ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty dyn:fileLocation ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:MimeTypeValue ;
+            owl:onProperty dyn:mimeType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:ADEOfStandardFileTimeseries ;
+            owl:onProperty dyn:adeOfStandardFileTimeseries ],
+        [ a owl:Restriction ;
+            owl:onClass dyn:StandardFileTypeValue ;
+            owl:onProperty dyn:fileType ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        dyn:AbstractAtomicTimeseries ;
+    skos:definition "A StandardFileTimeseries represents time-varying data for a single contiguous time interval. The data is provided in an external file referenced in the StandardFileTimeseries. The data within the external file is encoded according to a dedicated format for the representation of timeseries data such as using the OGC TimeseriesML or OGC Observations & Measurements Standard. The data type of the data has to be specified within the external file."@en .
+
+dyn:TabulatedFileTimeseries a owl:Class ;
+    rdfs:label "TabulatedFileTimeseries"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty dyn:timeColumnNo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:valueColumnName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty dyn:fileLocation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:MimeTypeValue ;
+            owl:onProperty dyn:mimeType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:valueColumnName ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:timeColumnName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:TimeseriesTypeValue ;
+            owl:onProperty dyn:valueType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:decimalSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty dyn:idColumnNo ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:idColumnName ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:idColumnName ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:fieldSeparator ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:idValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:timeColumnName ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty dyn:idColumnNo ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty dyn:timeColumnNo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:MimeTypeValue ;
+            owl:onProperty dyn:mimeType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:StandardFileTypeValue ;
+            owl:onProperty dyn:fileType ],
+        [ a owl:Restriction ;
+            owl:onClass dyn:StandardFileTypeValue ;
+            owl:onProperty dyn:fileType ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange dyn:TimeseriesTypeValue ;
+            owl:onProperty dyn:valueType ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty dyn:numberOfHeaderLines ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:fieldSeparator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:idValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty dyn:valueColumnNo ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty dyn:numberOfHeaderLines ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:decimalSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:ADEOfTabulatedFileTimeseries ;
+            owl:onProperty dyn:adeOfTabulatedFileTimeseries ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty dyn:valueColumnNo ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty dyn:fileLocation ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        dyn:AbstractAtomicTimeseries ;
+    skos:definition "A TabulatedFileTimeseries represents time-varying data of a specific data type for a single contiguous time interval. The data is provided in an external file referenced in the TabulatedFileTimeseries. The file contains table structured data using an appropriate file format such as comma-separated values (CSV), Microsoft Excel (XLSX) or Google Spreadsheet. The timestamps and the values are given in specific columns of the table. Each row represents a single time-value-pair. A subset of rows can be selected using the idColumn and idValue attributes."@en .
+
+dyn:TabulatedFileTypeValue a owl:Class ;
+    rdfs:label "TabulatedFileTypeValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "TabulatedFileTypeValue is a code list used to specify the data format of the referenced external tabulated data file."@en .
+
+dyn:adeOfAbstractAtomicTimeseries a owl:ObjectProperty ;
+    rdfs:label "adeOfAbstractAtomicTimeseries"@en ;
+    rdfs:range dyn:ADEOfAbstractAtomicTimeseries ;
+    skos:definition "Augments AbstractAtomicTimeseries with properties defined in an ADE."@en .
+
+dyn:adeOfAbstractTimeseries a owl:ObjectProperty ;
+    rdfs:label "adeOfAbstractTimeseries"@en ;
+    rdfs:range dyn:ADEOfAbstractTimeseries ;
+    skos:definition "Augments AbstractTimeseries with properties defined in an ADE."@en .
+
+dyn:adeOfCompositeTimeseries a owl:ObjectProperty ;
+    rdfs:label "adeOfCompositeTimeseries"@en ;
+    rdfs:range dyn:ADEOfCompositeTimeseries ;
+    skos:definition "Augments the CompositeTimeseries with properties defined in an ADE."@en .
+
+dyn:adeOfDynamizer a owl:ObjectProperty ;
+    rdfs:label "adeOfDynamizer"@en ;
+    rdfs:range dyn:ADEOfDynamizer ;
+    skos:definition "Augments the Dynamizer with properties defined in an ADE."@en .
+
+dyn:adeOfGenericTimeseries a owl:ObjectProperty ;
+    rdfs:label "adeOfGenericTimeseries"@en ;
+    rdfs:range dyn:ADEOfGenericTimeseries ;
+    skos:definition "Augments the GenericTimeseries with properties defined in an ADE."@en .
+
+dyn:adeOfStandardFileTimeseries a owl:ObjectProperty ;
+    rdfs:label "adeOfStandardFileTimeseries"@en ;
+    rdfs:range dyn:ADEOfStandardFileTimeseries ;
+    skos:definition "Augments the StandardFileTimeseries with properties defined in an ADE."@en .
+
+dyn:adeOfTabulatedFileTimeseries a owl:ObjectProperty ;
+    rdfs:label "adeOfTabulatedFileTimeseries"@en ;
+    rdfs:range dyn:ADEOfTabulatedFileTimeseries ;
+    skos:definition "Augments the TabulatedFileTimeseries with properties defined in an ADE."@en .
+
+dyn:ADEOfAbstractAtomicTimeseries a owl:Class ;
+    rdfs:label "ADEOfAbstractAtomicTimeseries"@en ;
+    iso19150-2:isAbstract true ;
+    skos:definition "ADEOfAbstractAtomicTimeseries acts as a hook to define properties within an ADE that are to be added to AbstractAtomicTimeseries."@en .
+
+dyn:ADEOfAbstractTimeseries a owl:Class ;
+    rdfs:label "ADEOfAbstractTimeseries"@en ;
+    iso19150-2:isAbstract true ;
+    skos:definition "ADEOfAbstractTimeseries acts as a hook to define properties within an ADE that are to be added to AbstractTimeseries."@en .
+
+dyn:ADEOfCompositeTimeseries a owl:Class ;
+    rdfs:label "ADEOfCompositeTimeseries"@en ;
+    iso19150-2:isAbstract true ;
+    skos:definition "ADEOfCompositeTimeseries acts as a hook to define properties within an ADE that are to be added to a CompositeTimeseries."@en .
+
+dyn:ADEOfDynamizer a owl:Class ;
+    rdfs:label "ADEOfDynamizer"@en ;
+    iso19150-2:isAbstract true ;
+    skos:definition "ADEOfDynamizer acts as a hook to define properties within an ADE that are to be added to a Dynamizer."@en .
+
+dyn:ADEOfGenericTimeseries a owl:Class ;
+    rdfs:label "ADEOfGenericTimeseries"@en ;
+    iso19150-2:isAbstract true ;
+    skos:definition "ADEOfGenericTimeseries acts as a hook to define properties within an ADE that are to be added to a GenericTimeseries."@en .
+
+dyn:ADEOfStandardFileTimeseries a owl:Class ;
+    rdfs:label "ADEOfStandardFileTimeseries"@en ;
+    iso19150-2:isAbstract true ;
+    skos:definition "ADEOfStandardFileTimeseries acts as a hook to define properties within an ADE that are to be added to a StandardFileTimeseries."@en .
+
+dyn:ADEOfTabulatedFileTimeseries a owl:Class ;
+    rdfs:label "ADEOfTabulatedFileTimeseries"@en ;
+    iso19150-2:isAbstract true ;
+    skos:definition "ADEOfTabulatedFileTimeseries acts as a hook to define properties within an ADE that are to be added to a TabulatedFileTimeseries."@en .
+
+dyn:CompositeTimeseries a owl:Class ;
+    rdfs:label "CompositeTimeseries"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom dyn:ADEOfCompositeTimeseries ;
+            owl:onProperty dyn:adeOfCompositeTimeseries ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:TimeseriesComponent ;
+            owl:onProperty dyn:CompositeTimeseries.component ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass dyn:TimeseriesComponent ;
+            owl:onProperty dyn:CompositeTimeseries.component ],
+        dyn:AbstractTimeseries ;
+    skos:definition "A CompositeTimeseries is a (possibly recursive) aggregation of atomic and composite timeseries. The components of a composite timeseries must have non-overlapping time intervals."@en .
+
+dyn:CompositeTimeseries.component a owl:ObjectProperty ;
+    rdfs:label "component"@en ;
+    rdfs:domain dyn:CompositeTimeseries ;
+    rdfs:range dyn:TimeseriesComponent ;
+    skos:definition "Relates to the atomic and composite timeseries that are part of the CompositeTimeseries. The referenced timeseries are sequentially ordered."@en .
+
+dyn:Dynamizer a owl:Class ;
+    rdfs:label "Dynamizer"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom time:TemporalPosition ;
+            owl:onProperty dyn:endTime ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:AbstractTimeseries ;
+            owl:onProperty dyn:Dynamizer.dynamicData ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass dyn:AbstractTimeseries ;
+            owl:onProperty dyn:Dynamizer.dynamicData ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass time:TemporalPosition ;
+            owl:onProperty dyn:startTime ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:attributeRef ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:SensorConnection ;
+            owl:onProperty dyn:Dynamizer.sensorConnection ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass time:TemporalPosition ;
+            owl:onProperty dyn:endTime ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass dyn:SensorConnection ;
+            owl:onProperty dyn:Dynamizer.sensorConnection ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:attributeRef ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:ADEOfDynamizer ;
+            owl:onProperty dyn:adeOfDynamizer ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom time:TemporalPosition ;
+            owl:onProperty dyn:startTime ],
+        core:AbstractDynamizer ;
+    skos:definition "A Dynamizer is an object that injects timeseries data for an individual attribute of the city object in which it is included. The timeseries data overrides the static value of the referenced city object attribute in order to represent dynamic (time-dependent) variations of its value."@en .
+
+dyn:Dynamizer.dynamicData a owl:ObjectProperty ;
+    rdfs:label "dynamicData"@en ;
+    rdfs:domain dyn:Dynamizer ;
+    rdfs:range dyn:AbstractTimeseries ;
+    skos:definition "Relates to the timeseries data that is given either inline within a CityGML dataset or by a link to an external file containing timeseries data."@en .
+
+dyn:Dynamizer.sensorConnection a owl:ObjectProperty ;
+    rdfs:label "sensorConnection"@en ;
+    rdfs:domain dyn:Dynamizer ;
+    rdfs:range dyn:SensorConnection ;
+    skos:definition "Relates to the sensor API that delivers timeseries data."@en .
+
+dyn:GenericTimeseries a owl:Class ;
+    rdfs:label "GenericTimeseries"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom dyn:ADEOfGenericTimeseries ;
+            owl:onProperty dyn:adeOfGenericTimeseries ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:TimeValuePair ;
+            owl:onProperty dyn:GenericTimeseries.timeValuePair ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass dyn:TimeValuePair ;
+            owl:onProperty dyn:GenericTimeseries.timeValuePair ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:TimeseriesTypeValue ;
+            owl:onProperty dyn:valueType ],
+        [ a owl:Restriction ;
+            owl:onDataRange dyn:TimeseriesTypeValue ;
+            owl:onProperty dyn:valueType ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        dyn:AbstractAtomicTimeseries ;
+    skos:definition "A GenericTimeseries represents time-varying data in the form of embedded time-value-pairs of a specific data type for a single contiguous time interval."@en .
+
+dyn:GenericTimeseries.timeValuePair a owl:ObjectProperty ;
+    rdfs:label "timeValuePair"@en ;
+    rdfs:domain dyn:GenericTimeseries ;
+    rdfs:range dyn:TimeValuePair ;
+    skos:definition "Relates to the time-value-pairs that are part of the GenericTimeseries."@en .
+
+dyn:SensorConnection.sensorLocation a owl:ObjectProperty ;
+    rdfs:label "sensorLocation"@en ;
+    rdfs:domain dyn:SensorConnection ;
+    rdfs:range core:AbstractCityObject ;
+    skos:definition "Relates the sensor to the city object where it is located."@en .
+
+dyn:TimeseriesComponent.timeseries a owl:ObjectProperty ;
+    rdfs:label "timeseries"@en ;
+    rdfs:domain dyn:TimeseriesComponent ;
+    rdfs:range dyn:AbstractTimeseries ;
+    skos:definition "Relates a timeseries to the TimeseriesComponent."@en .
+
+dyn:additionalGap a owl:ObjectProperty ;
+    rdfs:label "additionalGap"@en ;
+    rdfs:range time:TemporalDuration ;
+    skos:definition "Specifies how much extra time is added after all repetitions as an additional gap."@en .
+
+dyn:appearanceValue a owl:ObjectProperty ;
+    rdfs:label "appearanceValue"@en ;
+    rdfs:range core:AbstractAppearance ;
+    skos:definition "Specifies the \"Appearance\" value of the TimeValuePair."@en .
+
+dyn:attributeRef a owl:DatatypeProperty ;
+    rdfs:label "attributeRef"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the attribute of a CityGML feature whose value is overridden or replaced by the (dynamic) values specified by the Dynamizer."@en .
+
+dyn:authType a owl:ObjectProperty ;
+    rdfs:label "authType"@en ;
+    rdfs:range dyn:AuthenticationTypeValue ;
+    skos:definition "Specifies the type of authentication required to be able to access the Sensor API."@en .
+
+dyn:baseURL a owl:DatatypeProperty ;
+    rdfs:label "baseURL"@en ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "Specifies the base URL of the Sensor API request."@en .
+
+dyn:boolValue a owl:DatatypeProperty ;
+    rdfs:label "boolValue"@en ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Specifies the \"Boolean\" value of the TimeValuePair."@en .
+
+dyn:connectionType a owl:ObjectProperty ;
+    rdfs:label "connectionType"@en ;
+    rdfs:range dyn:SensorConnectionTypeValue ;
+    skos:definition "Indicates the type of Sensor API to which the SensorConnection refers."@en .
+
+dyn:datastreamID a owl:DatatypeProperty ;
+    rdfs:label "datastreamID"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the datastream that is retrieved by the SensorConnection."@en .
+
+dyn:decimalSymbol a owl:DatatypeProperty ;
+    rdfs:label "decimalSymbol"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Indicates which symbol is used to separate the integer part from the fractional part of a decimal number."@en .
+
+dyn:doubleValue a owl:DatatypeProperty ;
+    rdfs:label "doubleValue"@en ;
+    rdfs:range xsd:double ;
+    skos:definition "Specifies the \"Double\" value of the TimeValuePair."@en .
+
+dyn:endTime a owl:ObjectProperty ;
+    rdfs:label "endTime"@en ;
+    rdfs:range time:TemporalPosition ;
+    skos:definition "Specifies the end of the time span for which the Dynamizer provides dynamic values."@en .
+
+dyn:fieldSeparator a owl:DatatypeProperty ;
+    rdfs:label "fieldSeparator"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Indicates which symbol is used to separate the individual values in the tabulated file."@en .
+
+dyn:firstTimestamp a owl:ObjectProperty ;
+    rdfs:label "firstTimestamp"@en ;
+    rdfs:range time:TemporalPosition ;
+    skos:definition "Specifies the beginning of the timeseries."@en .
+
+dyn:geometryValue a owl:ObjectProperty ;
+    rdfs:label "geometryValue"@en ;
+    rdfs:range gmlowl:AbstractGeometry ;
+    skos:definition "Specifies the geometry value of the TimeValuePair."@en .
+
+dyn:idColumnName a owl:DatatypeProperty ;
+    rdfs:label "idColumnName"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the name of the column that stores the identifier of the time-value-pair."@en .
+
+dyn:idColumnNo a owl:DatatypeProperty ;
+    rdfs:label "idColumnNo"@en ;
+    rdfs:range xsd:integer ;
+    skos:definition "Specifies the number of the column that stores the identifier of the time-value-pair."@en .
+
+dyn:idValue a owl:DatatypeProperty ;
+    rdfs:label "idValue"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the value of the identifier for which the time-value-pairs are to be selected."@en .
+
+dyn:implicitGeometryValue a owl:ObjectProperty ;
+    rdfs:label "implicitGeometryValue"@en ;
+    rdfs:range core:ImplicitGeometry ;
+    skos:definition "Specifies the \"ImplicitGeometry\" value of the TimeValuePair."@en .
+
+dyn:intValue a owl:DatatypeProperty ;
+    rdfs:label "intValue"@en ;
+    rdfs:range xsd:integer ;
+    skos:definition "Specifies the \"Integer\" value of the TimeValuePair."@en .
+
+dyn:lastTimestamp a owl:ObjectProperty ;
+    rdfs:label "lastTimestamp"@en ;
+    rdfs:range time:TemporalPosition ;
+    skos:definition "Specifies the end of the timeseries."@en .
+
+dyn:linkToObservation a owl:DatatypeProperty ;
+    rdfs:label "linkToObservation"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the complete URL to the observation request."@en .
+
+dyn:linkToSensorDescription a owl:DatatypeProperty ;
+    rdfs:label "linkToSensorDescription"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the complete URL to the sensor description request."@en .
+
+dyn:mqttServer a owl:DatatypeProperty ;
+    rdfs:label "mqttServer"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the name of the MQTT Server. This attribute is relevant when the MQTT Protocol is used to connect to a Sensor API."@en .
+
+dyn:mqttTopic a owl:DatatypeProperty ;
+    rdfs:label "mqttTopic"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Names the specific datastream that is retrieved by the SensorConnection. This attribute is relevant when the MQTT Protocol is used to connect to a Sensor API."@en .
+
+dyn:numberOfHeaderLines a owl:DatatypeProperty ;
+    rdfs:label "numberOfHeaderLines"@en ;
+    rdfs:range xsd:integer ;
+    skos:definition "Indicates the number of lines at the beginning of the tabulated file that represent headers."@en .
+
+dyn:observationID a owl:DatatypeProperty ;
+    rdfs:label "observationID"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the unique identifier of the observation that is retrieved by the SensorConnection."@en .
+
+dyn:repetitions a owl:DatatypeProperty ;
+    rdfs:label "repetitions"@en ;
+    rdfs:range xsd:integer ;
+    skos:definition "Specifies how often the timeseries that is referenced by the TimeseriesComponent should be iterated."@en .
+
+dyn:sensorID a owl:DatatypeProperty ;
+    rdfs:label "sensorID"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the unique identifier of the sensor from which the SensorConnection retrieves observations."@en .
+
+dyn:sensorName a owl:DatatypeProperty ;
+    rdfs:label "sensorName"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the name of the sensor from which the SensorConnection retrieves observations."@en .
+
+dyn:startTime a owl:ObjectProperty ;
+    rdfs:label "startTime"@en ;
+    rdfs:range time:TemporalPosition ;
+    skos:definition "Specifies the beginning of the time span for which the Dynamizer provides dynamic values."@en .
+
+dyn:stringValue a owl:DatatypeProperty ;
+    rdfs:label "stringValue"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the \"String\" value of the TimeValuePair."@en .
+
+dyn:timeColumnName a owl:DatatypeProperty ;
+    rdfs:label "timeColumnName"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the name of the column that stores the timestamp of the time-value-pair."@en .
+
+dyn:timeColumnNo a owl:DatatypeProperty ;
+    rdfs:label "timeColumnNo"@en ;
+    rdfs:range xsd:integer ;
+    skos:definition "Specifies the number of the column that stores the timestamp of the time-value-pair."@en .
+
+dyn:timestamp a owl:ObjectProperty ;
+    rdfs:label "timestamp"@en ;
+    rdfs:range time:TemporalPosition ;
+    skos:definition "Specifies the timepoint at which the value of the TimeValuePair is valid."@en .
+
+dyn:uriValue a owl:DatatypeProperty ;
+    rdfs:label "uriValue"@en ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "Specifies the \"URI\" value of the TimeValuePair."@en .
+
+dyn:valueColumnName a owl:DatatypeProperty ;
+    rdfs:label "valueColumnName"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the name of the column that stores the value of the time-value-pair."@en .
+
+dyn:valueColumnNo a owl:DatatypeProperty ;
+    rdfs:label "valueColumnNo"@en ;
+    rdfs:range xsd:integer ;
+    skos:definition "Specifies the number of the column that stores the value of the time-value-pair."@en .
+
+dyn:AbstractAtomicTimeseries a owl:Class ;
+    rdfs:label "AbstractAtomicTimeseries"@en ;
+    iso19150-2:isAbstract true ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:uom ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:uom ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:ADEOfAbstractAtomicTimeseries ;
+            owl:onProperty dyn:adeOfAbstractAtomicTimeseries ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:observationProperty ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:observationProperty ],
+        dyn:AbstractTimeseries ;
+    owl:disjointWith dyn:CompositeTimeseries ;
+    skos:definition "AbstractAtomicTimeseries represents the attributes and relationships that are common to all kinds of atomic timeseries (GenericTimeseries, TabulatedFileTimeseries, StandardFileTimeseries). An atomic timeseries represents time-varying data of a specific data type for a single contiguous time interval."@en .
+
+dyn:TimeValuePair a owl:Class ;
+    rdfs:label "TimeValuePair"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty dyn:intValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:ImplicitGeometry ;
+            owl:onProperty dyn:implicitGeometryValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractAppearance ;
+            owl:onProperty dyn:appearanceValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty dyn:uriValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:stringValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty dyn:boolValue ],
+        [ a owl:Restriction ;
+            owl:onClass time:TemporalPosition ;
+            owl:onProperty dyn:timestamp ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty dyn:boolValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:AbstractGeometry ;
+            owl:onProperty dyn:geometryValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:AbstractGeometry ;
+            owl:onProperty dyn:geometryValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:stringValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty dyn:uriValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty dyn:doubleValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:ImplicitGeometry ;
+            owl:onProperty dyn:implicitGeometryValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:AbstractAppearance ;
+            owl:onProperty dyn:appearanceValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty dyn:doubleValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom time:TemporalPosition ;
+            owl:onProperty dyn:timestamp ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty dyn:intValue ] ;
+    skos:definition "A TimeValuePair represents a value that is valid for a given timepoint. For each TimeValuePair, only one of the value properties can be used mutually exclusive. Which value property has to be provided depends on the selected value type in the GenericTimeSeries feature, in which the TimeValuePair is included."@en .
+
+dyn:AuthenticationTypeValue a owl:Class ;
+    rdfs:label "AuthenticationTypeValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "AuthenticationTypeValue is a code list used to specify the authentication method to be used to access the referenced sensor service. Each value provides enough information such that a software application could determine the required access credentials."@en .
+
+dyn:SensorConnection a owl:Class ;
+    rdfs:label "SensorConnection"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:observationProperty ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:datastreamID ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:SensorConnectionTypeValue ;
+            owl:onProperty dyn:connectionType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:sensorID ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:uom ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:linkToObservation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:linkToObservation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty dyn:baseURL ],
+        [ a owl:Restriction ;
+            owl:onClass dyn:SensorConnectionTypeValue ;
+            owl:onProperty dyn:connectionType ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:mqttServer ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:sensorName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:linkToSensorDescription ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:uom ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:AuthenticationTypeValue ;
+            owl:onProperty dyn:authType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty dyn:baseURL ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:observationProperty ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass dyn:AuthenticationTypeValue ;
+            owl:onProperty dyn:authType ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:sensorID ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:linkToSensorDescription ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:datastreamID ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:AbstractCityObject ;
+            owl:onProperty dyn:SensorConnection.sensorLocation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:mqttTopic ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractCityObject ;
+            owl:onProperty dyn:SensorConnection.sensorLocation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:observationID ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:mqttTopic ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:mqttServer ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:observationID ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:sensorName ] ;
+    skos:definition "A SensorConnection provides all details that are required to retrieve a specific datastream from an external sensor web service. This data type comprises the service type (e.g. OGC SensorThings API, OGC Sensor Observation Services, MQTT, proprietary platforms), the URL of the sensor service, the identifier for the sensor or thing, and its observed property as well as information about the required authentication method."@en .
+
+dyn:SensorConnectionTypeValue a owl:Class ;
+    rdfs:label "SensorConnectionTypeValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "SensorConnectionTypeValue is a code list used to specify the type of the referenced sensor service. Each value provides enough information such that a software application would be able to identify the API type and version."@en .
+
+dyn:TimeseriesComponent a owl:Class ;
+    rdfs:label "TimeseriesComponent"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom dyn:AbstractTimeseries ;
+            owl:onProperty dyn:TimeseriesComponent.timeseries ],
+        [ a owl:Restriction ;
+            owl:onClass dyn:AbstractTimeseries ;
+            owl:onProperty dyn:TimeseriesComponent.timeseries ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom time:TemporalDuration ;
+            owl:onProperty dyn:additionalGap ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass time:TemporalDuration ;
+            owl:onProperty dyn:additionalGap ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty dyn:repetitions ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty dyn:repetitions ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:definition "TimeseriesComponent represents an element of a CompositeTimeseries."@en .
+
+dyn:fileLocation a owl:DatatypeProperty ;
+    rdfs:label "fileLocation"@en ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "Specifies the URI that points to the external timeseries file."@en .
+
+dyn:fileType a owl:ObjectProperty ;
+    rdfs:label "fileType"@en ;
+    rdfs:range dyn:StandardFileTypeValue ;
+    skos:definition "Specifies the format used to represent the timeseries data."@en .
+
+dyn:mimeType a owl:ObjectProperty ;
+    rdfs:label "mimeType"@en ;
+    rdfs:range core:MimeTypeValue ;
+    skos:definition "Specifies the MIME type of the external timeseries file."@en .
+
+dyn:observationProperty a owl:DatatypeProperty ;
+    rdfs:label "observationProperty"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the phenomenon for which the atomic timeseries provides observation values."@en .
+
+dyn:uom a owl:DatatypeProperty ;
+    rdfs:label "uom"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the unit of measurement of the observation values."@en .
+
+dyn:valueType a owl:DatatypeProperty ;
+    rdfs:label "valueType"@en ;
+    rdfs:range dyn:TimeseriesTypeValue ;
+    skos:definition "Indicates the specific type of the timeseries data."@en .
+
+dyn:TimeseriesTypeValue a rdfs:Datatype ;
+    rdfs:label "TimeseriesTypeValue"@en ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "int" "double" "string" "geometry" "uri" "bool" "implicitGeometry" "appearance" ) ] ;
+    skos:definition "TimeseriesTypeValue enumerates the possible value types for GenericTimeseries and TimeValuePair."@en .
+
+dyn:StandardFileTypeValue a owl:Class ;
+    rdfs:label "StandardFileTypeValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "StandardFileTypeValue is a code list used to specify the type of the referenced external timeseries data file. Each value provides information about the standard and version."@en .
+
+dyn:AbstractTimeseries a owl:Class ;
+    rdfs:label "AbstractTimeseries"@en ;
+    iso19150-2:isAbstract true ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom time:TemporalPosition ;
+            owl:onProperty dyn:firstTimestamp ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom time:TemporalPosition ;
+            owl:onProperty dyn:lastTimestamp ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass time:TemporalPosition ;
+            owl:onProperty dyn:firstTimestamp ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass time:TemporalPosition ;
+            owl:onProperty dyn:lastTimestamp ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:ADEOfAbstractTimeseries ;
+            owl:onProperty dyn:adeOfAbstractTimeseries ],
+        core:AbstractFeature ;
+    skos:definition "AbstractTimeseries is the abstract superclass representing any type of timeseries data."@en .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dyn:GenericTimeseries dyn:StandardFileTimeseries dyn:TabulatedFileTimeseries ) .
+
