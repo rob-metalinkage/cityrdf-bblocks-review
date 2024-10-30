@@ -16,6 +16,12 @@
         <https://ogcblocks.org/CityGML/3.0/core> ;
     skos:definition "The Tunnel module supports representation of thematic and spatial aspects of tunnels, tunnel parts, tunnel installations, and interior tunnel structures."@en .
 
+tun:class skos:definition "Indicates the specific type of the HollowSpace."@en .
+
+tun:function skos:definition "Specifies the intended purposes of the HollowSpace."@en .
+
+tun:usage skos:definition "Specifies the actual uses of the HollowSpace."@en .
+
 <https://ogcblocks.org/CityGML/3.0/tunnel/code> a owl:Ontology .
 
 tuncode:HollowSpaceClassValue a skos:ConceptScheme ;
@@ -290,17 +296,17 @@ tun:TunnelConstructiveElement a owl:Class ;
             owl:onProperty tun:adeOfTunnelConstructiveElement ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:HollowSpaceUsageValue ;
-            owl:onProperty tun:usage ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:HollowSpaceFunctionValue ;
-            owl:onProperty tun:function ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:HollowSpaceClassValue ;
-            owl:onProperty tun:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tun:HollowSpaceClassValue ;
-            owl:onProperty tun:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         con:AbstractConstructiveElement ;
     skos:definition "A TunnelConstructiveElement is an element of a Tunnel which is essential from a structural point of view. Examples are walls, slabs, beams."@en .
 
@@ -315,21 +321,21 @@ tun:TunnelPart a owl:Class ;
 tun:TunnelFurniture a owl:Class ;
     rdfs:label "TunnelFurniture"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceUsageValue ;
-            owl:onProperty tun:usage ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tun:HollowSpaceFunctionValue ;
-            owl:onProperty tun:function ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:HollowSpaceClassValue ;
-            owl:onProperty tun:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tun:HollowSpaceClassValue ;
-            owl:onProperty tun:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:ADEOfTunnelFurniture ;
             owl:onProperty tun:adeOfTunnelFurniture ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:HollowSpaceUsageValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         con:AbstractFurniture ;
     skos:definition "A TunnelFurniture is an equipment for occupant use, usually not fixed to the tunnel. [cf. ISO 6707-1]"@en .
 
@@ -337,94 +343,88 @@ tun:TunnelInstallation a owl:Class ;
     rdfs:label "TunnelInstallation"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom tun:HollowSpaceUsageValue ;
-            owl:onProperty tun:usage ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:HollowSpaceFunctionValue ;
-            owl:onProperty tun:function ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:HollowSpaceClassValue ;
-            owl:onProperty tun:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tun:HollowSpaceClassValue ;
-            owl:onProperty tun:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:ADEOfTunnelInstallation ;
             owl:onProperty tun:adeOfTunnelInstallation ],
         con:AbstractInstallation ;
     skos:definition "A TunnelInstallation is a permanent part of a Tunnel (inside and/or outside) which does not have the significance of a TunnelPart. In contrast to TunnelConstructiveElement, a TunnelInstallation is not essential from a structural point of view. Examples are stairs, antennas or railings."@en .
 
+<https://ogcblocks.org/CityGML/3.0/common#function> rdfs:range tun:HollowSpaceFunctionValue .
+
+<https://ogcblocks.org/CityGML/3.0/common#usage> rdfs:range tun:HollowSpaceUsageValue .
+
 tun:HollowSpace a owl:Class ;
     rdfs:label "HollowSpace"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceFunctionValue ;
-            owl:onProperty tun:function ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceUsageValue ;
-            owl:onProperty tun:usage ],
+            owl:allValuesFrom core:AbstractThematicSurface ;
+            owl:onProperty tun:HollowSpace.boundary ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:ADEOfHollowSpace ;
             owl:onProperty tun:adeOfHollowSpace ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractThematicSurface ;
-            owl:onProperty tun:HollowSpace.boundary ],
+            owl:allValuesFrom tun:TunnelFurniture ;
+            owl:onProperty tun:HollowSpace.tunnelFurniture ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:HollowSpaceFunctionValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:TunnelInstallation ;
             owl:onProperty tun:HollowSpace.tunnelInstallation ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tun:TunnelFurniture ;
-            owl:onProperty tun:HollowSpace.tunnelFurniture ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tun:HollowSpaceClassValue ;
-            owl:onProperty tun:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:HollowSpaceUsageValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tun:HollowSpaceClassValue ;
-            owl:onProperty tun:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         core:AbstractUnoccupiedSpace ;
     skos:definition "A HollowSpace is a space within a Tunnel or TunnelPart intended for certain functions (e.g. transport or passage ways, service rooms, emergency shelters). A HollowSpace is bounded physically and/or virtually (e.g. by ClosureSurfaces or GenericSurfaces)."@en .
-
-tun:function a owl:ObjectProperty ;
-    rdfs:label "function"@en ;
-    rdfs:range tun:HollowSpaceFunctionValue ;
-    skos:definition "Specifies the intended purposes of the HollowSpace."@en .
-
-tun:usage a owl:ObjectProperty ;
-    rdfs:label "usage"@en ;
-    rdfs:range tun:HollowSpaceUsageValue ;
-    skos:definition "Specifies the actual uses of the HollowSpace."@en .
 
 tun:AbstractTunnel a owl:Class ;
     rdfs:label "AbstractTunnel"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom tun:HollowSpaceUsageValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tun:HollowSpaceClassValue ;
-            owl:onProperty tun:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tun:TunnelConstructiveElement ;
-            owl:onProperty tun:AbstractTunnel.tunnelConstructiveElement ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceUsageValue ;
-            owl:onProperty tun:usage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceFunctionValue ;
-            owl:onProperty tun:function ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:TunnelInstallation ;
-            owl:onProperty tun:AbstractTunnel.tunnelInstallation ],
+            owl:allValuesFrom tun:HollowSpace ;
+            owl:onProperty tun:AbstractTunnel.hollowSpace ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:ADEOfAbstractTunnel ;
             owl:onProperty tun:adeOfAbstractTunnel ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceClassValue ;
-            owl:onProperty tun:class ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tun:TunnelFurniture ;
             owl:onProperty tun:AbstractTunnel.tunnelFurniture ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpace ;
-            owl:onProperty tun:AbstractTunnel.hollowSpace ],
+            owl:allValuesFrom tun:TunnelInstallation ;
+            owl:onProperty tun:AbstractTunnel.tunnelInstallation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:HollowSpaceClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:TunnelConstructiveElement ;
+            owl:onProperty tun:AbstractTunnel.tunnelConstructiveElement ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:HollowSpaceFunctionValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         con:AbstractConstruction ;
     skos:definition "AbstractTunnel is an abstract superclass representing the common attributes and associations of the classes Tunnel and TunnelPart."@en .
 
@@ -438,10 +438,7 @@ tun:HollowSpaceUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "HollowSpaceUsageValue is a code list that enumerates the different uses of a HollowSpace."@en .
 
-tun:class a owl:ObjectProperty ;
-    rdfs:label "class"@en ;
-    rdfs:range tun:HollowSpaceClassValue ;
-    skos:definition "Indicates the specific type of the HollowSpace."@en .
+<https://ogcblocks.org/CityGML/3.0/common#class> rdfs:range tun:HollowSpaceClassValue .
 
 tun:HollowSpaceClassValue a owl:Class ;
     rdfs:label "HollowSpaceClassValue"@en ;

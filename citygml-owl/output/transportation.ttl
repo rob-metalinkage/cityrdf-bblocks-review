@@ -23,6 +23,12 @@ tran:HoleSurface a owl:Class ;
         core:AbstractThematicSurface ;
     skos:definition "A HoleSurface is a representation of the ground surface of a hole."@en .
 
+tran:class skos:definition "Indicates the specific type of the Road."@en .
+
+tran:function skos:definition "Specifies the intended purposes of the Road."@en .
+
+tran:usage skos:definition "Specifies the actual uses of the Road."@en .
+
 <https://ogcblocks.org/CityGML/3.0/transportation/code> a owl:Ontology .
 
 trancode:AuxiliaryTrafficAreaClassValue a skos:ConceptScheme ;
@@ -321,17 +327,17 @@ tran:Square a owl:Class ;
             owl:onProperty tran:adeOfSquare ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
-            owl:onProperty tran:usage ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         tran:AbstractTransportationSpace ;
     skos:definition "A Square is a transportation space for unrestricted movement for vehicles, bicycles and/or pedestrians. This includes plazas as well as large sealed surfaces such as parking lots."@en .
 
@@ -621,28 +627,28 @@ tran:ADEOfWaterway a owl:Class ;
 tran:AuxiliaryTrafficArea a owl:Class ;
     rdfs:label "AuxiliaryTrafficArea"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:ADEOfAuxiliaryTrafficArea ;
-            owl:onProperty tran:adeOfAuxiliaryTrafficArea ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:SurfaceMaterialValue ;
             owl:onProperty tran:surfaceMaterial ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadUsageValue ;
-            owl:onProperty tran:usage ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:RoadClassValue ;
-            owl:onProperty tran:class ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tran:SurfaceMaterialValue ;
             owl:onProperty tran:surfaceMaterial ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:RoadClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:ADEOfAuxiliaryTrafficArea ;
+            owl:onProperty tran:adeOfAuxiliaryTrafficArea ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadUsageValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         core:AbstractThematicSurface ;
     skos:definition "An AuxiliaryTrafficArea is the ground surface of an AuxiliaryTrafficSpace."@en .
 
@@ -653,7 +659,7 @@ tran:ClearanceSpace a owl:Class ;
             owl:onProperty tran:adeOfClearanceSpace ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         core:AbstractUnoccupiedSpace ;
     skos:definition "A ClearanceSpace represents the actual free space above a TrafficArea within which a mobile object can move without contacting an obstruction."@en .
 
@@ -664,11 +670,11 @@ tran:Hole a owl:Class ;
             owl:onProperty tran:adeOfHole ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         core:AbstractUnoccupiedSpace ;
     skos:definition "A Hole is an opening in the surface of a Road, Track or Square such as road damages, manholes or drains. Holes can span multiple transportation objects."@en .
 
@@ -679,39 +685,39 @@ tran:Marking a owl:Class ;
             owl:onProperty tran:adeOfMarking ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         core:AbstractThematicSurface ;
     skos:definition "A Marking is a visible pattern on a transportation area relevant to the structuring or restriction of traffic. Examples are road markings and markings related to railway or waterway traffic."@en .
 
 tran:TrafficArea a owl:Class ;
     rdfs:label "TrafficArea"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:SurfaceMaterialValue ;
+            owl:onClass tran:RoadClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:SurfaceMaterialValue ;
             owl:onProperty tran:surfaceMaterial ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:ADEOfTrafficArea ;
             owl:onProperty tran:adeOfTrafficArea ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:SurfaceMaterialValue ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:SurfaceMaterialValue ;
             owl:onProperty tran:surfaceMaterial ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
-            owl:onProperty tran:usage ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         core:AbstractThematicSurface ;
     skos:definition "A TrafficArea is the ground surface of a TrafficSpace. Traffic areas are the surfaces upon which traffic actually takes place."@en .
 
@@ -723,58 +729,58 @@ tran:occupancy a owl:ObjectProperty ;
 tran:AuxiliaryTrafficSpace a owl:Class ;
     rdfs:label "AuxiliaryTrafficSpace"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:GranularityValue ;
-            owl:onProperty tran:granularity ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:RoadClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:ADEOfAuxiliaryTrafficSpace ;
             owl:onProperty tran:adeOfAuxiliaryTrafficSpace ],
         [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadUsageValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom tran:AuxiliaryTrafficArea ;
             owl:onProperty tran:AuxiliaryTrafficSpace.boundary ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:GranularityValue ;
+            owl:onProperty tran:granularity ],
         [ a owl:Restriction ;
             owl:onDataRange tran:GranularityValue ;
             owl:onProperty tran:granularity ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadUsageValue ;
-            owl:onProperty tran:usage ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:RoadClassValue ;
-            owl:onProperty tran:class ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         core:AbstractUnoccupiedSpace ;
     skos:definition "An AuxiliaryTrafficSpace is a space within the transportation space not intended for traffic purposes."@en .
 
 tran:Railway a owl:Class ;
     rdfs:label "Railway"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
-            owl:onProperty tran:usage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:Intersection ;
-            owl:onProperty tran:Railway.intersection ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:Section ;
+            owl:onProperty tran:Railway.section ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:ADEOfRailway ;
             owl:onProperty tran:adeOfRailway ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:Section ;
-            owl:onProperty tran:Railway.section ],
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:Intersection ;
+            owl:onProperty tran:Railway.intersection ],
         tran:AbstractTransportationSpace ;
     skos:definition "A Railway is a transportation space used by wheeled vehicles on rails."@en .
 
@@ -787,75 +793,75 @@ tran:Road a owl:Class ;
             owl:allValuesFrom tran:ADEOfRoad ;
             owl:onProperty tran:adeOfRoad ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
-            owl:onProperty tran:usage ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:RoadClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:Intersection ;
             owl:onProperty tran:Road.intersection ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:RoadClassValue ;
-            owl:onProperty tran:class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         tran:AbstractTransportationSpace ;
     skos:definition "A Road is a transportation space used by vehicles, bicycles and/or pedestrians."@en .
 
 tran:Track a owl:Class ;
     rdfs:label "Track"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:ADEOfTrack ;
-            owl:onProperty tran:adeOfTrack ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:Intersection ;
             owl:onProperty tran:Track.intersection ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:allValuesFrom tran:RoadUsageValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
+            owl:allValuesFrom tran:ADEOfTrack ;
+            owl:onProperty tran:adeOfTrack ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tran:RoadClassValue ;
-            owl:onProperty tran:class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadUsageValue ;
-            owl:onProperty tran:usage ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:Section ;
             owl:onProperty tran:Track.section ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         tran:AbstractTransportationSpace ;
     skos:definition "A Track is a small path mainly used by pedestrians. Tracks can be segmented into Sections and Intersections."@en .
 
 tran:Waterway a owl:Class ;
     rdfs:label "Waterway"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
+            owl:allValuesFrom tran:Section ;
+            owl:onProperty tran:Waterway.section ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:Intersection ;
-            owl:onProperty tran:Waterway.intersection ],
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:RoadClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:ADEOfWaterway ;
             owl:onProperty tran:adeOfWaterway ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:Section ;
-            owl:onProperty tran:Waterway.section ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
-            owl:onProperty tran:usage ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:RoadClassValue ;
-            owl:onProperty tran:class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:allValuesFrom tran:Intersection ;
+            owl:onProperty tran:Waterway.intersection ],
         tran:AbstractTransportationSpace ;
     skos:definition "A Waterway is a transportation space used for the movement of vessels upon or within a water body."@en .
 
@@ -891,6 +897,10 @@ tran:SurfaceMaterialValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "SurfaceMaterialValue is a code list that enumerates the different surface materials."@en .
 
+<https://ogcblocks.org/CityGML/3.0/common#function> rdfs:range tran:RoadFunctionValue .
+
+<https://ogcblocks.org/CityGML/3.0/common#usage> rdfs:range tran:RoadUsageValue .
+
 tran:Intersection a owl:Class ;
     rdfs:label "Intersection"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -898,11 +908,11 @@ tran:Intersection a owl:Class ;
             owl:onProperty tran:adeOfIntersection ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         tran:AbstractTransportationSpace ;
     skos:definition "An Intersection is a transportation space that is a shared segment of multiple Road, Track, Railway, or Waterway objects (e.g. a crossing of two roads or a level crossing of a road and a railway)."@en .
 
@@ -913,36 +923,33 @@ tran:Section a owl:Class ;
             owl:onProperty tran:adeOfSection ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         tran:AbstractTransportationSpace ;
     skos:definition "A Section is a transportation space that is a segment of a Road, Railway, Track, or Waterway."@en .
-
-tran:function a owl:ObjectProperty ;
-    rdfs:label "function"@en ;
-    rdfs:range tran:RoadFunctionValue ;
-    skos:definition "Specifies the intended purposes of the Road."@en .
-
-tran:usage a owl:ObjectProperty ;
-    rdfs:label "usage"@en ;
-    rdfs:range tran:RoadUsageValue ;
-    skos:definition "Specifies the actual uses of the Road."@en .
 
 tran:TrafficSpace a owl:Class ;
     rdfs:label "TrafficSpace"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:GranularityValue ;
-            owl:onProperty tran:granularity ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:RoadClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficDirectionValue ;
-            owl:onProperty tran:trafficDirection ],
+            owl:allValuesFrom tran:TrafficArea ;
+            owl:onProperty tran:TrafficSpace.boundary ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange tran:TrafficDirectionValue ;
             owl:onProperty tran:trafficDirection ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:GranularityValue ;
+            owl:onProperty tran:granularity ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:ClearanceSpace ;
             owl:onProperty tran:TrafficSpace.clearanceSpace ],
@@ -950,34 +957,27 @@ tran:TrafficSpace a owl:Class ;
             owl:allValuesFrom tran:TrafficSpace ;
             owl:onProperty tran:TrafficSpace.successor ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:ADEOfTrafficSpace ;
             owl:onProperty tran:adeOfTrafficSpace ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficSpace ;
-            owl:onProperty tran:TrafficSpace.predecessor ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:RoadClassValue ;
-            owl:onProperty tran:class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:Occupancy ;
-            owl:onProperty tran:occupancy ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficArea ;
-            owl:onProperty tran:TrafficSpace.boundary ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadUsageValue ;
-            owl:onProperty tran:usage ],
         [ a owl:Restriction ;
             owl:onDataRange tran:GranularityValue ;
             owl:onProperty tran:granularity ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadUsageValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:TrafficDirectionValue ;
+            owl:onProperty tran:trafficDirection ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:Occupancy ;
+            owl:onProperty tran:occupancy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:TrafficSpace ;
+            owl:onProperty tran:TrafficSpace.predecessor ],
         core:AbstractUnoccupiedSpace ;
     skos:definition "A TrafficSpace is a space in which traffic takes place. Traffic includes the movement of entities such as trains, vehicles, pedestrians, ships, or other transportation types."@en .
 
@@ -985,11 +985,15 @@ tran:AbstractTransportationSpace a owl:Class ;
     rdfs:label "AbstractTransportationSpace"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficDirectionValue ;
-            owl:onProperty tran:trafficDirection ],
+            owl:allValuesFrom tran:TrafficSpace ;
+            owl:onProperty tran:AbstractTransportationSpace.trafficSpace ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:Occupancy ;
             owl:onProperty tran:occupancy ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange tran:TrafficDirectionValue ;
+            owl:onProperty tran:trafficDirection ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:Hole ;
             owl:onProperty tran:AbstractTransportationSpace.hole ],
@@ -1000,14 +1004,10 @@ tran:AbstractTransportationSpace a owl:Class ;
             owl:allValuesFrom tran:Marking ;
             owl:onProperty tran:AbstractTransportationSpace.marking ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficSpace ;
-            owl:onProperty tran:AbstractTransportationSpace.trafficSpace ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:ADEOfAbstractTransportationSpace ;
             owl:onProperty tran:adeOfAbstractTransportationSpace ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange tran:TrafficDirectionValue ;
+            owl:allValuesFrom tran:TrafficDirectionValue ;
             owl:onProperty tran:trafficDirection ],
         core:AbstractUnoccupiedSpace ;
     skos:definition "AbstractTransportationSpace is the abstract superclass of transportation objects such as Roads, Tracks, Railways, Waterways or Squares."@en .
@@ -1022,10 +1022,7 @@ tran:RoadUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "RoadUsageValue is a code list that enumerates the different uses of a Road."@en .
 
-tran:class a owl:ObjectProperty ;
-    rdfs:label "class"@en ;
-    rdfs:range tran:RoadClassValue ;
-    skos:definition "Indicates the specific type of the Road."@en .
+<https://ogcblocks.org/CityGML/3.0/common#class> rdfs:range tran:RoadClassValue .
 
 tran:RoadClassValue a owl:Class ;
     rdfs:label "RoadClassValue"@en ;

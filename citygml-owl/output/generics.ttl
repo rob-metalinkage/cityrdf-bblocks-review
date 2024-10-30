@@ -18,10 +18,10 @@ gen:CodeAttribute a owl:Class ;
     rdfs:label "CodeAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty gen:value ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty gen:value ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -37,10 +37,10 @@ gen:DateAttribute a owl:Class ;
     rdfs:label "DateAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty gen:value ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty gen:value ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -55,19 +55,19 @@ gen:DateAttribute a owl:Class ;
 gen:DoubleAttribute a owl:Class ;
     rdfs:label "DoubleAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty gen:value ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty gen:name ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty gen:name ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty gen:value ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty gen:name ],
         core:AbstractGenericAttribute ;
     skos:definition "DoubleAttribute is a data type used to define generic attributes of type \"Double\"."@en .
 
@@ -78,17 +78,17 @@ gen:GenericLogicalSpace a owl:Class ;
             owl:onProperty gen:adeOfGenericLogicalSpace ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceUsageValue ;
-            owl:onProperty gen:usage ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceFunctionValue ;
-            owl:onProperty gen:function ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty gen:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty gen:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         core:AbstractLogicalSpace ;
     skos:definition "A GenericLogicalSpace is a space that is not represented by any explicitly modelled AbstractLogicalSpace subclass within CityGML."@en .
 
@@ -99,17 +99,17 @@ gen:GenericOccupiedSpace a owl:Class ;
             owl:onProperty gen:adeOfGenericOccupiedSpace ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceUsageValue ;
-            owl:onProperty gen:usage ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceFunctionValue ;
-            owl:onProperty gen:function ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty gen:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty gen:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         core:AbstractOccupiedSpace ;
     skos:definition "A GenericOccupiedSpace is a space that is not represented by any explicitly modelled AbstractOccupiedSpace subclass within CityGML."@en .
 
@@ -120,17 +120,17 @@ gen:GenericThematicSurface a owl:Class ;
             owl:onProperty gen:adeOfGenericThematicSurface ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceUsageValue ;
-            owl:onProperty gen:usage ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceFunctionValue ;
-            owl:onProperty gen:function ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty gen:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty gen:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         core:AbstractThematicSurface ;
     skos:definition "A GenericThematicSurface is a surface that is not represented by any explicitly modelled AbstractThematicSurface subclass within CityGML."@en .
 
@@ -141,17 +141,17 @@ gen:GenericUnoccupiedSpace a owl:Class ;
             owl:onProperty gen:adeOfGenericUnoccupiedSpace ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceUsageValue ;
-            owl:onProperty gen:usage ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceFunctionValue ;
-            owl:onProperty gen:function ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty gen:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty gen:class ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         core:AbstractUnoccupiedSpace ;
     skos:definition "A GenericUnoccupiedSpace is a space that is not represented by any explicitly modelled AbstractUnoccupiedSpace subclass within CityGML."@en .
 
@@ -159,10 +159,10 @@ gen:IntAttribute a owl:Class ;
     rdfs:label "IntAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty gen:value ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty gen:value ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -178,10 +178,10 @@ gen:MeasureAttribute a owl:Class ;
     rdfs:label "MeasureAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty gen:value ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty gen:value ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -197,10 +197,10 @@ gen:StringAttribute a owl:Class ;
     rdfs:label "StringAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty gen:value ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty gen:value ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -216,10 +216,10 @@ gen:UriAttribute a owl:Class ;
     rdfs:label "UriAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty gen:value ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty gen:value ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -230,6 +230,14 @@ gen:UriAttribute a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         core:AbstractGenericAttribute ;
     skos:definition "UriAttribute is a data type used to define generic attributes of type \"URI\"."@en .
+
+gen:class skos:definition "Indicates the specific type of the GenericUnoccupiedSpace."@en .
+
+gen:function skos:definition "Specifies the intended purposes of the GenericUnoccupiedSpace."@en .
+
+gen:usage skos:definition "Specifies the actual uses of the GenericUnoccupiedSpace."@en .
+
+gen:value skos:definition "Specifies the \"Double\" value."@en .
 
 <https://ogcblocks.org/CityGML/3.0/generics/code> a owl:Ontology .
 
@@ -300,18 +308,18 @@ gen:GenericAttributeSet a owl:Class ;
             owl:onDataRange xsd:anyURI ;
             owl:onProperty gen:codeSpace ],
         [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractGenericAttribute ;
+            owl:onProperty gen:GenericAttributeSet.genericAttribute ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty gen:name ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractGenericAttribute ;
-            owl:onProperty gen:GenericAttributeSet.genericAttribute ],
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty gen:codeSpace ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:AbstractGenericAttribute ;
             owl:onProperty gen:GenericAttributeSet.genericAttribute ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty gen:codeSpace ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty gen:name ;
@@ -415,15 +423,9 @@ gen:codeSpace a owl:DatatypeProperty ;
     rdfs:range xsd:anyURI ;
     skos:definition "Associates the GenericAttributeSet with an authority that maintains the collection of generic attributes."@en .
 
-gen:function a owl:ObjectProperty ;
-    rdfs:label "function"@en ;
-    rdfs:range gen:GenericUnoccupiedSpaceFunctionValue ;
-    skos:definition "Specifies the intended purposes of the GenericUnoccupiedSpace."@en .
+<https://ogcblocks.org/CityGML/3.0/common#function> rdfs:range gen:GenericUnoccupiedSpaceFunctionValue .
 
-gen:usage a owl:ObjectProperty ;
-    rdfs:label "usage"@en ;
-    rdfs:range gen:GenericUnoccupiedSpaceUsageValue ;
-    skos:definition "Specifies the actual uses of the GenericUnoccupiedSpace."@en .
+<https://ogcblocks.org/CityGML/3.0/common#usage> rdfs:range gen:GenericUnoccupiedSpaceUsageValue .
 
 gen:GenericUnoccupiedSpaceFunctionValue a owl:Class ;
     rdfs:label "GenericUnoccupiedSpaceFunctionValue"@en ;
@@ -435,20 +437,14 @@ gen:GenericUnoccupiedSpaceUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "GenericUnoccupiedSpaceUsageValue is a code list that enumerates the different uses of a GenericUnoccupiedSpace."@en .
 
-gen:class a owl:ObjectProperty ;
-    rdfs:label "class"@en ;
-    rdfs:range gen:GenericUnoccupiedSpaceClassValue ;
-    skos:definition "Indicates the specific type of the GenericUnoccupiedSpace."@en .
+<https://ogcblocks.org/CityGML/3.0/common#class> rdfs:range gen:GenericUnoccupiedSpaceClassValue .
 
 gen:GenericUnoccupiedSpaceClassValue a owl:Class ;
     rdfs:label "GenericUnoccupiedSpaceClassValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "GenericUnoccupiedSpaceClassValue is a code list used to further classify a GenericUnoccupiedSpace."@en .
 
-gen:value a owl:DatatypeProperty ;
-    rdfs:label "value"@en ;
-    rdfs:range xsd:double ;
-    skos:definition "Specifies the \"Double\" value."@en .
+<https://ogcblocks.org/CityGML/3.0/common#value> rdfs:range xsd:double .
 
 gen:name a owl:DatatypeProperty ;
     rdfs:label "name"@en ;

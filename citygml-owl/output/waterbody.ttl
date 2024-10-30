@@ -23,6 +23,12 @@ wtr:WaterGroundSurface a owl:Class ;
     owl:disjointWith wtr:WaterSurface ;
     skos:definition "A WaterGroundSurface represents the exterior boundary surface of the submerged bottom of a water body."@en .
 
+wtr:class skos:definition "Indicates the specific type of the WaterBody."@en .
+
+wtr:function skos:definition "Specifies the intended purposes of the WaterBody."@en .
+
+wtr:usage skos:definition "Specifies the actual uses of the WaterBody."@en .
+
 <https://ogcblocks.org/CityGML/3.0/waterbody/code> a owl:Ontology .
 
 wtrcode:WaterBodyClassValue a skos:ConceptScheme ;
@@ -45,18 +51,15 @@ wtrcode:WaterLevelValue a skos:ConceptScheme ;
     dct:isFormatOf wtr:WaterLevelValue ;
     skos:definition "WaterLevelValue is a code list that enumerates the different levels of a water surface."@en .
 
+<https://ogcblocks.org/CityGML/3.0/common#function> rdfs:range wtr:WaterBodyFunctionValue .
+
+<https://ogcblocks.org/CityGML/3.0/common#usage> rdfs:range wtr:WaterBodyUsageValue .
+
 wtr:WaterBody a owl:Class ;
     rdfs:label "WaterBody"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass wtr:WaterBodyClassValue ;
-            owl:onProperty wtr:class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom wtr:WaterBodyClassValue ;
-            owl:onProperty wtr:class ],
-        [ a owl:Restriction ;
             owl:allValuesFrom wtr:WaterBodyUsageValue ;
-            owl:onProperty wtr:usage ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom wtr:AbstractWaterBoundarySurface ;
             owl:onProperty wtr:WaterBody.boundary ],
@@ -65,7 +68,14 @@ wtr:WaterBody a owl:Class ;
             owl:onProperty wtr:adeOfWaterBody ],
         [ a owl:Restriction ;
             owl:allValuesFrom wtr:WaterBodyFunctionValue ;
-            owl:onProperty wtr:function ],
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom wtr:WaterBodyClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass wtr:WaterBodyClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         core:AbstractOccupiedSpace ;
     skos:definition "A WaterBody represents significant and permanent or semi-permanent accumulations of surface water, usually covering a part of the Earth."@en .
 
@@ -109,15 +119,7 @@ wtr:adeOfWaterSurface a owl:ObjectProperty ;
     rdfs:range wtr:ADEOfWaterSurface ;
     skos:definition "Augments the WaterSurface with properties defined in an ADE."@en .
 
-wtr:function a owl:ObjectProperty ;
-    rdfs:label "function"@en ;
-    rdfs:range wtr:WaterBodyFunctionValue ;
-    skos:definition "Specifies the intended purposes of the WaterBody."@en .
-
-wtr:usage a owl:ObjectProperty ;
-    rdfs:label "usage"@en ;
-    rdfs:range wtr:WaterBodyUsageValue ;
-    skos:definition "Specifies the actual uses of the WaterBody."@en .
+<https://ogcblocks.org/CityGML/3.0/common#class> rdfs:range wtr:WaterBodyClassValue .
 
 wtr:ADEOfAbstractWaterBoundarySurface a owl:Class ;
     rdfs:label "ADEOfAbstractWaterBoundarySurface"@en ;
@@ -138,11 +140,6 @@ wtr:ADEOfWaterSurface a owl:Class ;
     rdfs:label "ADEOfWaterSurface"@en ;
     iso19150-2:isAbstract true ;
     skos:definition "ADEOfWaterSurface acts as a hook to define properties within an ADE that are to be added to a WaterSurface."@en .
-
-wtr:class a owl:ObjectProperty ;
-    rdfs:label "class"@en ;
-    rdfs:range wtr:WaterBodyClassValue ;
-    skos:definition "Indicates the specific type of the WaterBody."@en .
 
 wtr:waterLevel a owl:ObjectProperty ;
     rdfs:label "waterLevel"@en ;
