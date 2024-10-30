@@ -16,12 +16,6 @@
         <https://ogcblocks.org/CityGML/3.0/core> ;
     skos:definition "The Bridge module supports representation of thematic and spatial aspects of bridges, bridge parts, bridge installations, and interior bridge structures."@en .
 
-brid:class skos:definition "Indicates the specific type of the BridgeConstructiveElement."@en .
-
-brid:function skos:definition "Specifies the intended purposes of the BridgeConstructiveElement."@en .
-
-brid:usage skos:definition "Specifies the actual uses of the BridgeConstructiveElement."@en .
-
 <https://ogcblocks.org/CityGML/3.0/bridge/code> a owl:Ontology .
 
 bridcode:BridgeClassValue a skos:ConceptScheme ;
@@ -132,14 +126,10 @@ brid:AbstractBridge.bridgeRoom a owl:ObjectProperty ;
 brid:Bridge a owl:Class ;
     rdfs:label "Bridge"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom brid:ADEOfBridge ;
-            owl:onProperty brid:adeOfBridge ],
-        [ a owl:Restriction ;
             owl:allValuesFrom brid:BridgePart ;
             owl:onProperty brid:Bridge.bridgePart ],
         brid:AbstractBridge ;
-    owl:disjointWith brid:BridgePart ;
-    skos:definition "A Bridge represents a structure that affords the passage of pedestrians, animals, vehicles, and service(s) above obstacles or between two points at a height above ground. [cf. ISO 6707-1]"@en .
+    owl:disjointWith brid:BridgePart .
 
 brid:Bridge.bridgePart a owl:ObjectProperty ;
     rdfs:label "bridgePart"@en ;
@@ -225,82 +215,9 @@ brid:BridgeUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "BridgeUsageValue is a code list that enumerates the different uses of a Bridge."@en .
 
-brid:adeOfAbstractBridge a owl:ObjectProperty ;
-    rdfs:label "adeOfAbstractBridge"@en ;
-    rdfs:range brid:ADEOfAbstractBridge ;
-    skos:definition "Augments AbstractBridge with properties defined in an ADE."@en .
-
-brid:adeOfBridge a owl:ObjectProperty ;
-    rdfs:label "adeOfBridge"@en ;
-    rdfs:range brid:ADEOfBridge ;
-    skos:definition "Augments the Bridge with properties defined in an ADE."@en .
-
-brid:adeOfBridgeConstructiveElement a owl:ObjectProperty ;
-    rdfs:label "adeOfBridgeConstructiveElement"@en ;
-    rdfs:range brid:ADEOfBridgeConstructiveElement ;
-    skos:definition "Augments the BridgeConstructiveElement with properties defined in an ADE."@en .
-
-brid:adeOfBridgeFurniture a owl:ObjectProperty ;
-    rdfs:label "adeOfBridgeFurniture"@en ;
-    rdfs:range brid:ADEOfBridgeFurniture ;
-    skos:definition "Augments the BridgeFurniture with properties defined in an ADE."@en .
-
-brid:adeOfBridgeInstallation a owl:ObjectProperty ;
-    rdfs:label "adeOfBridgeInstallation"@en ;
-    rdfs:range brid:ADEOfBridgeInstallation ;
-    skos:definition "Augments the BridgeInstallation with properties defined in an ADE."@en .
-
-brid:adeOfBridgePart a owl:ObjectProperty ;
-    rdfs:label "adeOfBridgePart"@en ;
-    rdfs:range brid:ADEOfBridgePart ;
-    skos:definition "Augments the BridgePart with properties defined in an ADE."@en .
-
-brid:adeOfBridgeRoom a owl:ObjectProperty ;
-    rdfs:label "adeOfBridgeRoom"@en ;
-    rdfs:range brid:ADEOfBridgeRoom ;
-    skos:definition "Augments the BridgeRoom with properties defined in an ADE."@en .
-
-brid:ADEOfAbstractBridge a owl:Class ;
-    rdfs:label "ADEOfAbstractBridge"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfAbstractBridge acts as a hook to define properties within an ADE that are to be added to AbstractBridge."@en .
-
-brid:ADEOfBridge a owl:Class ;
-    rdfs:label "ADEOfBridge"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfBridge acts as a hook to define properties within an ADE that are to be added to a Bridge."@en .
-
-brid:ADEOfBridgeConstructiveElement a owl:Class ;
-    rdfs:label "ADEOfBridgeConstructiveElement"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfBridgeConstructiveElement acts as a hook to define properties within an ADE that are to be added to a BridgeConstructiveElement."@en .
-
-brid:ADEOfBridgeFurniture a owl:Class ;
-    rdfs:label "ADEOfBridgeFurniture"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfBridgeFurniture acts as a hook to define properties within an ADE that are to be added to a BridgeFurniture."@en .
-
-brid:ADEOfBridgeInstallation a owl:Class ;
-    rdfs:label "ADEOfBridgeInstallation"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfBridgeInstallation acts as a hook to define properties within an ADE that are to be added to a BridgeInstallation."@en .
-
-brid:ADEOfBridgePart a owl:Class ;
-    rdfs:label "ADEOfBridgePart"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfBridgePart acts as a hook to define properties within an ADE that are to be added to a BridgePart."@en .
-
-brid:ADEOfBridgeRoom a owl:Class ;
-    rdfs:label "ADEOfBridgeRoom"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfBridgeRoom acts as a hook to define properties within an ADE that are to be added to a BridgeRoom."@en .
-
 brid:BridgeConstructiveElement a owl:Class ;
     rdfs:label "BridgeConstructiveElement"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom brid:ADEOfBridgeConstructiveElement ;
-            owl:onProperty brid:adeOfBridgeConstructiveElement ],
-        [ a owl:Restriction ;
             owl:allValuesFrom brid:BridgeConstructiveElementUsageValue ;
             owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
@@ -313,8 +230,7 @@ brid:BridgeConstructiveElement a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass brid:BridgeConstructiveElementClassValue ;
             owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
-        con:AbstractConstructiveElement ;
-    skos:definition "A BridgeConstructiveElement is an element of a bridge which is essential from a structural point of view. Examples are pylons, anchorages, slabs, beams."@en .
+        con:AbstractConstructiveElement .
 
 brid:isMovable a owl:DatatypeProperty ;
     rdfs:label "isMovable"@en ;
@@ -323,18 +239,11 @@ brid:isMovable a owl:DatatypeProperty ;
 
 brid:BridgePart a owl:Class ;
     rdfs:label "BridgePart"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom brid:ADEOfBridgePart ;
-            owl:onProperty brid:adeOfBridgePart ],
-        brid:AbstractBridge ;
-    skos:definition "A BridgePart is a physical or functional subdivision of a Bridge. It would be considered a Bridge, if it were not part of a collection of other BridgeParts."@en .
+    rdfs:subClassOf brid:AbstractBridge .
 
 brid:BridgeFurniture a owl:Class ;
     rdfs:label "BridgeFurniture"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeConstructiveElementFunctionValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom brid:BridgeConstructiveElementClassValue ;
             owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
@@ -342,20 +251,16 @@ brid:BridgeFurniture a owl:Class ;
             owl:onClass brid:BridgeConstructiveElementClassValue ;
             owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom brid:ADEOfBridgeFurniture ;
-            owl:onProperty brid:adeOfBridgeFurniture ],
-        [ a owl:Restriction ;
             owl:allValuesFrom brid:BridgeConstructiveElementUsageValue ;
             owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
-        con:AbstractFurniture ;
-    skos:definition "A BridgeFurniture is an equipment for occupant use, usually not fixed to the bridge. [cf. ISO 6707-1]"@en .
+        [ a owl:Restriction ;
+            owl:allValuesFrom brid:BridgeConstructiveElementFunctionValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
+        con:AbstractFurniture .
 
 brid:BridgeInstallation a owl:Class ;
     rdfs:label "BridgeInstallation"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom brid:ADEOfBridgeInstallation ;
-            owl:onProperty brid:adeOfBridgeInstallation ],
-        [ a owl:Restriction ;
             owl:allValuesFrom brid:BridgeConstructiveElementUsageValue ;
             owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
@@ -368,38 +273,33 @@ brid:BridgeInstallation a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass brid:BridgeConstructiveElementClassValue ;
             owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
-        con:AbstractInstallation ;
-    skos:definition "A BridgeInstallation is a permanent part of a Bridge (inside and/or outside) which does not have the significance of a BridgePart. In contrast to BridgeConstructiveElements, a BridgeInstallation is not essential from a structural point of view. Examples are stairs, antennas or railways."@en .
+        con:AbstractInstallation .
 
 brid:BridgeRoom a owl:Class ;
     rdfs:label "BridgeRoom"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractThematicSurface ;
-            owl:onProperty brid:BridgeRoom.boundary ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom brid:ADEOfBridgeRoom ;
-            owl:onProperty brid:adeOfBridgeRoom ],
+            owl:allValuesFrom brid:BridgeInstallation ;
+            owl:onProperty brid:BridgeRoom.bridgeInstallation ],
         [ a owl:Restriction ;
             owl:allValuesFrom brid:BridgeFurniture ;
             owl:onProperty brid:BridgeRoom.bridgeFurniture ],
         [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeInstallation ;
-            owl:onProperty brid:BridgeRoom.bridgeInstallation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeConstructiveElementClassValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeConstructiveElementUsageValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
+            owl:allValuesFrom core:AbstractThematicSurface ;
+            owl:onProperty brid:BridgeRoom.boundary ],
         [ a owl:Restriction ;
             owl:allValuesFrom brid:BridgeConstructiveElementFunctionValue ;
             owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         [ a owl:Restriction ;
+            owl:allValuesFrom brid:BridgeConstructiveElementUsageValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom brid:BridgeConstructiveElementClassValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass brid:BridgeConstructiveElementClassValue ;
             owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
-        core:AbstractUnoccupiedSpace ;
-    skos:definition "A BridgeRoom is a space within a Bridge or BridgePart intended for human occupancy (e.g. a place of work or recreation) and/or containment (storage) of animals or things. A BridgeRoom is bounded physically and/or virtually (e.g. by ClosureSurfaces or GenericSurfaces)."@en .
+        core:AbstractUnoccupiedSpace .
 
 <https://ogcblocks.org/CityGML/3.0/common#function> rdfs:range brid:BridgeConstructiveElementFunctionValue .
 
@@ -409,45 +309,41 @@ brid:AbstractBridge a owl:Class ;
     rdfs:label "AbstractBridge"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeInstallation ;
-            owl:onProperty brid:AbstractBridge.bridgeInstallation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeConstructiveElementUsageValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom brid:BridgeConstructiveElementClassValue ;
             owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:Address ;
-            owl:onProperty brid:AbstractBridge.address ],
         [ a owl:Restriction ;
             owl:allValuesFrom brid:BridgeRoom ;
             owl:onProperty brid:AbstractBridge.bridgeRoom ],
         [ a owl:Restriction ;
-            owl:allValuesFrom brid:ADEOfAbstractBridge ;
-            owl:onProperty brid:adeOfAbstractBridge ],
+            owl:allValuesFrom brid:BridgeConstructiveElementUsageValue ;
+            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom brid:BridgeConstructiveElementFunctionValue ;
             owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:boolean ;
-            owl:onProperty brid:isMovable ],
+            owl:allValuesFrom core:Address ;
+            owl:onProperty brid:AbstractBridge.address ],
         [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeFurniture ;
-            owl:onProperty brid:AbstractBridge.bridgeFurniture ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty brid:isMovable ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeConstructiveElement ;
-            owl:onProperty brid:AbstractBridge.bridgeConstructiveElement ],
+            owl:allValuesFrom brid:BridgeInstallation ;
+            owl:onProperty brid:AbstractBridge.bridgeInstallation ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass brid:BridgeConstructiveElementClassValue ;
             owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
-        con:AbstractConstruction ;
-    skos:definition "AbstractBridge is an abstract superclass representing the common attributes and associations of the classes Bridge and BridgePart."@en .
+        [ a owl:Restriction ;
+            owl:allValuesFrom brid:BridgeConstructiveElement ;
+            owl:onProperty brid:AbstractBridge.bridgeConstructiveElement ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom brid:BridgeFurniture ;
+            owl:onProperty brid:AbstractBridge.bridgeFurniture ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty brid:isMovable ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty brid:isMovable ],
+        con:AbstractConstruction .
 
 brid:BridgeConstructiveElementFunctionValue a owl:Class ;
     rdfs:label "BridgeConstructiveElementFunctionValue"@en ;

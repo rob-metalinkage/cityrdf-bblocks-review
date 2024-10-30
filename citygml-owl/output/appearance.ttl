@@ -19,9 +19,6 @@
 app:Appearance a owl:Class ;
     rdfs:label "Appearance"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom app:ADEOfAppearance ;
-            owl:onProperty app:adeOfAppearance ],
-        [ a owl:Restriction ;
             owl:allValuesFrom app:AbstractSurfaceData ;
             owl:onProperty app:Appearance.surfaceData ],
         [ a owl:Restriction ;
@@ -31,8 +28,7 @@ app:Appearance a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty app:theme ],
-        core:AbstractAppearance ;
-    skos:definition "An Appearance is a collection of surface data, i.e. observable properties for surface geometry objects in the form of textures and material."@en .
+        core:AbstractAppearance .
 
 app:Appearance.surfaceData a owl:ObjectProperty ;
     rdfs:label "surfaceData"@en ;
@@ -43,19 +39,12 @@ app:Appearance.surfaceData a owl:ObjectProperty ;
 app:GeoreferencedTexture a owl:Class ;
     rdfs:label "GeoreferencedTexture"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:Point ;
-            owl:onProperty app:GeoreferencedTexture.referencePoint ],
-        [ a owl:Restriction ;
             owl:allValuesFrom core:TransformationMatrix2x2 ;
             owl:onProperty app:orientation ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty app:preferWorldFile ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom app:ADEOfGeoreferencedTexture ;
-            owl:onProperty app:adeOfGeoreferencedTexture ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:anyURI ;
             owl:onProperty app:target ],
@@ -69,9 +58,12 @@ app:GeoreferencedTexture a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:Point ;
             owl:onProperty app:GeoreferencedTexture.referencePoint ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:Point ;
+            owl:onProperty app:GeoreferencedTexture.referencePoint ],
         app:AbstractTexture ;
-    owl:disjointWith app:ParameterizedTexture ;
-    skos:definition "A GeoreferencedTexture is a texture that uses a planimetric projection. It contains an implicit parameterization that is either stored within the image file, an accompanying world file or specified using the orientation and referencePoint elements."@en .
+    owl:disjointWith app:ParameterizedTexture .
 
 app:ParameterizedTexture.textureParameterization a owl:ObjectProperty ;
     rdfs:label "textureParameterization"@en ;
@@ -172,71 +164,7 @@ app:X3DMaterial a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom app:Color ;
             owl:onProperty app:emissiveColor ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom app:ADEOfX3DMaterial ;
-            owl:onProperty app:adeOfX3DMaterial ],
-        app:AbstractSurfaceData ;
-    skos:definition "X3DMaterial defines properties for surface geometry objects based on the material definitions from the X3D and COLLADA standards."@en .
-
-app:adeOfAbstractSurfaceData a owl:ObjectProperty ;
-    rdfs:label "adeOfAbstractSurfaceData"@en ;
-    rdfs:range app:ADEOfAbstractSurfaceData ;
-    skos:definition "Augments AbstractSurfaceData with properties defined in an ADE."@en .
-
-app:adeOfAbstractTexture a owl:ObjectProperty ;
-    rdfs:label "adeOfAbstractTexture"@en ;
-    rdfs:range app:ADEOfAbstractTexture ;
-    skos:definition "Augments AbstractTexture with properties defined in an ADE."@en .
-
-app:adeOfAppearance a owl:ObjectProperty ;
-    rdfs:label "adeOfAppearance"@en ;
-    rdfs:range app:ADEOfAppearance ;
-    skos:definition "Augments the Appearance with properties defined in an ADE."@en .
-
-app:adeOfGeoreferencedTexture a owl:ObjectProperty ;
-    rdfs:label "adeOfGeoreferencedTexture"@en ;
-    rdfs:range app:ADEOfGeoreferencedTexture ;
-    skos:definition "Augments the GeoreferencedTexture with properties defined in an ADE."@en .
-
-app:adeOfParameterizedTexture a owl:ObjectProperty ;
-    rdfs:label "adeOfParameterizedTexture"@en ;
-    rdfs:range app:ADEOfParameterizedTexture ;
-    skos:definition "Augments the ParameterizedTexture with properties defined in an ADE."@en .
-
-app:adeOfX3DMaterial a owl:ObjectProperty ;
-    rdfs:label "adeOfX3DMaterial"@en ;
-    rdfs:range app:ADEOfX3DMaterial ;
-    skos:definition "Augments the X3DMaterial with properties defined in an ADE."@en .
-
-app:ADEOfAbstractSurfaceData a owl:Class ;
-    rdfs:label "ADEOfAbstractSurfaceData"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfAbstractSurfaceData acts as a hook to define properties within an ADE that are to be added to AbstractSurfaceData."@en .
-
-app:ADEOfAbstractTexture a owl:Class ;
-    rdfs:label "ADEOfAbstractTexture"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfAbstractTexture acts as a hook to define properties within an ADE that are to be added to AbstractTexture."@en .
-
-app:ADEOfAppearance a owl:Class ;
-    rdfs:label "ADEOfAppearance"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfAppearance acts as a hook to define properties within an ADE that are to be added to an Appearance."@en .
-
-app:ADEOfGeoreferencedTexture a owl:Class ;
-    rdfs:label "ADEOfGeoreferencedTexture"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfGeoreferencedTexture acts as a hook to define properties within an ADE that are to be added to a GeoreferencedTexture."@en .
-
-app:ADEOfParameterizedTexture a owl:Class ;
-    rdfs:label "ADEOfParameterizedTexture"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfParameterizedTexture acts as a hook to define properties within an ADE that are to be added to a ParameterizedTexture."@en .
-
-app:ADEOfX3DMaterial a owl:Class ;
-    rdfs:label "ADEOfX3DMaterial"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfX3DMaterial acts as a hook to define properties within an ADE that are to be added to an X3DMaterial."@en .
+        app:AbstractSurfaceData .
 
 app:AbstractTexture a owl:Class ;
     rdfs:label "AbstractTexture"@en ;
@@ -273,15 +201,11 @@ app:AbstractTexture a owl:Class ;
             owl:allValuesFrom core:MimeTypeValue ;
             owl:onProperty app:mimeType ],
         [ a owl:Restriction ;
-            owl:allValuesFrom app:ADEOfAbstractTexture ;
-            owl:onProperty app:adeOfAbstractTexture ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass app:ColorPlusOpacity ;
             owl:onProperty app:borderColor ],
         app:AbstractSurfaceData ;
-    owl:disjointWith app:X3DMaterial ;
-    skos:definition "AbstractTexture is the abstract superclass to represent the common attributes of the classes ParameterizedTexture and GeoreferencedTexture."@en .
+    owl:disjointWith app:X3DMaterial .
 
 app:GeoreferencedTexture.referencePoint a owl:ObjectProperty ;
     rdfs:label "referencePoint"@en ;
@@ -292,13 +216,9 @@ app:GeoreferencedTexture.referencePoint a owl:ObjectProperty ;
 app:ParameterizedTexture a owl:Class ;
     rdfs:label "ParameterizedTexture"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom app:ADEOfParameterizedTexture ;
-            owl:onProperty app:adeOfParameterizedTexture ],
-        [ a owl:Restriction ;
             owl:allValuesFrom app:TextureAssociation ;
             owl:onProperty app:ParameterizedTexture.textureParameterization ],
-        app:AbstractTexture ;
-    skos:definition "A ParameterizedTexture is a texture that uses texture coordinates or a transformation matrix for parameterization."@en .
+        app:AbstractTexture .
 
 app:TexCoordGen.crs a owl:ObjectProperty ;
     rdfs:label "crs"@en ;
@@ -441,17 +361,13 @@ app:AbstractSurfaceData a owl:Class ;
     rdfs:label "AbstractSurfaceData"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom app:ADEOfAbstractSurfaceData ;
-            owl:onProperty app:adeOfAbstractSurfaceData ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:boolean ;
             owl:onProperty app:isFront ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty app:isFront ],
-        core:AbstractFeature ;
-    skos:definition "AbstractSurfaceData is the abstract superclass for different kinds of textures and material."@en .
+        core:AbstractFeature .
 
 app:ColorPlusOpacity a owl:Class ;
     rdfs:label "ColorPlusOpacity"@en ;

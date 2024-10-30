@@ -1,6 +1,5 @@
 @prefix core: <https://ogcblocks.org/CityGML/3.0/core#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
 @prefix luse: <https://ogcblocks.org/CityGML/3.0/landuse#> .
 @prefix lusecode: <https://ogcblocks.org/CityGML/3.0/landuse/code#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -17,9 +16,6 @@
 luse:LandUse a owl:Class ;
     rdfs:label "LandUse"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom luse:ADEOfLandUse ;
-            owl:onProperty luse:adeOfLandUse ],
-        [ a owl:Restriction ;
             owl:allValuesFrom luse:LandUseUsageValue ;
             owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
         [ a owl:Restriction ;
@@ -32,14 +28,7 @@ luse:LandUse a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass luse:LandUseClassValue ;
             owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
-        core:AbstractThematicSurface ;
-    skos:definition "A LandUse object is an area of the earth's surface dedicated to a specific land use or having a specific land cover with or without vegetation, such as sand, rock, mud flats, forest, grasslands, or wetlands."@en .
-
-luse:class skos:definition "Indicates the specific type of the LandUse."@en .
-
-luse:function skos:definition "Specifies the intended purposes of the LandUse."@en .
-
-luse:usage skos:definition "Specifies the actual uses of the LandUse."@en .
+        core:AbstractThematicSurface .
 
 <https://ogcblocks.org/CityGML/3.0/landuse/code> a owl:Ontology .
 
@@ -62,17 +51,7 @@ lusecode:LandUseUsageValue a skos:ConceptScheme ;
 
 <https://ogcblocks.org/CityGML/3.0/common#usage> rdfs:range luse:LandUseUsageValue .
 
-luse:adeOfLandUse a owl:ObjectProperty ;
-    rdfs:label "adeOfLandUse"@en ;
-    rdfs:range luse:ADEOfLandUse ;
-    skos:definition "Augments the LandUse with properties defined in an ADE."@en .
-
 <https://ogcblocks.org/CityGML/3.0/common#class> rdfs:range luse:LandUseClassValue .
-
-luse:ADEOfLandUse a owl:Class ;
-    rdfs:label "ADEOfLandUse"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfLandUse acts as a hook to define properties within an ADE that are to be added to a LandUse."@en .
 
 luse:LandUseFunctionValue a owl:Class ;
     rdfs:label "LandUseFunctionValue"@en ;

@@ -110,8 +110,8 @@ files=("./output/appearance.ttl" "./output/bridge.ttl" "./output/building.ttl" "
 for file in ${files[@]}; do
 echo $file
 ### #1. inserts common:propertyname where ns:propertyname refs to package level
-echo 'inserting common:propertyname'
 echo $file
+echo 'inserting common:propertyname'
 
 python update_graph.py $file $file \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -120,6 +120,7 @@ python update_graph.py $file $file \
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     insert { 
         ?new rdfs:range ?range .
+        ?new skos:definition ?def .
     }
     where { 
         select ?new ?range
@@ -140,6 +141,7 @@ python update_graph.py $file $file \
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     insert { 
         ?new rdfs:range ?range .
+        ?new skos:definition ?def .
     }
     where { 
         select ?new ?range
@@ -154,7 +156,7 @@ python update_graph.py $file $file \
     }'
 ### #2 deletes all objprops defs that will be replaced with global scope ones
 echo 'deleting package-level ns:propertyname'
-echo $file
+
 python update_graph.py $file $file \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -164,13 +166,15 @@ python update_graph.py $file $file \
 	?s a owl:ObjectProperty .
     ?s rdfs:label ?label .
     ?s rdfs:range ?range .
+    ?s skos:definition ?def .
     }
     where {
-    select ?s ?label ?range
+    select ?s ?label ?range ?def
     	where {
     		?s a owl:ObjectProperty .
     		?s rdfs:label ?label .
         	?s rdfs:range ?range .
+            ?s skos:definition ?def .
   			filter (strafter(str(?s), "#") in ("class", "usage", "function", "address", "value"))
     		filter (strbefore(str(?s),"#") in ("https://ogcblocks.org/CityGML/3.0/appearance", "https://ogcblocks.org/CityGML/3.0/bridge", 
                     "https://ogcblocks.org/CityGML/3.0/building", "https://ogcblocks.org/CityGML/3.0/cityfurniture", 
@@ -193,13 +197,15 @@ python update_graph.py $file $file \
 	?s a owl:DatatypeProperty .
     ?s rdfs:label ?label .
     ?s rdfs:range ?range .
+    ?s skos:definition ?def .
     }
     where {
-    select ?s ?label ?range
+    select ?s ?label ?range ?def
     	where {
     		?s a owl:DatatypeProperty .
     		?s rdfs:label ?label .
         	?s rdfs:range ?range .
+            ?s skos:definition ?def .
   			filter (strafter(str(?s), "#") in ("class", "usage", "function", "address", "value"))
     		filter (strbefore(str(?s),"#") in ("https://ogcblocks.org/CityGML/3.0/appearance", "https://ogcblocks.org/CityGML/3.0/bridge", 
                     "https://ogcblocks.org/CityGML/3.0/building", "https://ogcblocks.org/CityGML/3.0/cityfurniture", 
@@ -216,7 +222,6 @@ python update_graph.py $file $file \
 ### #3 inserts common:objprops refs into axioms
 
 echo 'inserts presence of global properties in axioms'
-echo $file
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -237,7 +242,7 @@ python update_graph.py $file $file \
 
 ### #4 deletes all objprops mentions in axioms that will be replaced with global scope ones
 echo 'deletes presence of global properties in axioms'
-echo $file
+
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -257,6 +262,53 @@ python update_graph.py $file $file \
                     "https://ogcblocks.org/CityGML/3.0/tunnel", "https://ogcblocks.org/CityGML/3.0/vegetation", 
                     "https://ogcblocks.org/CityGML/3.0/waterbody"))
      }'
+
+### added removal of ADE*/ade*
+### #5 deletes bnodes representing restrictions involving ade* objprops AND subclass axioms mentioning those bnodes
+
+echo 'deletes presence of ADE* classes and ade* properties'
+
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    delete { 
+	    ?x a owl:Restriction .
+        ?x owl:allValuesFrom ?adeclass .
+        ?x owl:onProperty ?adeprop .
+        ?s skos:definition ?def .
+        ?s rdfs:subClassOf ?x .
+        ?adeclass a owl:Class .
+        ?adeprop a owl:ObjectProperty .
+        ?adeprop rdfs:range ?adeclass .
+        ?adeclass rdfs:label ?labelc .
+        ?adeclass skos:definition ?defc.
+        ?adeprop rdfs:label ?labelp .
+        ?adeprop skos:definition ?defp.
+        ?adeclass iso19150-2:isAbstract true .
+        }
+    where {
+    select ?s ?x ?adeclass ?def ?adeprop ?labelc ?labelp ?defc ?defp
+    	where {
+    		?s a owl:Class .
+        	?s rdfs:subClassOf ?x .
+        	?s skos:definition ?def .
+			?x a owl:Restriction .
+    		?x owl:allValuesFrom ?adeclass .
+    		?x owl:onProperty ?adeprop .
+            ?adeclass a owl:Class .
+    		?adeprop a owl:ObjectProperty .
+    		?adeprop rdfs:range ?adeclass .
+            ?adeclass rdfs:label ?labelc .
+            ?adeclass skos:definition ?defc.
+            ?adeprop rdfs:label ?labelp .
+            ?adeprop skos:definition ?defp.
+            filter (strstarts(strafter(str(?adeprop), "#"), "ade") )
+        	filter (strstarts(strafter(str(?adeclass), "#"), "ADE") )
+    }
+}'
+
 done
 
 ### Copy remaining files ###
@@ -273,5 +325,7 @@ echo 'Copying CityOWL.ttl to output'
 cp ./additional-triples/CityOWL.ttl ./output
 echo 'Copying transactiontypevalues.ttl to output'
 cp ./additional-triples/transactiontypevalues.ttl ./output
+echo 'Copying common.ttl to output'
+cp ./additional-triples/common.ttl ./output
 
 read -p "Continue?"
