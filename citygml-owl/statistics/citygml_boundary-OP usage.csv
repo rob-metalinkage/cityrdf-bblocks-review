@@ -1,0 +1,10 @@
+classIndependentPropName,classThePropDepends,domainToInclude,rangeToInclude
+boundary,WaterBody,https://ogcblocks.org/CityGML/3.0/waterbody#WaterBody,https://ogcblocks.org/CityGML/3.0/waterbody#AbstractWaterBoundarySurface
+boundary,HollowSpace,https://ogcblocks.org/CityGML/3.0/tunnel#HollowSpace,https://ogcblocks.org/CityGML/3.0/core#AbstractThematicSurface
+boundary,AuxiliaryTrafficSpace,https://ogcblocks.org/CityGML/3.0/transportation#AuxiliaryTrafficSpace,https://ogcblocks.org/CityGML/3.0/transportation#AuxiliaryTrafficArea
+boundary,TrafficSpace,https://ogcblocks.org/CityGML/3.0/transportation#TrafficSpace,https://ogcblocks.org/CityGML/3.0/transportation#TrafficArea
+boundary,Door,https://ogcblocks.org/CityGML/3.0/construction#Door,https://ogcblocks.org/CityGML/3.0/construction#DoorSurface
+boundary,Window,https://ogcblocks.org/CityGML/3.0/construction#Window,https://ogcblocks.org/CityGML/3.0/construction#WindowSurface
+boundary,BuildingRoom,https://ogcblocks.org/CityGML/3.0/building#BuildingRoom,https://ogcblocks.org/CityGML/3.0/core#AbstractThematicSurface
+boundary,Storey,https://ogcblocks.org/CityGML/3.0/building#Storey,https://ogcblocks.org/CityGML/3.0/core#AbstractThematicSurface
+boundary,BridgeRoom,https://ogcblocks.org/CityGML/3.0/bridge#BridgeRoom,https://ogcblocks.org/CityGML/3.0/core#AbstractThematicSurface
