@@ -1,0 +1,82 @@
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix gencode: <https://www.opengis.net/ont/citygml/generics/code#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.opengis.net/ont/citygml/generics/code>
+        rdf:type  owl:Ontology .
+
+gencode:GenericOccupiedSpaceClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "GenericOccupiedSpaceClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/generics#GenericOccupiedSpaceClassValue>;
+        skos:definition  "GenericOccupiedSpaceClassValue is a code list used to further classify a GenericOccupiedSpace."@en .
+
+gencode:GenericLogicalSpaceUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "GenericLogicalSpaceUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/generics#GenericLogicalSpaceUsageValue>;
+        skos:definition  "GenericLogicalSpaceUsageValue is a code list that enumerates the different uses of a GenericLogicalSpace."@en .
+
+gencode:GenericThematicSurfaceUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "GenericThematicSurfaceUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/generics#GenericThematicSurfaceUsageValue>;
+        skos:definition  "GenericThematicSurfaceUsageValue is a code list that enumerates the different uses of a GenericThematicSurface."@en .
+
+gencode:GenericOccupiedSpaceFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "GenericOccupiedSpaceFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/generics#GenericOccupiedSpaceFunctionValue>;
+        skos:definition  "GenericOccupiedSpaceFunctionValue is a code list that enumerates the different purposes of a GenericOccupiedSpace."@en .
+
+gencode:GenericOccupiedSpaceUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "GenericOccupiedSpaceUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/generics#GenericOccupiedSpaceUsageValue>;
+        skos:definition  "GenericOccupiedSpaceUsageValue is a code list that enumerates the different uses of a GenericOccupiedSpace."@en .
+
+gencode:GenericLogicalSpaceClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "GenericLogicalSpaceClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/generics#GenericLogicalSpaceClassValue>;
+        skos:definition  "GenericLogicalSpaceClassValue is a code list used to further classify a GenericLogicalSpace."@en .
+
+gencode:GenericUnoccupiedSpaceClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "GenericUnoccupiedSpaceClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/generics#GenericUnoccupiedSpaceClassValue>;
+        skos:definition  "GenericUnoccupiedSpaceClassValue is a code list used to further classify a GenericUnoccupiedSpace."@en .
+
+gencode:GenericUnoccupiedSpaceFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "GenericUnoccupiedSpaceFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/generics#GenericUnoccupiedSpaceFunctionValue>;
+        skos:definition  "GenericUnoccupiedSpaceFunctionValue is a code list that enumerates the different purposes of a GenericUnoccupiedSpace."@en .
+
+gencode:GenericUnoccupiedSpaceUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "GenericUnoccupiedSpaceUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/generics#GenericUnoccupiedSpaceUsageValue>;
+        skos:definition  "GenericUnoccupiedSpaceUsageValue is a code list that enumerates the different uses of a GenericUnoccupiedSpace."@en .
+
+gencode:GenericThematicSurfaceFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "GenericThematicSurfaceFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/generics#GenericThematicSurfaceFunctionValue>;
+        skos:definition  "GenericThematicSurfaceFunctionValue is a code list that enumerates the different purposes of a GenericThematicSurface."@en .
+
+gencode:GenericLogicalSpaceFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "GenericLogicalSpaceFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/generics#GenericLogicalSpaceFunctionValue>;
+        skos:definition  "GenericLogicalSpaceFunctionValue is a code list that enumerates the different purposes of a GenericLogicalSpace."@en .
+
+gencode:GenericThematicSurfaceClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "GenericThematicSurfaceClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/generics#GenericThematicSurfaceClassValue>;
+        skos:definition  "GenericThematicSurfaceClassValue is a code list used to further classify a GenericThematicSurface."@en .

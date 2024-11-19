@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><ShapeChangeResult xmlns="http://www.interactive-instruments.de/ShapeChange/Result" xmlns:r="http://www.interactive-instruments.de/ShapeChange/Result" config="CityGML3.0_to_OWL_ontotext_config.xml" end="Wed Oct 30 17:35:43 EET 2024" resultCode="0" start="Wed Oct 30 17:35:39 EET 2024" version="3.1.1-SNAPSHOT">
+<?xml version="1.0" encoding="UTF-8"?><ShapeChangeResult xmlns="http://www.interactive-instruments.de/ShapeChange/Result" xmlns:r="http://www.interactive-instruments.de/ShapeChange/Result" config="CityGML3.0_to_OWL_ontotext_config.xml" end="Tue Nov 19 13:38:24 EET 2024" resultCode="0" start="Tue Nov 19 13:38:21 EET 2024" version="3.1.1-SNAPSHOT">
   <Messages>
     <ProcessFlowInfo message="---------- Semantic validation of ShapeChange configuration: START ----------"/>
     <ProcessFlowInfo message="--- Validating transformer with @id 'ACMAPPER' ..."/>
@@ -63,6 +63,10 @@
     <ProcessFlowInfo message="Application schema found, package name: 'Generics', target namespace: 'http://www.opengis.net/citygml/generics/3.0'"/>
     <ProcessFlowInfo message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'ACMAPPER'."/>
     <ProcessFlowInfo message="Application schema found, package name: 'Transportation', target namespace: 'http://www.opengis.net/citygml/transportation/3.0'"/>
+    <ProcessFlowInfo message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'ACMAPPER'."/>
+    <ProcessFlowInfo message="Application schema found, package name: 'Workspace', target namespace: 'https://dataset-dl.liris.cnrs.fr/rdf-owl-urban-data-ontologies/Ontologies/Workspace/3.0/workspace'"/>
+    <ProcessFlowInfo message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'ACMAPPER'."/>
+    <ProcessFlowInfo message="Application schema found, package name: 'Document', target namespace: 'https://dataset-dl.liris.cnrs.fr/rdf-owl-urban-data-ontologies/Ontologies/Document/3.0/document'"/>
     <ProcessFlowInfo message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'ACMAPPER'."/>
     <ProcessFlowInfo message="Application schema found, package name: 'CityFurniture', target namespace: 'http://www.opengis.net/citygml/cityfurniture/3.0'"/>
     <ProcessFlowInfo message="Now processing target 'ISO 19150-2 OWL Ontology' for input 'ACMAPPER'."/>
@@ -918,64 +922,43 @@
       <Detail message="--- Context - Property 1: Model::CityGML::Versioning::Transaction::type"/>
       <Detail message="--- Context - Property 2: Model::CityGML::Versioning::VersionTransition::type"/>
     </Warning>
-    <Error message="Type 'Workspace' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
-      <Detail message="--- Context - Class: Workspace::Workspace"/>
-    </Error>
-    <Error message="Could not identify a mapping for the subtype 'Workspace' of class 'AbstractFeatureWithLifespan'. Cannot create a disjoint classes axiom for this subtype.">
-      <Detail message="--- Context - Class: Model::CityGML::Core::AbstractFeatureWithLifespan"/>
-    </Error>
-    <Error message="Type 'Space' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
-      <Detail message="--- Context - Class: Workspace::Space"/>
-    </Error>
-    <Error message="Could not identify a mapping for the subtype 'Space' of class 'AbstractFeatureWithLifespan'. Cannot create a disjoint classes axiom for this subtype.">
-      <Detail message="--- Context - Class: Model::CityGML::Core::AbstractFeatureWithLifespan"/>
-    </Error>
-    <Error message="Type 'Scenario' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
-      <Detail message="--- Context - Class: Workspace::Scenario"/>
-    </Error>
-    <Error message="Could not identify a mapping for the subtype 'Scenario' of class 'AbstractFeatureWithLifespan'. Cannot create a disjoint classes axiom for this subtype.">
-      <Detail message="--- Context - Class: Model::CityGML::Core::AbstractFeatureWithLifespan"/>
-    </Error>
-    <Error message="Type 'Document' is not covered by an RdfTypeMapEntry and also not contained in one of the schemas selected for processing. Cannot map or create the class.">
-      <Detail message="--- Context - Class: Document::Document"/>
-    </Error>
-    <Error message="Could not identify a mapping for the subtype 'Document' of class 'AbstractFeatureWithLifespan'. Cannot create a disjoint classes axiom for this subtype.">
-      <Detail message="--- Context - Class: Model::CityGML::Core::AbstractFeatureWithLifespan"/>
-    </Error>
     <ProcessFlowInfo message="Executed target class 'de.interactive_instruments.ShapeChange.Target.Ontology.OWLISO19150' for input ID: 'ACMAPPER'.&#10;-------------------------------------------------"/>
     <ProcessFlowInfo message="Transformation with ID 'FLATTENER2' is disabled (via the configuration). All transformations and targets that depend on this transformation will not be executed."/>
     <ProcessFlowInfo message="Transformation with ID 'FLATTENER1' is disabled (via the configuration). All transformations and targets that depend on this transformation will not be executed."/>
   </Messages>
   <Results>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/appearance/appearance.ttl" scope="https://ogcblocks.org/CityGML/3.0/appearance" target="ISO 19150-2 OWL Ontology">appearance.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/bridge/bridge.ttl" scope="https://ogcblocks.org/CityGML/3.0/bridge" target="ISO 19150-2 OWL Ontology">bridge.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/bridge/bridge_codes.ttl" scope="https://ogcblocks.org/CityGML/3.0/bridge/code" target="ISO 19150-2 OWL Ontology">bridge_codes.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/building/building.ttl" scope="https://ogcblocks.org/CityGML/3.0/building" target="ISO 19150-2 OWL Ontology">building.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/building/building_codes.ttl" scope="https://ogcblocks.org/CityGML/3.0/building/code" target="ISO 19150-2 OWL Ontology">building_codes.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/cityfurniture/cityfurniture.ttl" scope="https://ogcblocks.org/CityGML/3.0/cityfurniture" target="ISO 19150-2 OWL Ontology">cityfurniture.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/cityfurniture/cityfurniture_codes.ttl" scope="https://ogcblocks.org/CityGML/3.0/cityfurniture/code" target="ISO 19150-2 OWL Ontology">cityfurniture_codes.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/cityobjectgroup/cityobjectgroup.ttl" scope="https://ogcblocks.org/CityGML/3.0/cityobjectgroup" target="ISO 19150-2 OWL Ontology">cityobjectgroup.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/cityobjectgroup/cityobjectgroup_codes.ttl" scope="https://ogcblocks.org/CityGML/3.0/cityobjectgroup/code" target="ISO 19150-2 OWL Ontology">cityobjectgroup_codes.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/construction/construction.ttl" scope="https://ogcblocks.org/CityGML/3.0/construction" target="ISO 19150-2 OWL Ontology">construction.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/construction/construction_codes.ttl" scope="https://ogcblocks.org/CityGML/3.0/construction/code" target="ISO 19150-2 OWL Ontology">construction_codes.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/core/core.ttl" scope="https://ogcblocks.org/CityGML/3.0/core" target="ISO 19150-2 OWL Ontology">core.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/core/core_codes.ttl" scope="https://ogcblocks.org/CityGML/3.0/core/code" target="ISO 19150-2 OWL Ontology">core_codes.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/dynamizer/dynamizer.ttl" scope="https://ogcblocks.org/CityGML/3.0/dynamizer" target="ISO 19150-2 OWL Ontology">dynamizer.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/dynamizer/dynamizer_codes.ttl" scope="https://ogcblocks.org/CityGML/3.0/dynamizer/code" target="ISO 19150-2 OWL Ontology">dynamizer_codes.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/generics/generics.ttl" scope="https://ogcblocks.org/CityGML/3.0/generics" target="ISO 19150-2 OWL Ontology">generics.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/generics/generics_codes.ttl" scope="https://ogcblocks.org/CityGML/3.0/generics/code" target="ISO 19150-2 OWL Ontology">generics_codes.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/landuse/landuse.ttl" scope="https://ogcblocks.org/CityGML/3.0/landuse" target="ISO 19150-2 OWL Ontology">landuse.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/landuse/landuse_codes.ttl" scope="https://ogcblocks.org/CityGML/3.0/landuse/code" target="ISO 19150-2 OWL Ontology">landuse_codes.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/pointcloud/pointcloud.ttl" scope="https://ogcblocks.org/CityGML/3.0/pointcloud" target="ISO 19150-2 OWL Ontology">pointcloud.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/relief/relief.ttl" scope="https://ogcblocks.org/CityGML/3.0/relief" target="ISO 19150-2 OWL Ontology">relief.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/transportation/transportation.ttl" scope="https://ogcblocks.org/CityGML/3.0/transportation" target="ISO 19150-2 OWL Ontology">transportation.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/transportation/transportation_codes.ttl" scope="https://ogcblocks.org/CityGML/3.0/transportation/code" target="ISO 19150-2 OWL Ontology">transportation_codes.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/tunnel/tunnel.ttl" scope="https://ogcblocks.org/CityGML/3.0/tunnel" target="ISO 19150-2 OWL Ontology">tunnel.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/tunnel/tunnel_codes.ttl" scope="https://ogcblocks.org/CityGML/3.0/tunnel/code" target="ISO 19150-2 OWL Ontology">tunnel_codes.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/vegetation/vegetation.ttl" scope="https://ogcblocks.org/CityGML/3.0/vegetation" target="ISO 19150-2 OWL Ontology">vegetation.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/vegetation/vegetation_codes.ttl" scope="https://ogcblocks.org/CityGML/3.0/vegetation/code" target="ISO 19150-2 OWL Ontology">vegetation_codes.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/versioning/versioning.ttl" scope="https://ogcblocks.org/CityGML/3.0/versioning" target="ISO 19150-2 OWL Ontology">versioning.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/waterbody/waterbody.ttl" scope="https://ogcblocks.org/CityGML/3.0/waterbody" target="ISO 19150-2 OWL Ontology">waterbody.ttl</Result>
-    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/waterbody/waterbody_codes.ttl" scope="https://ogcblocks.org/CityGML/3.0/waterbody/code" target="ISO 19150-2 OWL Ontology">waterbody_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/appearance/appearance.ttl" scope="https://www.opengis.net/ont/citygml/appearance" target="ISO 19150-2 OWL Ontology">appearance.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/bridge/bridge.ttl" scope="https://www.opengis.net/ont/citygml/bridge" target="ISO 19150-2 OWL Ontology">bridge.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/bridge/bridge_codes.ttl" scope="https://www.opengis.net/ont/citygml/bridge/code" target="ISO 19150-2 OWL Ontology">bridge_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/building/building.ttl" scope="https://www.opengis.net/ont/citygml/building" target="ISO 19150-2 OWL Ontology">building.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/building/building_codes.ttl" scope="https://www.opengis.net/ont/citygml/building/code" target="ISO 19150-2 OWL Ontology">building_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/cityfurniture/cityfurniture.ttl" scope="https://www.opengis.net/ont/citygml/cityfurniture" target="ISO 19150-2 OWL Ontology">cityfurniture.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/cityfurniture/cityfurniture_codes.ttl" scope="https://www.opengis.net/ont/citygml/cityfurniture/code" target="ISO 19150-2 OWL Ontology">cityfurniture_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/cityobjectgroup/cityobjectgroup.ttl" scope="https://www.opengis.net/ont/citygml/cityobjectgroup" target="ISO 19150-2 OWL Ontology">cityobjectgroup.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/cityobjectgroup/cityobjectgroup_codes.ttl" scope="https://www.opengis.net/ont/citygml/cityobjectgroup/code" target="ISO 19150-2 OWL Ontology">cityobjectgroup_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/construction/construction.ttl" scope="https://www.opengis.net/ont/citygml/construction" target="ISO 19150-2 OWL Ontology">construction.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/construction/construction_codes.ttl" scope="https://www.opengis.net/ont/citygml/construction/code" target="ISO 19150-2 OWL Ontology">construction_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/core/core.ttl" scope="https://www.opengis.net/ont/citygml/core" target="ISO 19150-2 OWL Ontology">core.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/core/core_codes.ttl" scope="https://www.opengis.net/ont/citygml/core/code" target="ISO 19150-2 OWL Ontology">core_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/document/document.ttl" scope="https://www.opengis.net/ont/citygml/document" target="ISO 19150-2 OWL Ontology">document.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/document/document_codes.ttl" scope="https://www.opengis.net/ont/citygml/document/code" target="ISO 19150-2 OWL Ontology">document_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/dynamizer/dynamizer.ttl" scope="https://www.opengis.net/ont/citygml/dynamizer" target="ISO 19150-2 OWL Ontology">dynamizer.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/dynamizer/dynamizer_codes.ttl" scope="https://www.opengis.net/ont/citygml/dynamizer/code" target="ISO 19150-2 OWL Ontology">dynamizer_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/generics/generics.ttl" scope="https://www.opengis.net/ont/citygml/generics" target="ISO 19150-2 OWL Ontology">generics.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/generics/generics_codes.ttl" scope="https://www.opengis.net/ont/citygml/generics/code" target="ISO 19150-2 OWL Ontology">generics_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/landuse/landuse.ttl" scope="https://www.opengis.net/ont/citygml/landuse" target="ISO 19150-2 OWL Ontology">landuse.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/landuse/landuse_codes.ttl" scope="https://www.opengis.net/ont/citygml/landuse/code" target="ISO 19150-2 OWL Ontology">landuse_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/pointcloud/pointcloud.ttl" scope="https://www.opengis.net/ont/citygml/pointcloud" target="ISO 19150-2 OWL Ontology">pointcloud.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/relief/relief.ttl" scope="https://www.opengis.net/ont/citygml/relief" target="ISO 19150-2 OWL Ontology">relief.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/transportation/transportation.ttl" scope="https://www.opengis.net/ont/citygml/transportation" target="ISO 19150-2 OWL Ontology">transportation.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/transportation/transportation_codes.ttl" scope="https://www.opengis.net/ont/citygml/transportation/code" target="ISO 19150-2 OWL Ontology">transportation_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/tunnel/tunnel.ttl" scope="https://www.opengis.net/ont/citygml/tunnel" target="ISO 19150-2 OWL Ontology">tunnel.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/tunnel/tunnel_codes.ttl" scope="https://www.opengis.net/ont/citygml/tunnel/code" target="ISO 19150-2 OWL Ontology">tunnel_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/vegetation/vegetation.ttl" scope="https://www.opengis.net/ont/citygml/vegetation" target="ISO 19150-2 OWL Ontology">vegetation.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/vegetation/vegetation_codes.ttl" scope="https://www.opengis.net/ont/citygml/vegetation/code" target="ISO 19150-2 OWL Ontology">vegetation_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/versioning/versioning.ttl" scope="https://www.opengis.net/ont/citygml/versioning" target="ISO 19150-2 OWL Ontology">versioning.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/waterbody/waterbody.ttl" scope="https://www.opengis.net/ont/citygml/waterbody" target="ISO 19150-2 OWL Ontology">waterbody.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/waterbody/waterbody_codes.ttl" scope="https://www.opengis.net/ont/citygml/waterbody/code" target="ISO 19150-2 OWL Ontology">waterbody_codes.ttl</Result>
+    <Result href="file:/home/nata/work/gml3/cityrdf/citygml-owl/./stage-1/ACMAPPER/workspace/workspace.ttl" scope="https://www.opengis.net/ont/citygml/workspace" target="ISO 19150-2 OWL Ontology">workspace.ttl</Result>
   </Results>
 </ShapeChangeResult>

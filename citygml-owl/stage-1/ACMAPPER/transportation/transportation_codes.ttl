@@ -1,0 +1,208 @@
+@prefix dct:      <http://purl.org/dc/terms/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix trancode: <https://www.opengis.net/ont/citygml/transportation/code#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.opengis.net/ont/citygml/transportation/code>
+        rdf:type  owl:Ontology .
+
+trancode:AuxiliaryTrafficAreaFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "AuxiliaryTrafficAreaFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#AuxiliaryTrafficAreaFunctionValue>;
+        skos:definition  "AuxiliaryTrafficAreaFunctionValue is a code list that enumerates the different purposes of an AuxiliaryTrafficArea."@en .
+
+trancode:SurfaceMaterialValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "SurfaceMaterialValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#SurfaceMaterialValue>;
+        skos:definition  "SurfaceMaterialValue is a code list that enumerates the different surface materials."@en .
+
+trancode:TrackClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TrackClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#TrackClassValue>;
+        skos:definition  "TrackClassValue is a code list used to further classify a Track."@en .
+
+trancode:RoadUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "RoadUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#RoadUsageValue>;
+        skos:definition  "RoadUsageValue is a code list that enumerates the different uses of a Road."@en .
+
+trancode:SquareClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "SquareClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#SquareClassValue>;
+        skos:definition  "SquareClassValue is a code list used to further classify a Square."@en .
+
+trancode:RailwayClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "RailwayClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#RailwayClassValue>;
+        skos:definition  "RailwayClassValue is a code list used to further classify a Railway."@en .
+
+trancode:TrafficSpaceClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TrafficSpaceClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#TrafficSpaceClassValue>;
+        skos:definition  "TrafficSpaceClassValue is a code list used to further classify a TrafficSpace."@en .
+
+trancode:TrafficSpaceFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TrafficSpaceFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#TrafficSpaceFunctionValue>;
+        skos:definition  "TrafficSpaceFunctionValue is a code list that enumerates the different purposes of a TrafficSpace."@en .
+
+trancode:ClearanceSpaceClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "ClearanceSpaceClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#ClearanceSpaceClassValue>;
+        skos:definition  "ClearanceSpaceClassValue is a code list used to further classify a ClearanceSpace."@en .
+
+trancode:AuxiliaryTrafficSpaceFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "AuxiliaryTrafficSpaceFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#AuxiliaryTrafficSpaceFunctionValue>;
+        skos:definition  "AuxiliaryTrafficSpaceFunctionValue is a code list that enumerates the different purposes of an AuxiliaryTrafficSpace."@en .
+
+trancode:WaterwayUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "WaterwayUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#WaterwayUsageValue>;
+        skos:definition  "WaterwayUsageValue is a code list that enumerates the different uses of a Waterway."@en .
+
+trancode:AuxiliaryTrafficAreaUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "AuxiliaryTrafficAreaUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#AuxiliaryTrafficAreaUsageValue>;
+        skos:definition  "AuxiliaryTrafficAreaUsageValue is a code list that enumerates the different uses of an AuxiliaryTrafficArea."@en .
+
+trancode:RoadFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "RoadFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#RoadFunctionValue>;
+        skos:definition  "RoadFunctionValue is a code list that enumerates the different purposes of a Road."@en .
+
+trancode:RoadClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "RoadClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#RoadClassValue>;
+        skos:definition  "RoadClassValue is a code list used to further classify a Road."@en .
+
+trancode:WaterwayFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "WaterwayFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#WaterwayFunctionValue>;
+        skos:definition  "WaterwayFunctionValue is a code list that enumerates the different purposes of a Waterway."@en .
+
+trancode:TrafficAreaUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TrafficAreaUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#TrafficAreaUsageValue>;
+        skos:definition  "TrafficAreaUsageValue is a code list that enumerates the different uses of a TrafficArea."@en .
+
+trancode:AuxiliaryTrafficSpaceClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "AuxiliaryTrafficSpaceClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#AuxiliaryTrafficSpaceClassValue>;
+        skos:definition  "AuxiliaryTrafficSpaceClassValue is a code list used to further classify an AuxiliaryTrafficSpace."@en .
+
+trancode:TrackUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TrackUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#TrackUsageValue>;
+        skos:definition  "TrackUsageValue is a code list that enumerates the different uses of a Track."@en .
+
+trancode:SquareFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "SquareFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#SquareFunctionValue>;
+        skos:definition  "SquareFunctionValue is a code list that enumerates the different purposes of a Square."@en .
+
+trancode:RailwayUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "RailwayUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#RailwayUsageValue>;
+        skos:definition  "RailwayUsageValue is a code list that enumerates the different uses of a Railway."@en .
+
+trancode:TrafficSpaceUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TrafficSpaceUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#TrafficSpaceUsageValue>;
+        skos:definition  "TrafficSpaceUsageValue is a code list that enumerates the different uses of a TrafficSpace."@en .
+
+trancode:TrafficAreaFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TrafficAreaFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#TrafficAreaFunctionValue>;
+        skos:definition  "TrafficAreaFunctionValue is a code list that enumerates the different purposes of a TrafficArea."@en .
+
+trancode:MarkingClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "MarkingClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#MarkingClassValue>;
+        skos:definition  "MarkingClassValue is a code list used to further classify a Marking."@en .
+
+trancode:TrackFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TrackFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#TrackFunctionValue>;
+        skos:definition  "TrackFunctionValue is a code list that enumerates the different purposes of a Track."@en .
+
+trancode:TrafficAreaClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TrafficAreaClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#TrafficAreaClassValue>;
+        skos:definition  "TrafficAreaClassValue is a code list used to further classify a TrafficArea."@en .
+
+trancode:AuxiliaryTrafficSpaceUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "AuxiliaryTrafficSpaceUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#AuxiliaryTrafficSpaceUsageValue>;
+        skos:definition  "AuxiliaryTrafficSpaceUsageValue is a code list that enumerates the different uses of an AuxiliaryTrafficSpace."@en .
+
+trancode:RailwayFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "RailwayFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#RailwayFunctionValue>;
+        skos:definition  "RailwayFunctionValue is a code list that enumerates the different purposes of a Railway."@en .
+
+trancode:SquareUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "SquareUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#SquareUsageValue>;
+        skos:definition  "SquareUsageValue is a code list that enumerates the different uses of a Square."@en .
+
+trancode:SectionClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "SectionClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#SectionClassValue>;
+        skos:definition  "SectionClassValue is a code list used to further classify a Section."@en .
+
+trancode:IntersectionClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "IntersectionClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#IntersectionClassValue>;
+        skos:definition  "IntersectionClassValue is a code list used to further classify an Intersection."@en .
+
+trancode:WaterwayClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "WaterwayClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#WaterwayClassValue>;
+        skos:definition  "WaterwayClassValue is a code list used to further classify a Waterway."@en .
+
+trancode:HoleClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "HoleClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#HoleClassValue>;
+        skos:definition  "HoleClassValue is a code list used to further classify a Hole."@en .
+
+trancode:AuxiliaryTrafficAreaClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "AuxiliaryTrafficAreaClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/transportation#AuxiliaryTrafficAreaClassValue>;
+        skos:definition  "AuxiliaryTrafficAreaClassValue is a code list used to further classify an AuxiliaryTrafficArea."@en .

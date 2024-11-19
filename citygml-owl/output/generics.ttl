@@ -1,38 +1,36 @@
-@prefix core: <https://ogcblocks.org/CityGML/3.0/core#> .
+@prefix core: <https://www.opengis.net/ont/citygml/core#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix gen: <https://ogcblocks.org/CityGML/3.0/generics#> .
-@prefix gencode: <https://ogcblocks.org/CityGML/3.0/generics/code#> .
+@prefix gen: <https://www.opengis.net/ont/citygml/generics#> .
+@prefix gencode: <https://www.opengis.net/ont/citygml/generics/code#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://ogcblocks.org/CityGML/3.0/generics> a owl:Ontology ;
+<https://www.opengis.net/ont/citygml/common#genericAttribute> a owl:ObjectProperty ;
+    skos:definition "Relates to the generic attributes that are part of the GenericAttributeSet."@en ;
+    schema:domainIncludes gen:GenericAttributeSet ;
+    schema:rangeIncludes core:AbstractGenericAttribute .
+
+<https://www.opengis.net/ont/citygml/common#name> rdfs:label "name"@en ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the name of the DoubleAttribute."@en .
+
+<https://www.opengis.net/ont/citygml/generics> a owl:Ontology ;
     rdfs:label "Generics"@en ;
     owl:imports <http://def.isotc211.org/iso19150/-2/2012/base>,
-        <https://ogcblocks.org/CityGML/3.0/core> ;
+        <https://www.opengis.net/ont/citygml/core> ;
     skos:definition "The Generics module supports application-specific extensions to the CityGML conceptual model. These extensions may be used to model and exchange additional attributes and features not covered by the predefined thematic classes of CityGML. Generic extensions shall only be used if appropriate thematic classes or attributes are not provided by any other CityGML module."@en .
-
-gen:ADEOfGenericLogicalSpace rdfs:label "ADEOfGenericLogicalSpace"@en ;
-    skos:definition "ADEOfGenericLogicalSpace acts as a hook to define properties within an ADE that are to be added to a GenericLogicalSpace."@en .
-
-gen:ADEOfGenericOccupiedSpace rdfs:label "ADEOfGenericOccupiedSpace"@en ;
-    skos:definition "ADEOfGenericOccupiedSpace acts as a hook to define properties within an ADE that are to be added to a GenericOccupiedSpace."@en .
-
-gen:ADEOfGenericThematicSurface rdfs:label "ADEOfGenericThematicSurface"@en ;
-    skos:definition "ADEOfGenericThematicSurface acts as a hook to define properties within an ADE that are to be added to a GenericThematicSurface."@en .
-
-gen:ADEOfGenericUnoccupiedSpace rdfs:label "ADEOfGenericUnoccupiedSpace"@en ;
-    skos:definition "ADEOfGenericUnoccupiedSpace acts as a hook to define properties within an ADE that are to be added to a GenericUnoccupiedSpace."@en .
 
 gen:CodeAttribute a owl:Class ;
     rdfs:label "CodeAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -48,10 +46,10 @@ gen:DateAttribute a owl:Class ;
     rdfs:label "DateAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -66,11 +64,8 @@ gen:DateAttribute a owl:Class ;
 gen:DoubleAttribute a owl:Class ;
     rdfs:label "DoubleAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:double ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -79,6 +74,9 @@ gen:DoubleAttribute a owl:Class ;
             owl:onDataRange xsd:string ;
             owl:onProperty gen:name ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ],
         core:AbstractGenericAttribute ;
     skos:definition "DoubleAttribute is a data type used to define generic attributes of type \"Double\"."@en .
 
@@ -86,78 +84,78 @@ gen:GenericLogicalSpace a owl:Class ;
     rdfs:label "GenericLogicalSpace"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceUsageValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceFunctionValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         core:AbstractLogicalSpace .
 
 gen:GenericOccupiedSpace a owl:Class ;
     rdfs:label "GenericOccupiedSpace"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceUsageValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceFunctionValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         core:AbstractOccupiedSpace .
 
 gen:GenericThematicSurface a owl:Class ;
     rdfs:label "GenericThematicSurface"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceUsageValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceFunctionValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         core:AbstractThematicSurface .
 
 gen:GenericUnoccupiedSpace a owl:Class ;
     rdfs:label "GenericUnoccupiedSpace"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceUsageValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#usage> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceFunctionValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#function> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gen:GenericUnoccupiedSpaceClassValue ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#class> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         core:AbstractUnoccupiedSpace .
 
 gen:IntAttribute a owl:Class ;
     rdfs:label "IntAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -173,10 +171,10 @@ gen:MeasureAttribute a owl:Class ;
     rdfs:label "MeasureAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -192,10 +190,10 @@ gen:StringAttribute a owl:Class ;
     rdfs:label "StringAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -211,10 +209,10 @@ gen:UriAttribute a owl:Class ;
     rdfs:label "UriAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
-            owl:onProperty <https://ogcblocks.org/CityGML/3.0/common#value> ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -226,7 +224,12 @@ gen:UriAttribute a owl:Class ;
         core:AbstractGenericAttribute ;
     skos:definition "UriAttribute is a data type used to define generic attributes of type \"URI\"."@en .
 
-<https://ogcblocks.org/CityGML/3.0/generics/code> a owl:Ontology .
+gen:value a owl:DatatypeProperty ;
+    rdfs:label "value"@en ;
+    rdfs:range xsd:double ;
+    skos:definition "Specifies the \"Double\" value."@en .
+
+<https://www.opengis.net/ont/citygml/generics/code> a owl:Ontology .
 
 gencode:GenericLogicalSpaceClassValue a skos:ConceptScheme ;
     rdfs:label "GenericLogicalSpaceClassValue"@en ;
@@ -291,26 +294,26 @@ gencode:GenericUnoccupiedSpaceUsageValue a skos:ConceptScheme ;
 gen:GenericAttributeSet a owl:Class ;
     rdfs:label "GenericAttributeSet"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty gen:name ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:AbstractGenericAttribute ;
+            owl:onProperty gen:GenericAttributeSet.genericAttribute ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:anyURI ;
             owl:onProperty gen:codeSpace ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty gen:name ],
-        [ a owl:Restriction ;
             owl:allValuesFrom core:AbstractGenericAttribute ;
             owl:onProperty gen:GenericAttributeSet.genericAttribute ],
         [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty gen:name ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty gen:name ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:anyURI ;
             owl:onProperty gen:codeSpace ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:AbstractGenericAttribute ;
-            owl:onProperty gen:GenericAttributeSet.genericAttribute ],
         core:AbstractGenericAttribute ;
     skos:definition "A GenericAttributeSet is a named collection of generic attributes."@en .
 
@@ -359,20 +362,20 @@ gen:GenericThematicSurfaceUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "GenericThematicSurfaceUsageValue is a code list that enumerates the different uses of a GenericThematicSurface."@en .
 
-gen:GenericAttributeSet.genericAttribute a owl:ObjectProperty ;
-    rdfs:label "genericAttribute"@en ;
-    rdfs:domain gen:GenericAttributeSet ;
-    rdfs:range core:AbstractGenericAttribute ;
-    skos:definition "Relates to the generic attributes that are part of the GenericAttributeSet."@en .
+gen:GenericAttributeSet.genericAttribute skos:definition "Relates to the generic attributes that are part of the GenericAttributeSet."@en .
 
 gen:codeSpace a owl:DatatypeProperty ;
     rdfs:label "codeSpace"@en ;
     rdfs:range xsd:anyURI ;
     skos:definition "Associates the GenericAttributeSet with an authority that maintains the collection of generic attributes."@en .
 
-<https://ogcblocks.org/CityGML/3.0/common#function> rdfs:range gen:GenericUnoccupiedSpaceFunctionValue .
+<https://www.opengis.net/ont/citygml/common#function> rdfs:label "function"@en ;
+    rdfs:range gen:GenericUnoccupiedSpaceFunctionValue ;
+    skos:definition "Specifies the intended purposes of the GenericUnoccupiedSpace."@en .
 
-<https://ogcblocks.org/CityGML/3.0/common#usage> rdfs:range gen:GenericUnoccupiedSpaceUsageValue .
+<https://www.opengis.net/ont/citygml/common#usage> rdfs:label "usage"@en ;
+    rdfs:range gen:GenericUnoccupiedSpaceUsageValue ;
+    skos:definition "Specifies the actual uses of the GenericUnoccupiedSpace."@en .
 
 gen:GenericUnoccupiedSpaceFunctionValue a owl:Class ;
     rdfs:label "GenericUnoccupiedSpaceFunctionValue"@en ;
@@ -384,17 +387,12 @@ gen:GenericUnoccupiedSpaceUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "GenericUnoccupiedSpaceUsageValue is a code list that enumerates the different uses of a GenericUnoccupiedSpace."@en .
 
-<https://ogcblocks.org/CityGML/3.0/common#class> rdfs:range gen:GenericUnoccupiedSpaceClassValue .
+<https://www.opengis.net/ont/citygml/common#class> rdfs:label "class"@en ;
+    rdfs:range gen:GenericUnoccupiedSpaceClassValue ;
+    skos:definition "Indicates the specific type of the GenericUnoccupiedSpace."@en .
 
 gen:GenericUnoccupiedSpaceClassValue a owl:Class ;
     rdfs:label "GenericUnoccupiedSpaceClassValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "GenericUnoccupiedSpaceClassValue is a code list used to further classify a GenericUnoccupiedSpace."@en .
-
-<https://ogcblocks.org/CityGML/3.0/common#value> rdfs:range xsd:double .
-
-gen:name a owl:DatatypeProperty ;
-    rdfs:label "name"@en ;
-    rdfs:range xsd:string ;
-    skos:definition "Specifies the name of the DoubleAttribute."@en .
 

@@ -1,0 +1,100 @@
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix tuncode: <https://www.opengis.net/ont/citygml/tunnel/code#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+tuncode:TunnelFurnitureClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TunnelFurnitureClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#TunnelFurnitureClassValue>;
+        skos:definition  "TunnelFurnitureClassValue is a code list used to further classify a TunnelFurniture."@en .
+
+tuncode:TunnelClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TunnelClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#TunnelClassValue>;
+        skos:definition  "TunnelClassValue is a code list used to further classify a Tunnel."@en .
+
+tuncode:TunnelInstallationClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TunnelInstallationClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#TunnelInstallationClassValue>;
+        skos:definition  "TunnelInstallationClassValue is a code list used to further classify a TunnelInstallation."@en .
+
+tuncode:TunnelFurnitureFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TunnelFurnitureFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#TunnelFurnitureFunctionValue>;
+        skos:definition  "TunnelFurnitureFunctionValue is a code list that enumerates the different purposes of a TunnelFurniture."@en .
+
+tuncode:TunnelConstructiveElementUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TunnelConstructiveElementUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#TunnelConstructiveElementUsageValue>;
+        skos:definition  "TunnelConstructiveElementUsageValue is a code list that enumerates the different uses of a TunnelConstructiveElement."@en .
+
+tuncode:TunnelConstructiveElementFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TunnelConstructiveElementFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#TunnelConstructiveElementFunctionValue>;
+        skos:definition  "TunnelConstructiveElementFunctionValue is a code list that enumerates the different purposes of a TunnelConstructiveElement."@en .
+
+tuncode:TunnelUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TunnelUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#TunnelUsageValue>;
+        skos:definition  "TunnelUsageValue is a code list that enumerates the different uses of a Tunnel."@en .
+
+tuncode:TunnelInstallationUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TunnelInstallationUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#TunnelInstallationUsageValue>;
+        skos:definition  "TunnelInstallationUsageValue is a code list that enumerates the different uses of a TunnelInstallation."@en .
+
+tuncode:TunnelFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TunnelFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#TunnelFunctionValue>;
+        skos:definition  "TunnelFunctionValue is a code list that enumerates the different purposes of a Tunnel."@en .
+
+tuncode:TunnelInstallationFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TunnelInstallationFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#TunnelInstallationFunctionValue>;
+        skos:definition  "TunnelInstallationFunctionValue is a code list that enumerates the different purposes of a TunnelInstallation."@en .
+
+tuncode:HollowSpaceClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "HollowSpaceClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#HollowSpaceClassValue>;
+        skos:definition  "HollowSpaceClassValue is a code list used to further classify a HollowSpace."@en .
+
+<https://www.opengis.net/ont/citygml/tunnel/code>
+        rdf:type  owl:Ontology .
+
+tuncode:TunnelFurnitureUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TunnelFurnitureUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#TunnelFurnitureUsageValue>;
+        skos:definition  "TunnelFurnitureUsageValue is a code list that enumerates the different uses of a TunnelFurniture."@en .
+
+tuncode:HollowSpaceFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "HollowSpaceFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#HollowSpaceFunctionValue>;
+        skos:definition  "HollowSpaceFunctionValue is a code list that enumerates the different purposes of a HollowSpace."@en .
+
+tuncode:HollowSpaceUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "HollowSpaceUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#HollowSpaceUsageValue>;
+        skos:definition  "HollowSpaceUsageValue is a code list that enumerates the different uses of a HollowSpace."@en .
+
+tuncode:TunnelConstructiveElementClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "TunnelConstructiveElementClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/tunnel#TunnelConstructiveElementClassValue>;
+        skos:definition  "TunnelConstructiveElementClassValue is a code list used to further classify a TunnelConstructiveElement."@en .

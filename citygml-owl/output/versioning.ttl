@@ -1,18 +1,21 @@
-@prefix core: <https://ogcblocks.org/CityGML/3.0/core#> .
-@prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
+@prefix core: <https://www.opengis.net/ont/citygml/core#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix vers: <https://ogcblocks.org/CityGML/3.0/versioning#> .
+@prefix vers: <https://www.opengis.net/ont/citygml/versioning#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://ogcblocks.org/CityGML/3.0/building#RoomHeight.status> a owl:DatatypeProperty .
+<https://www.opengis.net/ont/citygml/common#versionMember> a owl:ObjectProperty ;
+    skos:definition "Relates to all city objects that are part of the city model version."@en ;
+    schema:domainIncludes vers:Version ;
+    schema:rangeIncludes core:AbstractFeatureWithLifespan .
 
-<https://ogcblocks.org/CityGML/3.0/versioning> a owl:Ontology ;
+<https://www.opengis.net/ont/citygml/versioning> a owl:Ontology ;
     rdfs:label "Versioning"@en ;
     owl:imports <http://def.isotc211.org/iso19150/-2/2012/base>,
-        <https://ogcblocks.org/CityGML/3.0/core> ;
+        <https://www.opengis.net/ont/citygml/core> ;
     skos:definition "The Versioning module supports representation of multiple versions of CityGML features within a single CityGML model. In addition, also the version transitions and transactions that lead to the different versions can be represented."@en .
 
 vers:TransactionTypeValue a owl:Class ;
@@ -22,11 +25,7 @@ vers:TransactionTypeValue a owl:Class ;
             owl:oneOf ( "insert" "delete" "replace" ) ] ;
     skos:definition "TransactionTypeValue enumerates the three possible types of transactions: insert, delete, or replace."@en .
 
-vers:Version.versionMember a owl:ObjectProperty ;
-    rdfs:label "versionMember"@en ;
-    rdfs:domain vers:Version ;
-    rdfs:range core:AbstractFeatureWithLifespan ;
-    skos:definition "Relates to all city objects that are part of the city model version."@en .
+vers:Version.versionMember skos:definition "Relates to all city objects that are part of the city model version."@en .
 
 vers:VersionTransition.transaction a owl:ObjectProperty ;
     rdfs:label "transaction"@en ;
@@ -34,30 +33,10 @@ vers:VersionTransition.transaction a owl:ObjectProperty ;
     rdfs:range vers:Transaction ;
     skos:definition "Relates to all transactions that have been applied as part of the VersionTransition."@en .
 
-vers:adeOfVersion a owl:ObjectProperty ;
-    rdfs:label "adeOfVersion"@en ;
-    rdfs:range vers:ADEOfVersion ;
-    skos:definition "Augments the Version with properties defined in an ADE."@en .
-
-vers:adeOfVersionTransition a owl:ObjectProperty ;
-    rdfs:label "adeOfVersionTransition"@en ;
-    rdfs:range vers:ADEOfVersionTransition ;
-    skos:definition "Augments the VersionTransition with properties defined in an ADE."@en .
-
 vers:tag a owl:DatatypeProperty ;
     rdfs:label "tag"@en ;
     rdfs:range xsd:string ;
     skos:definition "Allows for adding keywords to the city model version."@en .
-
-vers:ADEOfVersion a owl:Class ;
-    rdfs:label "ADEOfVersion"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfVersion acts as a hook to define properties within an ADE that are to be added to a Version."@en .
-
-vers:ADEOfVersionTransition a owl:Class ;
-    rdfs:label "ADEOfVersionTransition"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfVersionTransition acts as a hook to define properties within an ADE that are to be added to a VersionTransition."@en .
 
 vers:Transaction.newFeature a owl:ObjectProperty ;
     rdfs:label "newFeature"@en ;
@@ -96,48 +75,44 @@ vers:reason a owl:DatatypeProperty ;
 vers:VersionTransition a owl:Class ;
     rdfs:label "VersionTransition"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty vers:reason ],
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty vers:clonePredecessor ],
         [ a owl:Restriction ;
             owl:allValuesFrom vers:Version ;
-            owl:onProperty vers:VersionTransition.from ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass vers:Version ;
             owl:onProperty vers:VersionTransition.to ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass vers:Version ;
-            owl:onProperty vers:VersionTransition.from ],
         [ a owl:Restriction ;
             owl:allValuesFrom vers:TransitionTypeValue ;
             owl:onProperty vers:type ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty vers:clonePredecessor ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange vers:TransitionTypeValue ;
             owl:onProperty vers:type ],
         [ a owl:Restriction ;
-            owl:allValuesFrom vers:ADEOfVersionTransition ;
-            owl:onProperty vers:adeOfVersionTransition ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass vers:Version ;
+            owl:onProperty vers:VersionTransition.to ],
         [ a owl:Restriction ;
             owl:allValuesFrom vers:Version ;
-            owl:onProperty vers:VersionTransition.to ],
+            owl:onProperty vers:VersionTransition.from ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass vers:Version ;
+            owl:onProperty vers:VersionTransition.from ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty vers:reason ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty vers:clonePredecessor ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty vers:reason ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:boolean ;
-            owl:onProperty vers:clonePredecessor ],
-        [ a owl:Restriction ;
             owl:allValuesFrom vers:Transaction ;
             owl:onProperty vers:VersionTransition.transaction ],
-        core:AbstractVersionTransition ;
-    skos:definition "VersionTransition describes the change of the state of a city model from one version to another. Version transitions can have names, a description and can be further qualified by a type and a reason."@en .
+        core:AbstractVersionTransition .
 
 vers:Transaction a owl:Class ;
     rdfs:label "Transaction"@en ;
@@ -178,14 +153,10 @@ vers:TransitionTypeValue a rdfs:Datatype ;
 vers:Version a owl:Class ;
     rdfs:label "Version"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom vers:ADEOfVersion ;
-            owl:onProperty vers:adeOfVersion ],
-        [ a owl:Restriction ;
             owl:allValuesFrom core:AbstractFeatureWithLifespan ;
             owl:onProperty vers:Version.versionMember ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty vers:tag ],
-        core:AbstractVersion ;
-    skos:definition "Version represents a defined state of a city model consisting of the dedicated versions of all city object instances that belong to the respective city model version. Versions can have names, a description and can be labeled with an arbitrary number of user defined tags."@en .
+        core:AbstractVersion .
 

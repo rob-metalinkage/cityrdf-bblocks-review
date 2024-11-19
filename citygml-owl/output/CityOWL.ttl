@@ -1,20 +1,20 @@
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 
-<https://ogcblocks.org/CityOWL> a owl:Ontology ;
-    owl:imports <https://ogcblocks.org/appearance>,
-        <https://ogcblocks.org/bridge>,
-        <https://ogcblocks.org/building>,
-        <https://ogcblocks.org/pointcloud>,
-        <https://ogcblocks.org/cityfurniture>,
-        <https://ogcblocks.org/cityobjectgroup>,
-        <https://ogcblocks.org/construction>,
-        <https://ogcblocks.org/core>,
-        <https://ogcblocks.org/dynamizer>,
-        <https://ogcblocks.org/generics>,
-        <https://ogcblocks.org/landuse>,
-        <https://ogcblocks.org/relief>,
-        <https://ogcblocks.org/transportation>,
-        <https://ogcblocks.org/tunnel>,
-        <https://ogcblocks.org/vegetation>,
-        <https://ogcblocks.org/versioning>,
-        <https://ogcblocks.org/waterbody> .
+<https://www.opengis.net/ont/citygml/CityOWL> a owl:Ontology ;
+    owl:imports <https://www.opengis.net/ont/citygml/appearance>,
+        <https://www.opengis.net/ont/citygml/bridge>,
+        <https://www.opengis.net/ont/citygml/building>,
+        <https://www.opengis.net/ont/citygml/pointcloud>,
+        <https://www.opengis.net/ont/citygml/cityfurniture>,
+        <https://www.opengis.net/ont/citygml/cityobjectgroup>,
+        <https://www.opengis.net/ont/citygml/construction>,
+        <https://www.opengis.net/ont/citygml/core>,
+        <https://www.opengis.net/ont/citygml/dynamizer>,
+        <https://www.opengis.net/ont/citygml/generics>,
+        <https://www.opengis.net/ont/citygml/landuse>,
+        <https://www.opengis.net/ont/citygml/relief>,
+        <https://www.opengis.net/ont/citygml/transportation>,
+        <https://www.opengis.net/ont/citygml/tunnel>,
+        <https://www.opengis.net/ont/citygml/vegetation>,
+        <https://www.opengis.net/ont/citygml/versioning>,
+        <https://www.opengis.net/ont/citygml/waterbody> .

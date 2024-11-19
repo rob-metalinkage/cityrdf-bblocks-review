@@ -1,15 +1,15 @@
-@prefix core: <https://ogcblocks.org/CityGML/3.0/#> .
-@prefix grp: <https://ogcblocks.org/cityobjectgroup#> .
+@prefix core: <https://www.opengis.net/ont/citygml/core#> .
+@prefix grp: <https://www.opengis.net/ont/citygml/cityobjectgroup#> .
 @prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://ogcblocks.org/cityobjectgroup> a owl:Ontology ;
+<https://www.opengis.net/ont/citygml/cityobjectgroup> a owl:Ontology ;
     rdfs:label "CityObjectGroup"@en ;
     owl:imports <http://def.isotc211.org/iso19150/-2/2012/base>,
-        <https://ogcblocks.org/core> ;
+        <https://www.opengis.net/ont/citygml/core> ;
     skos:definition "The CityObjectGroup module supports grouping of city objects. Arbitrary city objects may be aggregated in groups according to user-defined criteria. A group may be further classified by application-specific attributes."@en .
 
 grp:CityObjectGroup.adeOfCityObjectGroup a owl:ObjectProperty ;

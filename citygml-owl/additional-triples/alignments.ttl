@@ -4,7 +4,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix geo:  <http://www.opengis.net/ont/geosparql#> .
 @prefix time: <http://www.w3.org/2006/time#> .
-@prefix core: <https://ogcblocks.org/CityGML/3.0/#> .
+@prefix core: <https://www.opengis.net/ont/citygml/core#> .
 
 # GeoSPARQL alignments
 core:AbstractSpace.lod0MultiCurve rdfs:subPropertyOf geo:hasGeometry .

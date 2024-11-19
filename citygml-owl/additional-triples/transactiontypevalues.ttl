@@ -1,13 +1,13 @@
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vers:  <https://ogcblocks.org/versioning#> .
-@prefix type:  <https://ogcblocks.org/type#> .
+@prefix vers:  <https://www.opengis.net/ont/citygml/versioning#> .
+@prefix type:  <https://www.opengis.net/ont/citygml/type#> .
 
-<https://ogcblocks.org/type> a owl:Ontology ;
+<https://www.opengis.net/ont/citygml/type> a owl:Ontology ;
     rdfs:label "Type"@en ;
     owl:imports <http://www.w3.org/2004/02/skos/core>,
-        <https://ogcblocks.org/versioning>
+        <https://www.opengis.net/ont/citygml/versioning>;
     skos:definition "An ontology containing the default values, schemes, and collections for the CityGML 3.0 transactionType concept."@en .
 
 
