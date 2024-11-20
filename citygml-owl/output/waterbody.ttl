@@ -14,25 +14,10 @@
         <https://www.opengis.net/ont/citygml/core> ;
     skos:definition "The WaterBody module supports representation of the thematic aspects and 3D geometry of rivers, canals, lakes, and basins. It does, however, not inherit any hydrological or other dynamic aspects of fluid flow."@en .
 
-wtr:WaterBody a owl:Class ;
-    rdfs:label "WaterBody"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom wtr:AbstractWaterBoundarySurface ;
-            owl:onProperty wtr:WaterBody.boundary ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom wtr:WaterBodyFunctionValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom wtr:WaterBodyClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass wtr:WaterBodyClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom wtr:WaterBodyUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
-        core:AbstractOccupiedSpace .
+wtr:WaterBody.boundary a owl:ObjectProperty ;
+    rdfs:label "boundary"@en ;
+    rdfs:domain wtr:WaterBody ;
+    rdfs:range wtr:AbstractWaterBoundarySurface .
 
 wtr:WaterGroundSurface a owl:Class ;
     rdfs:label "WaterGroundSurface"@en ;
@@ -69,6 +54,26 @@ wtrcode:WaterLevelValue a skos:ConceptScheme ;
     rdfs:range wtr:WaterBodyUsageValue ;
     skos:definition "Specifies the actual uses of the WaterBody."@en .
 
+wtr:WaterBody a owl:Class ;
+    rdfs:label "WaterBody"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom wtr:WaterBodyUsageValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom wtr:AbstractWaterBoundarySurface ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#boundary> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom wtr:WaterBodyFunctionValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass wtr:WaterBodyClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom wtr:WaterBodyClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+        core:AbstractOccupiedSpace .
+
 wtr:WaterSurface a owl:Class ;
     rdfs:label "WaterSurface"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -89,11 +94,6 @@ wtr:waterLevel a owl:ObjectProperty ;
     rdfs:range wtr:WaterLevelValue ;
     skos:definition "Specifies the level of the WaterSurface."@en .
 
-wtr:AbstractWaterBoundarySurface a owl:Class ;
-    rdfs:label "AbstractWaterBoundarySurface"@en ;
-    iso19150-2:isAbstract true ;
-    rdfs:subClassOf core:AbstractThematicSurface .
-
 wtr:WaterBodyFunctionValue a owl:Class ;
     rdfs:label "WaterBodyFunctionValue"@en ;
     rdfs:subClassOf skos:Concept ;
@@ -103,6 +103,11 @@ wtr:WaterBodyUsageValue a owl:Class ;
     rdfs:label "WaterBodyUsageValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "WaterBodyUsageValue is a code list that enumerates the different uses of a WaterBody."@en .
+
+wtr:AbstractWaterBoundarySurface a owl:Class ;
+    rdfs:label "AbstractWaterBoundarySurface"@en ;
+    iso19150-2:isAbstract true ;
+    rdfs:subClassOf core:AbstractThematicSurface .
 
 wtr:WaterBodyClassValue a owl:Class ;
     rdfs:label "WaterBodyClassValue"@en ;

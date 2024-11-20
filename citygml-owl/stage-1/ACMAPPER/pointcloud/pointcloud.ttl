@@ -26,17 +26,8 @@ pcl:PointCloud  rdf:type  owl:Class;
                            owl:onProperty     pcl:mimeType
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     pcl:pointFileSrsName
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  pcl:ADEOfPointCloud;
                            owl:onProperty     pcl:adeOfPointCloud
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:string;
-                           owl:onProperty               pcl:pointFileSrsName
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -44,13 +35,18 @@ pcl:PointCloud  rdf:type  owl:Class;
                            owl:onProperty               pcl:mimeType
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:anyURI;
-                           owl:onProperty     pcl:pointFile
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     pcl:pointFileSrsName
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:anyURI;
-                           owl:onProperty               pcl:pointFile
+                           owl:onClass                  gmlowl:MultiPoint;
+                           owl:onProperty               pcl:PointCloud.points
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  xsd:string;
+                           owl:onProperty               pcl:pointFileSrsName
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  gmlowl:MultiPoint;
@@ -58,8 +54,12 @@ pcl:PointCloud  rdf:type  owl:Class;
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  gmlowl:MultiPoint;
-                           owl:onProperty               pcl:PointCloud.points
+                           owl:onClass                  xsd:anyURI;
+                           owl:onProperty               pcl:pointFile
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:anyURI;
+                           owl:onProperty     pcl:pointFile
                          ];
         skos:definition  "A PointCloud is an unordered collection of points that is a sampling of the geometry of a space or space boundary."@en .
 

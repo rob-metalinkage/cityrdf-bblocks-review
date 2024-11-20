@@ -94,41 +94,11 @@ bridcode:BridgeUsageValue a skos:ConceptScheme ;
     dct:isFormatOf brid:BridgeUsageValue ;
     skos:definition "BridgeUsageValue is a code list that enumerates the different uses of a Bridge."@en .
 
-<https://www.opengis.net/ont/citygml/common#address> a owl:ObjectProperty ;
-    skos:definition "Relates the addresses to the Bridge or BridgePart."@en ;
-    schema:domainIncludes brid:AbstractBridge ;
-    schema:rangeIncludes core:Address .
-
-<https://www.opengis.net/ont/citygml/common#boundary> a owl:ObjectProperty ;
-    skos:definition "Relates to the surfaces that bound the BridgeRoom. This relation is inherited from the Core module."@en ;
-    schema:domainIncludes brid:BridgeRoom ;
-    schema:rangeIncludes core:AbstractThematicSurface .
-
-<https://www.opengis.net/ont/citygml/common#bridgeFurniture> a owl:ObjectProperty ;
-    skos:definition "Relates the furniture objects to the Bridge or BridgePart."@en,
-        "Relates the furniture objects to the BridgeRoom."@en ;
-    schema:domainIncludes brid:AbstractBridge,
-        brid:BridgeRoom ;
-    schema:rangeIncludes brid:BridgeFurniture .
-
-<https://www.opengis.net/ont/citygml/common#bridgeInstallation> a owl:ObjectProperty ;
-    skos:definition "Relates the installation objects to the Bridge or BridgePart."@en,
-        "Relates to the installation objects to the BridgeRoom."@en ;
-    schema:domainIncludes brid:AbstractBridge,
-        brid:BridgeRoom ;
-    schema:rangeIncludes brid:BridgeInstallation .
-
-brid:AbstractBridge.address skos:definition "Relates the addresses to the Bridge or BridgePart."@en .
-
 brid:AbstractBridge.bridgeConstructiveElement a owl:ObjectProperty ;
     rdfs:label "bridgeConstructiveElement"@en ;
     rdfs:domain brid:AbstractBridge ;
     rdfs:range brid:BridgeConstructiveElement ;
     skos:definition "Relates the constructive elements to the Bridge or BridgePart."@en .
-
-brid:AbstractBridge.bridgeFurniture skos:definition "Relates the furniture objects to the Bridge or BridgePart."@en .
-
-brid:AbstractBridge.bridgeInstallation skos:definition "Relates the installation objects to the Bridge or BridgePart."@en .
 
 brid:AbstractBridge.bridgeRoom a owl:ObjectProperty ;
     rdfs:label "bridgeRoom"@en ;
@@ -190,12 +160,6 @@ brid:BridgeInstallationUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "BridgeInstallationUsageValue is a code list that enumerates the different uses of a BridgeInstallation."@en .
 
-brid:BridgeRoom.boundary skos:definition "Relates to the surfaces that bound the BridgeRoom. This relation is inherited from the Core module."@en .
-
-brid:BridgeRoom.bridgeFurniture skos:definition "Relates the furniture objects to the BridgeRoom."@en .
-
-brid:BridgeRoom.bridgeInstallation skos:definition "Relates to the installation objects to the BridgeRoom."@en .
-
 brid:BridgeRoomClassValue a owl:Class ;
     rdfs:label "BridgeRoomClassValue"@en ;
     rdfs:subClassOf skos:Concept ;
@@ -215,6 +179,14 @@ brid:BridgeUsageValue a owl:Class ;
     rdfs:label "BridgeUsageValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "BridgeUsageValue is a code list that enumerates the different uses of a Bridge."@en .
+
+<https://www.opengis.net/ont/citygml/common#address> skos:definition "Relates the addresses to the Bridge or BridgePart."@en ;
+    schema:domainIncludes brid:AbstractBridge ;
+    schema:rangeIncludes core:Address .
+
+<https://www.opengis.net/ont/citygml/common#boundary> skos:definition "Relates to the surfaces that bound the BridgeRoom. This relation is inherited from the Core module."@en ;
+    schema:domainIncludes brid:BridgeRoom ;
+    schema:rangeIncludes core:AbstractThematicSurface .
 
 brid:BridgeConstructiveElement a owl:Class ;
     rdfs:label "BridgeConstructiveElement"@en ;
@@ -238,21 +210,33 @@ brid:isMovable a owl:DatatypeProperty ;
     rdfs:range xsd:boolean ;
     skos:definition "Indicates whether the Bridge or BridgePart can be moved to allow for watercraft to pass."@en .
 
+<https://www.opengis.net/ont/citygml/common#bridgeFurniture> skos:definition "Relates the furniture objects to the Bridge or BridgePart."@en,
+        "Relates the furniture objects to the BridgeRoom."@en ;
+    schema:domainIncludes brid:AbstractBridge,
+        brid:BridgeRoom ;
+    schema:rangeIncludes brid:BridgeFurniture .
+
+<https://www.opengis.net/ont/citygml/common#bridgeInstallation> skos:definition "Relates the installation objects to the Bridge or BridgePart."@en,
+        "Relates to the installation objects to the BridgeRoom."@en ;
+    schema:domainIncludes brid:AbstractBridge,
+        brid:BridgeRoom ;
+    schema:rangeIncludes brid:BridgeInstallation .
+
 brid:BridgeFurniture a owl:Class ;
     rdfs:label "BridgeFurniture"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeConstructiveElementUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeConstructiveElementFunctionValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom brid:BridgeConstructiveElementClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass brid:BridgeConstructiveElementClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom brid:BridgeConstructiveElementUsageValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom brid:BridgeConstructiveElementFunctionValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         con:AbstractFurniture .
 
 brid:BridgeInstallation a owl:Class ;
@@ -279,27 +263,27 @@ brid:BridgePart a owl:Class ;
 brid:BridgeRoom a owl:Class ;
     rdfs:label "BridgeRoom"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom brid:BridgeConstructiveElementUsageValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom brid:BridgeFurniture ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#bridgeFurniture> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractThematicSurface ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#boundary> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom brid:BridgeInstallation ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#bridgeInstallation> ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass brid:BridgeConstructiveElementClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractThematicSurface ;
-            owl:onProperty brid:BridgeRoom.boundary ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeFurniture ;
-            owl:onProperty brid:BridgeRoom.bridgeFurniture ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeConstructiveElementClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeConstructiveElementUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom brid:BridgeConstructiveElementFunctionValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeInstallation ;
-            owl:onProperty brid:BridgeRoom.bridgeInstallation ],
+            owl:allValuesFrom brid:BridgeConstructiveElementClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         core:AbstractUnoccupiedSpace .
 
 <https://www.opengis.net/ont/citygml/common#function> rdfs:label "function"@en ;
@@ -314,40 +298,40 @@ brid:AbstractBridge a owl:Class ;
     rdfs:label "AbstractBridge"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:boolean ;
-            owl:onProperty brid:isMovable ],
+            owl:allValuesFrom brid:BridgeConstructiveElement ;
+            owl:onProperty brid:AbstractBridge.bridgeConstructiveElement ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom brid:BridgeRoom ;
+            owl:onProperty brid:AbstractBridge.bridgeRoom ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom brid:BridgeConstructiveElementUsageValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom brid:BridgeConstructiveElementFunctionValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom brid:BridgeConstructiveElementClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeConstructiveElement ;
-            owl:onProperty brid:AbstractBridge.bridgeConstructiveElement ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeInstallation ;
-            owl:onProperty brid:AbstractBridge.bridgeInstallation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeFurniture ;
-            owl:onProperty brid:AbstractBridge.bridgeFurniture ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeConstructiveElementFunctionValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty brid:isMovable ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty brid:isMovable ],
         [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeRoom ;
-            owl:onProperty brid:AbstractBridge.bridgeRoom ],
+            owl:allValuesFrom brid:BridgeInstallation ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#bridgeInstallation> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom brid:BridgeFurniture ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#bridgeFurniture> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:Address ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#address> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass brid:BridgeConstructiveElementClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom brid:BridgeConstructiveElementUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:Address ;
-            owl:onProperty brid:AbstractBridge.address ],
         con:AbstractConstruction .
 
 brid:BridgeConstructiveElementFunctionValue a owl:Class ;

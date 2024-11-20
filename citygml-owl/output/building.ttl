@@ -129,75 +129,11 @@ bldgcode:RoomElevationReferenceValue a skos:ConceptScheme ;
     dct:isFormatOf bldg:RoomElevationReferenceValue ;
     skos:definition "RoomElevationReferenceValue is a code list that enumerates the different elevation reference levels used to measure room heights."@en .
 
-<https://www.opengis.net/ont/citygml/common#address> a owl:ObjectProperty ;
-    skos:definition "Relates the addresses to the Building or BuildingPart."@en,
-        "Relates to the addresses that are assigned to the BuildingUnit."@en ;
-    schema:domainIncludes bldg:AbstractBuilding,
-        bldg:BuildingUnit ;
-    schema:rangeIncludes core:Address .
-
-<https://www.opengis.net/ont/citygml/common#boundary> a owl:ObjectProperty ;
-    skos:definition "Relates to the surfaces that bound the BuildingRoom. This relation is inherited from the Core module."@en,
-        "Relates to the surfaces that bound the Storey. This relation is inherited from the Core module."@en ;
-    schema:domainIncludes bldg:BuildingRoom,
-        bldg:Storey ;
-    schema:rangeIncludes core:AbstractThematicSurface .
-
-<https://www.opengis.net/ont/citygml/common#buildingConstructiveElement> a owl:ObjectProperty ;
-    skos:definition "Relates the constructive elements to the Building or BuildingPart."@en,
-        "Relates the constructive elements to the building subdivision."@en ;
-    schema:domainIncludes bldg:AbstractBuilding,
-        bldg:AbstractBuildingSubdivision ;
-    schema:rangeIncludes bldg:BuildingConstructiveElement .
-
-<https://www.opengis.net/ont/citygml/common#buildingFurniture> a owl:ObjectProperty ;
-    skos:definition "Relates the furniture objects to the Building or BuildingPart."@en,
-        "Relates the furniture objects to the BuildingRoom."@en,
-        "Relates the furniture objects to the building subdivision."@en ;
-    schema:domainIncludes bldg:AbstractBuilding,
-        bldg:AbstractBuildingSubdivision,
-        bldg:BuildingRoom ;
-    schema:rangeIncludes bldg:BuildingFurniture .
-
-<https://www.opengis.net/ont/citygml/common#buildingInstallation> a owl:ObjectProperty ;
-    skos:definition "Relates the installation objects to the Building or BuildingPart."@en,
-        "Relates the installation objects to the BuildingRoom."@en,
-        "Relates the installation objects to the building subdivision."@en ;
-    schema:domainIncludes bldg:AbstractBuilding,
-        bldg:AbstractBuildingSubdivision,
-        bldg:BuildingRoom ;
-    schema:rangeIncludes bldg:BuildingInstallation .
-
-<https://www.opengis.net/ont/citygml/common#buildingRoom> a owl:ObjectProperty ;
-    skos:definition "Relates the rooms to the Building or BuildingPart."@en,
-        "Relates the rooms to the building subdivision."@en ;
-    schema:domainIncludes bldg:AbstractBuilding,
-        bldg:AbstractBuildingSubdivision ;
-    schema:rangeIncludes bldg:BuildingRoom .
-
-bldg:AbstractBuilding.address skos:definition "Relates the addresses to the Building or BuildingPart."@en .
-
-bldg:AbstractBuilding.buildingConstructiveElement skos:definition "Relates the constructive elements to the Building or BuildingPart."@en .
-
-bldg:AbstractBuilding.buildingFurniture skos:definition "Relates the furniture objects to the Building or BuildingPart."@en .
-
-bldg:AbstractBuilding.buildingInstallation skos:definition "Relates the installation objects to the Building or BuildingPart."@en .
-
-bldg:AbstractBuilding.buildingRoom skos:definition "Relates the rooms to the Building or BuildingPart."@en .
-
 bldg:AbstractBuilding.buildingSubdivision a owl:ObjectProperty ;
     rdfs:label "buildingSubdivision"@en ;
     rdfs:domain bldg:AbstractBuilding ;
     rdfs:range bldg:AbstractBuildingSubdivision ;
     skos:definition "Relates the logical subdivisions to the Building or BuildingPart."@en .
-
-bldg:AbstractBuildingSubdivision.buildingConstructiveElement skos:definition "Relates the constructive elements to the building subdivision."@en .
-
-bldg:AbstractBuildingSubdivision.buildingFurniture skos:definition "Relates the furniture objects to the building subdivision."@en .
-
-bldg:AbstractBuildingSubdivision.buildingInstallation skos:definition "Relates the installation objects to the building subdivision."@en .
-
-bldg:AbstractBuildingSubdivision.buildingRoom skos:definition "Relates the rooms to the building subdivision."@en .
 
 bldg:Building a owl:Class ;
     rdfs:label "Building"@en ;
@@ -253,12 +189,6 @@ bldg:BuildingFurnitureUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "BuildingFurnitureUsageValue is a code list that enumerates the different uses of a BuildingFurniture."@en .
 
-bldg:BuildingRoom.boundary skos:definition "Relates to the surfaces that bound the BuildingRoom. This relation is inherited from the Core module."@en .
-
-bldg:BuildingRoom.buildingFurniture skos:definition "Relates the furniture objects to the BuildingRoom."@en .
-
-bldg:BuildingRoom.buildingInstallation skos:definition "Relates the installation objects to the BuildingRoom."@en .
-
 bldg:BuildingRoomClassValue a owl:Class ;
     rdfs:label "BuildingRoomClassValue"@en ;
     rdfs:subClassOf skos:Concept ;
@@ -289,8 +219,6 @@ bldg:BuildingSubdivisionUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "BuildingSubdivisionUsageValue is a code list that enumerates the different uses of a BuildingSubdivision."@en .
 
-bldg:BuildingUnit.address skos:definition "Relates to the addresses that are assigned to the BuildingUnit."@en .
-
 bldg:BuildingUnit.storey a owl:ObjectProperty ;
     rdfs:label "storey"@en ;
     rdfs:domain bldg:BuildingUnit ;
@@ -301,8 +229,6 @@ bldg:BuildingUsageValue a owl:Class ;
     rdfs:label "BuildingUsageValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "BuildingUsageValue is a code list that enumerates the different uses of a Building."@en .
-
-bldg:Storey.boundary skos:definition "Relates to the surfaces that bound the Storey. This relation is inherited from the Core module."@en .
 
 bldg:Storey.buildingUnit a owl:ObjectProperty ;
     rdfs:label "buildingUnit"@en ;
@@ -322,33 +248,33 @@ bldg:roomHeight a owl:ObjectProperty ;
 bldg:RoomHeight a owl:Class ;
     rdfs:label "RoomHeight"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom con:HeightStatusValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#status> ],
+            owl:allValuesFrom sc:Measure ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ],
+        [ a owl:Restriction ;
+            owl:onDataRange sc:Measure ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom bldg:RoomElevationReferenceValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#lowReference> ],
         [ a owl:Restriction ;
             owl:onClass bldg:RoomElevationReferenceValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#highReference> ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sc:Measure ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ],
-        [ a owl:Restriction ;
-            owl:onClass con:HeightStatusValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#status> ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#lowReference> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom bldg:RoomElevationReferenceValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#highReference> ],
         [ a owl:Restriction ;
             owl:onClass bldg:RoomElevationReferenceValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#lowReference> ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#highReference> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onDataRange sc:Measure ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:onClass con:HeightStatusValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#status> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom con:HeightStatusValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#status> ] ;
     skos:definition "The RoomHeight represents a vertical distance (measured or estimated) between a low reference and a high reference. [cf. INSPIRE]"@en .
 
 bldg:roofType a owl:ObjectProperty ;
@@ -380,6 +306,30 @@ bldg:storeysBelowGround a owl:DatatypeProperty ;
     rdfs:label "storeysBelowGround"@en ;
     rdfs:range xsd:integer ;
     skos:definition "Indicates the number of storeys positioned below ground level."@en .
+
+<https://www.opengis.net/ont/citygml/common#address> skos:definition "Relates the addresses to the Building or BuildingPart."@en,
+        "Relates to the addresses that are assigned to the BuildingUnit."@en ;
+    schema:domainIncludes bldg:AbstractBuilding,
+        bldg:BuildingUnit ;
+    schema:rangeIncludes core:Address .
+
+<https://www.opengis.net/ont/citygml/common#boundary> skos:definition "Relates to the surfaces that bound the BuildingRoom. This relation is inherited from the Core module."@en,
+        "Relates to the surfaces that bound the Storey. This relation is inherited from the Core module."@en ;
+    schema:domainIncludes bldg:BuildingRoom,
+        bldg:Storey ;
+    schema:rangeIncludes core:AbstractThematicSurface .
+
+<https://www.opengis.net/ont/citygml/common#buildingConstructiveElement> skos:definition "Relates the constructive elements to the Building or BuildingPart."@en,
+        "Relates the constructive elements to the building subdivision."@en ;
+    schema:domainIncludes bldg:AbstractBuilding,
+        bldg:AbstractBuildingSubdivision ;
+    schema:rangeIncludes bldg:BuildingConstructiveElement .
+
+<https://www.opengis.net/ont/citygml/common#buildingRoom> skos:definition "Relates the rooms to the Building or BuildingPart."@en,
+        "Relates the rooms to the building subdivision."@en ;
+    schema:domainIncludes bldg:AbstractBuilding,
+        bldg:AbstractBuildingSubdivision ;
+    schema:rangeIncludes bldg:BuildingRoom .
 
 <https://www.opengis.net/ont/citygml/common#highReference> rdfs:label "highReference"@en ;
     rdfs:range bldg:RoomElevationReferenceValue ;
@@ -413,6 +363,22 @@ bldg:BuildingConstructiveElement a owl:Class ;
 bldg:BuildingPart a owl:Class ;
     rdfs:label "BuildingPart"@en ;
     rdfs:subClassOf bldg:AbstractBuilding .
+
+<https://www.opengis.net/ont/citygml/common#buildingFurniture> skos:definition "Relates the furniture objects to the Building or BuildingPart."@en,
+        "Relates the furniture objects to the BuildingRoom."@en,
+        "Relates the furniture objects to the building subdivision."@en ;
+    schema:domainIncludes bldg:AbstractBuilding,
+        bldg:AbstractBuildingSubdivision,
+        bldg:BuildingRoom ;
+    schema:rangeIncludes bldg:BuildingFurniture .
+
+<https://www.opengis.net/ont/citygml/common#buildingInstallation> skos:definition "Relates the installation objects to the Building or BuildingPart."@en,
+        "Relates the installation objects to the BuildingRoom."@en,
+        "Relates the installation objects to the building subdivision."@en ;
+    schema:domainIncludes bldg:AbstractBuilding,
+        bldg:AbstractBuildingSubdivision,
+        bldg:BuildingRoom ;
+    schema:rangeIncludes bldg:BuildingInstallation .
 
 bldg:BuildingFurniture a owl:Class ;
     rdfs:label "BuildingFurniture"@en ;
@@ -452,7 +418,7 @@ bldg:BuildingUnit a owl:Class ;
     rdfs:label "BuildingUnit"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom core:Address ;
-            owl:onProperty bldg:BuildingUnit.address ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#address> ],
         [ a owl:Restriction ;
             owl:allValuesFrom bldg:Storey ;
             owl:onProperty bldg:BuildingUnit.storey ],
@@ -468,7 +434,7 @@ bldg:Storey a owl:Class ;
     rdfs:label "Storey"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom core:AbstractThematicSurface ;
-            owl:onProperty bldg:Storey.boundary ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#boundary> ],
         [ a owl:Restriction ;
             owl:allValuesFrom bldg:BuildingUnit ;
             owl:onProperty bldg:Storey.buildingUnit ],
@@ -477,21 +443,8 @@ bldg:Storey a owl:Class ;
 bldg:BuildingRoom a owl:Class ;
     rdfs:label "BuildingRoom"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom bldg:BuildingInstallation ;
-            owl:onProperty bldg:BuildingRoom.buildingInstallation ],
-        [ a owl:Restriction ;
             owl:allValuesFrom core:AbstractThematicSurface ;
-            owl:onProperty bldg:BuildingRoom.boundary ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass bldg:BuildingInstallationClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom bldg:BuildingInstallationClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom bldg:BuildingInstallationUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#boundary> ],
         [ a owl:Restriction ;
             owl:allValuesFrom bldg:RoomHeight ;
             owl:onProperty bldg:roomHeight ],
@@ -499,8 +452,21 @@ bldg:BuildingRoom a owl:Class ;
             owl:allValuesFrom bldg:BuildingInstallationFunctionValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         [ a owl:Restriction ;
+            owl:allValuesFrom bldg:BuildingInstallationClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass bldg:BuildingInstallationClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom bldg:BuildingFurniture ;
-            owl:onProperty bldg:BuildingRoom.buildingFurniture ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#buildingFurniture> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom bldg:BuildingInstallation ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#buildingInstallation> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom bldg:BuildingInstallationUsageValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
         core:AbstractUnoccupiedSpace .
 
 <https://www.opengis.net/ont/citygml/common#function> rdfs:label "function"@en ;
@@ -520,92 +486,97 @@ bldg:AbstractBuilding a owl:Class ;
     rdfs:label "AbstractBuilding"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom bldg:BuildingInstallation ;
-            owl:onProperty bldg:AbstractBuilding.buildingInstallation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom bldg:BuildingFurniture ;
-            owl:onProperty bldg:AbstractBuilding.buildingFurniture ],
-        [ a owl:Restriction ;
             owl:allValuesFrom bldg:BuildingRoom ;
-            owl:onProperty bldg:AbstractBuilding.buildingRoom ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#buildingRoom> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom bldg:BuildingConstructiveElement ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#buildingConstructiveElement> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom bldg:AbstractBuildingSubdivision ;
+            owl:onProperty bldg:AbstractBuilding.buildingSubdivision ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:Address ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#address> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass iso19136-bt:MeasureOrNilReasonList ;
+            owl:onProperty bldg:storeyHeightsAboveGround ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty bldg:storeysAboveGround ],
         [ a owl:Restriction ;
             owl:allValuesFrom bldg:BuildingInstallationClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:integer ;
-            owl:onProperty bldg:storeysBelowGround ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom bldg:BuildingInstallationUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass bldg:BuildingInstallationClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:Address ;
-            owl:onProperty bldg:AbstractBuilding.address ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:integer ;
             owl:onProperty bldg:storeysBelowGround ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty bldg:storeysAboveGround ],
+            owl:allValuesFrom bldg:BuildingInstallation ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#buildingInstallation> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom bldg:RoofTypeValue ;
-            owl:onProperty bldg:roofType ],
+            owl:allValuesFrom bldg:BuildingFurniture ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#buildingFurniture> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom iso19136-bt:MeasureOrNilReasonList ;
-            owl:onProperty bldg:storeyHeightsBelowGround ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom bldg:BuildingConstructiveElement ;
-            owl:onProperty bldg:AbstractBuilding.buildingConstructiveElement ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty bldg:storeysBelowGround ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass bldg:RoofTypeValue ;
             owl:onProperty bldg:roofType ],
         [ a owl:Restriction ;
-            owl:allValuesFrom bldg:AbstractBuildingSubdivision ;
-            owl:onProperty bldg:AbstractBuilding.buildingSubdivision ],
+            owl:allValuesFrom bldg:RoofTypeValue ;
+            owl:onProperty bldg:roofType ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass iso19136-bt:MeasureOrNilReasonList ;
-            owl:onProperty bldg:storeyHeightsAboveGround ],
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty bldg:storeysAboveGround ],
         [ a owl:Restriction ;
             owl:allValuesFrom bldg:BuildingInstallationFunctionValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass iso19136-bt:MeasureOrNilReasonList ;
+            owl:allValuesFrom iso19136-bt:MeasureOrNilReasonList ;
+            owl:onProperty bldg:storeyHeightsAboveGround ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom bldg:BuildingInstallationUsageValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom iso19136-bt:MeasureOrNilReasonList ;
             owl:onProperty bldg:storeyHeightsBelowGround ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:integer ;
-            owl:onProperty bldg:storeysAboveGround ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom iso19136-bt:MeasureOrNilReasonList ;
-            owl:onProperty bldg:storeyHeightsAboveGround ],
+            owl:onClass iso19136-bt:MeasureOrNilReasonList ;
+            owl:onProperty bldg:storeyHeightsBelowGround ],
         con:AbstractConstruction .
 
 bldg:AbstractBuildingSubdivision a owl:Class ;
     rdfs:label "AbstractBuildingSubdivision"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom con:Elevation ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#elevation> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom bldg:BuildingFurniture ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#buildingFurniture> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom bldg:BuildingRoom ;
-            owl:onProperty bldg:AbstractBuildingSubdivision.buildingRoom ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#buildingRoom> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom bldg:BuildingInstallationUsageValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom bldg:BuildingConstructiveElement ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#buildingConstructiveElement> ],
         [ a owl:Restriction ;
             owl:allValuesFrom bldg:BuildingInstallationClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
             owl:allValuesFrom bldg:BuildingInstallationFunctionValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom bldg:BuildingInstallation ;
-            owl:onProperty bldg:AbstractBuildingSubdivision.buildingInstallation ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass bldg:BuildingInstallationClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
             owl:onProperty bldg:sortKey ],
@@ -614,17 +585,12 @@ bldg:AbstractBuildingSubdivision a owl:Class ;
             owl:onDataRange xsd:double ;
             owl:onProperty bldg:sortKey ],
         [ a owl:Restriction ;
-            owl:allValuesFrom con:Elevation ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#elevation> ],
+            owl:allValuesFrom bldg:BuildingInstallation ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#buildingInstallation> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom bldg:BuildingFurniture ;
-            owl:onProperty bldg:AbstractBuildingSubdivision.buildingFurniture ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom bldg:BuildingConstructiveElement ;
-            owl:onProperty bldg:AbstractBuildingSubdivision.buildingConstructiveElement ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom bldg:BuildingInstallationUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass bldg:BuildingInstallationClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         core:AbstractLogicalSpace .
 
 bldg:BuildingInstallationFunctionValue a owl:Class ;

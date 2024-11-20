@@ -77,7 +77,7 @@ wksp:Scenario a owl:Class ;
             owl:onProperty wksp:Scenario.versionTransitionMember ],
         [ a owl:Restriction ;
             owl:allValuesFrom vers:Version ;
-            owl:onProperty wksp:Scenario.versionMember ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#versionMember> ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty wksp:Scenario.creator ],

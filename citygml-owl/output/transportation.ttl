@@ -10,36 +10,6 @@
 @prefix trancode: <https://www.opengis.net/ont/citygml/transportation/code#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://www.opengis.net/ont/citygml/common#boundary> a owl:ObjectProperty ;
-    skos:definition "Relates to the auxiliary traffic areas that bound the AuxiliaryTrafficSpace. This relation is inherited from the Core module."@en,
-        "Relates to the traffic areas that bound the TrafficSpace. This relation is inherited from the Core module."@en ;
-    schema:domainIncludes tran:AuxiliaryTrafficSpace,
-        tran:TrafficSpace ;
-    schema:rangeIncludes tran:AuxiliaryTrafficArea,
-        tran:TrafficArea .
-
-<https://www.opengis.net/ont/citygml/common#intersection> a owl:ObjectProperty ;
-    skos:definition "Relates to the intersections that are part of the Railway."@en,
-        "Relates to the intersections that are part of the Road."@en,
-        "Relates to the intersections that are part of the Track."@en,
-        "Relates to the intersections that are part of the Waterway."@en ;
-    schema:domainIncludes tran:Railway,
-        tran:Road,
-        tran:Track,
-        tran:Waterway ;
-    schema:rangeIncludes tran:Intersection .
-
-<https://www.opengis.net/ont/citygml/common#section> a owl:ObjectProperty ;
-    skos:definition "Relates to the sections that are part of the Railway."@en,
-        "Relates to the sections that are part of the Road."@en,
-        "Relates to the sections that are part of the Track."@en,
-        "Relates to the sections that are part of the Waterway."@en ;
-    schema:domainIncludes tran:Railway,
-        tran:Road,
-        tran:Track,
-        tran:Waterway ;
-    schema:rangeIncludes tran:Section .
-
 <https://www.opengis.net/ont/citygml/transportation> a owl:Ontology ;
     rdfs:label "Transportation"@en ;
     owl:imports <http://def.isotc211.org/iso19150/-2/2012/base>,
@@ -256,8 +226,6 @@ tran:AuxiliaryTrafficAreaUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "AuxiliaryTrafficAreaUsageValue is a code list that enumerates the different uses of an AuxiliaryTrafficArea."@en .
 
-tran:AuxiliaryTrafficSpace.boundary skos:definition "Relates to the auxiliary traffic areas that bound the AuxiliaryTrafficSpace. This relation is inherited from the Core module."@en .
-
 tran:AuxiliaryTrafficSpaceClassValue a owl:Class ;
     rdfs:label "AuxiliaryTrafficSpaceClassValue"@en ;
     rdfs:subClassOf skos:Concept ;
@@ -293,10 +261,6 @@ tran:MarkingClassValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "MarkingClassValue is a code list used to further classify a Marking."@en .
 
-tran:Railway.intersection skos:definition "Relates to the intersections that are part of the Railway."@en .
-
-tran:Railway.section skos:definition "Relates to the sections that are part of the Railway."@en .
-
 tran:RailwayClassValue a owl:Class ;
     rdfs:label "RailwayClassValue"@en ;
     rdfs:subClassOf skos:Concept ;
@@ -311,10 +275,6 @@ tran:RailwayUsageValue a owl:Class ;
     rdfs:label "RailwayUsageValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "RailwayUsageValue is a code list that enumerates the different uses of a Railway."@en .
-
-tran:Road.intersection skos:definition "Relates to the intersections that are part of the Road."@en .
-
-tran:Road.section skos:definition "Relates to the sections that are part of the Road."@en .
 
 tran:SectionClassValue a owl:Class ;
     rdfs:label "SectionClassValue"@en ;
@@ -353,10 +313,6 @@ tran:SquareUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "SquareUsageValue is a code list that enumerates the different uses of a Square."@en .
 
-tran:Track.intersection skos:definition "Relates to the intersections that are part of the Track."@en .
-
-tran:Track.section skos:definition "Relates to the sections that are part of the Track."@en .
-
 tran:TrackClassValue a owl:Class ;
     rdfs:label "TrackClassValue"@en ;
     rdfs:subClassOf skos:Concept ;
@@ -386,8 +342,6 @@ tran:TrafficAreaUsageValue a owl:Class ;
     rdfs:label "TrafficAreaUsageValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "TrafficAreaUsageValue is a code list that enumerates the different uses of a TrafficArea."@en .
-
-tran:TrafficSpace.boundary skos:definition "Relates to the traffic areas that bound the TrafficSpace. This relation is inherited from the Core module."@en .
 
 tran:TrafficSpace.clearanceSpace a owl:ObjectProperty ;
     rdfs:label "clearanceSpace"@en ;
@@ -422,10 +376,6 @@ tran:TrafficSpaceUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "TrafficSpaceUsageValue is a code list that enumerates the different uses of a TrafficSpace."@en .
 
-tran:Waterway.intersection skos:definition "Relates to the intersections that are part of the Waterway."@en .
-
-tran:Waterway.section skos:definition "Relates to the sections that are part of the Waterway."@en .
-
 tran:WaterwayClassValue a owl:Class ;
     rdfs:label "WaterwayClassValue"@en ;
     rdfs:subClassOf skos:Concept ;
@@ -441,6 +391,13 @@ tran:WaterwayUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "WaterwayUsageValue is a code list that enumerates the different uses of a Waterway."@en .
 
+<https://www.opengis.net/ont/citygml/common#boundary> skos:definition "Relates to the auxiliary traffic areas that bound the AuxiliaryTrafficSpace. This relation is inherited from the Core module."@en,
+        "Relates to the traffic areas that bound the TrafficSpace. This relation is inherited from the Core module."@en ;
+    schema:domainIncludes tran:AuxiliaryTrafficSpace,
+        tran:TrafficSpace ;
+    schema:rangeIncludes tran:AuxiliaryTrafficArea,
+        tran:TrafficArea .
+
 <https://www.opengis.net/ont/citygml/common#occupancy> rdfs:label "occupancy"@en ;
     rdfs:range core:Occupancy ;
     skos:definition "Provides information on the residency of persons, vehicles, or other moving features in the transportation space."@en .
@@ -452,21 +409,21 @@ tran:AuxiliaryTrafficArea a owl:Class ;
             owl:onClass tran:RoadClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:SurfaceMaterialValue ;
-            owl:onProperty tran:surfaceMaterial ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:SurfaceMaterialValue ;
-            owl:onProperty tran:surfaceMaterial ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadFunctionValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         [ a owl:Restriction ;
+            owl:allValuesFrom tran:SurfaceMaterialValue ;
+            owl:onProperty tran:surfaceMaterial ],
+        [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:SurfaceMaterialValue ;
+            owl:onProperty tran:surfaceMaterial ],
         core:AbstractThematicSurface .
 
 tran:ClearanceSpace a owl:Class ;
@@ -505,21 +462,21 @@ tran:TrafficArea a owl:Class ;
             owl:onClass tran:RoadClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:SurfaceMaterialValue ;
-            owl:onProperty tran:surfaceMaterial ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tran:SurfaceMaterialValue ;
             owl:onProperty tran:surfaceMaterial ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
+            owl:allValuesFrom tran:SurfaceMaterialValue ;
+            owl:onProperty tran:surfaceMaterial ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         core:AbstractThematicSurface .
 
 tran:AuxiliaryTrafficSpace a owl:Class ;
@@ -528,30 +485,37 @@ tran:AuxiliaryTrafficSpace a owl:Class ;
             owl:allValuesFrom tran:RoadFunctionValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+            owl:allValuesFrom tran:GranularityValue ;
+            owl:onProperty tran:granularity ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:RoadClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
             owl:onDataRange tran:GranularityValue ;
             owl:onProperty tran:granularity ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadUsageValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom tran:AuxiliaryTrafficArea ;
-            owl:onProperty tran:AuxiliaryTrafficSpace.boundary ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:RoadClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:GranularityValue ;
-            owl:onProperty tran:granularity ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#boundary> ],
         core:AbstractUnoccupiedSpace .
 
 tran:Railway a owl:Class ;
     rdfs:label "Railway"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:RoadClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadFunctionValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         [ a owl:Restriction ;
@@ -559,17 +523,10 @@ tran:Railway a owl:Class ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:Intersection ;
-            owl:onProperty tran:Railway.intersection ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#intersection> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:Section ;
-            owl:onProperty tran:Railway.section ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:RoadClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#section> ],
         tran:AbstractTransportationSpace .
 
 tran:Road a owl:Class ;
@@ -579,36 +536,27 @@ tran:Road a owl:Class ;
             owl:onClass tran:RoadClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:Intersection ;
-            owl:onProperty tran:Road.intersection ],
+            owl:allValuesFrom tran:Section ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#section> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:Section ;
-            owl:onProperty tran:Road.section ],
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadFunctionValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+            owl:allValuesFrom tran:Intersection ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#intersection> ],
         tran:AbstractTransportationSpace .
 
 tran:Track a owl:Class ;
     rdfs:label "Track"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:Section ;
-            owl:onProperty tran:Track.section ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:Intersection ;
-            owl:onProperty tran:Track.intersection ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#section> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tran:RoadClassValue ;
@@ -616,30 +564,59 @@ tran:Track a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadUsageValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:Intersection ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#intersection> ],
         tran:AbstractTransportationSpace .
 
 tran:Waterway a owl:Class ;
     rdfs:label "Waterway"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:Section ;
-            owl:onProperty tran:Waterway.section ],
+            owl:allValuesFrom tran:Intersection ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#intersection> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:Intersection ;
-            owl:onProperty tran:Waterway.intersection ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadFunctionValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:Section ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#section> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tran:RoadClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         tran:AbstractTransportationSpace .
+
+<https://www.opengis.net/ont/citygml/common#intersection> skos:definition "Relates to the intersections that are part of the Railway."@en,
+        "Relates to the intersections that are part of the Road."@en,
+        "Relates to the intersections that are part of the Track."@en,
+        "Relates to the intersections that are part of the Waterway."@en ;
+    schema:domainIncludes tran:Railway,
+        tran:Road,
+        tran:Track,
+        tran:Waterway ;
+    schema:rangeIncludes tran:Intersection .
+
+<https://www.opengis.net/ont/citygml/common#section> skos:definition "Relates to the sections that are part of the Railway."@en,
+        "Relates to the sections that are part of the Road."@en,
+        "Relates to the sections that are part of the Track."@en,
+        "Relates to the sections that are part of the Waterway."@en ;
+    schema:domainIncludes tran:Railway,
+        tran:Road,
+        tran:Track,
+        tran:Waterway ;
+    schema:rangeIncludes tran:Section .
 
 tran:granularity a owl:DatatypeProperty ;
     rdfs:label "granularity"@en ;
@@ -706,63 +683,55 @@ tran:SurfaceMaterialValue a owl:Class ;
 tran:TrafficSpace a owl:Class ;
     rdfs:label "TrafficSpace"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:RoadClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficDirectionValue ;
-            owl:onProperty tran:trafficDirection ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:ClearanceSpace ;
             owl:onProperty tran:TrafficSpace.clearanceSpace ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficArea ;
-            owl:onProperty tran:TrafficSpace.boundary ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficSpace ;
-            owl:onProperty tran:TrafficSpace.predecessor ],
+            owl:allValuesFrom tran:RoadUsageValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:TrafficSpace ;
             owl:onProperty tran:TrafficSpace.successor ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:onDataRange tran:GranularityValue ;
-            owl:onProperty tran:granularity ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange tran:TrafficDirectionValue ;
             owl:onProperty tran:trafficDirection ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+            owl:allValuesFrom tran:TrafficArea ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#boundary> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:GranularityValue ;
+            owl:onProperty tran:granularity ],
+        [ a owl:Restriction ;
+            owl:onDataRange tran:GranularityValue ;
+            owl:onProperty tran:granularity ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:TrafficDirectionValue ;
+            owl:onProperty tran:trafficDirection ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:TrafficSpace ;
+            owl:onProperty tran:TrafficSpace.predecessor ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:RoadClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:Occupancy ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#occupancy> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:GranularityValue ;
-            owl:onProperty tran:granularity ],
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
         core:AbstractUnoccupiedSpace .
 
 tran:AbstractTransportationSpace a owl:Class ;
     rdfs:label "AbstractTransportationSpace"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:AuxiliaryTrafficSpace ;
-            owl:onProperty tran:AbstractTransportationSpace.auxiliaryTrafficSpace ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficSpace ;
-            owl:onProperty tran:AbstractTransportationSpace.trafficSpace ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:Occupancy ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#occupancy> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficDirectionValue ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange tran:TrafficDirectionValue ;
             owl:onProperty tran:trafficDirection ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:Marking ;
@@ -771,9 +740,17 @@ tran:AbstractTransportationSpace a owl:Class ;
             owl:allValuesFrom tran:Hole ;
             owl:onProperty tran:AbstractTransportationSpace.hole ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange tran:TrafficDirectionValue ;
+            owl:allValuesFrom tran:TrafficDirectionValue ;
             owl:onProperty tran:trafficDirection ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:TrafficSpace ;
+            owl:onProperty tran:AbstractTransportationSpace.trafficSpace ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:Occupancy ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#occupancy> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:AuxiliaryTrafficSpace ;
+            owl:onProperty tran:AbstractTransportationSpace.auxiliaryTrafficSpace ],
         core:AbstractUnoccupiedSpace .
 
 tran:RoadFunctionValue a owl:Class ;

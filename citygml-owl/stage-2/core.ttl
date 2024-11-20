@@ -114,13 +114,6 @@ core:IntegerBetween0and3 a owl:Class ;
 core:Occupancy a owl:Class ;
     rdfs:label "Occupancy"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty core:numberOfOccupants ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:integer ;
-            owl:onProperty core:numberOfOccupants ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:allValuesFrom core:OccupantTypeValue ;
             owl:onProperty core:occupantType ],
         [ a owl:Restriction ;
@@ -133,7 +126,14 @@ core:Occupancy a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:IntervalValue ;
-            owl:onProperty core:interval ] ;
+            owl:onProperty core:interval ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty core:numberOfOccupants ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty core:numberOfOccupants ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Occupancy is an application-dependent indication of what is contained by a feature."@en .
 
 core:OtherRelationTypeValue a owl:Class ;
@@ -842,25 +842,25 @@ core:AbstractOccupiedSpace a owl:Class ;
             owl:onClass core:ImplicitGeometry ;
             owl:onProperty core:AbstractOccupiedSpace.lod1ImplicitRepresentation ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:ADEOfAbstractOccupiedSpace ;
-            owl:onProperty core:adeOfAbstractOccupiedSpace ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:ImplicitGeometry ;
-            owl:onProperty core:AbstractOccupiedSpace.lod2ImplicitRepresentation ],
-        [ a owl:Restriction ;
             owl:allValuesFrom core:ImplicitGeometry ;
             owl:onProperty core:AbstractOccupiedSpace.lod1ImplicitRepresentation ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:ImplicitGeometry ;
-            owl:onProperty core:AbstractOccupiedSpace.lod2ImplicitRepresentation ],
+            owl:onProperty core:AbstractOccupiedSpace.lod3ImplicitRepresentation ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:ImplicitGeometry ;
             owl:onProperty core:AbstractOccupiedSpace.lod3ImplicitRepresentation ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:ImplicitGeometry ;
-            owl:onProperty core:AbstractOccupiedSpace.lod3ImplicitRepresentation ],
+            owl:onProperty core:AbstractOccupiedSpace.lod2ImplicitRepresentation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:ADEOfAbstractOccupiedSpace ;
+            owl:onProperty core:adeOfAbstractOccupiedSpace ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:ImplicitGeometry ;
+            owl:onProperty core:AbstractOccupiedSpace.lod2ImplicitRepresentation ],
         core:AbstractPhysicalSpace ;
     owl:disjointWith core:AbstractUnoccupiedSpace ;
     skos:definition "AbstractOccupiedSpace is the abstract superclass for all types of physically occupied spaces. Occupied space refers to spaces that are partially or entirely filled with matter."@en .
@@ -1034,13 +1034,6 @@ core:AbstractVersionTransition a owl:Class ;
 core:CityObjectRelation a owl:Class ;
     rdfs:label "CityObjectRelation"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractCityObject ;
-            owl:onProperty core:CityObjectRelation.relatedTo ],
-        [ a owl:Restriction ;
-            owl:onClass core:AbstractCityObject ;
-            owl:onProperty core:CityObjectRelation.relatedTo ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:allValuesFrom core:RelationTypeValue ;
             owl:onProperty core:relationType ],
         [ a owl:Restriction ;
@@ -1049,7 +1042,14 @@ core:CityObjectRelation a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:AbstractGenericAttribute ;
-            owl:onProperty core:CityObjectRelation.genericAttribute ] ;
+            owl:onProperty core:CityObjectRelation.genericAttribute ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractCityObject ;
+            owl:onProperty core:CityObjectRelation.relatedTo ],
+        [ a owl:Restriction ;
+            owl:onClass core:AbstractCityObject ;
+            owl:onProperty core:CityObjectRelation.relatedTo ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "CityObjectRelation represents a specific relation from the city object in which the relation is included to another city object."@en .
 
 core:QualifiedVolume a owl:Class ;
@@ -1112,32 +1112,32 @@ core:AbstractFeature a owl:Class ;
     rdfs:label "AbstractFeature"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom rdfs:Resource ;
+            owl:onProperty core:identifier ],
+        [ a owl:Restriction ;
             owl:allValuesFrom core:ADEOfAbstractFeature ;
             owl:onProperty core:adeOfAbstractFeature ],
+        [ a owl:Restriction ;
+            owl:onClass core:ID ;
+            owl:onProperty core:featureID ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:ID ;
+            owl:onProperty core:featureID ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty core:description ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass rdfs:Resource ;
             owl:onProperty core:identifier ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty core:description ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:Name ;
             owl:onProperty core:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom rdfs:Resource ;
-            owl:onProperty core:identifier ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:ID ;
-            owl:onProperty core:featureID ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty core:description ],
-        [ a owl:Restriction ;
-            owl:onClass core:ID ;
-            owl:onProperty core:featureID ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         iso19109:AnyFeature ;
     skos:definition "AbstractFeature is the abstract superclass of all feature types within the CityGML Conceptual Model."@en .
 
@@ -1179,29 +1179,19 @@ core:AbstractFeatureWithLifespan a owl:Class ;
     rdfs:label "AbstractFeatureWithLifespan"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:dateTime ;
+            owl:onProperty core:creationDate ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:dateTime ;
             owl:onProperty core:creationDate ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:dateTime ;
-            owl:onProperty core:terminationDate ],
+            owl:onProperty core:validFrom ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:dateTime ;
             owl:onProperty core:validTo ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:dateTime ;
-            owl:onProperty core:validFrom ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:dateTime ;
-            owl:onProperty core:creationDate ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:dateTime ;
-            owl:onProperty core:validTo ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:dateTime ;
-            owl:onProperty core:validFrom ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:ADEOfAbstractFeatureWithLifespan ;
             owl:onProperty core:adeOfAbstractFeatureWithLifespan ],
@@ -1209,6 +1199,16 @@ core:AbstractFeatureWithLifespan a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:dateTime ;
             owl:onProperty core:terminationDate ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:dateTime ;
+            owl:onProperty core:validFrom ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:dateTime ;
+            owl:onProperty core:terminationDate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:dateTime ;
+            owl:onProperty core:validTo ],
         core:AbstractFeature ;
     skos:definition "AbstractFeatureWithLifespan is the base class for all CityGML features. This class allows the optional specification of the real-world and database times for the existence of each feature."@en .
 
@@ -1216,19 +1216,6 @@ core:AbstractPhysicalSpace a owl:Class ;
     rdfs:label "AbstractPhysicalSpace"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:MultiCurve ;
-            owl:onProperty core:AbstractPhysicalSpace.lod3TerrainIntersectionCurve ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:MultiCurve ;
-            owl:onProperty core:AbstractPhysicalSpace.lod1TerrainIntersectionCurve ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:MultiCurve ;
-            owl:onProperty core:AbstractPhysicalSpace.lod3TerrainIntersectionCurve ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:ADEOfAbstractPhysicalSpace ;
-            owl:onProperty core:adeOfAbstractPhysicalSpace ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:AbstractPointCloud ;
             owl:onProperty core:AbstractPhysicalSpace.pointCloud ],
@@ -1242,7 +1229,20 @@ core:AbstractPhysicalSpace a owl:Class ;
             owl:onProperty core:AbstractPhysicalSpace.lod1TerrainIntersectionCurve ],
         [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:MultiCurve ;
+            owl:onProperty core:AbstractPhysicalSpace.lod1TerrainIntersectionCurve ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:MultiCurve ;
+            owl:onProperty core:AbstractPhysicalSpace.lod3TerrainIntersectionCurve ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:MultiCurve ;
             owl:onProperty core:AbstractPhysicalSpace.lod2TerrainIntersectionCurve ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:ADEOfAbstractPhysicalSpace ;
+            owl:onProperty core:adeOfAbstractPhysicalSpace ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:MultiCurve ;
+            owl:onProperty core:AbstractPhysicalSpace.lod3TerrainIntersectionCurve ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:AbstractPointCloud ;
             owl:onProperty core:AbstractPhysicalSpace.pointCloud ],
@@ -1271,53 +1271,53 @@ core:AbstractThematicSurface a owl:Class ;
     rdfs:label "AbstractThematicSurface"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:MultiSurface ;
+            owl:onProperty core:AbstractThematicSurface.lod3MultiSurface ],
+        [ a owl:Restriction ;
             owl:allValuesFrom core:ADEOfAbstractThematicSurface ;
             owl:onProperty core:adeOfAbstractThematicSurface ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:MultiSurface ;
+            owl:onProperty core:AbstractThematicSurface.lod2MultiSurface ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:AbstractPointCloud ;
             owl:onProperty core:AbstractThematicSurface.pointCloud ],
         [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:MultiSurface ;
+            owl:allValuesFrom gmlowl:MultiCurve ;
+            owl:onProperty core:AbstractThematicSurface.lod0MultiCurve ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:MultiSurface ;
             owl:onProperty core:AbstractThematicSurface.lod1MultiSurface ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:MultiSurface ;
-            owl:onProperty core:AbstractThematicSurface.lod2MultiSurface ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:QualifiedArea ;
-            owl:onProperty core:area ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:MultiSurface ;
-            owl:onProperty core:AbstractThematicSurface.lod3MultiSurface ],
+            owl:allValuesFrom gmlowl:MultiSurface ;
+            owl:onProperty core:AbstractThematicSurface.lod1MultiSurface ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:AbstractPointCloud ;
             owl:onProperty core:AbstractThematicSurface.pointCloud ],
         [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:MultiSurface ;
-            owl:onProperty core:AbstractThematicSurface.lod3MultiSurface ],
+            owl:onProperty core:AbstractThematicSurface.lod0MultiSurface ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:MultiSurface ;
+            owl:onProperty core:AbstractThematicSurface.lod2MultiSurface ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:MultiSurface ;
+            owl:onProperty core:AbstractThematicSurface.lod0MultiSurface ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:QualifiedArea ;
+            owl:onProperty core:area ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:MultiCurve ;
             owl:onProperty core:AbstractThematicSurface.lod0MultiCurve ],
         [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:MultiCurve ;
-            owl:onProperty core:AbstractThematicSurface.lod0MultiCurve ],
-        [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:MultiSurface ;
-            owl:onProperty core:AbstractThematicSurface.lod0MultiSurface ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:MultiSurface ;
-            owl:onProperty core:AbstractThematicSurface.lod0MultiSurface ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:MultiSurface ;
-            owl:onProperty core:AbstractThematicSurface.lod1MultiSurface ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:MultiSurface ;
-            owl:onProperty core:AbstractThematicSurface.lod2MultiSurface ],
+            owl:onProperty core:AbstractThematicSurface.lod3MultiSurface ],
         core:AbstractSpaceBoundary ;
     skos:definition "AbstractThematicSurface is the abstract superclass for all types of thematic surfaces."@en .
 
@@ -1327,43 +1327,43 @@ core:ImplicitGeometry a owl:Class ;
             owl:allValuesFrom core:TransformationMatrix4x4 ;
             owl:onProperty core:transformationMatrix ],
         [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:Point ;
-            owl:onProperty core:ImplicitGeometry.referencePoint ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:AbstractGeometry ;
-            owl:onProperty core:ImplicitGeometry.relativeGeometry ],
-        [ a owl:Restriction ;
-            owl:onClass core:TransformationMatrix4x4 ;
-            owl:onProperty core:transformationMatrix ;
+            owl:onClass gmlowl:Point ;
+            owl:onProperty core:ImplicitGeometry.referencePoint ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass core:ID ;
             owl:onProperty core:objectID ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractAppearance ;
-            owl:onProperty core:ImplicitGeometry.appearance ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:anyURI ;
             owl:onProperty core:libraryObject ],
         [ a owl:Restriction ;
+            owl:allValuesFrom core:MimeTypeValue ;
+            owl:onProperty core:mimeType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractAppearance ;
+            owl:onProperty core:ImplicitGeometry.appearance ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:anyURI ;
             owl:onProperty core:libraryObject ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:AbstractGeometry ;
+            owl:onProperty core:ImplicitGeometry.relativeGeometry ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:ID ;
             owl:onProperty core:objectID ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:MimeTypeValue ;
-            owl:onProperty core:mimeType ],
-        [ a owl:Restriction ;
-            owl:onClass gmlowl:Point ;
-            owl:onProperty core:ImplicitGeometry.referencePoint ;
+            owl:onClass core:TransformationMatrix4x4 ;
+            owl:onProperty core:transformationMatrix ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:AbstractGeometry ;
             owl:onProperty core:ImplicitGeometry.relativeGeometry ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:Point ;
+            owl:onProperty core:ImplicitGeometry.referencePoint ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:MimeTypeValue ;
@@ -1374,94 +1374,94 @@ core:AbstractSpace a owl:Class ;
     rdfs:label "AbstractSpace"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom core:ADEOfAbstractSpace ;
-            owl:onProperty core:adeOfAbstractSpace ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractSpaceBoundary ;
-            owl:onProperty core:AbstractSpace.boundary ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:Solid ;
-            owl:onProperty core:AbstractSpace.lod1Solid ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:Solid ;
-            owl:onProperty core:AbstractSpace.lod3Solid ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:MultiSurface ;
-            owl:onProperty core:AbstractSpace.lod3MultiSurface ],
+            owl:onClass gmlowl:MultiCurve ;
+            owl:onProperty core:AbstractSpace.lod3MultiCurve ],
         [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:MultiCurve ;
             owl:onProperty core:AbstractSpace.lod0MultiCurve ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:QualifiedArea ;
-            owl:onProperty core:area ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:MultiCurve ;
-            owl:onProperty core:AbstractSpace.lod2MultiCurve ],
+            owl:allValuesFrom gmlowl:Point ;
+            owl:onProperty core:AbstractSpace.lod0Point ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:MultiSurface ;
             owl:onProperty core:AbstractSpace.lod0MultiSurface ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:MultiCurve ;
-            owl:onProperty core:AbstractSpace.lod3MultiCurve ],
-        [ a owl:Restriction ;
             owl:allValuesFrom core:QualifiedVolume ;
             owl:onProperty core:volume ],
         [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:Point ;
-            owl:onProperty core:AbstractSpace.lod0Point ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:SpaceType ;
-            owl:onProperty core:spaceType ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:MultiSurface ;
-            owl:onProperty core:AbstractSpace.lod2MultiSurface ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:Solid ;
+            owl:allValuesFrom gmlowl:Solid ;
             owl:onProperty core:AbstractSpace.lod3Solid ],
         [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:MultiCurve ;
             owl:onProperty core:AbstractSpace.lod2MultiCurve ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:MultiCurve ;
-            owl:onProperty core:AbstractSpace.lod0MultiCurve ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:MultiSurface ;
-            owl:onProperty core:AbstractSpace.lod2MultiSurface ],
+            owl:onProperty core:AbstractSpace.lod3MultiSurface ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange core:SpaceType ;
+            owl:allValuesFrom core:SpaceType ;
             owl:onProperty core:spaceType ],
         [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:MultiCurve ;
-            owl:onProperty core:AbstractSpace.lod3MultiCurve ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:MultiCurve ;
+            owl:onProperty core:AbstractSpace.lod0MultiCurve ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:Point ;
             owl:onProperty core:AbstractSpace.lod0Point ],
         [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:Solid ;
-            owl:onProperty core:AbstractSpace.lod2Solid ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:MultiCurve ;
+            owl:onProperty core:AbstractSpace.lod2MultiCurve ],
         [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:MultiSurface ;
             owl:onProperty core:AbstractSpace.lod0MultiSurface ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:MultiSurface ;
+            owl:onProperty core:AbstractSpace.lod2MultiSurface ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:MultiSurface ;
+            owl:onProperty core:AbstractSpace.lod3MultiSurface ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:MultiSurface ;
+            owl:onProperty core:AbstractSpace.lod2MultiSurface ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:Solid ;
+            owl:onProperty core:AbstractSpace.lod3Solid ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractSpaceBoundary ;
+            owl:onProperty core:AbstractSpace.boundary ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:QualifiedArea ;
+            owl:onProperty core:area ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:Solid ;
+            owl:onProperty core:AbstractSpace.lod2Solid ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange core:SpaceType ;
+            owl:onProperty core:spaceType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:ADEOfAbstractSpace ;
+            owl:onProperty core:adeOfAbstractSpace ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:Solid ;
             owl:onProperty core:AbstractSpace.lod2Solid ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:Solid ;
+            owl:onProperty core:AbstractSpace.lod1Solid ],
+        [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:Solid ;
             owl:onProperty core:AbstractSpace.lod1Solid ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:MultiSurface ;
-            owl:onProperty core:AbstractSpace.lod3MultiSurface ],
+            owl:allValuesFrom gmlowl:MultiCurve ;
+            owl:onProperty core:AbstractSpace.lod3MultiCurve ],
         core:AbstractCityObject ;
     owl:disjointWith core:AbstractSpaceBoundary ;
     skos:definition "AbstractSpace is the abstract superclass for all types of spaces. A space is an entity of volumetric extent in the real world."@en .
@@ -1470,45 +1470,54 @@ core:AbstractCityObject a owl:Class ;
     rdfs:label "AbstractCityObject"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom core:ADEOfAbstractCityObject ;
-            owl:onProperty core:adeOfAbstractCityObject ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:RelativeToTerrain ;
-            owl:onProperty core:relativeToTerrain ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange core:RelativeToTerrain ;
-            owl:onProperty core:relativeToTerrain ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractCityObject ;
-            owl:onProperty core:AbstractCityObject.generalizesTo ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractDynamizer ;
-            owl:onProperty core:AbstractCityObject.dynamizer ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange core:RelativeToWater ;
-            owl:onProperty core:relativeToWater ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:RelativeToWater ;
-            owl:onProperty core:relativeToWater ],
-        [ a owl:Restriction ;
             owl:allValuesFrom core:AbstractGenericAttribute ;
             owl:onProperty core:AbstractCityObject.genericAttribute ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:CityObjectRelation ;
             owl:onProperty core:AbstractCityObject.relatedTo ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractAppearance ;
-            owl:onProperty core:AbstractCityObject.appearance ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange core:RelativeToTerrain ;
+            owl:onProperty core:relativeToTerrain ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:RelativeToTerrain ;
+            owl:onProperty core:relativeToTerrain ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange core:RelativeToWater ;
+            owl:onProperty core:relativeToWater ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractCityObject ;
+            owl:onProperty core:AbstractCityObject.generalizesTo ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:ADEOfAbstractCityObject ;
+            owl:onProperty core:adeOfAbstractCityObject ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:ExternalReference ;
             owl:onProperty core:AbstractCityObject.externalReference ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractDynamizer ;
+            owl:onProperty core:AbstractCityObject.dynamizer ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractAppearance ;
+            owl:onProperty core:AbstractCityObject.appearance ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:RelativeToWater ;
+            owl:onProperty core:relativeToWater ],
         core:AbstractFeatureWithLifespan ;
     skos:definition "AbstractCityObject is the abstract superclass of all thematic classes within the CityGML Conceptual Model."@en .
 
 [] a owl:AllDisjointClasses ;
-    owl:members ( brid:BridgeRoom bldg:BuildingRoom gen:GenericUnoccupiedSpace tran:AbstractTransportationSpace tran:AuxiliaryTrafficSpace tran:ClearanceSpace tran:Hole tran:TrafficSpace tun:HollowSpace ) .
+    owl:members ( core:AbstractThematicSurface dem:AbstractReliefComponent dem:ReliefFeature ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( frn:CityFurniture con:AbstractConstruction con:AbstractConstructiveElement con:AbstractFillingElement con:AbstractFurniture con:AbstractInstallation gen:GenericOccupiedSpace veg:AbstractVegetationObject wtr:WaterBody ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( core:TransformationMatrix2x2 core:TransformationMatrix3x4 core:TransformationMatrix4x4 ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( core:AbstractAppearance core:AbstractCityObject core:AbstractDynamizer core:AbstractVersion core:AbstractVersionTransition core:CityModel doc:Document wksp:Scenario wksp:Space wksp:Workspace ) .
 
 [] a owl:AllDisjointClasses ;
     owl:members ( bldg:AbstractBuildingSubdivision grp:CityObjectGroup gen:GenericLogicalSpace ) .
@@ -1520,16 +1529,7 @@ core:AbstractCityObject a owl:Class ;
     owl:members ( gen:CodeAttribute gen:DateAttribute gen:DoubleAttribute gen:GenericAttributeSet gen:IntAttribute gen:MeasureAttribute gen:StringAttribute gen:UriAttribute ) .
 
 [] a owl:AllDisjointClasses ;
-    owl:members ( frn:CityFurniture con:AbstractConstruction con:AbstractConstructiveElement con:AbstractFillingElement con:AbstractFurniture con:AbstractInstallation gen:GenericOccupiedSpace veg:AbstractVegetationObject wtr:WaterBody ) .
-
-[] a owl:AllDisjointClasses ;
-    owl:members ( core:AbstractThematicSurface dem:AbstractReliefComponent dem:ReliefFeature ) .
-
-[] a owl:AllDisjointClasses ;
-    owl:members ( core:TransformationMatrix2x2 core:TransformationMatrix3x4 core:TransformationMatrix4x4 ) .
-
-[] a owl:AllDisjointClasses ;
-    owl:members ( core:AbstractAppearance core:AbstractCityObject core:AbstractDynamizer core:AbstractVersion core:AbstractVersionTransition core:CityModel doc:Document wksp:Scenario wksp:Space wksp:Workspace ) .
+    owl:members ( brid:BridgeRoom bldg:BuildingRoom gen:GenericUnoccupiedSpace tran:AbstractTransportationSpace tran:AuxiliaryTrafficSpace tran:ClearanceSpace tran:Hole tran:TrafficSpace tun:HollowSpace ) .
 
 [] a owl:AllDisjointClasses ;
     owl:members ( con:AbstractConstructionSurface con:AbstractFillingSurface core:ClosureSurface gen:GenericThematicSurface luse:LandUse tran:AuxiliaryTrafficArea tran:HoleSurface tran:Marking tran:TrafficArea wtr:AbstractWaterBoundarySurface ) .

@@ -17,17 +17,11 @@
         <https://www.opengis.net/ont/citygml/core> ;
     skos:definition "The Appearance module supports the modelling of the observable surface properties of CityGML features in the form of textures and material."@en .
 
-<https://www.opengis.net/ont/citygml/common#referencePoint> a owl:ObjectProperty ;
-    skos:definition "Relates to the 2D Point geometry that represents the center of the upper left image pixel in world space."@en ;
-    schema:domainIncludes app:GeoreferencedTexture ;
-    schema:rangeIncludes gmlowl:Point .
+app:GeoreferencedTexture.referencePoint skos:definition "Relates to the 2D Point geometry that represents the center of the upper left image pixel in world space."@en .
 
-<https://www.opengis.net/ont/citygml/common#textureParameterization> a owl:ObjectProperty ;
-    skos:definition "Relates to the texture coordinates or transformation matrices used for parameterization."@en ;
-    schema:domainIncludes app:ParameterizedTexture,
-        app:TextureAssociation ;
-    schema:rangeIncludes app:AbstractTextureParameterization,
-        app:TextureAssociation .
+app:ParameterizedTexture.textureParameterization skos:definition "Relates to the texture coordinates or transformation matrices used for parameterization."@en .
+
+app:TextureAssociation.textureParameterization skos:definition "Relates to the texture coordinates or transformation matrices used for parameterization."@en .
 
 app:Appearance a owl:Class ;
     rdfs:label "Appearance"@en ;
@@ -52,12 +46,19 @@ app:Appearance.surfaceData a owl:ObjectProperty ;
 app:GeoreferencedTexture a owl:Class ;
     rdfs:label "GeoreferencedTexture"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom core:TransformationMatrix2x2 ;
+            owl:onProperty app:orientation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty app:preferWorldFile ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:Point ;
-            owl:onProperty app:GeoreferencedTexture.referencePoint ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#referencePoint> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:Point ;
-            owl:onProperty app:GeoreferencedTexture.referencePoint ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#referencePoint> ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:boolean ;
             owl:onProperty app:preferWorldFile ],
@@ -68,17 +69,8 @@ app:GeoreferencedTexture a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:TransformationMatrix2x2 ;
             owl:onProperty app:orientation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:TransformationMatrix2x2 ;
-            owl:onProperty app:orientation ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty app:preferWorldFile ],
         app:AbstractTexture ;
     owl:disjointWith app:ParameterizedTexture .
-
-app:ParameterizedTexture.textureParameterization skos:definition "Relates to the texture coordinates or transformation matrices used for parameterization."@en .
 
 app:TexCoordGen a owl:Class ;
     rdfs:label "TexCoordGen"@en ;
@@ -216,13 +208,11 @@ app:AbstractTexture a owl:Class ;
         app:AbstractSurfaceData ;
     owl:disjointWith app:X3DMaterial .
 
-app:GeoreferencedTexture.referencePoint skos:definition "Relates to the 2D Point geometry that represents the center of the upper left image pixel in world space."@en .
-
 app:ParameterizedTexture a owl:Class ;
     rdfs:label "ParameterizedTexture"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom app:TextureAssociation ;
-            owl:onProperty app:ParameterizedTexture.textureParameterization ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#textureParameterization> ],
         app:AbstractTexture .
 
 app:TexCoordGen.crs a owl:ObjectProperty ;
@@ -230,8 +220,6 @@ app:TexCoordGen.crs a owl:ObjectProperty ;
     rdfs:domain app:TexCoordGen ;
     rdfs:range iso19111-2007:SC_CRS ;
     skos:definition "Relates to the coordinate reference system of the transformation matrix."@en .
-
-app:TextureAssociation.textureParameterization skos:definition "Relates to the texture coordinates or transformation matrices used for parameterization."@en .
 
 app:ambientIntensity a owl:ObjectProperty ;
     rdfs:label "ambientIntensity"@en ;
@@ -327,14 +315,19 @@ app:wrapMode a owl:DatatypeProperty ;
     rdfs:range core:MimeTypeValue ;
     skos:definition "Specifies the MIME type of the external point cloud file."@en .
 
+<https://www.opengis.net/ont/citygml/common#referencePoint> a owl:ObjectProperty ;
+    skos:definition "Relates to the 2D Point geometry that represents the center of the upper left image pixel in world space."@en ;
+    schema:domainIncludes app:GeoreferencedTexture ;
+    schema:rangeIncludes gmlowl:Point .
+
 app:TextureAssociation a owl:Class ;
     rdfs:label "TextureAssociation"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom app:AbstractTextureParameterization ;
-            owl:onProperty app:TextureAssociation.textureParameterization ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#textureParameterization> ],
         [ a owl:Restriction ;
             owl:onClass app:AbstractTextureParameterization ;
-            owl:onProperty app:TextureAssociation.textureParameterization ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#textureParameterization> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:anyURI ;
@@ -356,6 +349,13 @@ app:WrapMode a rdfs:Datatype ;
     owl:equivalentClass [ a rdfs:Datatype ;
             owl:oneOf ( "none" "wrap" "mirror" "clamp" "border" ) ] ;
     skos:definition "WrapMode enumerates the different fill modes for textures."@en .
+
+<https://www.opengis.net/ont/citygml/common#textureParameterization> a owl:ObjectProperty ;
+    skos:definition "Relates to the texture coordinates or transformation matrices used for parameterization."@en ;
+    schema:domainIncludes app:ParameterizedTexture,
+        app:TextureAssociation ;
+    schema:rangeIncludes app:AbstractTextureParameterization,
+        app:TextureAssociation .
 
 app:AbstractSurfaceData a owl:Class ;
     rdfs:label "AbstractSurfaceData"@en ;

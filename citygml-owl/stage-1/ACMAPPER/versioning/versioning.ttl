@@ -157,9 +157,32 @@ vers:VersionTransition
         rdf:type         owl:Class;
         rdfs:label       "VersionTransition"@en;
         rdfs:subClassOf  core:AbstractVersionTransition;
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  vers:Version;
+                           owl:onProperty               vers:VersionTransition.from
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  vers:TransitionTypeValue;
+                           owl:onProperty               vers:type
+                         ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     vers:reason
+                           owl:allValuesFrom  vers:TransitionTypeValue;
+                           owl:onProperty     vers:type
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  vers:Version;
+                           owl:onProperty     vers:VersionTransition.from
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  xsd:string;
+                           owl:onProperty               vers:reason
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  vers:Version;
+                           owl:onProperty     vers:VersionTransition.to
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  vers:Transaction;
@@ -170,19 +193,6 @@ vers:VersionTransition
                            owl:onProperty     vers:clonePredecessor
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  vers:Version;
-                           owl:onProperty     vers:VersionTransition.to
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  vers:TransitionTypeValue;
-                           owl:onProperty     vers:type
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  vers:TransitionTypeValue;
-                           owl:onProperty               vers:type
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  vers:ADEOfVersionTransition;
                            owl:onProperty     vers:adeOfVersionTransition
                          ];
@@ -191,24 +201,14 @@ vers:VersionTransition
                            owl:onClass                  vers:Version;
                            owl:onProperty               vers:VersionTransition.to
                          ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  vers:Version;
-                           owl:onProperty     vers:VersionTransition.from
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  vers:Version;
-                           owl:onProperty               vers:VersionTransition.from
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:string;
-                           owl:onProperty               vers:reason
-                         ];
         rdfs:subClassOf  [ rdf:type                  owl:Restriction;
                            owl:onClass               xsd:boolean;
                            owl:onProperty            vers:clonePredecessor;
                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     vers:reason
                          ];
         skos:definition  "VersionTransition describes the change of the state of a city model from one version to another. Version transitions can have names, a description and can be further qualified by a type and a reason."@en .
 

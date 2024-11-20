@@ -8,11 +8,6 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://www.opengis.net/ont/citygml/common#genericAttribute> a owl:ObjectProperty ;
-    skos:definition "Relates to the generic attributes that are part of the GenericAttributeSet."@en ;
-    schema:domainIncludes gen:GenericAttributeSet ;
-    schema:rangeIncludes core:AbstractGenericAttribute .
-
 <https://www.opengis.net/ont/citygml/common#name> rdfs:label "name"@en ;
     rdfs:range xsd:string ;
     skos:definition "Specifies the name of the DoubleAttribute."@en .
@@ -64,6 +59,9 @@ gen:DateAttribute a owl:Class ;
 gen:DoubleAttribute a owl:Class ;
     rdfs:label "DoubleAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -74,9 +72,6 @@ gen:DoubleAttribute a owl:Class ;
             owl:onDataRange xsd:string ;
             owl:onProperty gen:name ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:double ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#value> ],
         core:AbstractGenericAttribute ;
     skos:definition "DoubleAttribute is a data type used to define generic attributes of type \"Double\"."@en .
 
@@ -296,24 +291,24 @@ gen:GenericAttributeSet a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:AbstractGenericAttribute ;
-            owl:onProperty gen:GenericAttributeSet.genericAttribute ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#genericAttribute> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractGenericAttribute ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common#genericAttribute> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty gen:codeSpace ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:anyURI ;
             owl:onProperty gen:codeSpace ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractGenericAttribute ;
-            owl:onProperty gen:GenericAttributeSet.genericAttribute ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty gen:name ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty gen:name ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty gen:codeSpace ],
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty gen:name ],
         core:AbstractGenericAttribute ;
     skos:definition "A GenericAttributeSet is a named collection of generic attributes."@en .
 
@@ -362,7 +357,9 @@ gen:GenericThematicSurfaceUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "GenericThematicSurfaceUsageValue is a code list that enumerates the different uses of a GenericThematicSurface."@en .
 
-gen:GenericAttributeSet.genericAttribute skos:definition "Relates to the generic attributes that are part of the GenericAttributeSet."@en .
+<https://www.opengis.net/ont/citygml/common#genericAttribute> skos:definition "Relates to the generic attributes that are part of the GenericAttributeSet."@en ;
+    schema:domainIncludes gen:GenericAttributeSet ;
+    schema:rangeIncludes core:AbstractGenericAttribute .
 
 gen:codeSpace a owl:DatatypeProperty ;
     rdfs:label "codeSpace"@en ;

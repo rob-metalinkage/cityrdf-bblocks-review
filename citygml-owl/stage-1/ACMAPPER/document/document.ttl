@@ -43,36 +43,9 @@ doc:uri  rdf:type   owl:DatatypeProperty;
 
 doc:Reference  rdf:type  owl:Class;
         rdfs:label       "Reference"@en;
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               core:AbstractFeatureWithLifespan;
-                           owl:onProperty            doc:Reference.referringTo;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ];
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               time:Interval;
-                           owl:onProperty            doc:coveragePeriod;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:string;
                            owl:onProperty     doc:referenceText
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  core:AbstractFeatureWithLifespan;
-                           owl:onProperty     doc:Reference.referringTo
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  time:Interval;
-                           owl:onProperty     doc:coveragePeriod
-                         ];
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               xsd:string;
-                           owl:onProperty            doc:referenceText;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     doc:purpose
                          ];
         rdfs:subClassOf  [ rdf:type                  owl:Restriction;
                            owl:onClass               xsd:dateTime;
@@ -84,13 +57,40 @@ doc:Reference  rdf:type  owl:Class;
                            owl:onClass                  doc:PurposeTypeValue;
                            owl:onProperty               doc:purposeType
                          ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               time:Interval;
+                           owl:onProperty            doc:coveragePeriod;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:string;
+                           owl:onProperty            doc:referenceText;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  core:AbstractFeatureWithLifespan;
+                           owl:onProperty     doc:Reference.referringTo
+                         ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:dateTime;
                            owl:onProperty     doc:referringDate
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     doc:purpose
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  doc:PurposeTypeValue;
                            owl:onProperty     doc:purposeType
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               core:AbstractFeatureWithLifespan;
+                           owl:onProperty            doc:Reference.referringTo;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  time:Interval;
+                           owl:onProperty     doc:coveragePeriod
                          ] .
 
 doc:PurposeTypeValue  rdf:type  owl:Class;

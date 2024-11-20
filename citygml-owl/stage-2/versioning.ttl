@@ -93,24 +93,32 @@ vers:reason a owl:DatatypeProperty ;
 vers:VersionTransition a owl:Class ;
     rdfs:label "VersionTransition"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass vers:Version ;
+            owl:onProperty vers:VersionTransition.from ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange vers:TransitionTypeValue ;
+            owl:onProperty vers:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom vers:TransitionTypeValue ;
+            owl:onProperty vers:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom vers:Version ;
+            owl:onProperty vers:VersionTransition.from ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
             owl:onProperty vers:reason ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom vers:Version ;
+            owl:onProperty vers:VersionTransition.to ],
         [ a owl:Restriction ;
             owl:allValuesFrom vers:Transaction ;
             owl:onProperty vers:VersionTransition.transaction ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:boolean ;
             owl:onProperty vers:clonePredecessor ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom vers:Version ;
-            owl:onProperty vers:VersionTransition.to ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom vers:TransitionTypeValue ;
-            owl:onProperty vers:type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange vers:TransitionTypeValue ;
-            owl:onProperty vers:type ],
         [ a owl:Restriction ;
             owl:allValuesFrom vers:ADEOfVersionTransition ;
             owl:onProperty vers:adeOfVersionTransition ],
@@ -119,20 +127,12 @@ vers:VersionTransition a owl:Class ;
             owl:onClass vers:Version ;
             owl:onProperty vers:VersionTransition.to ],
         [ a owl:Restriction ;
-            owl:allValuesFrom vers:Version ;
-            owl:onProperty vers:VersionTransition.from ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass vers:Version ;
-            owl:onProperty vers:VersionTransition.from ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty vers:reason ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty vers:clonePredecessor ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty vers:reason ],
         core:AbstractVersionTransition ;
     skos:definition "VersionTransition describes the change of the state of a city model from one version to another. Version transitions can have names, a description and can be further qualified by a type and a reason."@en .
 
