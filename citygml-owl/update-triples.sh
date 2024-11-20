@@ -130,8 +130,7 @@ where {
               rdfs:label ?label;
               skos:definition ?def .
     filter (strafter(str(?s),"#") in ("class", "usage", "function", "value", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))         bind(IRI(concat("https://www.opengis.net/ont/citygml/common#",strafter(str(?s),"#"))) as ?new)
-        }
-    }'
+    }}'
 
 python update_graph.py $file $file \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -344,8 +343,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX schema: <https://schema.org/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 insert {
-?classIndependentPropNameNew a owl:ObjectProperty ;
-    						 rdfs:label ?classIndependentPropName ;
+?classIndependentPropNameNew rdfs:label ?classIndependentPropName ;
 							 schema:domainIncludes ?domainToInclude ;
         					 schema:rangeIncludes ?rangeToInclude ;
               				 skos:definition ?def.
@@ -356,40 +354,12 @@ insert {
     ?def
 where {
 	?s a owl:ObjectProperty .
-    optional{bind(strafter(str(?s),"#") as ?classIndependentPropName).}
+    optional{bind(strafter(strafter(str(?old),"#"),".") as ?classIndependentPropName).}
 	?s rdfs:label ?classIndependentPropName .
     ?s rdfs:domain ?domainToInclude .
     ?s rdfs:range ?rangeToInclude .
     ?s skos:definition ?def .    
     filter (str(?classIndependentPropName) in ("boundary","address","mimeType","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","occupancy","elevation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
-        bind(IRI(concat("https://www.opengis.net/ont/citygml/common#",str(?classIndependentPropName))) 
-            					as ?classIndependentPropNameNew)
-}}'
-
-python update_graph.py $file $file \
-    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX schema: <https://schema.org/>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-insert {
-?classIndependentPropNameNew a owl:DatatypeProperty ;
-    						 rdfs:label ?classIndependentPropName ;
-							 schema:domainIncludes ?domainToInclude ;
-        					 schema:rangeIncludes ?rangeToInclude ;
-              				 skos:definition ?def.
-} where { select  
-    ?classIndependentPropNameNew 
-    ?rangeToInclude 
-    ?domainToInclude
-    ?def
-where {
-	?s a owl:DatatypeProperty .
-    optional{bind(strafter(str(?s),"#") as ?classIndependentPropName).}
-	?s rdfs:label ?classIndependentPropName .
-    ?s rdfs:domain ?domainToInclude .
-    ?s rdfs:range ?rangeToInclude .
-    ?s skos:definition ?def .    
-    filter (str(?classIndependentPropName) in ("name","description"))
         bind(IRI(concat("https://www.opengis.net/ont/citygml/common#",str(?classIndependentPropName))) 
             					as ?classIndependentPropNameNew)
 }}'
@@ -412,50 +382,10 @@ where { select ?s ?classIndependentPropName ?domainToInclude ?rangeToInclude ?de
     where {
     ?s a owl:ObjectProperty .
     optional{bind(strafter(str(?s),"#") as ?classIndependentPropName).}
-    optional{bind(strbefore(strafter(str(?s),"#"),".") as ?classThePropDepends).}
 	?s rdfs:label ?classIndependentPropName .
     ?s rdfs:domain ?domainToInclude .
     ?s rdfs:range ?rangeToInclude .
-    filter (str(?classIndependentPropName) in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
-	filter (strbefore(str(?s),"#") in ("https://www.opengis.net/ont/citygml/appearance", 
-"https://www.opengis.net/ont/citygml/bridge", 
-"https://www.opengis.net/ont/citygml/building", 
-"https://www.opengis.net/ont/citygml/cityfurniture", 
-"https://www.opengis.net/ont/citygml/cityobjectgroup", 
-"https://www.opengis.net/ont/citygml/construction",  
-"https://www.opengis.net/ont/citygml/core",  
-"https://www.opengis.net/ont/citygml/document",  
-"https://www.opengis.net/ont/citygml/dynamizer", 
-"https://www.opengis.net/ont/citygml/generics", 
-"https://www.opengis.net/ont/citygml/landuse", 
-"https://www.opengis.net/ont/citygml/pointcloud", 
-"https://www.opengis.net/ont/citygml/relief", 
-"https://www.opengis.net/ont/citygml/transportation", 
-"https://www.opengis.net/ont/citygml/tunnel", 
-"https://www.opengis.net/ont/citygml/vegetation", 
-"https://www.opengis.net/ont/citygml/versioning",
-"https://www.opengis.net/ont/citygml/waterbody", 
-"https://www.opengis.net/ont/citygml/workspace"))
-    }}'
-
-python update_graph.py $file $file \
-    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-delete { 
-	?s a owl:DatatypeProperty .
-    ?s rdfs:label ?classIndependentPropName .
-    ?s rdfs:domain ?domainToInclude .
-    ?s rdfs:range ?rangeToInclude .
-    ?s skos:definition ?def .
-    }
-where { select ?s ?classIndependentPropName ?domainToInclude ?rangeToInclude ?def
-    where {
-    ?s a owl:DatatypeProperty .
-    optional{bind(strafter(str(?s),"#") as ?classIndependentPropName).}
-	?s rdfs:label ?classIndependentPropName .
-    ?s rdfs:domain ?domainToInclude .
-    ?s rdfs:range ?rangeToInclude .
+    ?s skos:definition ?def .    
     filter (str(?classIndependentPropName) in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
 	filter (strbefore(str(?s),"#") in ("https://www.opengis.net/ont/citygml/appearance", 
 "https://www.opengis.net/ont/citygml/bridge", 
@@ -493,10 +423,11 @@ insert {
 where { 
     select ?s ?new
     where {
-	?s owl:onProperty ?old ;
-    filter (strafter(str(?old),"#") in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
-    bind(IRI(concat("https://www.opengis.net/ont/citygml/common#",strafter(str(?old),"#"))) as ?new)
-    }}'
+	?s owl:onProperty ?old .
+    filter (strafter(strafter(str(?old),"#"),".") in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
+    bind(IRI(concat("https://www.opengis.net/ont/citygml/common#",strafter(strafter(str(?old),"#"),"."))) as ?new)
+    }}
+'
 
 ### #9 deletes all (local) props mentions in axioms for those properties reused >1 
 echo 'deletes presence of global properties in axioms'
@@ -508,8 +439,10 @@ delete {
 	?s owl:onProperty ?old .
 }
 where {
+    select ?s ?old
+    where {
     ?s owl:onProperty ?old.
-  	filter (strafter(str(?old), "#") in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
+  	filter (strafter(strafter(str(?old),"#"),".") in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
     filter (strbefore(str(?old),"#") in ("https://www.opengis.net/ont/citygml/appearance", 
 "https://www.opengis.net/ont/citygml/bridge", 
 "https://www.opengis.net/ont/citygml/building", 
@@ -529,7 +462,7 @@ where {
 "https://www.opengis.net/ont/citygml/versioning",
 "https://www.opengis.net/ont/citygml/waterbody", 
 "https://www.opengis.net/ont/citygml/workspace"))
-}'
+    }}'
 
 done
 
