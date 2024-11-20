@@ -41,3 +41,10 @@ common:bridgeInstallation  rdf:type owl:ObjectProperty; rdfs:label "bridgeInstal
 common:textureParameterization  rdf:type owl:ObjectProperty; rdfs:label "textureParameterization"@en .
 common:name rdf:type owl:DatatypeProperty; rdfs:label "name"@en .
 common:description rdf:type owl:DatatypeProperty; rdfs:label "description"@en .
+
+# GeoSPARQL alignments for common properties
+common:lod0MultiCurve rdfs:subPropertyOf geo:hasGeometry .
+common:lod0MultiSurface rdfs:subPropertyOf geo:hasGeometry .
+common:lod2MultiSurface rdfs:subPropertyOf geo:hasGeometry .
+common:lod3MultiSurface rdfs:subPropertyOf geo:hasGeometry .
+common:boundary rdfs:subPropertyOf geo:hasGeometry .

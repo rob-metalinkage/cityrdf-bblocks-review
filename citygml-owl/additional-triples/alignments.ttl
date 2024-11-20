@@ -6,10 +6,14 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix core: <https://www.opengis.net/ont/citygml/core#> .
 
-# GeoSPARQL alignments
-core:AbstractSpace.lod0MultiCurve rdfs:subPropertyOf geo:hasGeometry .
+# GeoSPARQL alignments for core
+#these properties are defined now in package `common`
+#core:AbstractSpace.lod0MultiCurve rdfs:subPropertyOf geo:hasGeometry .
+#core:AbstractThematicSurface.lod0MultiCurve rdfs:subPropertyOf geo:hasGeometry .
 
-core:AbstractSpace.lod0MultiSurface rdfs:subPropertyOf geo:hasGeometry .
+#these properties are defined now in package `common`
+#core:AbstractSpace.lod0MultiSurface rdfs:subPropertyOf geo:hasGeometry .
+#core:AbstractThematicSurface.lod0MultiSurface rdfs:subPropertyOf geo:hasGeometry .
 
 core:AbstractSpace.lod0Point rdfs:subPropertyOf geo:hasGeometry .
 
@@ -17,25 +21,21 @@ core:AbstractSpace.lod1Solid rdfs:subPropertyOf geo:hasGeometry .
 
 core:AbstractSpace.lod2MultiCurve rdfs:subPropertyOf geo:hasGeometry .
 
-core:AbstractSpace.lod2MultiSurface rdfs:subPropertyOf geo:hasGeometry .
+#these properties are defined now in package `common`
+#core:AbstractSpace.lod2MultiSurface rdfs:subPropertyOf geo:hasGeometry .
+#core:AbstractThematicSurface.lod2MultiSurface rdfs:subPropertyOf geo:hasGeometry .
 
 core:AbstractSpace.lod2Solid rdfs:subPropertyOf geo:hasGeometry .
 
 core:AbstractSpace.lod3MultiCurve rdfs:subPropertyOf geo:hasGeometry .
 
-core:AbstractSpace.lod3MultiSurface rdfs:subPropertyOf geo:hasGeometry .
+#these properties are defined now in package `common`
+#core:AbstractSpace.lod3MultiSurface rdfs:subPropertyOf geo:hasGeometry .
+#core:AbstractThematicSurface.lod3MultiSurface rdfs:subPropertyOf geo:hasGeometry .
 
 core:AbstractSpace.lod3Solid rdfs:subPropertyOf geo:hasGeometry .
 
-core:AbstractThematicSurface.lod0MultiCurve rdfs:subPropertyOf geo:hasGeometry .
-
-core:AbstractThematicSurface.lod0MultiSurface rdfs:subPropertyOf geo:hasGeometry .
-
 core:AbstractThematicSurface.lod1MultiSurface rdfs:subPropertyOf geo:hasGeometry .
-
-core:AbstractThematicSurface.lod2MultiSurface rdfs:subPropertyOf geo:hasGeometry .
-
-core:AbstractThematicSurface.lod3MultiSurface rdfs:subPropertyOf geo:hasGeometry .
 
 core:ImplicitGeometry.referencePoint rdfs:subPropertyOf geo:hasGeometry .
 
