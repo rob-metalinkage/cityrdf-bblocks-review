@@ -335,7 +335,7 @@ delete {
         	filter (strstarts(strafter(str(?adeclass), "#"), "ADE") )
     }}'
 
-### 6 adds properties reused >1 per CityGML family
+### 6 adds new global properties for those reused >1 per CityGML family
 echo 'add properties reused more than once per CityGML family'
 
 python update_graph.py $file $file \
@@ -361,7 +361,7 @@ where {
     ?s rdfs:domain ?domainToInclude .
     ?s rdfs:range ?rangeToInclude .
     ?s skos:definition ?def .    
-    filter (str(?classIndependentPropName) in ("boundary","address","mimeType","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","occupancy","elevation","lowReference","highReference","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
+    filter (str(?classIndependentPropName) in ("boundary","address","mimeType","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","occupancy","elevation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
         bind(IRI(concat("https://www.opengis.net/ont/citygml/common#",str(?classIndependentPropName))) 
             					as ?classIndependentPropNameNew)
 }}'
@@ -394,7 +394,7 @@ where {
             					as ?classIndependentPropNameNew)
 }}'
 
-### 7 removes old definitions of properties reused >1 per CityGML family
+### 7 removes old definitions of (local) properties for those reused >1 per CityGML family
 echo 'removes old definitions of properties reused more than once per CityGML family'
 
 python update_graph.py $file $file \
@@ -416,7 +416,7 @@ where { select ?s ?classIndependentPropName ?domainToInclude ?rangeToInclude ?de
 	?s rdfs:label ?classIndependentPropName .
     ?s rdfs:domain ?domainToInclude .
     ?s rdfs:range ?rangeToInclude .
-    filter (str(?classIndependentPropName) in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","lowReference","highReference","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
+    filter (str(?classIndependentPropName) in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
 	filter (strbefore(str(?s),"#") in ("https://www.opengis.net/ont/citygml/appearance", 
 "https://www.opengis.net/ont/citygml/bridge", 
 "https://www.opengis.net/ont/citygml/building", 
@@ -477,6 +477,59 @@ where { select ?s ?classIndependentPropName ?domainToInclude ?rangeToInclude ?de
 "https://www.opengis.net/ont/citygml/waterbody", 
 "https://www.opengis.net/ont/citygml/workspace"))
     }}'
+
+### #8 inserts common:props refs into axioms for those properties that are reused > 1 per Ontology family
+
+echo 'inserts presence of global properties in axioms'
+
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX common: <https://www.opengis.net/ont/citygml/common#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+insert { 
+    ?s owl:onProperty ?new .
+}
+where { 
+    select ?s ?new
+    where {
+	?s owl:onProperty ?old ;
+    filter (strafter(str(?old),"#") in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
+    bind(IRI(concat("https://www.opengis.net/ont/citygml/common#",strafter(str(?old),"#"))) as ?new)
+    }}'
+
+### #9 deletes all (local) props mentions in axioms for those properties reused >1 
+echo 'deletes presence of global properties in axioms'
+
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+delete { 
+	?s owl:onProperty ?old .
+}
+where {
+    ?s owl:onProperty ?old.
+  	filter (strafter(str(?old), "#") in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
+    filter (strbefore(str(?old),"#") in ("https://www.opengis.net/ont/citygml/appearance", 
+"https://www.opengis.net/ont/citygml/bridge", 
+"https://www.opengis.net/ont/citygml/building", 
+"https://www.opengis.net/ont/citygml/cityfurniture", 
+"https://www.opengis.net/ont/citygml/cityobjectgroup", 
+"https://www.opengis.net/ont/citygml/construction",  
+"https://www.opengis.net/ont/citygml/core",  
+"https://www.opengis.net/ont/citygml/document",  
+"https://www.opengis.net/ont/citygml/dynamizer", 
+"https://www.opengis.net/ont/citygml/generics", 
+"https://www.opengis.net/ont/citygml/landuse", 
+"https://www.opengis.net/ont/citygml/pointcloud", 
+"https://www.opengis.net/ont/citygml/relief", 
+"https://www.opengis.net/ont/citygml/transportation", 
+"https://www.opengis.net/ont/citygml/tunnel", 
+"https://www.opengis.net/ont/citygml/vegetation", 
+"https://www.opengis.net/ont/citygml/versioning",
+"https://www.opengis.net/ont/citygml/waterbody", 
+"https://www.opengis.net/ont/citygml/workspace"))
+}'
 
 done
 
