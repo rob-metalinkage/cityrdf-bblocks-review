@@ -79,6 +79,10 @@ dem:RasterRelief a owl:Class ;
 dem:ReliefFeature a owl:Class ;
     rdfs:label "ReliefFeature"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass core:IntegerBetween0and3 ;
+            owl:onProperty dem:ReliefFeature.lod ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:allValuesFrom dem:ADEOfReliefFeature ;
             owl:onProperty dem:adeOfReliefFeature ],
         [ a owl:Restriction ;
@@ -91,10 +95,6 @@ dem:ReliefFeature a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom core:IntegerBetween0and3 ;
             owl:onProperty dem:ReliefFeature.lod ],
-        [ a owl:Restriction ;
-            owl:onClass core:IntegerBetween0and3 ;
-            owl:onProperty dem:ReliefFeature.lod ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         core:AbstractSpaceBoundary ;
     skos:definition "A ReliefFeature is a collection of terrain components representing the Earth's surface, also known as the Digital Terrain Model."@en .
 
@@ -229,19 +229,19 @@ dem:AbstractReliefComponent a owl:Class ;
     rdfs:label "AbstractReliefComponent"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:Surface ;
-            owl:onProperty dem:extent ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:Surface ;
-            owl:onProperty dem:extent ],
-        [ a owl:Restriction ;
             owl:onClass core:IntegerBetween0and3 ;
             owl:onProperty dem:AbstractReliefComponent.lod ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:IntegerBetween0and3 ;
             owl:onProperty dem:AbstractReliefComponent.lod ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:Surface ;
+            owl:onProperty dem:extent ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:Surface ;
+            owl:onProperty dem:extent ],
         [ a owl:Restriction ;
             owl:allValuesFrom dem:ADEOfAbstractReliefComponent ;
             owl:onProperty dem:adeOfAbstractReliefComponent ],

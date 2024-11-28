@@ -161,14 +161,7 @@ veg:PlantCover a owl:Class ;
             owl:onProperty veg:adeOfPlantCover ],
         [ a owl:Restriction ;
             owl:allValuesFrom sc:Measure ;
-            owl:onProperty veg:averageHeight ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange sc:Measure ;
-            owl:onProperty veg:averageHeight ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom veg:PlantCoverFunctionValue ;
-            owl:onProperty veg:PlantCover.function ],
+            owl:onProperty veg:maxHeight ],
         [ a owl:Restriction ;
             owl:allValuesFrom veg:PlantCoverUsageValue ;
             owl:onProperty veg:PlantCover.usage ],
@@ -178,21 +171,28 @@ veg:PlantCover a owl:Class ;
             owl:onProperty veg:minHeight ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass veg:PlantCoverClassValue ;
-            owl:onProperty veg:PlantCover.class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sc:Measure ;
-            owl:onProperty veg:minHeight ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange sc:Measure ;
             owl:onProperty veg:maxHeight ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sc:Measure ;
-            owl:onProperty veg:maxHeight ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass veg:PlantCoverClassValue ;
+            owl:onProperty veg:PlantCover.class ],
         [ a owl:Restriction ;
             owl:allValuesFrom veg:PlantCoverClassValue ;
             owl:onProperty veg:PlantCover.class ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom veg:PlantCoverFunctionValue ;
+            owl:onProperty veg:PlantCover.function ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange sc:Measure ;
+            owl:onProperty veg:averageHeight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sc:Measure ;
+            owl:onProperty veg:averageHeight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sc:Measure ;
+            owl:onProperty veg:minHeight ],
         veg:AbstractVegetationObject ;
     owl:disjointWith veg:SolitaryVegetationObject ;
     skos:definition "A PlantCover represents a space covered by vegetation."@en .
@@ -215,46 +215,8 @@ veg:SpeciesValue a owl:Class ;
 veg:SolitaryVegetationObject a owl:Class ;
     rdfs:label "SolitaryVegetationObject"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom veg:ADEOfSolitaryVegetationObject ;
-            owl:onProperty veg:adeOfSolitaryVegetationObject ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange sc:Measure ;
-            owl:onProperty veg:maxRootBallDepth ],
-        [ a owl:Restriction ;
             owl:allValuesFrom sc:Measure ;
             owl:onProperty veg:height ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sc:Measure ;
-            owl:onProperty veg:rootBallDiameter ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange sc:Measure ;
-            owl:onProperty veg:trunkDiameter ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange sc:Measure ;
-            owl:onProperty veg:crownDiameter ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sc:Measure ;
-            owl:onProperty veg:crownDiameter ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom veg:SolitaryVegetationObjectFunctionValue ;
-            owl:onProperty veg:SolitaryVegetationObject.function ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sc:Measure ;
-            owl:onProperty veg:maxRootBallDepth ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass veg:SolitaryVegetationObjectClassValue ;
-            owl:onProperty veg:SolitaryVegetationObject.class ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass veg:SpeciesValue ;
-            owl:onProperty veg:species ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sc:Measure ;
-            owl:onProperty veg:trunkDiameter ],
         [ a owl:Restriction ;
             owl:allValuesFrom veg:SolitaryVegetationObjectUsageValue ;
             owl:onProperty veg:SolitaryVegetationObject.usage ],
@@ -262,16 +224,54 @@ veg:SolitaryVegetationObject a owl:Class ;
             owl:allValuesFrom veg:SolitaryVegetationObjectClassValue ;
             owl:onProperty veg:SolitaryVegetationObject.class ],
         [ a owl:Restriction ;
+            owl:allValuesFrom sc:Measure ;
+            owl:onProperty veg:trunkDiameter ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange sc:Measure ;
+            owl:onProperty veg:trunkDiameter ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange sc:Measure ;
             owl:onProperty veg:height ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sc:Measure ;
+            owl:onProperty veg:maxRootBallDepth ],
         [ a owl:Restriction ;
             owl:allValuesFrom veg:SpeciesValue ;
             owl:onProperty veg:species ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange sc:Measure ;
+            owl:onProperty veg:maxRootBallDepth ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom veg:SolitaryVegetationObjectFunctionValue ;
+            owl:onProperty veg:SolitaryVegetationObject.function ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange sc:Measure ;
             owl:onProperty veg:rootBallDiameter ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom veg:ADEOfSolitaryVegetationObject ;
+            owl:onProperty veg:adeOfSolitaryVegetationObject ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sc:Measure ;
+            owl:onProperty veg:crownDiameter ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass veg:SolitaryVegetationObjectClassValue ;
+            owl:onProperty veg:SolitaryVegetationObject.class ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange sc:Measure ;
+            owl:onProperty veg:crownDiameter ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sc:Measure ;
+            owl:onProperty veg:rootBallDiameter ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass veg:SpeciesValue ;
+            owl:onProperty veg:species ],
         veg:AbstractVegetationObject ;
     skos:definition "A SolitaryVegetationObject represents individual vegetation objects, e.g. trees or bushes."@en .
 

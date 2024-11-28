@@ -35,9 +35,6 @@ wksp:Space.creator a owl:DatatypeProperty ;
 wksp:Workspace a owl:Class ;
     rdfs:label "Workspace"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty wksp:Workspace.creator ],
-        [ a owl:Restriction ;
             owl:allValuesFrom wksp:Space ;
             owl:onProperty wksp:spaceMember ],
         [ a owl:Restriction ;
@@ -48,6 +45,9 @@ wksp:Workspace a owl:Class ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass wksp:Space ;
             owl:onProperty wksp:spaceMember ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty wksp:Workspace.creator ],
         core:AbstractFeatureWithLifespan .
 
 wksp:Workspace.creator a owl:DatatypeProperty ;
@@ -87,14 +87,14 @@ wksp:Scenario a owl:Class ;
 wksp:Space a owl:Class ;
     rdfs:label "Space"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty wksp:Space.creator ],
+        [ a owl:Restriction ;
             owl:allValuesFrom wksp:Scenario ;
             owl:onProperty wksp:scenarioMember ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass wksp:Scenario ;
             owl:onProperty wksp:scenarioMember ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty wksp:Space.creator ],
         core:AbstractFeatureWithLifespan .
 

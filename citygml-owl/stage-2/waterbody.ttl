@@ -15,24 +15,24 @@
 wtr:WaterBody a owl:Class ;
     rdfs:label "WaterBody"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass wtr:WaterBodyClassValue ;
+            owl:onProperty wtr:class ],
+        [ a owl:Restriction ;
             owl:allValuesFrom wtr:AbstractWaterBoundarySurface ;
             owl:onProperty wtr:boundary ],
         [ a owl:Restriction ;
-            owl:allValuesFrom wtr:ADEOfWaterBody ;
-            owl:onProperty wtr:adeOfWaterBody ],
-        [ a owl:Restriction ;
             owl:allValuesFrom wtr:WaterBodyFunctionValue ;
             owl:onProperty wtr:function ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom wtr:ADEOfWaterBody ;
+            owl:onProperty wtr:adeOfWaterBody ],
         [ a owl:Restriction ;
             owl:allValuesFrom wtr:WaterBodyClassValue ;
             owl:onProperty wtr:class ],
         [ a owl:Restriction ;
             owl:allValuesFrom wtr:WaterBodyUsageValue ;
             owl:onProperty wtr:usage ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass wtr:WaterBodyClassValue ;
-            owl:onProperty wtr:class ],
         core:AbstractOccupiedSpace ;
     skos:definition "A WaterBody represents significant and permanent or semi-permanent accumulations of surface water, usually covering a part of the Earth."@en .
 
@@ -48,15 +48,15 @@ wtr:WaterGroundSurface a owl:Class ;
 wtr:WaterSurface a owl:Class ;
     rdfs:label "WaterSurface"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom wtr:ADEOfWaterSurface ;
-            owl:onProperty wtr:adeOfWaterSurface ],
-        [ a owl:Restriction ;
             owl:allValuesFrom wtr:WaterLevelValue ;
             owl:onProperty wtr:waterLevel ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass wtr:WaterLevelValue ;
             owl:onProperty wtr:waterLevel ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom wtr:ADEOfWaterSurface ;
+            owl:onProperty wtr:adeOfWaterSurface ],
         wtr:AbstractWaterBoundarySurface ;
     skos:definition "A WaterSurface represents the upper exterior interface between a water body and the atmosphere."@en .
 
