@@ -1,9 +1,9 @@
-@prefix core: <https://www.opengis.net/ont/citygml/core#> .
+@prefix core: <https://www.opengis.net/ont/citygml/core/> .
 @prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix wtr: <https://www.opengis.net/ont/citygml/waterbody#> .
+@prefix wtr: <https://www.opengis.net/ont/citygml/waterbody/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.opengis.net/ont/citygml/waterbody> a owl:Ontology ;
@@ -11,6 +11,30 @@
     owl:imports <http://def.isotc211.org/iso19150/-2/2012/base>,
         <https://www.opengis.net/ont/citygml/core> ;
     skos:definition "The WaterBody module supports representation of the thematic aspects and 3D geometry of rivers, canals, lakes, and basins. It does, however, not inherit any hydrological or other dynamic aspects of fluid flow."@en .
+
+wtr:WaterBody a owl:Class ;
+    rdfs:label "WaterBody"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom wtr:AbstractWaterBoundarySurface ;
+            owl:onProperty wtr:boundary ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom wtr:ADEOfWaterBody ;
+            owl:onProperty wtr:adeOfWaterBody ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom wtr:WaterBodyFunctionValue ;
+            owl:onProperty wtr:function ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom wtr:WaterBodyClassValue ;
+            owl:onProperty wtr:class ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom wtr:WaterBodyUsageValue ;
+            owl:onProperty wtr:usage ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass wtr:WaterBodyClassValue ;
+            owl:onProperty wtr:class ],
+        core:AbstractOccupiedSpace ;
+    skos:definition "A WaterBody represents significant and permanent or semi-permanent accumulations of surface water, usually covering a part of the Earth."@en .
 
 wtr:WaterGroundSurface a owl:Class ;
     rdfs:label "WaterGroundSurface"@en ;
@@ -20,35 +44,6 @@ wtr:WaterGroundSurface a owl:Class ;
         wtr:AbstractWaterBoundarySurface ;
     owl:disjointWith wtr:WaterSurface ;
     skos:definition "A WaterGroundSurface represents the exterior boundary surface of the submerged bottom of a water body."@en .
-
-wtr:WaterBody a owl:Class ;
-    rdfs:label "WaterBody"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom wtr:WaterBodyUsageValue ;
-            owl:onProperty wtr:usage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom wtr:AbstractWaterBoundarySurface ;
-            owl:onProperty wtr:WaterBody.boundary ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom wtr:ADEOfWaterBody ;
-            owl:onProperty wtr:adeOfWaterBody ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom wtr:WaterBodyFunctionValue ;
-            owl:onProperty wtr:function ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass wtr:WaterBodyClassValue ;
-            owl:onProperty wtr:class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom wtr:WaterBodyClassValue ;
-            owl:onProperty wtr:class ],
-        core:AbstractOccupiedSpace ;
-    skos:definition "A WaterBody represents significant and permanent or semi-permanent accumulations of surface water, usually covering a part of the Earth."@en .
-
-wtr:WaterBody.boundary a owl:ObjectProperty ;
-    rdfs:label "boundary"@en ;
-    rdfs:domain wtr:WaterBody ;
-    rdfs:range wtr:AbstractWaterBoundarySurface .
 
 wtr:WaterSurface a owl:Class ;
     rdfs:label "WaterSurface"@en ;
@@ -84,6 +79,10 @@ wtr:adeOfWaterSurface a owl:ObjectProperty ;
     rdfs:label "adeOfWaterSurface"@en ;
     rdfs:range wtr:ADEOfWaterSurface ;
     skos:definition "Augments the WaterSurface with properties defined in an ADE."@en .
+
+wtr:boundary a owl:ObjectProperty ;
+    rdfs:label "boundary"@en ;
+    rdfs:range wtr:AbstractWaterBoundarySurface .
 
 wtr:function a owl:ObjectProperty ;
     rdfs:label "function"@en ;

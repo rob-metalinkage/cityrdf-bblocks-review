@@ -1,5 +1,5 @@
-@prefix app: <https://www.opengis.net/ont/citygml/appearance#> .
-@prefix core: <https://www.opengis.net/ont/citygml/core#> .
+@prefix app: <https://www.opengis.net/ont/citygml/appearance/> .
+@prefix core: <https://www.opengis.net/ont/citygml/core/> .
 @prefix gmlowl: <http://www.opengis.net/ont/gml#> .
 @prefix iso19111-2007: <http://def.isotc211.org/iso19111/2007/CoordinateReferenceSystems#> .
 @prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
@@ -46,6 +46,10 @@ app:Appearance.surfaceData a owl:ObjectProperty ;
 app:GeoreferencedTexture a owl:Class ;
     rdfs:label "GeoreferencedTexture"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:TransformationMatrix2x2 ;
+            owl:onProperty app:orientation ],
+        [ a owl:Restriction ;
             owl:allValuesFrom core:TransformationMatrix2x2 ;
             owl:onProperty app:orientation ],
         [ a owl:Restriction ;
@@ -55,20 +59,16 @@ app:GeoreferencedTexture a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:Point ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#referencePoint> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/referencePoint> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:Point ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#referencePoint> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/referencePoint> ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:boolean ;
             owl:onProperty app:preferWorldFile ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:anyURI ;
             owl:onProperty app:target ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:TransformationMatrix2x2 ;
-            owl:onProperty app:orientation ],
         app:AbstractTexture ;
     owl:disjointWith app:ParameterizedTexture .
 
@@ -180,7 +180,8 @@ app:AbstractTexture a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:MimeTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#mimeType> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType>,
+                <https://www.opengis.net/ont/citygml/common/mimeType> ],
         [ a owl:Restriction ;
             owl:allValuesFrom app:TextureType ;
             owl:onProperty app:textureType ],
@@ -189,7 +190,8 @@ app:AbstractTexture a owl:Class ;
             owl:onProperty app:borderColor ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:MimeTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#mimeType> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType>,
+                <https://www.opengis.net/ont/citygml/common/mimeType> ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:anyURI ;
             owl:onProperty app:imageURI ;
@@ -212,7 +214,7 @@ app:ParameterizedTexture a owl:Class ;
     rdfs:label "ParameterizedTexture"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom app:TextureAssociation ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#textureParameterization> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/textureParameterization> ],
         app:AbstractTexture .
 
 app:TexCoordGen.crs a owl:ObjectProperty ;
@@ -311,11 +313,11 @@ app:wrapMode a owl:DatatypeProperty ;
     rdfs:range app:WrapMode ;
     skos:definition "Specifies the behaviour of the texture when the texture is smaller than the surface to which it is applied."@en .
 
-<https://www.opengis.net/ont/citygml/common#mimeType> rdfs:label "mimeType"@en ;
+<https://www.opengis.net/ont/citygml/common/mimeType> rdfs:label "mimeType"@en ;
     rdfs:range core:MimeTypeValue ;
     skos:definition "Specifies the MIME type of the external point cloud file."@en .
 
-<https://www.opengis.net/ont/citygml/common#referencePoint> a owl:ObjectProperty ;
+<https://www.opengis.net/ont/citygml/common/referencePoint> a owl:ObjectProperty ;
     skos:definition "Relates to the 2D Point geometry that represents the center of the upper left image pixel in world space."@en ;
     schema:domainIncludes app:GeoreferencedTexture ;
     schema:rangeIncludes gmlowl:Point .
@@ -324,10 +326,10 @@ app:TextureAssociation a owl:Class ;
     rdfs:label "TextureAssociation"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom app:AbstractTextureParameterization ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#textureParameterization> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/textureParameterization> ],
         [ a owl:Restriction ;
             owl:onClass app:AbstractTextureParameterization ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#textureParameterization> ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/textureParameterization> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:anyURI ;
@@ -350,7 +352,7 @@ app:WrapMode a rdfs:Datatype ;
             owl:oneOf ( "none" "wrap" "mirror" "clamp" "border" ) ] ;
     skos:definition "WrapMode enumerates the different fill modes for textures."@en .
 
-<https://www.opengis.net/ont/citygml/common#textureParameterization> a owl:ObjectProperty ;
+<https://www.opengis.net/ont/citygml/common/textureParameterization> a owl:ObjectProperty ;
     skos:definition "Relates to the texture coordinates or transformation matrices used for parameterization."@en ;
     schema:domainIncludes app:ParameterizedTexture,
         app:TextureAssociation ;

@@ -1,10 +1,10 @@
-@prefix core:       <https://www.opengis.net/ont/citygml/core#> .
+@prefix core:       <https://www.opengis.net/ont/citygml/core/> .
 @prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
 @prefix owl:        <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
-@prefix wtr:        <https://www.opengis.net/ont/citygml/waterbody#> .
+@prefix wtr:        <https://www.opengis.net/ont/citygml/waterbody/> .
 @prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
 
 wtr:ADEOfAbstractWaterBoundarySurface
@@ -98,12 +98,6 @@ wtr:WaterBodyFunctionValue
         rdfs:subClassOf  skos:Concept;
         skos:definition  "WaterBodyFunctionValue is a code list that enumerates the different purposes of a WaterBody."@en .
 
-wtr:WaterBody.boundary
-        rdf:type     owl:ObjectProperty;
-        rdfs:domain  wtr:WaterBody;
-        rdfs:label   "boundary"@en;
-        rdfs:range   wtr:AbstractWaterBoundarySurface .
-
 wtr:function  rdf:type   owl:ObjectProperty;
         rdfs:label       "function"@en;
         rdfs:range       wtr:WaterBodyFunctionValue;
@@ -136,17 +130,8 @@ wtr:WaterBody  rdf:type  owl:Class;
         rdfs:label       "WaterBody"@en;
         rdfs:subClassOf  core:AbstractOccupiedSpace;
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  wtr:ADEOfWaterBody;
-                           owl:onProperty     wtr:adeOfWaterBody
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  wtr:WaterBodyFunctionValue;
                            owl:onProperty     wtr:function
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  wtr:WaterBodyClassValue;
-                           owl:onProperty               wtr:class
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  wtr:WaterBodyClassValue;
@@ -156,9 +141,18 @@ wtr:WaterBody  rdf:type  owl:Class;
                            owl:allValuesFrom  wtr:WaterBodyUsageValue;
                            owl:onProperty     wtr:usage
                          ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  wtr:WaterBodyClassValue;
+                           owl:onProperty               wtr:class
+                         ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  wtr:AbstractWaterBoundarySurface;
-                           owl:onProperty     wtr:WaterBody.boundary
+                           owl:onProperty     wtr:boundary
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  wtr:ADEOfWaterBody;
+                           owl:onProperty     wtr:adeOfWaterBody
                          ];
         skos:definition  "A WaterBody represents significant and permanent or semi-permanent accumulations of surface water, usually covering a part of the Earth."@en .
 
@@ -177,3 +171,7 @@ wtr:adeOfAbstractWaterBoundarySurface
         rdfs:label       "adeOfAbstractWaterBoundarySurface"@en;
         rdfs:range       wtr:ADEOfAbstractWaterBoundarySurface;
         skos:definition  "Augments AbstractWaterBoundarySurface with properties defined in an ADE."@en .
+
+wtr:boundary  rdf:type  owl:ObjectProperty;
+        rdfs:label  "boundary"@en;
+        rdfs:range  wtr:AbstractWaterBoundarySurface .

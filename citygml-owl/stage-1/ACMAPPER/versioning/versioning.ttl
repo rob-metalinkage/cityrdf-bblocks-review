@@ -1,18 +1,11 @@
-@prefix core:       <https://www.opengis.net/ont/citygml/core#> .
+@prefix core:       <https://www.opengis.net/ont/citygml/core/> .
 @prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
 @prefix owl:        <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
-@prefix vers:       <https://www.opengis.net/ont/citygml/versioning#> .
+@prefix vers:       <https://www.opengis.net/ont/citygml/versioning/> .
 @prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
-
-vers:Transaction.newFeature
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      vers:Transaction;
-        rdfs:label       "newFeature"@en;
-        rdfs:range       core:AbstractFeatureWithLifespan;
-        skos:definition  "Relates to the version of the city object subsequent to the Transaction."@en .
 
 vers:tag  rdf:type       owl:DatatypeProperty;
         rdfs:label       "tag"@en;
@@ -30,23 +23,38 @@ vers:reason  rdf:type    owl:DatatypeProperty;
         rdfs:range       xsd:string;
         skos:definition  "Specifies why the VersionTransition has been carried out."@en .
 
+vers:versionMember  rdf:type  owl:ObjectProperty;
+        rdfs:label       "versionMember"@en;
+        rdfs:range       core:AbstractFeatureWithLifespan;
+        skos:definition  "Relates to all city objects that are part of the city model version."@en .
+
+vers:VersionTransition.type
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      vers:VersionTransition;
+        rdfs:label       "type"@en;
+        rdfs:range       vers:TransitionTypeValue;
+        skos:definition  "Indicates the specific type of the VersionTransition."@en .
+
+vers:to  rdf:type        owl:ObjectProperty;
+        rdfs:label       "to"@en;
+        rdfs:range       vers:Version;
+        skos:definition  "Relates to the successor version of the VersionTransition."@en .
+
 vers:clonePredecessor
         rdf:type         owl:DatatypeProperty;
         rdfs:label       "clonePredecessor"@en;
         rdfs:range       xsd:boolean;
         skos:definition  "Indicates whether the set of city object instances belonging to the successor version of the city model is either explicitly enumerated within the successor version object (attribute clonePredecessor=false),  or has to be derived from the modifications of the city model provided as a list of transactions on the city object versions contained in the predecessor version (attribute clonePredecessor=true)."@en .
 
-vers:VersionTransition.transaction
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      vers:VersionTransition;
+vers:newFeature  rdf:type  owl:ObjectProperty;
+        rdfs:label       "newFeature"@en;
+        rdfs:range       core:AbstractFeatureWithLifespan;
+        skos:definition  "Relates to the version of the city object subsequent to the Transaction."@en .
+
+vers:transaction  rdf:type  owl:ObjectProperty;
         rdfs:label       "transaction"@en;
         rdfs:range       vers:Transaction;
         skos:definition  "Relates to all transactions that have been applied as part of the VersionTransition."@en .
-
-vers:type  rdf:type      owl:ObjectProperty;
-        rdfs:label       "type"@en;
-        rdfs:range       vers:TransitionTypeValue;
-        skos:definition  "Indicates the specific type of the VersionTransition."@en .
 
 vers:TransactionTypeValue
         rdf:type         rdfs:Datatype;
@@ -60,57 +68,43 @@ vers:adeOfVersionTransition
         rdfs:range       vers:ADEOfVersionTransition;
         skos:definition  "Augments the VersionTransition with properties defined in an ADE."@en .
 
-vers:VersionTransition.from
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      vers:VersionTransition;
-        rdfs:label       "from"@en;
-        rdfs:range       vers:Version;
-        skos:definition  "Relates to the predecessor version of the VersionTransition."@en .
-
-vers:Transaction.oldFeature
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      vers:Transaction;
-        rdfs:label       "oldFeature"@en;
-        rdfs:range       core:AbstractFeatureWithLifespan;
-        skos:definition  "Relates to the version of the city object prior to the Transaction."@en .
-
-vers:Version.versionMember
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      vers:Version;
-        rdfs:label       "versionMember"@en;
-        rdfs:range       core:AbstractFeatureWithLifespan;
-        skos:definition  "Relates to all city objects that are part of the city model version."@en .
-
 vers:Transaction  rdf:type  owl:Class;
         rdfs:label       "Transaction"@en;
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  core:AbstractFeatureWithLifespan;
-                           owl:onProperty     vers:Transaction.newFeature
+                           owl:onProperty     vers:newFeature
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  core:AbstractFeatureWithLifespan;
-                           owl:onProperty               vers:Transaction.newFeature
+                           owl:onProperty               vers:newFeature
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  core:AbstractFeatureWithLifespan;
-                           owl:onProperty     vers:Transaction.oldFeature
+                           owl:onProperty     vers:oldFeature
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  core:AbstractFeatureWithLifespan;
-                           owl:onProperty               vers:Transaction.oldFeature
+                           owl:onProperty               vers:oldFeature
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  vers:TransitionTypeValue;
-                           owl:onProperty     vers:type
+                           owl:allValuesFrom  vers:TransactionTypeValue;
+                           owl:onProperty     vers:Transaction.type
                          ];
         rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               vers:TransitionTypeValue;
-                           owl:onProperty            vers:type;
+                           owl:onClass               vers:TransactionTypeValue;
+                           owl:onProperty            vers:Transaction.type;
                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ];
         skos:definition  "Transaction represents a modification of the city model by the creation, termination, or replacement of a specific city object. While the creation of a city object also marks its first object version, the termination marks the end of existence of a real world object and, hence, also terminates the final version of a city object. The replacement of a city object means that a specific version of it is replaced by a new version."@en .
+
+vers:Transaction.type
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      vers:Transaction;
+        rdfs:label       "type"@en;
+        rdfs:range       vers:TransactionTypeValue;
+        skos:definition  "Indicates the specific type of the Transaction."@en .
 
 vers:adeOfVersion  rdf:type  owl:ObjectProperty;
         rdfs:label       "adeOfVersion"@en;
@@ -126,7 +120,7 @@ vers:Version  rdf:type   owl:Class;
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  core:AbstractFeatureWithLifespan;
-                           owl:onProperty     vers:Version.versionMember
+                           owl:onProperty     vers:versionMember
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:string;
@@ -134,12 +128,10 @@ vers:Version  rdf:type   owl:Class;
                          ];
         skos:definition  "Version represents a defined state of a city model consisting of the dedicated versions of all city object instances that belong to the respective city model version. Versions can have names, a description and can be labeled with an arbitrary number of user defined tags."@en .
 
-vers:VersionTransition.to
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      vers:VersionTransition;
-        rdfs:label       "to"@en;
+vers:from  rdf:type      owl:ObjectProperty;
+        rdfs:label       "from"@en;
         rdfs:range       vers:Version;
-        skos:definition  "Relates to the successor version of the VersionTransition."@en .
+        skos:definition  "Relates to the predecessor version of the VersionTransition."@en .
 
 <https://www.opengis.net/ont/citygml/versioning>
         rdf:type         owl:Ontology;
@@ -153,27 +145,54 @@ vers:TransitionTypeValue
         owl:oneOf        ( "planned" "realized" "historicalSuccession" "fork" "merge" );
         skos:definition  "TransitionTypeValue enumerates the different kinds of version transitions. “planned” and “fork” should be used in cases when from one city model version multiple successor versions are being created. “realized” and “merge” should be used when different city model versions are converging into a common successor version."@en .
 
+vers:oldFeature  rdf:type  owl:ObjectProperty;
+        rdfs:label       "oldFeature"@en;
+        rdfs:range       core:AbstractFeatureWithLifespan;
+        skos:definition  "Relates to the version of the city object prior to the Transaction."@en .
+
 vers:VersionTransition
         rdf:type         owl:Class;
         rdfs:label       "VersionTransition"@en;
         rdfs:subClassOf  core:AbstractVersionTransition;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  vers:TransitionTypeValue;
+                           owl:onProperty     vers:VersionTransition.type
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:boolean;
+                           owl:onProperty            vers:clonePredecessor;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  vers:Transaction;
+                           owl:onProperty     vers:transaction
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  vers:Version;
+                           owl:onProperty     vers:to
+                         ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  vers:Version;
-                           owl:onProperty               vers:VersionTransition.from
+                           owl:onProperty               vers:to
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  vers:Version;
+                           owl:onProperty               vers:from
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  vers:TransitionTypeValue;
-                           owl:onProperty               vers:type
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  vers:TransitionTypeValue;
-                           owl:onProperty     vers:type
+                           owl:onProperty               vers:VersionTransition.type
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  vers:Version;
-                           owl:onProperty     vers:VersionTransition.from
+                           owl:onProperty     vers:from
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:boolean;
+                           owl:onProperty     vers:clonePredecessor
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -181,30 +200,8 @@ vers:VersionTransition
                            owl:onProperty               vers:reason
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  vers:Version;
-                           owl:onProperty     vers:VersionTransition.to
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  vers:Transaction;
-                           owl:onProperty     vers:VersionTransition.transaction
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:boolean;
-                           owl:onProperty     vers:clonePredecessor
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  vers:ADEOfVersionTransition;
                            owl:onProperty     vers:adeOfVersionTransition
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  vers:Version;
-                           owl:onProperty               vers:VersionTransition.to
-                         ];
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               xsd:boolean;
-                           owl:onProperty            vers:clonePredecessor;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:string;

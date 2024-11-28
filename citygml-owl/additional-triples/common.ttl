@@ -1,6 +1,6 @@
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix common: <https://www.opengis.net/ont/citygml/common#> .
+@prefix common: <https://www.opengis.net/ont/citygml/common/> .
 
 common:class rdf:type owl:ObjectProperty; rdfs:label "class"@en.
 common:usage rdf:type owl:ObjectProperty; rdfs:label "usage"@en.

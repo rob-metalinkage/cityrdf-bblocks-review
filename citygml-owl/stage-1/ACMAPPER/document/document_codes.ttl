@@ -12,4 +12,4 @@
 doccode:PurposeTypeValue
         rdf:type        skos:ConceptScheme;
         rdfs:label      "PurposeTypeValue"@en;
-        dct:isFormatOf  <https://www.opengis.net/ont/citygml/document#PurposeTypeValue> .
+        dct:isFormatOf  <https://www.opengis.net/ont/citygml/document/PurposeTypeValue> .

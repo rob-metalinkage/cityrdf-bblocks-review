@@ -1,6 +1,6 @@
-@prefix core: <https://www.opengis.net/ont/citygml/core#> .
+@prefix core: <https://www.opengis.net/ont/citygml/core/> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix grp: <https://www.opengis.net/ont/citygml/cityobjectgroup#> .
+@prefix grp: <https://www.opengis.net/ont/citygml/cityobjectgroup/> .
 @prefix grpcode: <https://www.opengis.net/ont/citygml/cityobjectgroup/code#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -31,44 +31,43 @@ grpcode:CityObjectGroupUsageValue a skos:ConceptScheme ;
     dct:isFormatOf grp:CityObjectGroupUsageValue ;
     skos:definition "CityObjectGroupUsageValue is a code list that enumerates the different uses of a CityObjectGroup."@en .
 
-<https://www.opengis.net/ont/citygml/common#function> rdfs:label "function"@en ;
-    rdfs:range grp:CityObjectGroupFunctionValue ;
-    skos:definition "Specifies the intended purposes of the CityObjectGroup."@en .
-
-<https://www.opengis.net/ont/citygml/common#usage> rdfs:label "usage"@en ;
-    rdfs:range grp:CityObjectGroupUsageValue ;
-    skos:definition "Specifies the actual usages of the CityObjectGroup."@en .
-
 grp:CityObjectGroup a owl:Class ;
     rdfs:label "CityObjectGroup"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass grp:CityObjectGroupClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+            owl:allValuesFrom core:AbstractCityObject ;
+            owl:onProperty grp:parent ],
         [ a owl:Restriction ;
-            owl:allValuesFrom grp:CityObjectGroupFunctionValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
+            owl:allValuesFrom grp:Role ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/groupMember> ],
         [ a owl:Restriction ;
             owl:allValuesFrom grp:CityObjectGroupUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/usage> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass grp:CityObjectGroupClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
         [ a owl:Restriction ;
             owl:allValuesFrom grp:CityObjectGroupClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom grp:CityObjectGroupFunctionValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/function> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:AbstractCityObject ;
-            owl:onProperty grp:CityObjectGroup.parent ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom grp:Role ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#groupMember> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractCityObject ;
-            owl:onProperty grp:CityObjectGroup.parent ],
+            owl:onProperty grp:parent ],
         core:AbstractLogicalSpace .
 
-grp:CityObjectGroup.parent a owl:ObjectProperty ;
+<https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
+    rdfs:range grp:CityObjectGroupFunctionValue ;
+    skos:definition "Specifies the intended purposes of the CityObjectGroup."@en .
+
+<https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
+    rdfs:range grp:CityObjectGroupUsageValue ;
+    skos:definition "Specifies the actual usages of the CityObjectGroup."@en .
+
+grp:parent a owl:ObjectProperty ;
     rdfs:label "parent"@en ;
-    rdfs:domain grp:CityObjectGroup ;
     rdfs:range core:AbstractCityObject ;
     skos:definition "Relates to a city object to which the CityObjectGroup belongs."@en .
 
@@ -77,7 +76,7 @@ grp:role a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
     skos:definition "Describes the role the city object plays within the CityObjectGroup."@en .
 
-<https://www.opengis.net/ont/citygml/common#class> rdfs:label "class"@en ;
+<https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
     rdfs:range grp:CityObjectGroupClassValue ;
     skos:definition "Indicates the specific type of the CityObjectGroup."@en .
 
@@ -95,10 +94,10 @@ grp:Role a owl:Class ;
     rdfs:label "Role"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom core:AbstractCityObject ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#groupMember> ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/groupMember> ],
         [ a owl:Restriction ;
             owl:onClass core:AbstractCityObject ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#groupMember> ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/groupMember> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -109,7 +108,7 @@ grp:Role a owl:Class ;
             owl:onProperty grp:role ] ;
     skos:definition "Role qualifies the function of a city object within the CityObjectGroup."@en .
 
-<https://www.opengis.net/ont/citygml/common#groupMember> skos:definition "Relates to the city objects that are part of the CityObjectGroup."@en ;
+<https://www.opengis.net/ont/citygml/common/groupMember> skos:definition "Relates to the city objects that are part of the CityObjectGroup."@en ;
     schema:domainIncludes grp:CityObjectGroup,
         grp:Role ;
     schema:rangeIncludes grp:Role,

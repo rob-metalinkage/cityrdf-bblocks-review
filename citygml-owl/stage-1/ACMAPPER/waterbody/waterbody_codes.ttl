@@ -12,23 +12,23 @@
 wtrcode:WaterBodyFunctionValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "WaterBodyFunctionValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/waterbody#WaterBodyFunctionValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/waterbody/WaterBodyFunctionValue>;
         skos:definition  "WaterBodyFunctionValue is a code list that enumerates the different purposes of a WaterBody."@en .
 
 wtrcode:WaterBodyClassValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "WaterBodyClassValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/waterbody#WaterBodyClassValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/waterbody/WaterBodyClassValue>;
         skos:definition  "WaterBodyClassValue is a code list used to further classify a WaterBody."@en .
 
 wtrcode:WaterBodyUsageValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "WaterBodyUsageValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/waterbody#WaterBodyUsageValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/waterbody/WaterBodyUsageValue>;
         skos:definition  "WaterBodyUsageValue is a code list that enumerates the different uses of a WaterBody."@en .
 
 wtrcode:WaterLevelValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "WaterLevelValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/waterbody#WaterLevelValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/waterbody/WaterLevelValue>;
         skos:definition  "WaterLevelValue is a code list that enumerates the different levels of a water surface."@en .

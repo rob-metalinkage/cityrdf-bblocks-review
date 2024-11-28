@@ -91,7 +91,7 @@ common:usage  rdf:type      owl:ObjectProperty;
         rdfs:label       "usage"@en;
 ```
 We add the following:
-- we introduce an ontology `/additional-triples/common.ttl` and a namespace `PREFIX common: <https://www.opengis.net/ont/citygml/common#>` keeping all ObjectProperties and DatatypeProperties sharing the same domain and varying in the `rdfs:range` (and `rdfs:label/skos:definition`). 
+- we introduce an ontology `/additional-triples/common.ttl` and a namespace `PREFIX common: <https://www.opengis.net/ont/citygml/common/>` keeping all ObjectProperties and DatatypeProperties sharing the same domain and varying in the `rdfs:range` (and `rdfs:label/skos:definition`). 
 
 We apply four SPARQL queries ([##1-4 in the file](./update-triples.sh)) across all ontologies in `stage-2` to do this.
 
@@ -231,15 +231,15 @@ with the results:
 
 | classIndependentPropName | classThePropDepends   | domainToInclude                                                        | rangeToInclude                                                           |
 |--------------------------|-----------------------|------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| boundary                 | WaterBody             | https://www.opengis.net/ont/citygml/waterbody#WaterBody                  | https://www.opengis.net/ont/citygml/waterbody#AbstractWaterBoundarySurface |
-| boundary                 | HollowSpace           | https://www.opengis.net/ont/citygml/tunnel#HollowSpace                   | https://www.opengis.net/ont/citygml/core#AbstractThematicSurface           |
-| boundary                 | AuxiliaryTrafficSpace | https://www.opengis.net/ont/citygml/transportation#AuxiliaryTrafficSpace | https://www.opengis.net/ont/citygml/transportation#AuxiliaryTrafficArea    |
-| boundary                 | TrafficSpace          | https://www.opengis.net/ont/citygml/transportation#TrafficSpace          | https://www.opengis.net/ont/citygml/transportation#TrafficArea             |
-| boundary                 | Door                  | https://www.opengis.net/ont/citygml/construction#Door                    | https://www.opengis.net/ont/citygml/construction#DoorSurface               |
-| boundary                 | Window                | https://www.opengis.net/ont/citygml/construction#Window                  | https://www.opengis.net/ont/citygml/construction#WindowSurface             |
-| boundary                 | BuildingRoom          | https://www.opengis.net/ont/citygml/building#BuildingRoom                | https://www.opengis.net/ont/citygml/core#AbstractThematicSurface           |
-| boundary                 | Storey                | https://www.opengis.net/ont/citygml/building#Storey                      | https://www.opengis.net/ont/citygml/core#AbstractThematicSurface           |
-| boundary                 | BridgeRoom            | https://www.opengis.net/ont/citygml/bridge#BridgeRoom                    | https://www.opengis.net/ont/citygml/core#AbstractThematicSurface           |
+| boundary                 | WaterBody             | https://www.opengis.net/ont/citygml/waterbody/WaterBody                  | https://www.opengis.net/ont/citygml/waterbody/AbstractWaterBoundarySurface |
+| boundary                 | HollowSpace           | https://www.opengis.net/ont/citygml/tunnel/HollowSpace                   | https://www.opengis.net/ont/citygml/core/AbstractThematicSurface           |
+| boundary                 | AuxiliaryTrafficSpace | https://www.opengis.net/ont/citygml/transportation/AuxiliaryTrafficSpace | https://www.opengis.net/ont/citygml/transportation/AuxiliaryTrafficArea    |
+| boundary                 | TrafficSpace          | https://www.opengis.net/ont/citygml/transportation/TrafficSpace          | https://www.opengis.net/ont/citygml/transportation/TrafficArea             |
+| boundary                 | Door                  | https://www.opengis.net/ont/citygml/construction/Door                    | https://www.opengis.net/ont/citygml/construction/DoorSurface               |
+| boundary                 | Window                | https://www.opengis.net/ont/citygml/construction/Window                  | https://www.opengis.net/ont/citygml/construction/WindowSurface             |
+| boundary                 | BuildingRoom          | https://www.opengis.net/ont/citygml/building/BuildingRoom                | https://www.opengis.net/ont/citygml/core/AbstractThematicSurface           |
+| boundary                 | Storey                | https://www.opengis.net/ont/citygml/building/Storey                      | https://www.opengis.net/ont/citygml/core/AbstractThematicSurface           |
+| boundary                 | BridgeRoom            | https://www.opengis.net/ont/citygml/bridge/BridgeRoom                    | https://www.opengis.net/ont/citygml/core/AbstractThematicSurface           |
 
 We aim at creating a definition of the kind:
 

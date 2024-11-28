@@ -12,17 +12,17 @@
 frncode:CityFurnitureFunctionValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "CityFurnitureFunctionValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityfurniture#CityFurnitureFunctionValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityfurniture/CityFurnitureFunctionValue>;
         skos:definition  "CityFurnitureFunctionValue is a code list that enumerates the different purposes of a CityFurniture."@en .
 
 frncode:CityFurnitureUsageValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "CityFurnitureUsageValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityfurniture#CityFurnitureUsageValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityfurniture/CityFurnitureUsageValue>;
         skos:definition  "CityFurnitureUsageValue is a code list that enumerates the different uses of a CityFurniture."@en .
 
 frncode:CityFurnitureClassValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "CityFurnitureClassValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityfurniture#CityFurnitureClassValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityfurniture/CityFurnitureClassValue>;
         skos:definition  "CityFurnitureClassValue is a code list used to further classify a CityFurniture."@en .

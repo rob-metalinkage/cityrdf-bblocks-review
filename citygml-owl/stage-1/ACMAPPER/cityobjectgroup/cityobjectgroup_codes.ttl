@@ -9,19 +9,19 @@
 grpcode:CityObjectGroupUsageValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "CityObjectGroupUsageValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityobjectgroup#CityObjectGroupUsageValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityobjectgroup/CityObjectGroupUsageValue>;
         skos:definition  "CityObjectGroupUsageValue is a code list that enumerates the different uses of a CityObjectGroup."@en .
 
 grpcode:CityObjectGroupClassValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "CityObjectGroupClassValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityobjectgroup#CityObjectGroupClassValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityobjectgroup/CityObjectGroupClassValue>;
         skos:definition  "CityObjectGroupClassValue is a code list used to further classify a CityObjectGroup."@en .
 
 grpcode:CityObjectGroupFunctionValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "CityObjectGroupFunctionValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityobjectgroup#CityObjectGroupFunctionValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityobjectgroup/CityObjectGroupFunctionValue>;
         skos:definition  "CityObjectGroupFunctionValue is a code list that enumerates the different purposes of a CityObjectGroup."@en .
 
 <https://www.opengis.net/ont/citygml/cityobjectgroup/code>

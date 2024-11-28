@@ -1,11 +1,11 @@
-@prefix core:       <https://www.opengis.net/ont/citygml/core#> .
+@prefix core:       <https://www.opengis.net/ont/citygml/core/> .
 @prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
 @prefix owl:        <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sc:         <http://shapechange.net/resources/ont/base#> .
 @prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
-@prefix veg:        <https://www.opengis.net/ont/citygml/vegetation#> .
+@prefix veg:        <https://www.opengis.net/ont/citygml/vegetation/> .
 @prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
 
 <https://www.opengis.net/ont/citygml/vegetation>
@@ -30,8 +30,13 @@ veg:SolitaryVegetationObject
         rdfs:label       "SolitaryVegetationObject"@en;
         rdfs:subClassOf  veg:AbstractVegetationObject;
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  sc:Measure;
-                           owl:onProperty     veg:crownDiameter
+                           owl:allValuesFrom  veg:ADEOfSolitaryVegetationObject;
+                           owl:onProperty     veg:adeOfSolitaryVegetationObject
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  veg:SolitaryVegetationObjectClassValue;
+                           owl:onProperty               veg:SolitaryVegetationObject.class
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -39,16 +44,43 @@ veg:SolitaryVegetationObject
                            owl:onProperty               veg:species
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  veg:PlantCoverClassValue;
-                           owl:onProperty     veg:class
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  sc:Measure;
                            owl:onProperty     veg:trunkDiameter
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  veg:SolitaryVegetationObjectUsageValue;
+                           owl:onProperty     veg:SolitaryVegetationObject.usage
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  veg:SolitaryVegetationObjectClassValue;
+                           owl:onProperty     veg:SolitaryVegetationObject.class
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  sc:Measure;
+                           owl:onProperty               veg:height
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  veg:SpeciesValue;
+                           owl:onProperty     veg:species
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  sc:Measure;
+                           owl:onProperty               veg:rootBallDiameter
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  sc:Measure;
+                           owl:onProperty               veg:maxRootBallDepth
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  sc:Measure;
                            owl:onProperty     veg:height
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  sc:Measure;
+                           owl:onProperty     veg:rootBallDiameter
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -61,50 +93,32 @@ veg:SolitaryVegetationObject
                            owl:onProperty               veg:crownDiameter
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  veg:ADEOfSolitaryVegetationObject;
-                           owl:onProperty     veg:adeOfSolitaryVegetationObject
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  veg:PlantCoverClassValue;
-                           owl:onProperty               veg:class
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  veg:PlantCoverUsageValue;
-                           owl:onProperty     veg:usage
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  sc:Measure;
-                           owl:onProperty               veg:maxRootBallDepth
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  veg:PlantCoverFunctionValue;
-                           owl:onProperty     veg:function
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  veg:SpeciesValue;
-                           owl:onProperty     veg:species
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  sc:Measure;
-                           owl:onProperty     veg:rootBallDiameter
+                           owl:onProperty     veg:crownDiameter
                          ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  sc:Measure;
-                           owl:onProperty               veg:height
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  veg:SolitaryVegetationObjectFunctionValue;
+                           owl:onProperty     veg:SolitaryVegetationObject.function
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  sc:Measure;
                            owl:onProperty     veg:maxRootBallDepth
                          ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  sc:Measure;
-                           owl:onProperty               veg:rootBallDiameter
-                         ];
         skos:definition  "A SolitaryVegetationObject represents individual vegetation objects, e.g. trees or bushes."@en .
+
+veg:PlantCover.function
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      veg:PlantCover;
+        rdfs:label       "function"@en;
+        rdfs:range       veg:PlantCoverFunctionValue;
+        skos:definition  "Specifies the intended purposes of the PlantCover."@en .
+
+veg:SolitaryVegetationObject.class
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      veg:SolitaryVegetationObject;
+        rdfs:label       "class"@en;
+        rdfs:range       veg:SolitaryVegetationObjectClassValue;
+        skos:definition  "Indicates the specific type of the SolitaryVegetationObject."@en .
 
 veg:PlantCoverUsageValue
         rdf:type         owl:Class;
@@ -112,20 +126,16 @@ veg:PlantCoverUsageValue
         rdfs:subClassOf  skos:Concept;
         skos:definition  "PlantCoverUsageValue is a code list that enumerates the different uses of a PlantCover."@en .
 
-veg:rootBallDiameter  rdf:type  owl:DatatypeProperty;
-        rdfs:label       "rootBallDiameter"@en;
-        rdfs:range       sc:Measure;
-        skos:definition  "Specifies the diameter of the SolitaryCityObject's root ball."@en .
-
-veg:usage  rdf:type      owl:ObjectProperty;
+veg:PlantCover.usage  rdf:type  owl:ObjectProperty;
+        rdfs:domain      veg:PlantCover;
         rdfs:label       "usage"@en;
         rdfs:range       veg:PlantCoverUsageValue;
         skos:definition  "Specifies the actual uses of the PlantCover."@en .
 
-veg:function  rdf:type   owl:ObjectProperty;
-        rdfs:label       "function"@en;
-        rdfs:range       veg:PlantCoverFunctionValue;
-        skos:definition  "Specifies the intended purposes of the PlantCover."@en .
+veg:rootBallDiameter  rdf:type  owl:DatatypeProperty;
+        rdfs:label       "rootBallDiameter"@en;
+        rdfs:range       sc:Measure;
+        skos:definition  "Specifies the diameter of the SolitaryCityObject's root ball."@en .
 
 veg:AbstractVegetationObject
         rdf:type               owl:Class;
@@ -154,6 +164,12 @@ veg:adeOfPlantCover  rdf:type  owl:ObjectProperty;
         rdfs:range       veg:ADEOfPlantCover;
         skos:definition  "Augments the PlantCover with properties defined in an ADE."@en .
 
+veg:PlantCover.class  rdf:type  owl:ObjectProperty;
+        rdfs:domain      veg:PlantCover;
+        rdfs:label       "class"@en;
+        rdfs:range       veg:PlantCoverClassValue;
+        skos:definition  "Indicates the specific type of the PlantCover."@en .
+
 veg:SolitaryVegetationObjectUsageValue
         rdf:type         owl:Class;
         rdfs:label       "SolitaryVegetationObjectUsageValue"@en;
@@ -164,11 +180,6 @@ veg:maxRootBallDepth  rdf:type  owl:DatatypeProperty;
         rdfs:label       "maxRootBallDepth"@en;
         rdfs:range       sc:Measure;
         skos:definition  "Specifies the vertical distance between the lowest point of the SolitaryVegetationObject's root ball and the terrain surface."@en .
-
-veg:class  rdf:type      owl:ObjectProperty;
-        rdfs:label       "class"@en;
-        rdfs:range       veg:PlantCoverClassValue;
-        skos:definition  "Indicates the specific type of the PlantCover."@en .
 
 veg:adeOfSolitaryVegetationObject
         rdf:type         owl:ObjectProperty;
@@ -214,6 +225,13 @@ veg:averageHeight  rdf:type  owl:DatatypeProperty;
         rdfs:range       sc:Measure;
         skos:definition  "Specifies the average height of the PlantCover."@en .
 
+veg:SolitaryVegetationObject.usage
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      veg:SolitaryVegetationObject;
+        rdfs:label       "usage"@en;
+        rdfs:range       veg:SolitaryVegetationObjectUsageValue;
+        skos:definition  "Specifies the actual uses of the SolitaryVegetationObject."@en .
+
 veg:ADEOfSolitaryVegetationObject
         rdf:type               owl:Class;
         rdfs:label             "ADEOfSolitaryVegetationObject"@en;
@@ -241,13 +259,36 @@ veg:crownDiameter  rdf:type  owl:DatatypeProperty;
         rdfs:range       sc:Measure;
         skos:definition  "Specifies the diameter of the SolitaryCityObject's crown."@en .
 
+veg:SolitaryVegetationObject.function
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      veg:SolitaryVegetationObject;
+        rdfs:label       "function"@en;
+        rdfs:range       veg:SolitaryVegetationObjectFunctionValue;
+        skos:definition  "Specifies the intended purposes of the SolitaryVegetationObject."@en .
+
 veg:PlantCover  rdf:type  owl:Class;
         rdfs:label        "PlantCover"@en;
         rdfs:subClassOf   veg:AbstractVegetationObject;
+        rdfs:subClassOf   [ rdf:type           owl:Restriction;
+                            owl:allValuesFrom  veg:ADEOfPlantCover;
+                            owl:onProperty     veg:adeOfPlantCover
+                          ];
+        rdfs:subClassOf   [ rdf:type           owl:Restriction;
+                            owl:allValuesFrom  sc:Measure;
+                            owl:onProperty     veg:averageHeight
+                          ];
         rdfs:subClassOf   [ rdf:type                     owl:Restriction;
                             owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                             owl:onClass                  sc:Measure;
-                            owl:onProperty               veg:maxHeight
+                            owl:onProperty               veg:averageHeight
+                          ];
+        rdfs:subClassOf   [ rdf:type           owl:Restriction;
+                            owl:allValuesFrom  veg:PlantCoverFunctionValue;
+                            owl:onProperty     veg:PlantCover.function
+                          ];
+        rdfs:subClassOf   [ rdf:type           owl:Restriction;
+                            owl:allValuesFrom  veg:PlantCoverUsageValue;
+                            owl:onProperty     veg:PlantCover.usage
                           ];
         rdfs:subClassOf   [ rdf:type                     owl:Restriction;
                             owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -257,40 +298,24 @@ veg:PlantCover  rdf:type  owl:Class;
         rdfs:subClassOf   [ rdf:type                     owl:Restriction;
                             owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                             owl:onClass                  veg:PlantCoverClassValue;
-                            owl:onProperty               veg:class
-                          ];
-        rdfs:subClassOf   [ rdf:type           owl:Restriction;
-                            owl:allValuesFrom  veg:ADEOfPlantCover;
-                            owl:onProperty     veg:adeOfPlantCover
-                          ];
-        rdfs:subClassOf   [ rdf:type           owl:Restriction;
-                            owl:allValuesFrom  veg:PlantCoverUsageValue;
-                            owl:onProperty     veg:usage
-                          ];
-        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
-                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                            owl:onClass                  sc:Measure;
-                            owl:onProperty               veg:averageHeight
-                          ];
-        rdfs:subClassOf   [ rdf:type           owl:Restriction;
-                            owl:allValuesFrom  veg:PlantCoverFunctionValue;
-                            owl:onProperty     veg:function
-                          ];
-        rdfs:subClassOf   [ rdf:type           owl:Restriction;
-                            owl:allValuesFrom  sc:Measure;
-                            owl:onProperty     veg:averageHeight
-                          ];
-        rdfs:subClassOf   [ rdf:type           owl:Restriction;
-                            owl:allValuesFrom  veg:PlantCoverClassValue;
-                            owl:onProperty     veg:class
+                            owl:onProperty               veg:PlantCover.class
                           ];
         rdfs:subClassOf   [ rdf:type           owl:Restriction;
                             owl:allValuesFrom  sc:Measure;
                             owl:onProperty     veg:minHeight
                           ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  sc:Measure;
+                            owl:onProperty               veg:maxHeight
+                          ];
         rdfs:subClassOf   [ rdf:type           owl:Restriction;
                             owl:allValuesFrom  sc:Measure;
                             owl:onProperty     veg:maxHeight
+                          ];
+        rdfs:subClassOf   [ rdf:type           owl:Restriction;
+                            owl:allValuesFrom  veg:PlantCoverClassValue;
+                            owl:onProperty     veg:PlantCover.class
                           ];
         owl:disjointWith  veg:SolitaryVegetationObject;
         skos:definition   "A PlantCover represents a space covered by vegetation."@en .

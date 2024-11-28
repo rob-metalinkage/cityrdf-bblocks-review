@@ -9,13 +9,13 @@
 bridcode:BridgeInstallationUsageValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeInstallationUsageValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeInstallationUsageValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeInstallationUsageValue>;
         skos:definition  "BridgeInstallationUsageValue is a code list that enumerates the different uses of a BridgeInstallation."@en .
 
 bridcode:BridgeRoomClassValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeRoomClassValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeRoomClassValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeRoomClassValue>;
         skos:definition  "BridgeRoomClassValue is a code list used to further classify a BridgeRoom."@en .
 
 <https://www.opengis.net/ont/citygml/bridge/code>
@@ -24,77 +24,77 @@ bridcode:BridgeRoomClassValue
 bridcode:BridgeConstructiveElementClassValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeConstructiveElementClassValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeConstructiveElementClassValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementClassValue>;
         skos:definition  "BridgeConstructiveElementClassValue is a code list used to further classify a BridgeConstructiveElement."@en .
 
 bridcode:BridgeRoomUsageValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeRoomUsageValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeRoomUsageValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeRoomUsageValue>;
         skos:definition  "BridgeRoomUsageValue is a code list that enumerates the different uses of a BridgeRoom."@en .
 
 bridcode:BridgeInstallationFunctionValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeInstallationFunctionValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeInstallationFunctionValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeInstallationFunctionValue>;
         skos:definition  "BridgeInstallationFunctionValue is a code list that enumerates the different purposes of a BridgeInstallation."@en .
 
 bridcode:BridgeFunctionValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeFunctionValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeFunctionValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeFunctionValue>;
         skos:definition  "BridgeFunctionValue is a code list that enumerates the different purposes of a Bridge."@en .
 
 bridcode:BridgeConstructiveElementFunctionValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeConstructiveElementFunctionValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeConstructiveElementFunctionValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementFunctionValue>;
         skos:definition  "BridgeConstructiveElementFunctionValue is a code list that enumerates the different purposes of a BridgeConstructiveElement."@en .
 
 bridcode:BridgeConstructiveElementUsageValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeConstructiveElementUsageValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeConstructiveElementUsageValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementUsageValue>;
         skos:definition  "BridgeConstructiveElementUsageValue is a code list that enumerates the different uses of a BridgeConstructiveElement."@en .
 
 bridcode:BridgeFurnitureClassValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeFurnitureClassValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeFurnitureClassValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeFurnitureClassValue>;
         skos:definition  "BridgeFurnitureClassValue is a code list used to further classify a BridgeFurniture."@en .
 
 bridcode:BridgeFurnitureUsageValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeFurnitureUsageValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeFurnitureUsageValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeFurnitureUsageValue>;
         skos:definition  "BridgeFurnitureUsageValue is a code list that enumerates the different uses of a BridgeFurniture."@en .
 
 bridcode:BridgeClassValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeClassValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeClassValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeClassValue>;
         skos:definition  "BridgeClassValue is a code list used to further classify a Bridge."@en .
 
 bridcode:BridgeInstallationClassValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeInstallationClassValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeInstallationClassValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeInstallationClassValue>;
         skos:definition  "BridgeInstallationClassValue is a code list used to further classify a BridgeInstallation."@en .
 
 bridcode:BridgeFurnitureFunctionValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeFurnitureFunctionValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeFurnitureFunctionValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeFurnitureFunctionValue>;
         skos:definition  "BridgeFurnitureFunctionValue is a code list that enumerates the different purposes of a BridgeFurniture."@en .
 
 bridcode:BridgeRoomFunctionValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeRoomFunctionValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeRoomFunctionValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeRoomFunctionValue>;
         skos:definition  "BridgeRoomFunctionValue is a code list that enumerates the different purposes of a BridgeRoom."@en .
 
 bridcode:BridgeUsageValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "BridgeUsageValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge#BridgeUsageValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/bridge/BridgeUsageValue>;
         skos:definition  "BridgeUsageValue is a code list that enumerates the different uses of a Bridge."@en .

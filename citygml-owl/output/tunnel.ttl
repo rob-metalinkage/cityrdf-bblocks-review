@@ -1,12 +1,12 @@
-@prefix con: <https://www.opengis.net/ont/citygml/construction#> .
-@prefix core: <https://www.opengis.net/ont/citygml/core#> .
+@prefix con: <https://www.opengis.net/ont/citygml/construction/> .
+@prefix core: <https://www.opengis.net/ont/citygml/core/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tun: <https://www.opengis.net/ont/citygml/tunnel#> .
+@prefix tun: <https://www.opengis.net/ont/citygml/tunnel/> .
 @prefix tuncode: <https://www.opengis.net/ont/citygml/tunnel/code#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -16,6 +16,14 @@
         <https://www.opengis.net/ont/citygml/construction>,
         <https://www.opengis.net/ont/citygml/core> ;
     skos:definition "The Tunnel module supports representation of thematic and spatial aspects of tunnels, tunnel parts, tunnel installations, and interior tunnel structures."@en .
+
+tun:Tunnel a owl:Class ;
+    rdfs:label "Tunnel"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom tun:TunnelPart ;
+            owl:onProperty tun:tunnelPart ],
+        tun:AbstractTunnel ;
+    owl:disjointWith tun:TunnelPart .
 
 <https://www.opengis.net/ont/citygml/tunnel/code> a owl:Ontology .
 
@@ -94,45 +102,137 @@ tuncode:TunnelUsageValue a skos:ConceptScheme ;
     dct:isFormatOf tun:TunnelUsageValue ;
     skos:definition "TunnelUsageValue is a code list that enumerates the different uses of a Tunnel."@en .
 
-<https://www.opengis.net/ont/citygml/common#boundary> skos:definition "Relates to the surfaces that bound the HollowSpace. This relation is inherited from the Core module."@en ;
-    schema:domainIncludes tun:HollowSpace ;
-    schema:rangeIncludes core:AbstractThematicSurface .
-
-tun:AbstractTunnel.hollowSpace a owl:ObjectProperty ;
-    rdfs:label "hollowSpace"@en ;
+tun:AbstractTunnel.function a owl:ObjectProperty ;
+    rdfs:label "function"@en ;
     rdfs:domain tun:AbstractTunnel ;
+    rdfs:range tun:TunnelFunctionValue ;
+    skos:definition "Specifies the intended purposes of the Tunnel or TunnelPart."@en .
+
+tun:AbstractTunnel.usage a owl:ObjectProperty ;
+    rdfs:label "usage"@en ;
+    rdfs:domain tun:AbstractTunnel ;
+    rdfs:range tun:TunnelUsageValue ;
+    skos:definition "Specifies the actual uses of the Tunnel or TunnelPart."@en .
+
+tun:HollowSpace.function a owl:ObjectProperty ;
+    rdfs:label "function"@en ;
+    rdfs:domain tun:HollowSpace ;
+    rdfs:range tun:HollowSpaceFunctionValue ;
+    skos:definition "Specifies the intended purposes of the HollowSpace."@en .
+
+tun:HollowSpace.usage a owl:ObjectProperty ;
+    rdfs:label "usage"@en ;
+    rdfs:domain tun:HollowSpace ;
+    rdfs:range tun:HollowSpaceUsageValue ;
+    skos:definition "Specifies the actual uses of the HollowSpace."@en .
+
+tun:TunnelConstructiveElement.function a owl:ObjectProperty ;
+    rdfs:label "function"@en ;
+    rdfs:domain tun:TunnelConstructiveElement ;
+    rdfs:range tun:TunnelConstructiveElementFunctionValue ;
+    skos:definition "Specifies the intended purposes of the TunnelConstructiveElement."@en .
+
+tun:TunnelConstructiveElement.usage a owl:ObjectProperty ;
+    rdfs:label "usage"@en ;
+    rdfs:domain tun:TunnelConstructiveElement ;
+    rdfs:range tun:TunnelConstructiveElementUsageValue ;
+    skos:definition "Specifies the actual uses of the TunnelConstructiveElement."@en .
+
+tun:TunnelFurniture.function a owl:ObjectProperty ;
+    rdfs:label "function"@en ;
+    rdfs:domain tun:TunnelFurniture ;
+    rdfs:range tun:TunnelFurnitureFunctionValue ;
+    skos:definition "Specifies the intended purposes of the TunnelFurniture."@en .
+
+tun:TunnelFurniture.usage a owl:ObjectProperty ;
+    rdfs:label "usage"@en ;
+    rdfs:domain tun:TunnelFurniture ;
+    rdfs:range tun:TunnelFurnitureUsageValue ;
+    skos:definition "Specifies the actual uses of the TunnelFurniture."@en .
+
+tun:TunnelInstallation.function a owl:ObjectProperty ;
+    rdfs:label "function"@en ;
+    rdfs:domain tun:TunnelInstallation ;
+    rdfs:range tun:TunnelInstallationFunctionValue ;
+    skos:definition "Specifies the intended purposes of the TunnelInstallation."@en .
+
+tun:TunnelInstallation.usage a owl:ObjectProperty ;
+    rdfs:label "usage"@en ;
+    rdfs:domain tun:TunnelInstallation ;
+    rdfs:range tun:TunnelInstallationUsageValue ;
+    skos:definition "Specifies the actual uses of the TunnelInstallation."@en .
+
+tun:boundary a owl:ObjectProperty ;
+    rdfs:label "boundary"@en ;
+    rdfs:range core:AbstractThematicSurface ;
+    skos:definition "Relates to the surfaces that bound the HollowSpace. This relation is inherited from the Core module."@en .
+
+tun:hollowSpace a owl:ObjectProperty ;
+    rdfs:label "hollowSpace"@en ;
     rdfs:range tun:HollowSpace ;
     skos:definition "Relates the hollow spaces to the Tunnel or TunnelPart."@en .
 
-tun:AbstractTunnel.tunnelConstructiveElement a owl:ObjectProperty ;
+tun:tunnelConstructiveElement a owl:ObjectProperty ;
     rdfs:label "tunnelConstructiveElement"@en ;
-    rdfs:domain tun:AbstractTunnel ;
     rdfs:range tun:TunnelConstructiveElement ;
     skos:definition "Relates the constructive elements to the Tunnel or TunnelPart."@en .
 
-tun:Tunnel a owl:Class ;
-    rdfs:label "Tunnel"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tun:TunnelPart ;
-            owl:onProperty tun:Tunnel.tunnelPart ],
-        tun:AbstractTunnel ;
-    owl:disjointWith tun:TunnelPart .
-
-tun:Tunnel.tunnelPart a owl:ObjectProperty ;
+tun:tunnelPart a owl:ObjectProperty ;
     rdfs:label "tunnelPart"@en ;
-    rdfs:domain tun:Tunnel ;
     rdfs:range tun:TunnelPart ;
     skos:definition "Relates the tunnel parts to the Tunnel."@en .
 
-tun:TunnelClassValue a owl:Class ;
-    rdfs:label "TunnelClassValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "TunnelClassValue is a code list used to further classify a Tunnel."@en .
+<https://www.opengis.net/ont/citygml/common/tunnelFurniture> skos:definition "Relates the furniture objects to the HollowSpace."@en,
+        "Relates the furniture objects to the Tunnel or TunnelPart."@en ;
+    schema:domainIncludes tun:AbstractTunnel,
+        tun:HollowSpace ;
+    schema:rangeIncludes tun:TunnelFurniture .
 
-tun:TunnelConstructiveElementClassValue a owl:Class ;
-    rdfs:label "TunnelConstructiveElementClassValue"@en ;
+<https://www.opengis.net/ont/citygml/common/tunnelInstallation> skos:definition "Relates the installation objects to the HollowSpace."@en,
+        "Relates the installation objects to the Tunnel or TunnelPart."@en ;
+    schema:domainIncludes tun:AbstractTunnel,
+        tun:HollowSpace ;
+    schema:rangeIncludes tun:TunnelInstallation .
+
+tun:AbstractTunnel.class a owl:ObjectProperty ;
+    rdfs:label "class"@en ;
+    rdfs:domain tun:AbstractTunnel ;
+    rdfs:range tun:TunnelClassValue ;
+    skos:definition "Indicates the specific type of the Tunnel or TunnelPart."@en .
+
+tun:HollowSpace.class a owl:ObjectProperty ;
+    rdfs:label "class"@en ;
+    rdfs:domain tun:HollowSpace ;
+    rdfs:range tun:HollowSpaceClassValue ;
+    skos:definition "Indicates the specific type of the HollowSpace."@en .
+
+tun:TunnelConstructiveElement.class a owl:ObjectProperty ;
+    rdfs:label "class"@en ;
+    rdfs:domain tun:TunnelConstructiveElement ;
+    rdfs:range tun:TunnelConstructiveElementClassValue ;
+    skos:definition "Indicates the specific type of the TunnelConstructiveElement."@en .
+
+tun:TunnelFurniture.class a owl:ObjectProperty ;
+    rdfs:label "class"@en ;
+    rdfs:domain tun:TunnelFurniture ;
+    rdfs:range tun:TunnelFurnitureClassValue ;
+    skos:definition "Indicates the specific type of the TunnelFurniture."@en .
+
+tun:TunnelInstallation.class a owl:ObjectProperty ;
+    rdfs:label "class"@en ;
+    rdfs:domain tun:TunnelInstallation ;
+    rdfs:range tun:TunnelInstallationClassValue ;
+    skos:definition "Indicates the specific type of the TunnelInstallation."@en .
+
+tun:HollowSpaceFunctionValue a owl:Class ;
+    rdfs:label "HollowSpaceFunctionValue"@en ;
     rdfs:subClassOf skos:Concept ;
-    skos:definition "TunnelConstructiveElementClassValue is a code list used to further classify a TunnelConstructiveElement."@en .
+    skos:definition "HollowSpaceFunctionValue is a code list that enumerates the different purposes of a HollowSpace."@en .
+
+tun:HollowSpaceUsageValue a owl:Class ;
+    rdfs:label "HollowSpaceUsageValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "HollowSpaceUsageValue is a code list that enumerates the different uses of a HollowSpace."@en .
 
 tun:TunnelConstructiveElementFunctionValue a owl:Class ;
     rdfs:label "TunnelConstructiveElementFunctionValue"@en ;
@@ -149,11 +249,6 @@ tun:TunnelFunctionValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "TunnelFunctionValue is a code list that enumerates the different purposes of a Tunnel."@en .
 
-tun:TunnelFurnitureClassValue a owl:Class ;
-    rdfs:label "TunnelFurnitureClassValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "TunnelFurnitureClassValue is a code list used to further classify a TunnelFurniture."@en .
-
 tun:TunnelFurnitureFunctionValue a owl:Class ;
     rdfs:label "TunnelFurnitureFunctionValue"@en ;
     rdfs:subClassOf skos:Concept ;
@@ -163,11 +258,6 @@ tun:TunnelFurnitureUsageValue a owl:Class ;
     rdfs:label "TunnelFurnitureUsageValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "TunnelFurnitureUsageValue is a code list that enumerates the different uses of a TunnelFurniture."@en .
-
-tun:TunnelInstallationClassValue a owl:Class ;
-    rdfs:label "TunnelInstallationClassValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "TunnelInstallationClassValue is a code list used to further classify a TunnelInstallation."@en .
 
 tun:TunnelInstallationFunctionValue a owl:Class ;
     rdfs:label "TunnelInstallationFunctionValue"@en ;
@@ -179,158 +269,144 @@ tun:TunnelInstallationUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "TunnelInstallationUsageValue is a code list that enumerates the different uses of a TunnelInstallation."@en .
 
+tun:TunnelPart a owl:Class ;
+    rdfs:label "TunnelPart"@en ;
+    rdfs:subClassOf tun:AbstractTunnel .
+
 tun:TunnelUsageValue a owl:Class ;
     rdfs:label "TunnelUsageValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "TunnelUsageValue is a code list that enumerates the different uses of a Tunnel."@en .
 
-<https://www.opengis.net/ont/citygml/common#tunnelFurniture> skos:definition "Relates the furniture objects to the HollowSpace."@en,
-        "Relates the furniture objects to the Tunnel or TunnelPart."@en ;
-    schema:domainIncludes tun:AbstractTunnel,
-        tun:HollowSpace ;
-    schema:rangeIncludes tun:TunnelFurniture .
+tun:HollowSpaceClassValue a owl:Class ;
+    rdfs:label "HollowSpaceClassValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "HollowSpaceClassValue is a code list used to further classify a HollowSpace."@en .
 
-<https://www.opengis.net/ont/citygml/common#tunnelInstallation> skos:definition "Relates the installation objects to the HollowSpace."@en,
-        "Relates the installation objects to the Tunnel or TunnelPart."@en ;
-    schema:domainIncludes tun:AbstractTunnel,
-        tun:HollowSpace ;
-    schema:rangeIncludes tun:TunnelInstallation .
+tun:TunnelClassValue a owl:Class ;
+    rdfs:label "TunnelClassValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "TunnelClassValue is a code list used to further classify a Tunnel."@en .
+
+tun:TunnelConstructiveElementClassValue a owl:Class ;
+    rdfs:label "TunnelConstructiveElementClassValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "TunnelConstructiveElementClassValue is a code list used to further classify a TunnelConstructiveElement."@en .
+
+tun:TunnelFurnitureClassValue a owl:Class ;
+    rdfs:label "TunnelFurnitureClassValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "TunnelFurnitureClassValue is a code list used to further classify a TunnelFurniture."@en .
+
+tun:TunnelInstallationClassValue a owl:Class ;
+    rdfs:label "TunnelInstallationClassValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "TunnelInstallationClassValue is a code list used to further classify a TunnelInstallation."@en .
 
 tun:TunnelConstructiveElement a owl:Class ;
     rdfs:label "TunnelConstructiveElement"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+            owl:allValuesFrom tun:TunnelConstructiveElementUsageValue ;
+            owl:onProperty tun:TunnelConstructiveElement.usage ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceFunctionValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
+            owl:allValuesFrom tun:TunnelConstructiveElementFunctionValue ;
+            owl:onProperty tun:TunnelConstructiveElement.function ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+            owl:allValuesFrom tun:TunnelConstructiveElementClassValue ;
+            owl:onProperty tun:TunnelConstructiveElement.class ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tun:HollowSpaceClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+            owl:onClass tun:TunnelConstructiveElementClassValue ;
+            owl:onProperty tun:TunnelConstructiveElement.class ],
         con:AbstractConstructiveElement .
 
 tun:TunnelFurniture a owl:Class ;
     rdfs:label "TunnelFurniture"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+            owl:allValuesFrom tun:TunnelFurnitureUsageValue ;
+            owl:onProperty tun:TunnelFurniture.usage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:TunnelFurnitureFunctionValue ;
+            owl:onProperty tun:TunnelFurniture.function ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:TunnelFurnitureClassValue ;
+            owl:onProperty tun:TunnelFurniture.class ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tun:HollowSpaceClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceFunctionValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
+            owl:onClass tun:TunnelFurnitureClassValue ;
+            owl:onProperty tun:TunnelFurniture.class ],
         con:AbstractFurniture .
 
 tun:TunnelInstallation a owl:Class ;
     rdfs:label "TunnelInstallation"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
+            owl:allValuesFrom tun:TunnelInstallationUsageValue ;
+            owl:onProperty tun:TunnelInstallation.usage ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceFunctionValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
+            owl:allValuesFrom tun:TunnelInstallationFunctionValue ;
+            owl:onProperty tun:TunnelInstallation.function ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+            owl:allValuesFrom tun:TunnelInstallationClassValue ;
+            owl:onProperty tun:TunnelInstallation.class ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tun:HollowSpaceClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+            owl:onClass tun:TunnelInstallationClassValue ;
+            owl:onProperty tun:TunnelInstallation.class ],
         con:AbstractInstallation .
-
-tun:TunnelPart a owl:Class ;
-    rdfs:label "TunnelPart"@en ;
-    rdfs:subClassOf tun:AbstractTunnel .
-
-<https://www.opengis.net/ont/citygml/common#function> rdfs:label "function"@en ;
-    rdfs:range tun:HollowSpaceFunctionValue ;
-    skos:definition "Specifies the intended purposes of the HollowSpace."@en .
-
-<https://www.opengis.net/ont/citygml/common#usage> rdfs:label "usage"@en ;
-    rdfs:range tun:HollowSpaceUsageValue ;
-    skos:definition "Specifies the actual uses of the HollowSpace."@en .
-
-tun:HollowSpace a owl:Class ;
-    rdfs:label "HollowSpace"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractThematicSurface ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#boundary> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceFunctionValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tun:HollowSpaceClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:TunnelFurniture ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#tunnelFurniture> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:TunnelInstallation ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#tunnelInstallation> ],
-        core:AbstractUnoccupiedSpace .
 
 tun:AbstractTunnel a owl:Class ;
     rdfs:label "AbstractTunnel"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tun:TunnelInstallation ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#tunnelInstallation> ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tun:TunnelClassValue ;
+            owl:onProperty tun:AbstractTunnel.class ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceFunctionValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#function> ],
+            owl:allValuesFrom tun:TunnelClassValue ;
+            owl:onProperty tun:AbstractTunnel.class ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tun:TunnelFurniture ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#tunnelFurniture> ],
+            owl:allValuesFrom tun:TunnelFunctionValue ;
+            owl:onProperty tun:AbstractTunnel.function ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:HollowSpace ;
-            owl:onProperty tun:AbstractTunnel.hollowSpace ],
+            owl:onProperty tun:hollowSpace ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:TunnelFurniture ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/tunnelFurniture> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:TunnelInstallation ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/tunnelInstallation> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:TunnelConstructiveElement ;
-            owl:onProperty tun:AbstractTunnel.tunnelConstructiveElement ],
+            owl:onProperty tun:tunnelConstructiveElement ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+            owl:allValuesFrom tun:TunnelUsageValue ;
+            owl:onProperty tun:AbstractTunnel.usage ],
+        con:AbstractConstruction .
+
+tun:HollowSpace a owl:Class ;
+    rdfs:label "HollowSpace"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom tun:HollowSpaceFunctionValue ;
+            owl:onProperty tun:HollowSpace.function ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tun:HollowSpaceClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#class> ],
+            owl:onProperty tun:HollowSpace.class ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:TunnelInstallation ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/tunnelInstallation> ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:HollowSpaceUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common#usage> ],
-        con:AbstractConstruction .
-
-tun:HollowSpaceFunctionValue a owl:Class ;
-    rdfs:label "HollowSpaceFunctionValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "HollowSpaceFunctionValue is a code list that enumerates the different purposes of a HollowSpace."@en .
-
-tun:HollowSpaceUsageValue a owl:Class ;
-    rdfs:label "HollowSpaceUsageValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "HollowSpaceUsageValue is a code list that enumerates the different uses of a HollowSpace."@en .
-
-<https://www.opengis.net/ont/citygml/common#class> rdfs:label "class"@en ;
-    rdfs:range tun:HollowSpaceClassValue ;
-    skos:definition "Indicates the specific type of the HollowSpace."@en .
-
-tun:HollowSpaceClassValue a owl:Class ;
-    rdfs:label "HollowSpaceClassValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "HollowSpaceClassValue is a code list used to further classify a HollowSpace."@en .
+            owl:onProperty tun:HollowSpace.usage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractThematicSurface ;
+            owl:onProperty tun:boundary ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:TunnelFurniture ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/tunnelFurniture> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:HollowSpaceClassValue ;
+            owl:onProperty tun:HollowSpace.class ],
+        core:AbstractUnoccupiedSpace .
 

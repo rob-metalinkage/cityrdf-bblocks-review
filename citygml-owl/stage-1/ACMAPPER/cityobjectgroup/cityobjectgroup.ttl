@@ -1,5 +1,5 @@
-@prefix core:       <https://www.opengis.net/ont/citygml/core#> .
-@prefix grp:        <https://www.opengis.net/ont/citygml/cityobjectgroup#> .
+@prefix core:       <https://www.opengis.net/ont/citygml/core/> .
+@prefix grp:        <https://www.opengis.net/ont/citygml/cityobjectgroup/> .
 @prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
 @prefix owl:        <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -18,6 +18,11 @@ grp:CityObjectGroupClassValue
         rdfs:label       "CityObjectGroupClassValue"@en;
         rdfs:subClassOf  skos:Concept;
         skos:definition  "CityObjectGroupClassValue is a code list used to further classify a CityObjectGroup."@en .
+
+grp:parent  rdf:type     owl:ObjectProperty;
+        rdfs:label       "parent"@en;
+        rdfs:range       core:AbstractCityObject;
+        skos:definition  "Relates to a city object to which the CityObjectGroup belongs."@en .
 
 grp:adeOfCityObjectGroup
         rdf:type         owl:ObjectProperty;
@@ -60,13 +65,6 @@ grp:function  rdf:type   owl:ObjectProperty;
         rdfs:range       grp:CityObjectGroupFunctionValue;
         skos:definition  "Specifies the intended purposes of the CityObjectGroup."@en .
 
-grp:CityObjectGroup.parent
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      grp:CityObjectGroup;
-        rdfs:label       "parent"@en;
-        rdfs:range       core:AbstractCityObject;
-        skos:definition  "Relates to a city object to which the CityObjectGroup belongs."@en .
-
 grp:class  rdf:type      owl:ObjectProperty;
         rdfs:label       "class"@en;
         rdfs:range       grp:CityObjectGroupClassValue;
@@ -98,23 +96,6 @@ grp:CityObjectGroup  rdf:type  owl:Class;
         rdfs:label       "CityObjectGroup"@en;
         rdfs:subClassOf  core:AbstractLogicalSpace;
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  grp:CityObjectGroupClassValue;
-                           owl:onProperty     grp:class
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  core:AbstractCityObject;
-                           owl:onProperty               grp:CityObjectGroup.parent
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  grp:Role;
-                           owl:onProperty     grp:CityObjectGroup.groupMember
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  core:AbstractCityObject;
-                           owl:onProperty     grp:CityObjectGroup.parent
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  grp:ADEOfCityObjectGroup;
                            owl:onProperty     grp:adeOfCityObjectGroup
                          ];
@@ -124,8 +105,25 @@ grp:CityObjectGroup  rdf:type  owl:Class;
                            owl:onProperty               grp:class
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  grp:CityObjectGroupClassValue;
+                           owl:onProperty     grp:class
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  grp:CityObjectGroupFunctionValue;
                            owl:onProperty     grp:function
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  core:AbstractCityObject;
+                           owl:onProperty               grp:parent
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  core:AbstractCityObject;
+                           owl:onProperty     grp:parent
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  grp:Role;
+                           owl:onProperty     grp:CityObjectGroup.groupMember
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  grp:CityObjectGroupUsageValue;

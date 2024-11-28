@@ -9,7 +9,7 @@
 lusecode:LandUseUsageValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "LandUseUsageValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/landuse#LandUseUsageValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/landuse/LandUseUsageValue>;
         skos:definition  "LandUseUsageValue is a code list that enumerates the different uses of a LandUse."@en .
 
 <https://www.opengis.net/ont/citygml/landuse/code>
@@ -18,11 +18,11 @@ lusecode:LandUseUsageValue
 lusecode:LandUseClassValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "LandUseClassValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/landuse#LandUseClassValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/landuse/LandUseClassValue>;
         skos:definition  "LandUseClassValue is a code list used to further classify a LandUse."@en .
 
 lusecode:LandUseFunctionValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "LandUseFunctionValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/landuse#LandUseFunctionValue>;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/landuse/LandUseFunctionValue>;
         skos:definition  "LandUseFunctionValue is a code list that enumerates the different purposes of a LandUse."@en .

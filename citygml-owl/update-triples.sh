@@ -45,7 +45,7 @@ python update_graph.py ./output/core.ttl ./output/core.ttl \
    'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
-    PREFIX core: <https://www.opengis.net/ont/citygml/core#>
+    PREFIX core: <https://www.opengis.net/ont/citygml/core/>
 
     DELETE DATA {
         core:AbstractFeatureWithLifespan.validFrom a owl:DatatypeProperty ;
@@ -62,7 +62,7 @@ python update_graph.py ./output/core.ttl ./output/core.ttl \
    'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
-    PREFIX core: <https://www.opengis.net/ont/citygml/core#>
+    PREFIX core: <https://www.opengis.net/ont/citygml/core/>
 
     DELETE {
         ?restriction ?predicate ?object .
@@ -78,7 +78,7 @@ echo 'Removing outdated versioning triples'
 python update_graph.py ./output/versioning.ttl ./output/versioning.ttl \
     'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    PREFIX vers: <https://www.opengis.net/ont/citygml/versioning#>
+    PREFIX vers: <https://www.opengis.net/ont/citygml/versioning/>
 
     DELETE DATA {
         vers:TransactionTypeValue a rdfs:Datatype .
@@ -91,7 +91,7 @@ echo 'patching room height status'
 python update_graph.py ./output/building.ttl ./output/building.ttl \
    'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    PREFIX bldg: <https://www.opengis.net/ont/citygml/building#>
+    PREFIX bldg: <https://www.opengis.net/ont/citygml/building/>
 
     DELETE DATA {
         bldg:RoomHeight.status a owl:ObjectProperty .
@@ -129,13 +129,13 @@ where {
               rdfs:range ?range ;
               rdfs:label ?label;
               skos:definition ?def .
-    filter (strafter(str(?s),"#") in ("class", "usage", "function", "value", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))         bind(IRI(concat("https://www.opengis.net/ont/citygml/common#",strafter(str(?s),"#"))) as ?new)
+    filter (strafter(str(?s),"#") in ("class", "usage", "function", "value", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))         bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",strafter(str(?s),"#"))) as ?new)
     }}'
 
 python update_graph.py $file $file \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX common: <https://ogcblocks.org/CityGML/3.0/common#>
+PREFIX common: <https://ogcblocks.org/CityGML/3.0/common/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 insert { 
     ?new rdfs:range ?range .
@@ -150,7 +150,7 @@ where {
        rdfs:range ?range ;
        skos:definition ?def .
     filter (strafter(str(?s),"#") in ("name", "description"))
-    bind(IRI(concat("https://www.opengis.net/ont/citygml/common#",strafter(str(?s),"#"))) as ?new)
+    bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",strafter(str(?s),"#"))) as ?new)
     }}'
 
 ### #2 deletes all objprops defs that will be replaced with global scope ones
@@ -159,7 +159,7 @@ echo 'deleting package-level ns:propertyname'
 python update_graph.py $file $file \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    PREFIX common: <https://www.opengis.net/ont/citygml/common#>
+    PREFIX common: <https://www.opengis.net/ont/citygml/common/>
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     delete { 
         ?s a owl:ObjectProperty .
@@ -199,7 +199,7 @@ python update_graph.py $file $file \
 python update_graph.py $file $file \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    PREFIX common: <https://www.opengis.net/ont/citygml/common#>
+    PREFIX common: <https://www.opengis.net/ont/citygml/common/>
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     delete { 
         ?s a owl:DatatypeProperty .
@@ -243,7 +243,7 @@ echo 'inserts presence of global properties in axioms'
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX common: <https://www.opengis.net/ont/citygml/common#>
+PREFIX common: <https://www.opengis.net/ont/citygml/common/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 insert { 
     ?s owl:onProperty ?new .
@@ -253,7 +253,7 @@ where {
     where {
 	?s owl:onProperty ?old ;
     filter (strafter(str(?old),"#") in ("class", "usage", "function", "value","status", "mimeType", "occupancy", "elevation","lowReference","highReference"))
-    bind(IRI(concat("https://www.opengis.net/ont/citygml/common#",strafter(str(?old),"#"))) as ?new)
+    bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",strafter(str(?old),"#"))) as ?new)
     }}'
 
 ### #4 deletes all objprops mentions in axioms that will be replaced with global scope ones
@@ -360,7 +360,7 @@ where {
     ?s rdfs:range ?rangeToInclude .
     ?s skos:definition ?def .    
     filter (str(?classIndependentPropName) in ("boundary","address","mimeType","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","occupancy","elevation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
-        bind(IRI(concat("https://www.opengis.net/ont/citygml/common#",str(?classIndependentPropName))) 
+        bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",str(?classIndependentPropName))) 
             					as ?classIndependentPropNameNew)
 }}'
 
@@ -415,7 +415,7 @@ echo 'inserts presence of global properties in axioms'
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX common: <https://www.opengis.net/ont/citygml/common#>
+PREFIX common: <https://www.opengis.net/ont/citygml/common/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 insert { 
     ?s owl:onProperty ?new .
@@ -425,7 +425,7 @@ where {
     where {
 	?s owl:onProperty ?old .
     filter (strafter(strafter(str(?old),"#"),".") in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
-    bind(IRI(concat("https://www.opengis.net/ont/citygml/common#",strafter(strafter(str(?old),"#"),"."))) as ?new)
+    bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",strafter(strafter(str(?old),"#"),"."))) as ?new)
     }}
 '
 

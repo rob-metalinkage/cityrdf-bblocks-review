@@ -1,8 +1,8 @@
-@prefix core: <https://www.opengis.net/ont/citygml/core#> .
+@prefix core: <https://www.opengis.net/ont/citygml/core/> .
 @prefix gmlowl: <http://www.opengis.net/ont/gml#> .
 @prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix pcl: <https://www.opengis.net/ont/citygml/pointcloud#> .
+@prefix pcl: <https://www.opengis.net/ont/citygml/pointcloud/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -17,36 +17,36 @@
 pcl:PointCloud a owl:Class ;
     rdfs:label "PointCloud"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty pcl:pointFile ],
+        [ a owl:Restriction ;
             owl:allValuesFrom core:MimeTypeValue ;
             owl:onProperty pcl:mimeType ],
         [ a owl:Restriction ;
-            owl:allValuesFrom pcl:ADEOfPointCloud ;
-            owl:onProperty pcl:adeOfPointCloud ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:MimeTypeValue ;
-            owl:onProperty pcl:mimeType ],
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty pcl:pointFile ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty pcl:pointFileSrsName ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:MultiPoint ;
-            owl:onProperty pcl:PointCloud.points ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty pcl:pointFileSrsName ],
         [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:MultiPoint ;
-            owl:onProperty pcl:PointCloud.points ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:MimeTypeValue ;
+            owl:onProperty pcl:mimeType ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:anyURI ;
-            owl:onProperty pcl:pointFile ],
+            owl:onClass gmlowl:MultiPoint ;
+            owl:onProperty pcl:points ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty pcl:pointFile ],
+            owl:allValuesFrom pcl:ADEOfPointCloud ;
+            owl:onProperty pcl:adeOfPointCloud ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:MultiPoint ;
+            owl:onProperty pcl:points ],
         core:AbstractPointCloud ;
     skos:definition "A PointCloud is an unordered collection of points that is a sampling of the geometry of a space or space boundary."@en .
 
@@ -59,12 +59,6 @@ pcl:ADEOfPointCloud a owl:Class ;
     rdfs:label "ADEOfPointCloud"@en ;
     iso19150-2:isAbstract true ;
     skos:definition "ADEOfPointCloud acts as a hook to define properties within an ADE that are to be added to a PointCloud."@en .
-
-pcl:PointCloud.points a owl:ObjectProperty ;
-    rdfs:label "points"@en ;
-    rdfs:domain pcl:PointCloud ;
-    rdfs:range gmlowl:MultiPoint ;
-    skos:definition "Relates to the 3D MultiPoint geometry of the PointCloud stored inline with the city model."@en .
 
 pcl:mimeType a owl:ObjectProperty ;
     rdfs:label "mimeType"@en ;
@@ -80,4 +74,9 @@ pcl:pointFileSrsName a owl:DatatypeProperty ;
     rdfs:label "pointFileSrsName"@en ;
     rdfs:range xsd:string ;
     skos:definition "Indicates the coordinate reference system used by the external point cloud file."@en .
+
+pcl:points a owl:ObjectProperty ;
+    rdfs:label "points"@en ;
+    rdfs:range gmlowl:MultiPoint ;
+    skos:definition "Relates to the 3D MultiPoint geometry of the PointCloud stored inline with the city model."@en .
 

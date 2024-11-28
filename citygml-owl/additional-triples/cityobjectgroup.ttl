@@ -1,5 +1,5 @@
-@prefix core: <https://www.opengis.net/ont/citygml/core#> .
-@prefix grp: <https://www.opengis.net/ont/citygml/cityobjectgroup#> .
+@prefix core: <https://www.opengis.net/ont/citygml/core/> .
+@prefix grp: <https://www.opengis.net/ont/citygml/cityobjectgroup/> .
 @prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
