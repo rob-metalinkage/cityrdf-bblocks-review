@@ -55,6 +55,7 @@
       <targetParameter name="defaultTypeImplementation" value="owl:Thing"/>
       <targetParameter name="URIbase" value="https://www.opengis.net/ont/citygml"/>
       <targetParameter name="language" value="en"/>
+      <targetParameter name="rdfNamespaceSeparator" value="/"/>
       <xi:include href="https://shapechange.net/resources/config/StandardNamespaces-owl.xml"/>
       <namespaces>
         <!-- CityGML 3.0 namespaces -->
