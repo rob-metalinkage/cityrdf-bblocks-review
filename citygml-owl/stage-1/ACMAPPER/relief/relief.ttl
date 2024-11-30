@@ -10,48 +10,12 @@
 @prefix skos:        <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
 
-[ rdf:type     owl:AllDisjointClasses;
-  owl:members  ( dem:BreaklineRelief dem:MassPointRelief dem:RasterRelief dem:TINRelief )
-] .
-
-dem:breaklines  rdf:type  owl:ObjectProperty;
+dem:BreaklineRelief.breaklines
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      dem:BreaklineRelief;
         rdfs:label       "breaklines"@en;
         rdfs:range       gmlowl:MultiCurve;
         skos:definition  "Relates to the 3D MultiCurve geometry of the MassPointRelief. This association role is used to represent break lines."@en .
-
-dem:AbstractReliefComponent
-        rdf:type               owl:Class;
-        rdfs:label             "AbstractReliefComponent"@en;
-        rdfs:subClassOf        core:AbstractSpaceBoundary;
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  gmlowl:Surface;
-                                 owl:onProperty     dem:extent
-                               ];
-        rdfs:subClassOf        [ rdf:type                  owl:Restriction;
-                                 owl:onClass               core:IntegerBetween0and3;
-                                 owl:onProperty            dem:AbstractReliefComponent.lod;
-                                 owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  core:IntegerBetween0and3;
-                                 owl:onProperty     dem:AbstractReliefComponent.lod
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  dem:ADEOfAbstractReliefComponent;
-                                 owl:onProperty     dem:adeOfAbstractReliefComponent
-                               ];
-        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
-                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                                 owl:onClass                  gmlowl:Surface;
-                                 owl:onProperty               dem:extent
-                               ];
-        iso19150-2:isAbstract  true;
-        skos:definition        "An AbstractReliefComponent represents an element of the terrain surface - either a TIN, a raster or grid, mass points or break lines."@en .
-
-dem:grid  rdf:type       owl:ObjectProperty;
-        rdfs:label       "grid"@en;
-        rdfs:range       iso19123:CV_DiscreteGridPointCoverage;
-        skos:definition  "Relates to the DiscreteGridPointCoverage of the RasterRelief."@en .
 
 dem:adeOfMassPointRelief
         rdf:type         owl:ObjectProperty;
@@ -59,50 +23,34 @@ dem:adeOfMassPointRelief
         rdfs:range       dem:ADEOfMassPointRelief;
         skos:definition  "Augments the MassPointRelief with properties defined in an ADE."@en .
 
-dem:reliefPoints  rdf:type  owl:ObjectProperty;
-        rdfs:label       "reliefPoints"@en;
-        rdfs:range       gmlowl:MultiPoint;
-        skos:definition  "Relates to the 3D MultiPoint geometry of the MassPointRelief."@en .
-
-dem:adeOfAbstractReliefComponent
-        rdf:type         owl:ObjectProperty;
-        rdfs:label       "adeOfAbstractReliefComponent"@en;
-        rdfs:range       dem:ADEOfAbstractReliefComponent;
-        skos:definition  "Augments AbstractReliefComponent with properties defined in an ADE."@en .
-
-dem:tin  rdf:type        owl:ObjectProperty;
-        rdfs:label       "tin"@en;
-        rdfs:range       iso19107-cm:GM_TriangulatedSurface;
-        skos:definition  "Relates to the triangulated surface of the TINRelief."@en .
-
-dem:pointCloud  rdf:type  owl:ObjectProperty;
-        rdfs:label       "pointCloud"@en;
-        rdfs:range       core:AbstractPointCloud;
-        skos:definition  "Relates to the 3D PointCloud of the MassPointRelief."@en .
-
-dem:ridgeOrValleyLines
-        rdf:type         owl:ObjectProperty;
-        rdfs:label       "ridgeOrValleyLines"@en;
-        rdfs:range       gmlowl:MultiCurve;
-        skos:definition  "Relates to the 3D MultiCurve geometry of the MassPointRelief. This association role is used to represent ridge or valley lines."@en .
-
-dem:adeOfBreaklineRelief
-        rdf:type         owl:ObjectProperty;
-        rdfs:label       "adeOfBreaklineRelief"@en;
-        rdfs:range       dem:ADEOfBreaklineRelief;
-        skos:definition  "Augments the BreaklineRelief with properties defined in an ADE."@en .
-
-dem:ADEOfMassPointRelief
+dem:AbstractReliefComponent
         rdf:type               owl:Class;
-        rdfs:label             "ADEOfMassPointRelief"@en;
+        rdfs:label             "AbstractReliefComponent"@en;
+        rdfs:subClassOf        core:AbstractSpaceBoundary;
+        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
+                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                                 owl:onClass                  gmlowl:Surface;
+                                 owl:onProperty               dem:AbstractReliefComponent.extent
+                               ];
+        rdfs:subClassOf        [ rdf:type                  owl:Restriction;
+                                 owl:onClass               core:IntegerBetween0and3;
+                                 owl:onProperty            dem:lod;
+                                 owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  gmlowl:Surface;
+                                 owl:onProperty     dem:AbstractReliefComponent.extent
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  core:IntegerBetween0and3;
+                                 owl:onProperty     dem:lod
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  dem:ADEOfAbstractReliefComponent;
+                                 owl:onProperty     dem:adeOfAbstractReliefComponent
+                               ];
         iso19150-2:isAbstract  true;
-        skos:definition        "ADEOfMassPointRelief acts as a hook to define properties within an ADE that are to be added to a MassPointRelief."@en .
-
-<https://www.opengis.net/ont/citygml/relief>
-        rdf:type         owl:Ontology;
-        rdfs:label       "Relief"@en;
-        owl:imports      <http://www.opengis.net/ont/gml> , <https://www.opengis.net/ont/citygml/core> , <http://def.isotc211.org/iso19150/-2/2012/base>;
-        skos:definition  "The Relief module supports representation of the terrain. CityGML supports terrain representations at different levels of detail, reflecting different accuracies or resolutions. Terrain may be specified as a regular raster or grid, as a TIN, by break lines, and/or by mass points."@en .
+        skos:definition        "An AbstractReliefComponent represents an element of the terrain surface - either a TIN, a raster or grid, mass points or break lines."@en .
 
 dem:adeOfReliefFeature
         rdf:type         owl:ObjectProperty;
@@ -110,66 +58,61 @@ dem:adeOfReliefFeature
         rdfs:range       dem:ADEOfReliefFeature;
         skos:definition  "Augments the ReliefFeature with properties defined in an ADE."@en .
 
-dem:AbstractReliefComponent.lod
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      dem:AbstractReliefComponent;
-        rdfs:label       "lod"@en;
-        rdfs:range       core:IntegerBetween0and3;
-        skos:definition  "Indicates the Level of Detail of the terrain component."@en .
-
-dem:RasterRelief  rdf:type  owl:Class;
-        rdfs:label       "RasterRelief"@en;
-        rdfs:subClassOf  dem:AbstractReliefComponent;
+dem:ReliefFeature  rdf:type  owl:Class;
+        rdfs:label       "ReliefFeature"@en;
+        rdfs:subClassOf  core:AbstractSpaceBoundary;
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  dem:ADEOfRasterRelief;
-                           owl:onProperty     dem:adeOfRasterRelief
+                           owl:allValuesFrom  dem:ADEOfReliefFeature;
+                           owl:onProperty     dem:adeOfReliefFeature
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  iso19123:CV_DiscreteGridPointCoverage;
-                           owl:onProperty     dem:grid
+                           owl:allValuesFrom  dem:AbstractReliefComponent;
+                           owl:onProperty     dem:ReliefFeature.reliefComponent
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  dem:AbstractReliefComponent;
+                           owl:onProperty               dem:ReliefFeature.reliefComponent
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  core:IntegerBetween0and3;
+                           owl:onProperty     dem:lod
                          ];
         rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               iso19123:CV_DiscreteGridPointCoverage;
-                           owl:onProperty            dem:grid;
+                           owl:onClass               core:IntegerBetween0and3;
+                           owl:onProperty            dem:lod;
                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ];
-        skos:definition  "A RasterRelief represents a terrain component as a regular raster or grid."@en .
+        skos:definition  "A ReliefFeature is a collection of terrain components representing the Earth's surface, also known as the Digital Terrain Model."@en .
 
-dem:ADEOfAbstractReliefComponent
+[ rdf:type     owl:AllDisjointClasses;
+  owl:members  ( dem:BreaklineRelief dem:MassPointRelief dem:RasterRelief dem:TINRelief )
+] .
+
+dem:BreaklineRelief.ridgeOrValleyLines
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      dem:BreaklineRelief;
+        rdfs:label       "ridgeOrValleyLines"@en;
+        rdfs:range       gmlowl:MultiCurve;
+        skos:definition  "Relates to the 3D MultiCurve geometry of the MassPointRelief. This association role is used to represent ridge or valley lines."@en .
+
+dem:ADEOfRasterRelief
         rdf:type               owl:Class;
-        rdfs:label             "ADEOfAbstractReliefComponent"@en;
+        rdfs:label             "ADEOfRasterRelief"@en;
         iso19150-2:isAbstract  true;
-        skos:definition        "ADEOfAbstractReliefComponent acts as a hook to define properties within an ADE that are to be added to AbstractReliefComponent."@en .
+        skos:definition        "ADEOfRasterRelief acts as a hook to define properties within an ADE that are to be added to a RasterRelief."@en .
 
-dem:TINRelief  rdf:type  owl:Class;
-        rdfs:label       "TINRelief"@en;
-        rdfs:subClassOf  dem:AbstractReliefComponent;
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  dem:ADEOfTINRelief;
-                           owl:onProperty     dem:adeOfTINRelief
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  iso19107-cm:GM_TriangulatedSurface;
-                           owl:onProperty     dem:tin
-                         ];
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               iso19107-cm:GM_TriangulatedSurface;
-                           owl:onProperty            dem:tin;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ];
-        skos:definition  "A TINRelief represents a terrain component as a triangulated irregular network."@en .
+dem:ADEOfMassPointRelief
+        rdf:type               owl:Class;
+        rdfs:label             "ADEOfMassPointRelief"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfMassPointRelief acts as a hook to define properties within an ADE that are to be added to a MassPointRelief."@en .
 
-dem:ReliefFeature.lod
+dem:adeOfRasterRelief
         rdf:type         owl:ObjectProperty;
-        rdfs:domain      dem:ReliefFeature;
-        rdfs:label       "lod"@en;
-        rdfs:range       core:IntegerBetween0and3;
-        skos:definition  "Indicates the Level of Detail of the ReliefFeature."@en .
-
-dem:extent  rdf:type     owl:ObjectProperty;
-        rdfs:label       "extent"@en;
-        rdfs:range       gmlowl:Surface;
-        skos:definition  "Indicates the geometrical extent of the terrain component. The geometrical extent is provided as a 2D Surface geometry."@en .
+        rdfs:label       "adeOfRasterRelief"@en;
+        rdfs:range       dem:ADEOfRasterRelief;
+        skos:definition  "Augments the RasterRelief with properties defined in an ADE."@en .
 
 dem:ADEOfTINRelief  rdf:type   owl:Class;
         rdfs:label             "ADEOfTINRelief"@en;
@@ -182,6 +125,57 @@ dem:ADEOfReliefFeature
         iso19150-2:isAbstract  true;
         skos:definition        "ADEOfReliefFeature acts as a hook to define properties within an ADE that are to be added to a ReliefFeature."@en .
 
+dem:ADEOfAbstractReliefComponent
+        rdf:type               owl:Class;
+        rdfs:label             "ADEOfAbstractReliefComponent"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfAbstractReliefComponent acts as a hook to define properties within an ADE that are to be added to AbstractReliefComponent."@en .
+
+dem:MassPointRelief.reliefPoints
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      dem:MassPointRelief;
+        rdfs:label       "reliefPoints"@en;
+        rdfs:range       gmlowl:MultiPoint;
+        skos:definition  "Relates to the 3D MultiPoint geometry of the MassPointRelief."@en .
+
+dem:RasterRelief.grid
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      dem:RasterRelief;
+        rdfs:label       "grid"@en;
+        rdfs:range       iso19123:CV_DiscreteGridPointCoverage;
+        skos:definition  "Relates to the DiscreteGridPointCoverage of the RasterRelief."@en .
+
+dem:MassPointRelief.pointCloud
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      dem:MassPointRelief;
+        rdfs:label       "pointCloud"@en;
+        rdfs:range       core:AbstractPointCloud;
+        skos:definition  "Relates to the 3D PointCloud of the MassPointRelief."@en .
+
+<https://www.opengis.net/ont/citygml/relief>
+        rdf:type         owl:Ontology;
+        rdfs:label       "Relief"@en;
+        owl:imports      <http://www.opengis.net/ont/gml> , <https://www.opengis.net/ont/citygml/core> , <http://def.isotc211.org/iso19150/-2/2012/base>;
+        skos:definition  "The Relief module supports representation of the terrain. CityGML supports terrain representations at different levels of detail, reflecting different accuracies or resolutions. Terrain may be specified as a regular raster or grid, as a TIN, by break lines, and/or by mass points."@en .
+
+dem:TINRelief  rdf:type  owl:Class;
+        rdfs:label       "TINRelief"@en;
+        rdfs:subClassOf  dem:AbstractReliefComponent;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  dem:ADEOfTINRelief;
+                           owl:onProperty     dem:adeOfTINRelief
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  iso19107-cm:GM_TriangulatedSurface;
+                           owl:onProperty     dem:TINRelief.tin
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               iso19107-cm:GM_TriangulatedSurface;
+                           owl:onProperty            dem:TINRelief.tin;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        skos:definition  "A TINRelief represents a terrain component as a triangulated irregular network."@en .
+
 dem:MassPointRelief  rdf:type  owl:Class;
         rdfs:label       "MassPointRelief"@en;
         rdfs:subClassOf  dem:AbstractReliefComponent;
@@ -191,67 +185,71 @@ dem:MassPointRelief  rdf:type  owl:Class;
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  core:AbstractPointCloud;
-                           owl:onProperty     dem:pointCloud
+                           owl:onProperty     dem:MassPointRelief.pointCloud
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  core:AbstractPointCloud;
-                           owl:onProperty               dem:pointCloud
+                           owl:onProperty               dem:MassPointRelief.pointCloud
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  gmlowl:MultiPoint;
-                           owl:onProperty     dem:reliefPoints
+                           owl:onProperty     dem:MassPointRelief.reliefPoints
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  gmlowl:MultiPoint;
-                           owl:onProperty               dem:reliefPoints
+                           owl:onProperty               dem:MassPointRelief.reliefPoints
                          ];
         skos:definition  "A MassPointRelief represents a terrain component as a collection of 3D points."@en .
 
-dem:ADEOfBreaklineRelief
-        rdf:type               owl:Class;
-        rdfs:label             "ADEOfBreaklineRelief"@en;
-        iso19150-2:isAbstract  true;
-        skos:definition        "ADEOfBreaklineRelief acts as a hook to define properties within an ADE that are to be added to a BreaklineRelief."@en .
+dem:ReliefFeature.reliefComponent
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      dem:ReliefFeature;
+        rdfs:label       "reliefComponent"@en;
+        rdfs:range       dem:AbstractReliefComponent;
+        skos:definition  "Relates to the terrain components that are part of the ReliefFeature."@en .
 
 dem:adeOfTINRelief  rdf:type  owl:ObjectProperty;
         rdfs:label       "adeOfTINRelief"@en;
         rdfs:range       dem:ADEOfTINRelief;
         skos:definition  "Augments the TINRelief with properties defined in an ADE."@en .
 
-dem:ADEOfRasterRelief
-        rdf:type               owl:Class;
-        rdfs:label             "ADEOfRasterRelief"@en;
-        iso19150-2:isAbstract  true;
-        skos:definition        "ADEOfRasterRelief acts as a hook to define properties within an ADE that are to be added to a RasterRelief."@en .
+dem:adeOfBreaklineRelief
+        rdf:type         owl:ObjectProperty;
+        rdfs:label       "adeOfBreaklineRelief"@en;
+        rdfs:range       dem:ADEOfBreaklineRelief;
+        skos:definition  "Augments the BreaklineRelief with properties defined in an ADE."@en .
 
-dem:ReliefFeature  rdf:type  owl:Class;
-        rdfs:label       "ReliefFeature"@en;
-        rdfs:subClassOf  core:AbstractSpaceBoundary;
+dem:RasterRelief  rdf:type  owl:Class;
+        rdfs:label       "RasterRelief"@en;
+        rdfs:subClassOf  dem:AbstractReliefComponent;
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  dem:ADEOfReliefFeature;
-                           owl:onProperty     dem:adeOfReliefFeature
+                           owl:allValuesFrom  dem:ADEOfRasterRelief;
+                           owl:onProperty     dem:adeOfRasterRelief
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  dem:AbstractReliefComponent;
-                           owl:onProperty     dem:reliefComponent
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  dem:AbstractReliefComponent;
-                           owl:onProperty               dem:reliefComponent
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  core:IntegerBetween0and3;
-                           owl:onProperty     dem:ReliefFeature.lod
+                           owl:allValuesFrom  iso19123:CV_DiscreteGridPointCoverage;
+                           owl:onProperty     dem:RasterRelief.grid
                          ];
         rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               core:IntegerBetween0and3;
-                           owl:onProperty            dem:ReliefFeature.lod;
+                           owl:onClass               iso19123:CV_DiscreteGridPointCoverage;
+                           owl:onProperty            dem:RasterRelief.grid;
                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ];
-        skos:definition  "A ReliefFeature is a collection of terrain components representing the Earth's surface, also known as the Digital Terrain Model."@en .
+        skos:definition  "A RasterRelief represents a terrain component as a regular raster or grid."@en .
+
+dem:TINRelief.tin  rdf:type  owl:ObjectProperty;
+        rdfs:domain      dem:TINRelief;
+        rdfs:label       "tin"@en;
+        rdfs:range       iso19107-cm:GM_TriangulatedSurface;
+        skos:definition  "Relates to the triangulated surface of the TINRelief."@en .
+
+dem:ADEOfBreaklineRelief
+        rdf:type               owl:Class;
+        rdfs:label             "ADEOfBreaklineRelief"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfBreaklineRelief acts as a hook to define properties within an ADE that are to be added to a BreaklineRelief."@en .
 
 dem:BreaklineRelief  rdf:type  owl:Class;
         rdfs:label       "BreaklineRelief"@en;
@@ -262,31 +260,38 @@ dem:BreaklineRelief  rdf:type  owl:Class;
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  gmlowl:MultiCurve;
-                           owl:onProperty     dem:breaklines
+                           owl:onProperty     dem:BreaklineRelief.breaklines
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  gmlowl:MultiCurve;
-                           owl:onProperty               dem:breaklines
+                           owl:onProperty               dem:BreaklineRelief.breaklines
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  gmlowl:MultiCurve;
-                           owl:onProperty     dem:ridgeOrValleyLines
+                           owl:onProperty     dem:BreaklineRelief.ridgeOrValleyLines
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  gmlowl:MultiCurve;
-                           owl:onProperty               dem:ridgeOrValleyLines
+                           owl:onProperty               dem:BreaklineRelief.ridgeOrValleyLines
                          ];
         skos:definition  "A BreaklineRelief represents a terrain component with 3D lines. These lines denote break lines or ridge/valley lines."@en .
 
-dem:adeOfRasterRelief
-        rdf:type         owl:ObjectProperty;
-        rdfs:label       "adeOfRasterRelief"@en;
-        rdfs:range       dem:ADEOfRasterRelief;
-        skos:definition  "Augments the RasterRelief with properties defined in an ADE."@en .
+dem:lod  rdf:type        owl:ObjectProperty;
+        rdfs:label       "lod"@en;
+        rdfs:range       core:IntegerBetween0and3;
+        skos:definition  "Indicates the Level of Detail of the terrain component."@en .
 
-dem:reliefComponent  rdf:type  owl:ObjectProperty;
-        rdfs:label       "reliefComponent"@en;
-        rdfs:range       dem:AbstractReliefComponent;
-        skos:definition  "Relates to the terrain components that are part of the ReliefFeature."@en .
+dem:adeOfAbstractReliefComponent
+        rdf:type         owl:ObjectProperty;
+        rdfs:label       "adeOfAbstractReliefComponent"@en;
+        rdfs:range       dem:ADEOfAbstractReliefComponent;
+        skos:definition  "Augments AbstractReliefComponent with properties defined in an ADE."@en .
+
+dem:AbstractReliefComponent.extent
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      dem:AbstractReliefComponent;
+        rdfs:label       "extent"@en;
+        rdfs:range       gmlowl:Surface;
+        skos:definition  "Indicates the geometrical extent of the terrain component. The geometrical extent is provided as a 2D Surface geometry."@en .

@@ -7,15 +7,20 @@
 @prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
 
-luse:usage  rdf:type     owl:ObjectProperty;
-        rdfs:label       "usage"@en;
-        rdfs:range       luse:LandUseUsageValue;
-        skos:definition  "Specifies the actual uses of the LandUse."@en .
-
 luse:function  rdf:type  owl:ObjectProperty;
         rdfs:label       "function"@en;
         rdfs:range       luse:LandUseFunctionValue;
         skos:definition  "Specifies the intended purposes of the LandUse."@en .
+
+luse:class  rdf:type     owl:ObjectProperty;
+        rdfs:label       "class"@en;
+        rdfs:range       luse:LandUseClassValue;
+        skos:definition  "Indicates the specific type of the LandUse."@en .
+
+luse:adeOfLandUse  rdf:type  owl:ObjectProperty;
+        rdfs:label       "adeOfLandUse"@en;
+        rdfs:range       luse:ADEOfLandUse;
+        skos:definition  "Augments the LandUse with properties defined in an ADE."@en .
 
 luse:LandUseClassValue
         rdf:type         owl:Class;
@@ -28,17 +33,6 @@ luse:LandUseFunctionValue
         rdfs:label       "LandUseFunctionValue"@en;
         rdfs:subClassOf  skos:Concept;
         skos:definition  "LandUseFunctionValue is a code list that enumerates the different purposes of a LandUse."@en .
-
-luse:class  rdf:type     owl:ObjectProperty;
-        rdfs:label       "class"@en;
-        rdfs:range       luse:LandUseClassValue;
-        skos:definition  "Indicates the specific type of the LandUse."@en .
-
-luse:LandUseUsageValue
-        rdf:type         owl:Class;
-        rdfs:label       "LandUseUsageValue"@en;
-        rdfs:subClassOf  skos:Concept;
-        skos:definition  "LandUseUsageValue is a code list that enumerates the different uses of a LandUse."@en .
 
 luse:LandUse  rdf:type   owl:Class;
         rdfs:label       "LandUse"@en;
@@ -77,7 +71,13 @@ luse:ADEOfLandUse  rdf:type    owl:Class;
         iso19150-2:isAbstract  true;
         skos:definition        "ADEOfLandUse acts as a hook to define properties within an ADE that are to be added to a LandUse."@en .
 
-luse:adeOfLandUse  rdf:type  owl:ObjectProperty;
-        rdfs:label       "adeOfLandUse"@en;
-        rdfs:range       luse:ADEOfLandUse;
-        skos:definition  "Augments the LandUse with properties defined in an ADE."@en .
+luse:usage  rdf:type     owl:ObjectProperty;
+        rdfs:label       "usage"@en;
+        rdfs:range       luse:LandUseUsageValue;
+        skos:definition  "Specifies the actual uses of the LandUse."@en .
+
+luse:LandUseUsageValue
+        rdf:type         owl:Class;
+        rdfs:label       "LandUseUsageValue"@en;
+        rdfs:subClassOf  skos:Concept;
+        skos:definition  "LandUseUsageValue is a code list that enumerates the different uses of a LandUse."@en .

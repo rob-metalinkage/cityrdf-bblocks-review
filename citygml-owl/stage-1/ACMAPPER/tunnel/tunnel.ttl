@@ -8,197 +8,15 @@
 @prefix tun:        <https://www.opengis.net/ont/citygml/tunnel/> .
 @prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
 
-tun:ADEOfTunnelPart  rdf:type  owl:Class;
-        rdfs:label             "ADEOfTunnelPart"@en;
-        iso19150-2:isAbstract  true;
-        skos:definition        "ADEOfTunnelPart acts as a hook to define properties within an ADE that are to be added to a TunnelPart."@en .
-
-tun:TunnelUsageValue  rdf:type  owl:Class;
-        rdfs:label       "TunnelUsageValue"@en;
-        rdfs:subClassOf  skos:Concept;
-        skos:definition  "TunnelUsageValue is a code list that enumerates the different uses of a Tunnel."@en .
-
-tun:HollowSpace  rdf:type  owl:Class;
-        rdfs:label       "HollowSpace"@en;
-        rdfs:subClassOf  core:AbstractUnoccupiedSpace;
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:HollowSpaceFunctionValue;
-                           owl:onProperty     tun:HollowSpace.function
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  tun:HollowSpaceClassValue;
-                           owl:onProperty               tun:HollowSpace.class
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:TunnelInstallation;
-                           owl:onProperty     tun:HollowSpace.tunnelInstallation
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:ADEOfHollowSpace;
-                           owl:onProperty     tun:adeOfHollowSpace
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:HollowSpaceUsageValue;
-                           owl:onProperty     tun:HollowSpace.usage
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  core:AbstractThematicSurface;
-                           owl:onProperty     tun:boundary
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:TunnelFurniture;
-                           owl:onProperty     tun:HollowSpace.tunnelFurniture
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:HollowSpaceClassValue;
-                           owl:onProperty     tun:HollowSpace.class
-                         ];
-        skos:definition  "A HollowSpace is a space within a Tunnel or TunnelPart intended for certain functions (e.g. transport or passage ways, service rooms, emergency shelters). A HollowSpace is bounded physically and/or virtually (e.g. by ClosureSurfaces or GenericSurfaces)."@en .
-
-tun:ADEOfTunnelConstructiveElement
-        rdf:type               owl:Class;
-        rdfs:label             "ADEOfTunnelConstructiveElement"@en;
-        iso19150-2:isAbstract  true;
-        skos:definition        "ADEOfTunnelConstructiveElement acts as a hook to define properties within an ADE that are to be added to a TunnelConstructiveElement."@en .
-
-tun:TunnelFurniture.class
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:TunnelFurniture;
-        rdfs:label       "class"@en;
-        rdfs:range       tun:TunnelFurnitureClassValue;
-        skos:definition  "Indicates the specific type of the TunnelFurniture."@en .
-
-tun:AbstractTunnel.class
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:AbstractTunnel;
-        rdfs:label       "class"@en;
-        rdfs:range       tun:TunnelClassValue;
-        skos:definition  "Indicates the specific type of the Tunnel or TunnelPart."@en .
-
-tun:HollowSpace.tunnelFurniture
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:HollowSpace;
-        rdfs:label       "tunnelFurniture"@en;
-        rdfs:range       tun:TunnelFurniture;
-        skos:definition  "Relates the furniture objects to the HollowSpace."@en .
-
-tun:TunnelInstallationFunctionValue
-        rdf:type         owl:Class;
-        rdfs:label       "TunnelInstallationFunctionValue"@en;
-        rdfs:subClassOf  skos:Concept;
-        skos:definition  "TunnelInstallationFunctionValue is a code list that enumerates the different purposes of a TunnelInstallation."@en .
-
-tun:HollowSpace.class
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:HollowSpace;
-        rdfs:label       "class"@en;
-        rdfs:range       tun:HollowSpaceClassValue;
-        skos:definition  "Indicates the specific type of the HollowSpace."@en .
-
-tun:TunnelClassValue  rdf:type  owl:Class;
-        rdfs:label       "TunnelClassValue"@en;
-        rdfs:subClassOf  skos:Concept;
-        skos:definition  "TunnelClassValue is a code list used to further classify a Tunnel."@en .
-
-tun:HollowSpaceFunctionValue
-        rdf:type         owl:Class;
-        rdfs:label       "HollowSpaceFunctionValue"@en;
-        rdfs:subClassOf  skos:Concept;
-        skos:definition  "HollowSpaceFunctionValue is a code list that enumerates the different purposes of a HollowSpace."@en .
-
-tun:HollowSpace.function
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:HollowSpace;
-        rdfs:label       "function"@en;
-        rdfs:range       tun:HollowSpaceFunctionValue;
-        skos:definition  "Specifies the intended purposes of the HollowSpace."@en .
-
-tun:TunnelInstallation.class
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:TunnelInstallation;
-        rdfs:label       "class"@en;
-        rdfs:range       tun:TunnelInstallationClassValue;
-        skos:definition  "Indicates the specific type of the TunnelInstallation."@en .
-
-tun:ADEOfTunnelInstallation
-        rdf:type               owl:Class;
-        rdfs:label             "ADEOfTunnelInstallation"@en;
-        iso19150-2:isAbstract  true;
-        skos:definition        "ADEOfTunnelInstallation acts as a hook to define properties within an ADE that are to be added to a TunnelInstallation."@en .
-
-tun:ADEOfAbstractTunnel
-        rdf:type               owl:Class;
-        rdfs:label             "ADEOfAbstractTunnel"@en;
-        iso19150-2:isAbstract  true;
-        skos:definition        "ADEOfAbstractTunnel acts as a hook to define properties within an ADE that are to be added to AbstractTunnel."@en .
-
-tun:tunnelConstructiveElement
-        rdf:type         owl:ObjectProperty;
-        rdfs:label       "tunnelConstructiveElement"@en;
-        rdfs:range       tun:TunnelConstructiveElement;
-        skos:definition  "Relates the constructive elements to the Tunnel or TunnelPart."@en .
-
-tun:boundary  rdf:type   owl:ObjectProperty;
-        rdfs:label       "boundary"@en;
-        rdfs:range       core:AbstractThematicSurface;
-        skos:definition  "Relates to the surfaces that bound the HollowSpace. This relation is inherited from the Core module."@en .
-
-tun:ADEOfHollowSpace  rdf:type  owl:Class;
-        rdfs:label             "ADEOfHollowSpace"@en;
-        iso19150-2:isAbstract  true;
-        skos:definition        "ADEOfHollowSpace acts as a hook to define properties within an ADE that are to be added to a HollowSpace."@en .
-
-tun:HollowSpaceUsageValue
-        rdf:type         owl:Class;
-        rdfs:label       "HollowSpaceUsageValue"@en;
-        rdfs:subClassOf  skos:Concept;
-        skos:definition  "HollowSpaceUsageValue is a code list that enumerates the different uses of a HollowSpace."@en .
-
-tun:TunnelFunctionValue
-        rdf:type         owl:Class;
-        rdfs:label       "TunnelFunctionValue"@en;
-        rdfs:subClassOf  skos:Concept;
-        skos:definition  "TunnelFunctionValue is a code list that enumerates the different purposes of a Tunnel."@en .
-
-tun:AbstractTunnel.tunnelInstallation
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:AbstractTunnel;
-        rdfs:label       "tunnelInstallation"@en;
-        rdfs:range       tun:TunnelInstallation;
-        skos:definition  "Relates the installation objects to the Tunnel or TunnelPart."@en .
-
-tun:TunnelConstructiveElement.usage
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:TunnelConstructiveElement;
+tun:usage  rdf:type      owl:ObjectProperty;
         rdfs:label       "usage"@en;
-        rdfs:range       tun:TunnelConstructiveElementUsageValue;
-        skos:definition  "Specifies the actual uses of the TunnelConstructiveElement."@en .
+        rdfs:range       tun:HollowSpaceUsageValue;
+        skos:definition  "Specifies the actual uses of the HollowSpace."@en .
 
-tun:adeOfTunnelFurniture
-        rdf:type         owl:ObjectProperty;
-        rdfs:label       "adeOfTunnelFurniture"@en;
-        rdfs:range       tun:ADEOfTunnelFurniture;
-        skos:definition  "Augments the TunnelFurniture with properties defined in an ADE."@en .
-
-tun:TunnelPart  rdf:type  owl:Class;
-        rdfs:label       "TunnelPart"@en;
-        rdfs:subClassOf  tun:AbstractTunnel;
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:ADEOfTunnelPart;
-                           owl:onProperty     tun:adeOfTunnelPart
-                         ];
-        skos:definition  "A TunnelPart is a physical or functional subdivision of a Tunnel. It would be considered a Tunnel, if it were not part of a collection of other TunnelParts."@en .
-
-tun:adeOfTunnel  rdf:type  owl:ObjectProperty;
-        rdfs:label       "adeOfTunnel"@en;
-        rdfs:range       tun:ADEOfTunnel;
-        skos:definition  "Augments the Tunnel with properties defined in an ADE."@en .
-
-tun:hollowSpace  rdf:type  owl:ObjectProperty;
-        rdfs:label       "hollowSpace"@en;
-        rdfs:range       tun:HollowSpace;
-        skos:definition  "Relates the hollow spaces to the Tunnel or TunnelPart."@en .
+tun:ADEOfTunnel  rdf:type      owl:Class;
+        rdfs:label             "ADEOfTunnel"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfTunnel acts as a hook to define properties within an ADE that are to be added to a Tunnel."@en .
 
 tun:Tunnel  rdf:type      owl:Class;
         rdfs:label        "Tunnel"@en;
@@ -209,119 +27,55 @@ tun:Tunnel  rdf:type      owl:Class;
                           ];
         rdfs:subClassOf   [ rdf:type           owl:Restriction;
                             owl:allValuesFrom  tun:TunnelPart;
-                            owl:onProperty     tun:tunnelPart
+                            owl:onProperty     tun:Tunnel.tunnelPart
                           ];
         owl:disjointWith  tun:TunnelPart;
         skos:definition   "A Tunnel represents a horizontal or sloping enclosed passage way of a certain length, mainly underground or underwater. [cf. ISO 6707-1]"@en .
 
-tun:adeOfHollowSpace  rdf:type  owl:ObjectProperty;
-        rdfs:label       "adeOfHollowSpace"@en;
-        rdfs:range       tun:ADEOfHollowSpace;
-        skos:definition  "Augments the HollowSpace with properties defined in an ADE."@en .
-
-tun:TunnelInstallationUsageValue
-        rdf:type         owl:Class;
-        rdfs:label       "TunnelInstallationUsageValue"@en;
-        rdfs:subClassOf  skos:Concept;
-        skos:definition  "TunnelInstallationUsageValue is a code list that enumerates the different uses of a TunnelInstallation."@en .
-
-tun:AbstractTunnel  rdf:type   owl:Class;
-        rdfs:label             "AbstractTunnel"@en;
-        rdfs:subClassOf        con:AbstractConstruction;
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  tun:TunnelInstallation;
-                                 owl:onProperty     tun:AbstractTunnel.tunnelInstallation
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  tun:TunnelConstructiveElement;
-                                 owl:onProperty     tun:tunnelConstructiveElement
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  tun:TunnelUsageValue;
-                                 owl:onProperty     tun:AbstractTunnel.usage
-                               ];
-        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
-                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                                 owl:onClass                  tun:TunnelClassValue;
-                                 owl:onProperty               tun:AbstractTunnel.class
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  tun:ADEOfAbstractTunnel;
-                                 owl:onProperty     tun:adeOfAbstractTunnel
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  tun:TunnelClassValue;
-                                 owl:onProperty     tun:AbstractTunnel.class
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  tun:TunnelFunctionValue;
-                                 owl:onProperty     tun:AbstractTunnel.function
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  tun:HollowSpace;
-                                 owl:onProperty     tun:hollowSpace
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  tun:TunnelFurniture;
-                                 owl:onProperty     tun:AbstractTunnel.tunnelFurniture
-                               ];
-        iso19150-2:isAbstract  true;
-        skos:definition        "AbstractTunnel is an abstract superclass representing the common attributes and associations of the classes Tunnel and TunnelPart."@en .
-
-tun:TunnelFurniture.function
+tun:AbstractTunnel.hollowSpace
         rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:TunnelFurniture;
-        rdfs:label       "function"@en;
-        rdfs:range       tun:TunnelFurnitureFunctionValue;
-        skos:definition  "Specifies the intended purposes of the TunnelFurniture."@en .
+        rdfs:domain      tun:AbstractTunnel;
+        rdfs:label       "hollowSpace"@en;
+        rdfs:range       tun:HollowSpace;
+        skos:definition  "Relates the hollow spaces to the Tunnel or TunnelPart."@en .
 
-tun:adeOfTunnelInstallation
-        rdf:type         owl:ObjectProperty;
-        rdfs:label       "adeOfTunnelInstallation"@en;
-        rdfs:range       tun:ADEOfTunnelInstallation;
-        skos:definition  "Augments the TunnelInstallation with properties defined in an ADE."@en .
-
-tun:adeOfAbstractTunnel
-        rdf:type         owl:ObjectProperty;
-        rdfs:label       "adeOfAbstractTunnel"@en;
-        rdfs:range       tun:ADEOfAbstractTunnel;
-        skos:definition  "Augments AbstractTunnel with properties defined in an ADE."@en .
-
-tun:HollowSpaceClassValue
-        rdf:type         owl:Class;
-        rdfs:label       "HollowSpaceClassValue"@en;
-        rdfs:subClassOf  skos:Concept;
-        skos:definition  "HollowSpaceClassValue is a code list used to further classify a HollowSpace."@en .
-
-tun:TunnelInstallation.function
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:TunnelInstallation;
-        rdfs:label       "function"@en;
-        rdfs:range       tun:TunnelInstallationFunctionValue;
-        skos:definition  "Specifies the intended purposes of the TunnelInstallation."@en .
-
-tun:TunnelFurnitureUsageValue
-        rdf:type         owl:Class;
-        rdfs:label       "TunnelFurnitureUsageValue"@en;
-        rdfs:subClassOf  skos:Concept;
-        skos:definition  "TunnelFurnitureUsageValue is a code list that enumerates the different uses of a TunnelFurniture."@en .
-
-tun:ADEOfTunnel  rdf:type      owl:Class;
-        rdfs:label             "ADEOfTunnel"@en;
-        iso19150-2:isAbstract  true;
-        skos:definition        "ADEOfTunnel acts as a hook to define properties within an ADE that are to be added to a Tunnel."@en .
-
-tun:TunnelConstructiveElementUsageValue
-        rdf:type         owl:Class;
-        rdfs:label       "TunnelConstructiveElementUsageValue"@en;
-        rdfs:subClassOf  skos:Concept;
-        skos:definition  "TunnelConstructiveElementUsageValue is a code list that enumerates the different uses of a TunnelConstructiveElement."@en .
-
-tun:TunnelConstructiveElementFunctionValue
-        rdf:type         owl:Class;
-        rdfs:label       "TunnelConstructiveElementFunctionValue"@en;
-        rdfs:subClassOf  skos:Concept;
-        skos:definition  "TunnelConstructiveElementFunctionValue is a code list that enumerates the different purposes of a TunnelConstructiveElement."@en .
+tun:HollowSpace  rdf:type  owl:Class;
+        rdfs:label       "HollowSpace"@en;
+        rdfs:subClassOf  core:AbstractUnoccupiedSpace;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  tun:HollowSpaceClassValue;
+                           owl:onProperty     tun:class
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  tun:HollowSpaceUsageValue;
+                           owl:onProperty     tun:usage
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  tun:ADEOfHollowSpace;
+                           owl:onProperty     tun:adeOfHollowSpace
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  tun:TunnelInstallation;
+                           owl:onProperty     tun:HollowSpace.tunnelInstallation
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  tun:HollowSpaceClassValue;
+                           owl:onProperty               tun:class
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  core:AbstractThematicSurface;
+                           owl:onProperty     tun:HollowSpace.boundary
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  tun:TunnelFurniture;
+                           owl:onProperty     tun:HollowSpace.tunnelFurniture
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  tun:HollowSpaceFunctionValue;
+                           owl:onProperty     tun:function
+                         ];
+        skos:definition  "A HollowSpace is a space within a Tunnel or TunnelPart intended for certain functions (e.g. transport or passage ways, service rooms, emergency shelters). A HollowSpace is bounded physically and/or virtually (e.g. by ClosureSurfaces or GenericSurfaces)."@en .
 
 tun:adeOfTunnelConstructiveElement
         rdf:type         owl:ObjectProperty;
@@ -329,29 +83,30 @@ tun:adeOfTunnelConstructiveElement
         rdfs:range       tun:ADEOfTunnelConstructiveElement;
         skos:definition  "Augments the TunnelConstructiveElement with properties defined in an ADE."@en .
 
-tun:ADEOfTunnelFurniture
-        rdf:type               owl:Class;
-        rdfs:label             "ADEOfTunnelFurniture"@en;
-        iso19150-2:isAbstract  true;
-        skos:definition        "ADEOfTunnelFurniture acts as a hook to define properties within an ADE that are to be added to a TunnelFurniture."@en .
+tun:TunnelInstallationFunctionValue
+        rdf:type         owl:Class;
+        rdfs:label       "TunnelInstallationFunctionValue"@en;
+        rdfs:subClassOf  skos:Concept;
+        skos:definition  "TunnelInstallationFunctionValue is a code list that enumerates the different purposes of a TunnelInstallation."@en .
 
-tun:adeOfTunnelPart  rdf:type  owl:ObjectProperty;
-        rdfs:label       "adeOfTunnelPart"@en;
-        rdfs:range       tun:ADEOfTunnelPart;
-        skos:definition  "Augments the TunnelPart with properties defined in an ADE."@en .
-
-<https://www.opengis.net/ont/citygml/tunnel>
-        rdf:type         owl:Ontology;
-        rdfs:label       "Tunnel"@en;
-        owl:imports      <https://www.opengis.net/ont/citygml/construction> , <https://www.opengis.net/ont/citygml/core> , <http://def.isotc211.org/iso19150/-2/2012/base>;
-        skos:definition  "The Tunnel module supports representation of thematic and spatial aspects of tunnels, tunnel parts, tunnel installations, and interior tunnel structures."@en .
-
-tun:AbstractTunnel.function
+tun:AbstractTunnel.tunnelFurniture
         rdf:type         owl:ObjectProperty;
         rdfs:domain      tun:AbstractTunnel;
-        rdfs:label       "function"@en;
-        rdfs:range       tun:TunnelFunctionValue;
-        skos:definition  "Specifies the intended purposes of the Tunnel or TunnelPart."@en .
+        rdfs:label       "tunnelFurniture"@en;
+        rdfs:range       tun:TunnelFurniture;
+        skos:definition  "Relates the furniture objects to the Tunnel or TunnelPart."@en .
+
+tun:TunnelFurnitureUsageValue
+        rdf:type         owl:Class;
+        rdfs:label       "TunnelFurnitureUsageValue"@en;
+        rdfs:subClassOf  skos:Concept;
+        skos:definition  "TunnelFurnitureUsageValue is a code list that enumerates the different uses of a TunnelFurniture."@en .
+
+tun:ADEOfTunnelInstallation
+        rdf:type               owl:Class;
+        rdfs:label             "ADEOfTunnelInstallation"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfTunnelInstallation acts as a hook to define properties within an ADE that are to be added to a TunnelInstallation."@en .
 
 tun:HollowSpace.tunnelInstallation
         rdf:type         owl:ObjectProperty;
@@ -360,26 +115,24 @@ tun:HollowSpace.tunnelInstallation
         rdfs:range       tun:TunnelInstallation;
         skos:definition  "Relates the installation objects to the HollowSpace."@en .
 
-tun:TunnelConstructiveElement.class
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:TunnelConstructiveElement;
-        rdfs:label       "class"@en;
-        rdfs:range       tun:TunnelConstructiveElementClassValue;
-        skos:definition  "Indicates the specific type of the TunnelConstructiveElement."@en .
+tun:TunnelInstallationUsageValue
+        rdf:type         owl:Class;
+        rdfs:label       "TunnelInstallationUsageValue"@en;
+        rdfs:subClassOf  skos:Concept;
+        skos:definition  "TunnelInstallationUsageValue is a code list that enumerates the different uses of a TunnelInstallation."@en .
 
-tun:TunnelFurniture.usage
+tun:HollowSpace.boundary
         rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:TunnelFurniture;
-        rdfs:label       "usage"@en;
-        rdfs:range       tun:TunnelFurnitureUsageValue;
-        skos:definition  "Specifies the actual uses of the TunnelFurniture."@en .
+        rdfs:domain      tun:HollowSpace;
+        rdfs:label       "boundary"@en;
+        rdfs:range       core:AbstractThematicSurface;
+        skos:definition  "Relates to the surfaces that bound the HollowSpace. This relation is inherited from the Core module."@en .
 
-tun:AbstractTunnel.usage
+tun:adeOfTunnelFurniture
         rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:AbstractTunnel;
-        rdfs:label       "usage"@en;
-        rdfs:range       tun:TunnelUsageValue;
-        skos:definition  "Specifies the actual uses of the Tunnel or TunnelPart."@en .
+        rdfs:label       "adeOfTunnelFurniture"@en;
+        rdfs:range       tun:ADEOfTunnelFurniture;
+        skos:definition  "Augments the TunnelFurniture with properties defined in an ADE."@en .
 
 tun:TunnelInstallation
         rdf:type         owl:Class;
@@ -390,29 +143,161 @@ tun:TunnelInstallation
                            owl:onProperty     tun:adeOfTunnelInstallation
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:TunnelInstallationUsageValue;
-                           owl:onProperty     tun:TunnelInstallation.usage
+                           owl:allValuesFrom  tun:HollowSpaceUsageValue;
+                           owl:onProperty     tun:usage
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:TunnelInstallationFunctionValue;
-                           owl:onProperty     tun:TunnelInstallation.function
+                           owl:allValuesFrom  tun:HollowSpaceFunctionValue;
+                           owl:onProperty     tun:function
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:TunnelInstallationClassValue;
-                           owl:onProperty     tun:TunnelInstallation.class
+                           owl:allValuesFrom  tun:HollowSpaceClassValue;
+                           owl:onProperty     tun:class
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  tun:TunnelInstallationClassValue;
-                           owl:onProperty               tun:TunnelInstallation.class
+                           owl:onClass                  tun:HollowSpaceClassValue;
+                           owl:onProperty               tun:class
                          ];
         skos:definition  "A TunnelInstallation is a permanent part of a Tunnel (inside and/or outside) which does not have the significance of a TunnelPart. In contrast to TunnelConstructiveElement, a TunnelInstallation is not essential from a structural point of view. Examples are stairs, antennas or railings."@en .
+
+tun:class  rdf:type      owl:ObjectProperty;
+        rdfs:label       "class"@en;
+        rdfs:range       tun:HollowSpaceClassValue;
+        skos:definition  "Indicates the specific type of the HollowSpace."@en .
+
+tun:adeOfTunnelPart  rdf:type  owl:ObjectProperty;
+        rdfs:label       "adeOfTunnelPart"@en;
+        rdfs:range       tun:ADEOfTunnelPart;
+        skos:definition  "Augments the TunnelPart with properties defined in an ADE."@en .
+
+tun:AbstractTunnel  rdf:type   owl:Class;
+        rdfs:label             "AbstractTunnel"@en;
+        rdfs:subClassOf        con:AbstractConstruction;
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  tun:HollowSpaceUsageValue;
+                                 owl:onProperty     tun:usage
+                               ];
+        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
+                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                                 owl:onClass                  tun:HollowSpaceClassValue;
+                                 owl:onProperty               tun:class
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  tun:HollowSpaceFunctionValue;
+                                 owl:onProperty     tun:function
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  tun:HollowSpace;
+                                 owl:onProperty     tun:AbstractTunnel.hollowSpace
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  tun:TunnelFurniture;
+                                 owl:onProperty     tun:AbstractTunnel.tunnelFurniture
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  tun:TunnelConstructiveElement;
+                                 owl:onProperty     tun:AbstractTunnel.tunnelConstructiveElement
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  tun:TunnelInstallation;
+                                 owl:onProperty     tun:AbstractTunnel.tunnelInstallation
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  tun:HollowSpaceClassValue;
+                                 owl:onProperty     tun:class
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  tun:ADEOfAbstractTunnel;
+                                 owl:onProperty     tun:adeOfAbstractTunnel
+                               ];
+        iso19150-2:isAbstract  true;
+        skos:definition        "AbstractTunnel is an abstract superclass representing the common attributes and associations of the classes Tunnel and TunnelPart."@en .
+
+tun:AbstractTunnel.tunnelConstructiveElement
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      tun:AbstractTunnel;
+        rdfs:label       "tunnelConstructiveElement"@en;
+        rdfs:range       tun:TunnelConstructiveElement;
+        skos:definition  "Relates the constructive elements to the Tunnel or TunnelPart."@en .
+
+tun:Tunnel.tunnelPart
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      tun:Tunnel;
+        rdfs:label       "tunnelPart"@en;
+        rdfs:range       tun:TunnelPart;
+        skos:definition  "Relates the tunnel parts to the Tunnel."@en .
+
+tun:HollowSpaceFunctionValue
+        rdf:type         owl:Class;
+        rdfs:label       "HollowSpaceFunctionValue"@en;
+        rdfs:subClassOf  skos:Concept;
+        skos:definition  "HollowSpaceFunctionValue is a code list that enumerates the different purposes of a HollowSpace."@en .
+
+tun:TunnelConstructiveElementFunctionValue
+        rdf:type         owl:Class;
+        rdfs:label       "TunnelConstructiveElementFunctionValue"@en;
+        rdfs:subClassOf  skos:Concept;
+        skos:definition  "TunnelConstructiveElementFunctionValue is a code list that enumerates the different purposes of a TunnelConstructiveElement."@en .
+
+tun:TunnelPart  rdf:type  owl:Class;
+        rdfs:label       "TunnelPart"@en;
+        rdfs:subClassOf  tun:AbstractTunnel;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  tun:ADEOfTunnelPart;
+                           owl:onProperty     tun:adeOfTunnelPart
+                         ];
+        skos:definition  "A TunnelPart is a physical or functional subdivision of a Tunnel. It would be considered a Tunnel, if it were not part of a collection of other TunnelParts."@en .
+
+tun:HollowSpace.tunnelFurniture
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      tun:HollowSpace;
+        rdfs:label       "tunnelFurniture"@en;
+        rdfs:range       tun:TunnelFurniture;
+        skos:definition  "Relates the furniture objects to the HollowSpace."@en .
+
+tun:adeOfTunnelInstallation
+        rdf:type         owl:ObjectProperty;
+        rdfs:label       "adeOfTunnelInstallation"@en;
+        rdfs:range       tun:ADEOfTunnelInstallation;
+        skos:definition  "Augments the TunnelInstallation with properties defined in an ADE."@en .
 
 tun:TunnelInstallationClassValue
         rdf:type         owl:Class;
         rdfs:label       "TunnelInstallationClassValue"@en;
         rdfs:subClassOf  skos:Concept;
         skos:definition  "TunnelInstallationClassValue is a code list used to further classify a TunnelInstallation."@en .
+
+tun:ADEOfTunnelConstructiveElement
+        rdf:type               owl:Class;
+        rdfs:label             "ADEOfTunnelConstructiveElement"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfTunnelConstructiveElement acts as a hook to define properties within an ADE that are to be added to a TunnelConstructiveElement."@en .
+
+tun:TunnelFurnitureFunctionValue
+        rdf:type         owl:Class;
+        rdfs:label       "TunnelFurnitureFunctionValue"@en;
+        rdfs:subClassOf  skos:Concept;
+        skos:definition  "TunnelFurnitureFunctionValue is a code list that enumerates the different purposes of a TunnelFurniture."@en .
+
+tun:HollowSpaceUsageValue
+        rdf:type         owl:Class;
+        rdfs:label       "HollowSpaceUsageValue"@en;
+        rdfs:subClassOf  skos:Concept;
+        skos:definition  "HollowSpaceUsageValue is a code list that enumerates the different uses of a HollowSpace."@en .
+
+tun:ADEOfTunnelFurniture
+        rdf:type               owl:Class;
+        rdfs:label             "ADEOfTunnelFurniture"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfTunnelFurniture acts as a hook to define properties within an ADE that are to be added to a TunnelFurniture."@en .
+
+tun:AbstractTunnel.tunnelInstallation
+        rdf:type         owl:ObjectProperty;
+        rdfs:domain      tun:AbstractTunnel;
+        rdfs:label       "tunnelInstallation"@en;
+        rdfs:range       tun:TunnelInstallation;
+        skos:definition  "Relates the installation objects to the Tunnel or TunnelPart."@en .
 
 tun:TunnelConstructiveElement
         rdf:type         owl:Class;
@@ -423,41 +308,55 @@ tun:TunnelConstructiveElement
                            owl:onProperty     tun:adeOfTunnelConstructiveElement
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:TunnelConstructiveElementUsageValue;
-                           owl:onProperty     tun:TunnelConstructiveElement.usage
+                           owl:allValuesFrom  tun:HollowSpaceUsageValue;
+                           owl:onProperty     tun:usage
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:TunnelConstructiveElementFunctionValue;
-                           owl:onProperty     tun:TunnelConstructiveElement.function
+                           owl:allValuesFrom  tun:HollowSpaceFunctionValue;
+                           owl:onProperty     tun:function
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:TunnelConstructiveElementClassValue;
-                           owl:onProperty     tun:TunnelConstructiveElement.class
+                           owl:allValuesFrom  tun:HollowSpaceClassValue;
+                           owl:onProperty     tun:class
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  tun:TunnelConstructiveElementClassValue;
-                           owl:onProperty               tun:TunnelConstructiveElement.class
+                           owl:onClass                  tun:HollowSpaceClassValue;
+                           owl:onProperty               tun:class
                          ];
         skos:definition  "A TunnelConstructiveElement is an element of a Tunnel which is essential from a structural point of view. Examples are walls, slabs, beams."@en .
 
-tun:tunnelPart  rdf:type  owl:ObjectProperty;
-        rdfs:label       "tunnelPart"@en;
-        rdfs:range       tun:TunnelPart;
-        skos:definition  "Relates the tunnel parts to the Tunnel."@en .
+tun:adeOfTunnel  rdf:type  owl:ObjectProperty;
+        rdfs:label       "adeOfTunnel"@en;
+        rdfs:range       tun:ADEOfTunnel;
+        skos:definition  "Augments the Tunnel with properties defined in an ADE."@en .
 
-tun:TunnelFurnitureFunctionValue
-        rdf:type         owl:Class;
-        rdfs:label       "TunnelFurnitureFunctionValue"@en;
+tun:ADEOfTunnelPart  rdf:type  owl:Class;
+        rdfs:label             "ADEOfTunnelPart"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfTunnelPart acts as a hook to define properties within an ADE that are to be added to a TunnelPart."@en .
+
+tun:TunnelUsageValue  rdf:type  owl:Class;
+        rdfs:label       "TunnelUsageValue"@en;
         rdfs:subClassOf  skos:Concept;
-        skos:definition  "TunnelFurnitureFunctionValue is a code list that enumerates the different purposes of a TunnelFurniture."@en .
+        skos:definition  "TunnelUsageValue is a code list that enumerates the different uses of a Tunnel."@en .
 
-tun:HollowSpace.usage
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:HollowSpace;
-        rdfs:label       "usage"@en;
-        rdfs:range       tun:HollowSpaceUsageValue;
-        skos:definition  "Specifies the actual uses of the HollowSpace."@en .
+tun:function  rdf:type   owl:ObjectProperty;
+        rdfs:label       "function"@en;
+        rdfs:range       tun:HollowSpaceFunctionValue;
+        skos:definition  "Specifies the intended purposes of the HollowSpace."@en .
+
+<https://www.opengis.net/ont/citygml/tunnel>
+        rdf:type         owl:Ontology;
+        rdfs:label       "Tunnel"@en;
+        owl:imports      <https://www.opengis.net/ont/citygml/construction> , <https://www.opengis.net/ont/citygml/core> , <http://def.isotc211.org/iso19150/-2/2012/base>;
+        skos:definition  "The Tunnel module supports representation of thematic and spatial aspects of tunnels, tunnel parts, tunnel installations, and interior tunnel structures."@en .
+
+tun:ADEOfAbstractTunnel
+        rdf:type               owl:Class;
+        rdfs:label             "ADEOfAbstractTunnel"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfAbstractTunnel acts as a hook to define properties within an ADE that are to be added to AbstractTunnel."@en .
 
 tun:TunnelFurnitureClassValue
         rdf:type         owl:Class;
@@ -465,11 +364,28 @@ tun:TunnelFurnitureClassValue
         rdfs:subClassOf  skos:Concept;
         skos:definition  "TunnelFurnitureClassValue is a code list used to further classify a TunnelFurniture."@en .
 
-tun:TunnelConstructiveElementClassValue
+tun:TunnelConstructiveElementUsageValue
         rdf:type         owl:Class;
-        rdfs:label       "TunnelConstructiveElementClassValue"@en;
+        rdfs:label       "TunnelConstructiveElementUsageValue"@en;
         rdfs:subClassOf  skos:Concept;
-        skos:definition  "TunnelConstructiveElementClassValue is a code list used to further classify a TunnelConstructiveElement."@en .
+        skos:definition  "TunnelConstructiveElementUsageValue is a code list that enumerates the different uses of a TunnelConstructiveElement."@en .
+
+tun:ADEOfHollowSpace  rdf:type  owl:Class;
+        rdfs:label             "ADEOfHollowSpace"@en;
+        iso19150-2:isAbstract  true;
+        skos:definition        "ADEOfHollowSpace acts as a hook to define properties within an ADE that are to be added to a HollowSpace."@en .
+
+tun:TunnelFunctionValue
+        rdf:type         owl:Class;
+        rdfs:label       "TunnelFunctionValue"@en;
+        rdfs:subClassOf  skos:Concept;
+        skos:definition  "TunnelFunctionValue is a code list that enumerates the different purposes of a Tunnel."@en .
+
+tun:HollowSpaceClassValue
+        rdf:type         owl:Class;
+        rdfs:label       "HollowSpaceClassValue"@en;
+        rdfs:subClassOf  skos:Concept;
+        skos:definition  "HollowSpaceClassValue is a code list used to further classify a HollowSpace."@en .
 
 tun:TunnelFurniture  rdf:type  owl:Class;
         rdfs:label       "TunnelFurniture"@en;
@@ -479,41 +395,42 @@ tun:TunnelFurniture  rdf:type  owl:Class;
                            owl:onProperty     tun:adeOfTunnelFurniture
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:TunnelFurnitureUsageValue;
-                           owl:onProperty     tun:TunnelFurniture.usage
+                           owl:allValuesFrom  tun:HollowSpaceUsageValue;
+                           owl:onProperty     tun:usage
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:TunnelFurnitureFunctionValue;
-                           owl:onProperty     tun:TunnelFurniture.function
+                           owl:allValuesFrom  tun:HollowSpaceFunctionValue;
+                           owl:onProperty     tun:function
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  tun:TunnelFurnitureClassValue;
-                           owl:onProperty     tun:TunnelFurniture.class
+                           owl:allValuesFrom  tun:HollowSpaceClassValue;
+                           owl:onProperty     tun:class
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  tun:TunnelFurnitureClassValue;
-                           owl:onProperty               tun:TunnelFurniture.class
+                           owl:onClass                  tun:HollowSpaceClassValue;
+                           owl:onProperty               tun:class
                          ];
         skos:definition  "A TunnelFurniture is an equipment for occupant use, usually not fixed to the tunnel. [cf. ISO 6707-1]"@en .
 
-tun:TunnelConstructiveElement.function
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:TunnelConstructiveElement;
-        rdfs:label       "function"@en;
-        rdfs:range       tun:TunnelConstructiveElementFunctionValue;
-        skos:definition  "Specifies the intended purposes of the TunnelConstructiveElement."@en .
+tun:TunnelClassValue  rdf:type  owl:Class;
+        rdfs:label       "TunnelClassValue"@en;
+        rdfs:subClassOf  skos:Concept;
+        skos:definition  "TunnelClassValue is a code list used to further classify a Tunnel."@en .
 
-tun:TunnelInstallation.usage
-        rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:TunnelInstallation;
-        rdfs:label       "usage"@en;
-        rdfs:range       tun:TunnelInstallationUsageValue;
-        skos:definition  "Specifies the actual uses of the TunnelInstallation."@en .
+tun:TunnelConstructiveElementClassValue
+        rdf:type         owl:Class;
+        rdfs:label       "TunnelConstructiveElementClassValue"@en;
+        rdfs:subClassOf  skos:Concept;
+        skos:definition  "TunnelConstructiveElementClassValue is a code list used to further classify a TunnelConstructiveElement."@en .
 
-tun:AbstractTunnel.tunnelFurniture
+tun:adeOfHollowSpace  rdf:type  owl:ObjectProperty;
+        rdfs:label       "adeOfHollowSpace"@en;
+        rdfs:range       tun:ADEOfHollowSpace;
+        skos:definition  "Augments the HollowSpace with properties defined in an ADE."@en .
+
+tun:adeOfAbstractTunnel
         rdf:type         owl:ObjectProperty;
-        rdfs:domain      tun:AbstractTunnel;
-        rdfs:label       "tunnelFurniture"@en;
-        rdfs:range       tun:TunnelFurniture;
-        skos:definition  "Relates the furniture objects to the Tunnel or TunnelPart."@en .
+        rdfs:label       "adeOfAbstractTunnel"@en;
+        rdfs:range       tun:ADEOfAbstractTunnel;
+        skos:definition  "Augments AbstractTunnel with properties defined in an ADE."@en .

@@ -22,79 +22,72 @@ wksp:PropositionSpace a owl:Class ;
     rdfs:label "PropositionSpace"@en ;
     rdfs:subClassOf wksp:Space .
 
-wksp:Scenario.creator a owl:DatatypeProperty ;
-    rdfs:label "creator"@en ;
+wksp:Scenario.versionMember a owl:ObjectProperty ;
+    rdfs:label "versionMember"@en ;
     rdfs:domain wksp:Scenario ;
-    rdfs:range xsd:string .
+    rdfs:range vers:Version .
 
-wksp:Space.creator a owl:DatatypeProperty ;
-    rdfs:label "creator"@en ;
-    rdfs:domain wksp:Space ;
-    rdfs:range xsd:string .
+wksp:Scenario.versionTransitionMember a owl:ObjectProperty ;
+    rdfs:label "versionTransitionMember"@en ;
+    rdfs:domain wksp:Scenario ;
+    rdfs:range vers:VersionTransition .
 
 wksp:Workspace a owl:Class ;
     rdfs:label "Workspace"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom wksp:Space ;
-            owl:onProperty wksp:spaceMember ],
+            owl:onProperty wksp:Workspace.spaceMember ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
             owl:onClass wksp:Space ;
-            owl:onProperty wksp:spaceMember ],
+            owl:onProperty wksp:Workspace.spaceMember ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass wksp:Space ;
-            owl:onProperty wksp:spaceMember ],
+            owl:onProperty wksp:Workspace.spaceMember ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
-            owl:onProperty wksp:Workspace.creator ],
+            owl:onProperty wksp:creator ],
         core:AbstractFeatureWithLifespan .
 
-wksp:Workspace.creator a owl:DatatypeProperty ;
-    rdfs:label "creator"@en ;
-    rdfs:domain wksp:Workspace ;
-    rdfs:range xsd:string .
-
-wksp:versionMember a owl:ObjectProperty ;
-    rdfs:label "versionMember"@en ;
-    rdfs:range vers:Version .
-
-wksp:versionTransitionMember a owl:ObjectProperty ;
-    rdfs:label "versionTransitionMember"@en ;
-    rdfs:range vers:VersionTransition .
-
-wksp:scenarioMember a owl:ObjectProperty ;
+wksp:Space.scenarioMember a owl:ObjectProperty ;
     rdfs:label "scenarioMember"@en ;
+    rdfs:domain wksp:Space ;
     rdfs:range wksp:Scenario .
 
-wksp:spaceMember a owl:ObjectProperty ;
+wksp:Workspace.spaceMember a owl:ObjectProperty ;
     rdfs:label "spaceMember"@en ;
+    rdfs:domain wksp:Workspace ;
     rdfs:range wksp:Space .
+
+wksp:creator a owl:DatatypeProperty ;
+    rdfs:label "creator"@en ;
+    rdfs:range xsd:string .
 
 wksp:Scenario a owl:Class ;
     rdfs:label "Scenario"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom vers:VersionTransition ;
-            owl:onProperty wksp:versionTransitionMember ],
+            owl:onProperty wksp:Scenario.versionTransitionMember ],
         [ a owl:Restriction ;
             owl:allValuesFrom vers:Version ;
-            owl:onProperty wksp:versionMember ],
+            owl:onProperty wksp:Scenario.versionMember ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
-            owl:onProperty wksp:Scenario.creator ],
+            owl:onProperty wksp:creator ],
         core:AbstractFeatureWithLifespan .
 
 wksp:Space a owl:Class ;
     rdfs:label "Space"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
-            owl:onProperty wksp:Space.creator ],
+            owl:onProperty wksp:creator ],
         [ a owl:Restriction ;
             owl:allValuesFrom wksp:Scenario ;
-            owl:onProperty wksp:scenarioMember ],
+            owl:onProperty wksp:Space.scenarioMember ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass wksp:Scenario ;
-            owl:onProperty wksp:scenarioMember ],
+            owl:onProperty wksp:Space.scenarioMember ],
         core:AbstractFeatureWithLifespan .
 

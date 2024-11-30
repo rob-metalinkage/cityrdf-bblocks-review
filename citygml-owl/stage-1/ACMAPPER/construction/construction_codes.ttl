@@ -1,4 +1,4 @@
-@prefix concode: <https://www.opengis.net/ont/citygml/construction/code#> .
+@prefix concode: <https://www.opengis.net/ont/citygml/construction/code/> .
 @prefix dct:     <http://purl.org/dc/terms/> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -6,17 +6,29 @@
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
+concode:OtherConstructionFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "OtherConstructionFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/OtherConstructionFunctionValue>;
+        skos:definition  "OtherConstructionFunctionValue is a code list that enumerates the different purposes of an OtherConstruction."@en .
+
 concode:WindowUsageValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "WindowUsageValue"@en;
         dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/WindowUsageValue>;
         skos:definition  "WindowUsageValue is a code list that enumerates the different uses of a Window."@en .
 
-concode:OtherConstructionFunctionValue
+concode:OtherConstructionClassValue
         rdf:type         skos:ConceptScheme;
-        rdfs:label       "OtherConstructionFunctionValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/OtherConstructionFunctionValue>;
-        skos:definition  "OtherConstructionFunctionValue is a code list that enumerates the different purposes of an OtherConstruction."@en .
+        rdfs:label       "OtherConstructionClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/OtherConstructionClassValue>;
+        skos:definition  "OtherConstructionClassValue is a code list used to further classify an OtherConstruction."@en .
+
+concode:DoorClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "DoorClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/DoorClassValue>;
+        skos:definition  "DoorClassValue is a code list used to further classify a Door."@en .
 
 concode:DoorFunctionValue
         rdf:type         skos:ConceptScheme;
@@ -30,29 +42,6 @@ concode:OtherConstructionUsageValue
         dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/OtherConstructionUsageValue>;
         skos:definition  "OtherConstructionUsageValue is a code list that enumerates the different uses of an OtherConstruction."@en .
 
-concode:DoorClassValue
-        rdf:type         skos:ConceptScheme;
-        rdfs:label       "DoorClassValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/DoorClassValue>;
-        skos:definition  "DoorClassValue is a code list used to further classify a Door."@en .
-
-concode:DoorUsageValue
-        rdf:type         skos:ConceptScheme;
-        rdfs:label       "DoorUsageValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/DoorUsageValue>;
-        skos:definition  "DoorUsageValue is a code list that enumerates the different uses of a Door."@en .
-
-concode:WindowFunctionValue
-        rdf:type         skos:ConceptScheme;
-        rdfs:label       "WindowFunctionValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/WindowFunctionValue>;
-        skos:definition  "WindowFunctionValue is a code list that enumerates the different purposes of a Window."@en .
-
-concode:EventValue  rdf:type  skos:ConceptScheme;
-        rdfs:label       "EventValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/EventValue>;
-        skos:definition  "EventValue is a code list that enumerates the different events of a construction."@en .
-
 <https://www.opengis.net/ont/citygml/construction/code>
         rdf:type  owl:Ontology .
 
@@ -62,14 +51,25 @@ concode:ElevationReferenceValue
         dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/ElevationReferenceValue>;
         skos:definition  "ElevationReferenceValue is a code list that enumerates the different elevation reference levels used to measure construction heights."@en .
 
+concode:DoorUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "DoorUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/DoorUsageValue>;
+        skos:definition  "DoorUsageValue is a code list that enumerates the different uses of a Door."@en .
+
+concode:EventValue  rdf:type  skos:ConceptScheme;
+        rdfs:label       "EventValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/EventValue>;
+        skos:definition  "EventValue is a code list that enumerates the different events of a construction."@en .
+
 concode:WindowClassValue
         rdf:type         skos:ConceptScheme;
         rdfs:label       "WindowClassValue"@en;
         dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/WindowClassValue>;
         skos:definition  "WindowClassValue is a code list used to further classify a Window."@en .
 
-concode:OtherConstructionClassValue
+concode:WindowFunctionValue
         rdf:type         skos:ConceptScheme;
-        rdfs:label       "OtherConstructionClassValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/OtherConstructionClassValue>;
-        skos:definition  "OtherConstructionClassValue is a code list used to further classify an OtherConstruction."@en .
+        rdfs:label       "WindowFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/construction/WindowFunctionValue>;
+        skos:definition  "WindowFunctionValue is a code list that enumerates the different purposes of a Window."@en .

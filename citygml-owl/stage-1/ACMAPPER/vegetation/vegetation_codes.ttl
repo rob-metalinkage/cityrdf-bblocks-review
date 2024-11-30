@@ -3,19 +3,19 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
-@prefix vegcode: <https://www.opengis.net/ont/citygml/vegetation/code#> .
+@prefix vegcode: <https://www.opengis.net/ont/citygml/vegetation/code/> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+vegcode:PlantCoverUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "PlantCoverUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/vegetation/PlantCoverUsageValue>;
+        skos:definition  "PlantCoverUsageValue is a code list that enumerates the different uses of a PlantCover."@en .
 
 vegcode:SpeciesValue  rdf:type  skos:ConceptScheme;
         rdfs:label       "SpeciesValue"@en;
         dct:isFormatOf   <https://www.opengis.net/ont/citygml/vegetation/SpeciesValue>;
         skos:definition  "A SpeciesValue is a code list that enumerates the species of a SolitaryVegetationObject."@en .
-
-vegcode:SolitaryVegetationObjectFunctionValue
-        rdf:type         skos:ConceptScheme;
-        rdfs:label       "SolitaryVegetationObjectFunctionValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/vegetation/SolitaryVegetationObjectFunctionValue>;
-        skos:definition  "SolitaryVegetationObjectFunctionValue is a code list that enumerates the different purposes of a SolitaryVegetationObject."@en .
 
 vegcode:PlantCoverFunctionValue
         rdf:type         skos:ConceptScheme;
@@ -23,11 +23,11 @@ vegcode:PlantCoverFunctionValue
         dct:isFormatOf   <https://www.opengis.net/ont/citygml/vegetation/PlantCoverFunctionValue>;
         skos:definition  "PlantCoverFunctionValue is a code list that enumerates the different purposes of a PlantCover."@en .
 
-vegcode:PlantCoverUsageValue
+vegcode:SolitaryVegetationObjectFunctionValue
         rdf:type         skos:ConceptScheme;
-        rdfs:label       "PlantCoverUsageValue"@en;
-        dct:isFormatOf   <https://www.opengis.net/ont/citygml/vegetation/PlantCoverUsageValue>;
-        skos:definition  "PlantCoverUsageValue is a code list that enumerates the different uses of a PlantCover."@en .
+        rdfs:label       "SolitaryVegetationObjectFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/vegetation/SolitaryVegetationObjectFunctionValue>;
+        skos:definition  "SolitaryVegetationObjectFunctionValue is a code list that enumerates the different purposes of a SolitaryVegetationObject."@en .
 
 vegcode:SolitaryVegetationObjectClassValue
         rdf:type         skos:ConceptScheme;
