@@ -33,7 +33,7 @@ To run the ShapeChange conversion write in bash
 
 The results will be in the folder `stage-1`.
 
-To apply patches to make the results better viewable in Protege, see the explanation in [VCityTeam solution](https://github.com/VCityTeam/UD-Graph/tree/master/Transformations/ShapeChange) that is the solution to get the [initial version of CityGML3.0 in OWL](https://dataset-dl.liris.cnrs.fr/rdf-owl-urban-data-ontologies/Ontologies/CityGML/3.0/)
+To apply patches to make the results better viewable in Protege, see the explanation in [VCityTeam solution](https://github.com/VCityTeam/UD-Graph/tree/master/Transformations/ShapeChange) that is the solution to get the [initial version of CityGML3.0 in OWL](https://dataset-dl.liris.cnrs.fr/rdf-owl-urban-data-ontologies/Ontologies/CityGML/3.0/) and run the second script:
 
 ```./patch-ontologies.sh```
 
@@ -48,7 +48,7 @@ The script did the following:
 - removes outdated core triples and correspondent hanging restrictions
 - patches RoomHeight.status range
 
-We extended this script to implement our vision on how we can benefit from custom UML-to-OWL conversion.
+We extended this script to implement our vision on how we can benefit from custom UML-to-OWL conversion, taking into account abilities of OWL.
 
 ### Global Properties explication
 
@@ -257,3 +257,10 @@ and in each of ontologies mentioning `boundary` (here `bldg`, `wtr`, `tun`, `tra
 common:boundary skos:definition "Here goes the definition that originate in the package, 
         for each package it will be different"
 ```
+
+## Samples
+
+We prepare several small examples of BIMs in GML taking freely available data from GitHub repository [OloOcki/awesome-citygml](https://github.com/OloOcki/awesome-citygml?tab=readme-ov-file), in particular:
+
+- [lod3-sample.gml](./examples/lod3-sample.gml) taken from [Ingolstadt, Germany](https://github.com/savenow/lod3-road-space-models/blob/main/models/building/lod3/combined/citygml/lod3_building_models.gml)  
+- [lod2-sample.gml](./examples/lod2-sample.gml) taken from [sachsen.de, Germany](https://www.geodaten.sachsen.de/digitale-hoehenmodelle-3994.html) 
