@@ -4,7 +4,9 @@ if test ! -d ./output; then
     mkdir ./output
 fi
 
-# ### Add codeList concept schemes
+# ### Add codeList concept schemes, copy files without codeLists
+echo 'Copying appearance.ttl'
+cp ./stage-2/appearance.ttl ./output/
 echo 'Adding bridge-codes.ttl'
 python add_triples.py ./stage-2/bridge.ttl ./stage-1/ACMAPPER/bridge/bridge_codes.ttl ./output/bridge.ttl
 echo 'Adding building-codes.ttl'
@@ -35,6 +37,7 @@ echo 'Copying versioning.ttl'
 cp ./stage-2/versioning.ttl ./output/
 echo 'Adding waterbody-codes.ttl'
 python add_triples.py ./stage-2/waterbody.ttl ./stage-1/ACMAPPER/waterbody/waterbody_codes.ttl ./output/waterbody.ttl
+
 # ### Additional modification ###
 echo 'Adding cityModelMember modifications'
 python add_triples.py ./output/core.ttl ./additional-triples/citymodelmember.ttl ./output/core.ttl
@@ -94,10 +97,10 @@ python update_graph.py ./output/building.ttl ./output/building.ttl \
     PREFIX bldg: <https://www.opengis.net/ont/citygml/building/>
 
     DELETE DATA {
-        bldg:RoomHeight.status a owl:ObjectProperty .
+        bldg:status a owl:ObjectProperty .
     } ;
     INSERT DATA {
-        bldg:RoomHeight.status a owl:DatatypeProperty .
+        bldg:status a owl:DatatypeProperty .
     }'
 
 ### sequence added for global attributes ###
@@ -108,6 +111,53 @@ files=("./output/appearance.ttl" "./output/bridge.ttl" "./output/building.ttl" "
         "./output/tunnel.ttl" "./output/vegetation.ttl" "./output/versioning.ttl" "./output/waterbody.ttl" "./output/workspace.ttl")
 
 for file in ${files[@]}; do
+
+### added removal of ADE*/ade*
+### #5 deletes bnodes representing restrictions involving ade* objprops AND subclass axioms mentioning those bnodes
+
+echo 'deletes presence of ADE* classes and ade* properties'
+
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+delete { 
+	?x a owl:Restriction .
+    ?x owl:allValuesFrom ?adeclass .
+    ?x owl:onProperty ?adeprop .
+    ?s skos:definition ?def .
+    ?s rdfs:subClassOf ?x .
+    ?adeclass a owl:Class .
+    ?adeprop a owl:ObjectProperty .
+    ?adeprop rdfs:range ?adeclass .
+    ?adeclass rdfs:label ?labelc . 
+    ?adeclass skos:definition ?defc.
+    ?adeprop rdfs:label ?labelp .
+    ?adeprop skos:definition ?defp.
+    ?adeclass iso19150-2:isAbstract true .
+    }
+    where {
+    select ?s ?x ?adeclass ?def ?adeprop ?labelc ?labelp ?defc ?defp
+    	where {
+    		?s a owl:Class .
+        	?s rdfs:subClassOf ?x .
+        	?s skos:definition ?def .
+			?x a owl:Restriction .
+    		?x owl:allValuesFrom ?adeclass .
+    		?x owl:onProperty ?adeprop .
+            ?adeclass a owl:Class .
+    		?adeprop a owl:ObjectProperty .
+    		?adeprop rdfs:range ?adeclass .
+            ?adeclass rdfs:label ?labelc . 
+    		?adeclass skos:definition ?defc.
+    		?adeprop rdfs:label ?labelp .
+    		?adeprop skos:definition ?defp.
+            bind(replace(str(?adeclass), "^.*/([^/]*)$", "$1") as ?xc)
+            bind(replace(str(?adeprop), "^.*/([^/]*)$", "$1") as ?xp)
+            filter (strstarts(?xp, "ade") )
+        	filter (strstarts(?xc, "ADE") )
+    }}'
 
 ### #1. inserts common:propertyname where ns:propertyname refs to package level
 echo $file
@@ -157,7 +207,7 @@ where {
     }}'
 
 ### #2 deletes all objprops defs that will be replaced with global scope ones
-echo 'deleting package-level ns:propertyname'
+echo 'deleting package-level ns:propertyname for common properties'
 
 python update_graph.py $file $file \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -297,53 +347,6 @@ where {
 "https://www.opengis.net/ont/citygml/waterbody/", 
 "https://www.opengis.net/ont/citygml/workspace/"))
 }'
-
-### added removal of ADE*/ade*
-### #5 deletes bnodes representing restrictions involving ade* objprops AND subclass axioms mentioning those bnodes
-
-echo 'deletes presence of ADE* classes and ade* properties'
-
-python update_graph.py $file $file \
-    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-delete { 
-	?x a owl:Restriction .
-    ?x owl:allValuesFrom ?adeclass .
-    ?x owl:onProperty ?adeprop .
-    ?s skos:definition ?def .
-    ?s rdfs:subClassOf ?x .
-    ?adeclass a owl:Class .
-    ?adeprop a owl:ObjectProperty .
-    ?adeprop rdfs:range ?adeclass .
-    ?adeclass rdfs:label ?labelc . 
-    ?adeclass skos:definition ?defc.
-    ?adeprop rdfs:label ?labelp .
-    ?adeprop skos:definition ?defp.
-    ?adeclass iso19150-2:isAbstract true .
-    }
-    where {
-    select ?s ?x ?adeclass ?def ?adeprop ?labelc ?labelp ?defc ?defp
-    	where {
-    		?s a owl:Class .
-        	?s rdfs:subClassOf ?x .
-        	?s skos:definition ?def .
-			?x a owl:Restriction .
-    		?x owl:allValuesFrom ?adeclass .
-    		?x owl:onProperty ?adeprop .
-            ?adeclass a owl:Class .
-    		?adeprop a owl:ObjectProperty .
-    		?adeprop rdfs:range ?adeclass .
-            ?adeclass rdfs:label ?labelc . 
-    		?adeclass skos:definition ?defc.
-    		?adeprop rdfs:label ?labelp .
-    		?adeprop skos:definition ?defp.
-            bind(replace(str(?adeclass), "^.*/([^/]*)$", "$1") as ?xc)
-            bind(replace(str(?adeprop), "^.*/([^/]*)$", "$1") as ?xp)
-            filter (strstarts(?xp, "ade") )
-        	filter (strstarts(?xc, "ADE") )
-    }}'
 
 ### 6 adds new global properties for those reused >1 per CityGML family
 echo 'add properties reused more than once per CityGML family'
@@ -488,21 +491,21 @@ python update_graph.py $file $file \
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 insert { 
-        ?new rdfs:range ?range .
-    	?new rdfs:label ?label .
+    ?new a owl:ObjectProperty .    
+    ?new rdfs:range ?range .
+    	?new rdfs:label ?classIndependentPropName .
         ?new skos:definition ?def .
     	?new rdfs:domain ?domain .
     }
 where {
-    select ?s ?domain ?range ?def ?label ?new
+select ?s ?domain ?range ?def ?classIndependentPropName ?new
     where {
 	      ?s a owl:ObjectProperty .
           optional{?s rdfs:domain ?domain.}
-          ?s  rdfs:range ?range ;
-              rdfs:label ?label;
-              skos:definition ?def .
+          ?s rdfs:range ?range .
+          ?s rdfs:label ?classIndependentPropName .
+          ?s skos:definition ?def .
 	bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
-    optional{bind(strafter(?x,".") as ?classIndependentPropName).}
     filter(?classIndependentPropName !="")
     bind (IRI(concat(strbefore(str(?s),str(?x)),?classIndependentPropName)) as ?new)
     filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
@@ -527,7 +530,7 @@ where {
     }}'
 
 ### #11 deletes initial (=with class in ns:Class.prop) local props used once in a package
-echo 'deletes initial (=with class in ns:Class.prop) local props used once in a package'
+echo '#11 deletes initial (=with class in ns:Class.prop) local props used once in a package'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -541,7 +544,7 @@ delete {
         ?s skos:definition ?def .
     }
 where {
-    select ?s ?domain ?range ?def ?label 
+select ?s ?domain ?range ?def ?label 
     where {
 	      ?s a owl:ObjectProperty .
           optional{?s rdfs:domain ?domain.}
@@ -549,7 +552,7 @@ where {
               rdfs:label ?label;
               skos:definition ?def .
 	bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
-    optional{bind(strbefore(?x,".") as ?class).}
+    bind(strbefore(?x,".") as ?class).
     filter(?class !="")
     filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
 "https://www.opengis.net/ont/citygml/bridge/", 
@@ -574,7 +577,9 @@ where {
 
 ### #12 inserts owl:onProperty for simplified (=without class in ns:Class.prop) local props used once in a package
 
-echo 'inserts owl:onProperty for simplified (=without class in ns:Class.prop) local props used once in a package'
+pause
+
+echo '#12 inserts owl:onProperty for simplified (=without class in ns:Class.prop) local props used once in a package'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -591,7 +596,7 @@ select ?s ?new
     optional{bind(strafter(?x,".") as ?classIndependentPropName).}
     filter(?classIndependentPropName !="")
     bind (IRI(concat(strbefore(str(?old),str(?x)),?classIndependentPropName)) as ?new)
-}}'
+    }}'
 
 ### #13 deletes owl:onProperty for initial (=with class in ns:Class.prop) local props used once in a package
 
@@ -609,7 +614,7 @@ where {
     where {
 	      ?s owl:onProperty ?old .
 	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
-    optional{bind(strbefore(?x,".") as ?class).}
+    bind(strbefore(?x,".") as ?class).
     filter(?class !="")
     filter (strbefore(str(?old),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
 "https://www.opengis.net/ont/citygml/bridge/", 
