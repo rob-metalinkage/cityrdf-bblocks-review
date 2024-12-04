@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<core:CityModel xmlns:brid="http://www.opengis.net/citygml/bridge/2.0" xmlns:tran="http://www.opengis.net/citygml/transportation/2.0" xmlns:frn="http://www.opengis.net/citygml/cityfurniture/2.0" xmlns:wtr="http://www.opengis.net/citygml/waterbody/2.0" xmlns:sch="http://www.ascc.net/xml/schematron" xmlns:veg="http://www.opengis.net/citygml/vegetation/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tun="http://www.opengis.net/citygml/tunnel/2.0" xmlns:tex="http://www.opengis.net/citygml/texturedsurface/2.0" xmlns:gml="http://www.opengis.net/gml" xmlns:gen="http://www.opengis.net/citygml/generics/2.0" xmlns:dem="http://www.opengis.net/citygml/relief/2.0" xmlns:app="http://www.opengis.net/citygml/appearance/2.0" xmlns:luse="http://www.opengis.net/citygml/landuse/2.0" xmlns:xAL="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0" xmlns:bldg="http://www.opengis.net/citygml/building/2.0" xmlns:smil20="http://www.w3.org/2001/SMIL20/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:smil20lang="http://www.w3.org/2001/SMIL20/Language" xmlns:pbase="http://www.opengis.net/citygml/profiles/base/2.0" xmlns:core="http://www.opengis.net/citygml/2.0" xmlns:grp="http://www.opengis.net/citygml/cityobjectgroup/2.0" gml:id="fme-gen-0cbec562-7b79-497e-b989-065c2f3c1b55">
+<core:CityModel xmlns:brid="http://www.opengis.net/citygml/bridge/3.0" xmlns:tran="http://www.opengis.net/citygml/transportation/3.0" xmlns:frn="http://www.opengis.net/citygml/cityfurniture/3.0" xmlns:wtr="http://www.opengis.net/citygml/waterbody/3.0" xmlns:sch="http://www.ascc.net/xml/schematron" xmlns:veg="http://www.opengis.net/citygml/vegetation/3.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tun="http://www.opengis.net/citygml/tunnel/3.0" xmlns:gml="http://www.opengis.net/gml" xmlns:gen="http://www.opengis.net/citygml/generics/3.0" xmlns:dem="http://www.opengis.net/citygml/relief/3.0" xmlns:app="http://www.opengis.net/citygml/appearance/3.0" xmlns:luse="http://www.opengis.net/citygml/landuse/3.0" xmlns:xAL="urn:oasis:names:tc:ciq:xsdschema:xAL:3.0" xmlns:bldg="http://www.opengis.net/citygml/building/3.0" xmlns:smil20="http://www.w3.org/2001/SMIL20/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:smil20lang="http://www.w3.org/2001/SMIL20/Language" xmlns:pbase="http://www.opengis.net/citygml/profiles/base/3.0" xmlns:core="http://www.opengis.net/citygml/3.0" xmlns:grp="http://www.opengis.net/citygml/cityobjectgroup/3.0" xmlns:con="http://www.opengis.net/citygml/construction/3.0" gml:id="fme-gen-0cbec562-7b79-497e-b989-065c2f3c1b55">
 	<gml:boundedBy>
 		<gml:Envelope srsName="EPSG:25832" srsDimension="3">
 			<gml:lowerCorner>678016.2 5403455.767 366.45023</gml:lowerCorner>
@@ -12,7 +12,7 @@
 			<gen:stringAttribute name="dataAvailable">
 				<gen:value>NotSufficient</gen:value>
 			</gen:stringAttribute>
-			<bldg:measuredHeight uom="m">8.813</bldg:measuredHeight>
+			<con:height uom="m">8.813</con:height>
 			<bldg:boundedBy>
 				<bldg:RoofSurface gml:id="fme-gen-65cb1a0b-7b8a-4050-9524-4fb431ffa407">
 					<bldg:lod3MultiSurface>
