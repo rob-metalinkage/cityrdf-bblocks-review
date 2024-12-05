@@ -262,5 +262,7 @@ common:boundary skos:definition "Here goes the definition that originate in the 
 
 We prepare several small examples of BIMs in GML taking freely available data from GitHub repository [OloOcki/awesome-citygml](https://github.com/OloOcki/awesome-citygml?tab=readme-ov-file), in particular:
 
-- [lod3-sample.gml](./examples/lod3-sample.gml) taken from [Ingolstadt, Germany](https://github.com/savenow/lod3-road-space-models/blob/main/models/building/lod3/combined/citygml/lod3_building_models.gml)  
+- [lod3-sample-fail.gml](./examples/lod3-sample-fail.gml) taken from [Ingolstadt, Germany](https://github.com/savenow/lod3-road-space-models/blob/main/models/building/lod3/combined/citygml/lod3_building_models.gml)  
+- [lod3-sample-ok.gml](./examples/lod3-sample-ok.gml) taken from [Ingolstadt, Germany](https://github.com/savenow/lod3-road-space-models/blob/main/models/building/lod3/combined/citygml/lod3_building_models.gml) and converted into CityGML 3.0
+
 - [lod2-sample.gml](./examples/lod2-sample.gml) taken from [sachsen.de, Germany](https://www.geodaten.sachsen.de/digitale-hoehenmodelle-3994.html) 
