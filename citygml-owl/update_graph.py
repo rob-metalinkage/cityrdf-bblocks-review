@@ -24,7 +24,7 @@ def main():
     graph.parse(path, format='turtle')
 
     if args.verbose:
-        print('Executing query: \n{args.query}')
+        print(f'Executing query: \n{args.query}')
     graph.update(args.query)
 
     graph.serialize(destination=args.output_file, format='turtle')

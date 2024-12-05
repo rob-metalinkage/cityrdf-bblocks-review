@@ -1,3 +1,13 @@
 ./citygml-owl/argparse
 ./citygml-owl/logging
 ./citygml-owl/output.log
+examples/inspire-plu/catalog-v001.xml
+citygml-owl/app.sh
+citygml-owl/argparse
+citygml-owl/copy.sh
+citygml-owl/logging
+citygml-owl/magicstring.txt
+citygml-owl/output-fullmodel-extraction.zip
+citygml-owl/output.log
+citygml-owl/update-triples1.sh
+.idea/

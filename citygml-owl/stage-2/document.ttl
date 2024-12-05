@@ -99,41 +99,41 @@ doc:PurposeTypeValue a owl:Class ;
 doc:Reference a owl:Class ;
     rdfs:label "Reference"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom time:Interval ;
-            owl:onProperty doc:coveragePeriod ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:dateTime ;
-            owl:onProperty doc:referringDate ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractFeatureWithLifespan ;
-            owl:onProperty doc:Reference.referringTo ],
-        [ a owl:Restriction ;
-            owl:onClass time:Interval ;
-            owl:onProperty doc:coveragePeriod ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass core:AbstractFeatureWithLifespan ;
-            owl:onProperty doc:Reference.referringTo ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:dateTime ;
-            owl:onProperty doc:referringDate ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom doc:PurposeTypeValue ;
-            owl:onProperty doc:purposeType ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty doc:purpose ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty doc:referenceText ],
         [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass doc:PurposeTypeValue ;
+            owl:onProperty doc:purposeType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractFeatureWithLifespan ;
+            owl:onProperty doc:Reference.referringTo ],
+        [ a owl:Restriction ;
+            owl:onClass core:AbstractFeatureWithLifespan ;
+            owl:onProperty doc:Reference.referringTo ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty doc:referenceText ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass doc:PurposeTypeValue ;
+            owl:onClass time:Interval ;
+            owl:onProperty doc:coveragePeriod ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:dateTime ;
+            owl:onProperty doc:referringDate ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:dateTime ;
+            owl:onProperty doc:referringDate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom time:Interval ;
+            owl:onProperty doc:coveragePeriod ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom doc:PurposeTypeValue ;
             owl:onProperty doc:purposeType ] .
 

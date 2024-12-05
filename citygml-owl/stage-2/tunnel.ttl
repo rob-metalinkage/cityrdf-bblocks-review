@@ -278,23 +278,7 @@ tun:TunnelInstallation a owl:Class ;
 tun:HollowSpace a owl:Class ;
     rdfs:label "HollowSpace"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceFunctionValue ;
-            owl:onProperty tun:function ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tun:HollowSpaceClassValue ;
-            owl:onProperty tun:class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceUsageValue ;
-            owl:onProperty tun:usage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:ADEOfHollowSpace ;
-            owl:onProperty tun:adeOfHollowSpace ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:TunnelInstallation ;
-            owl:onProperty tun:HollowSpace.tunnelInstallation ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tun:HollowSpaceClassValue ;
             owl:onProperty tun:class ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:AbstractThematicSurface ;
@@ -302,6 +286,22 @@ tun:HollowSpace a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom tun:TunnelFurniture ;
             owl:onProperty tun:HollowSpace.tunnelFurniture ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:ADEOfHollowSpace ;
+            owl:onProperty tun:adeOfHollowSpace ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:HollowSpaceUsageValue ;
+            owl:onProperty tun:usage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:HollowSpaceFunctionValue ;
+            owl:onProperty tun:function ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:TunnelInstallation ;
+            owl:onProperty tun:HollowSpace.tunnelInstallation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tun:HollowSpaceClassValue ;
+            owl:onProperty tun:class ],
         core:AbstractUnoccupiedSpace ;
     skos:definition "A HollowSpace is a space within a Tunnel or TunnelPart intended for certain functions (e.g. transport or passage ways, service rooms, emergency shelters). A HollowSpace is bounded physically and/or virtually (e.g. by ClosureSurfaces or GenericSurfaces)."@en .
 
@@ -322,18 +322,8 @@ tun:AbstractTunnel a owl:Class ;
             owl:allValuesFrom tun:HollowSpaceUsageValue ;
             owl:onProperty tun:usage ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tun:HollowSpaceClassValue ;
+            owl:allValuesFrom tun:HollowSpaceClassValue ;
             owl:onProperty tun:class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceFunctionValue ;
-            owl:onProperty tun:function ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpace ;
-            owl:onProperty tun:AbstractTunnel.hollowSpace ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tun:TunnelFurniture ;
-            owl:onProperty tun:AbstractTunnel.tunnelFurniture ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:TunnelConstructiveElement ;
             owl:onProperty tun:AbstractTunnel.tunnelConstructiveElement ],
@@ -341,11 +331,21 @@ tun:AbstractTunnel a owl:Class ;
             owl:allValuesFrom tun:TunnelInstallation ;
             owl:onProperty tun:AbstractTunnel.tunnelInstallation ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tun:HollowSpaceClassValue ;
-            owl:onProperty tun:class ],
+            owl:allValuesFrom tun:HollowSpace ;
+            owl:onProperty tun:AbstractTunnel.hollowSpace ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:TunnelFurniture ;
+            owl:onProperty tun:AbstractTunnel.tunnelFurniture ],
         [ a owl:Restriction ;
             owl:allValuesFrom tun:ADEOfAbstractTunnel ;
             owl:onProperty tun:adeOfAbstractTunnel ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tun:HollowSpaceClassValue ;
+            owl:onProperty tun:class ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tun:HollowSpaceFunctionValue ;
+            owl:onProperty tun:function ],
         con:AbstractConstruction ;
     skos:definition "AbstractTunnel is an abstract superclass representing the common attributes and associations of the classes Tunnel and TunnelPart."@en .
 

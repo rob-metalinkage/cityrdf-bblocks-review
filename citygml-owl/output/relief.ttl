@@ -18,90 +18,87 @@
         <https://www.opengis.net/ont/citygml/core> ;
     skos:definition "The Relief module supports representation of the terrain. CityGML supports terrain representations at different levels of detail, reflecting different accuracies or resolutions. Terrain may be specified as a regular raster or grid, as a TIN, by break lines, and/or by mass points."@en .
 
-dem:MassPointRelief.pointCloud skos:definition "Relates to the 3D PointCloud of the MassPointRelief."@en .
-
 dem:ReliefFeature a owl:Class ;
     rdfs:label "ReliefFeature"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom dem:AbstractReliefComponent ;
-            owl:onProperty dem:ReliefFeature.reliefComponent ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass dem:AbstractReliefComponent ;
-            owl:onProperty dem:ReliefFeature.reliefComponent ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:IntegerBetween0and3 ;
-            owl:onProperty dem:lod ],
-        [ a owl:Restriction ;
             owl:onClass core:IntegerBetween0and3 ;
             owl:onProperty dem:lod ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dem:AbstractReliefComponent ;
+            owl:onProperty dem:reliefComponent ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass dem:AbstractReliefComponent ;
+            owl:onProperty dem:reliefComponent ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:IntegerBetween0and3 ;
+            owl:onProperty dem:lod ],
         core:AbstractSpaceBoundary .
 
-<https://www.opengis.net/ont/citygml/common/pointCloud> a owl:ObjectProperty ;
-    skos:definition "Relates to the 3D PointCloud of the MassPointRelief."@en ;
+<https://www.opengis.net/ont/citygml/common/pointCloud> skos:definition "Relates to the 3D PointCloud of the MassPointRelief."@en ;
     schema:domainIncludes dem:MassPointRelief ;
     schema:rangeIncludes core:AbstractPointCloud .
-
-dem:AbstractReliefComponent.extent a owl:ObjectProperty ;
-    rdfs:label "extent"@en ;
-    rdfs:domain dem:AbstractReliefComponent ;
-    rdfs:range gmlowl:Surface ;
-    skos:definition "Indicates the geometrical extent of the terrain component. The geometrical extent is provided as a 2D Surface geometry."@en .
-
-dem:BreaklineRelief.breaklines a owl:ObjectProperty ;
-    rdfs:label "breaklines"@en ;
-    rdfs:domain dem:BreaklineRelief ;
-    rdfs:range gmlowl:MultiCurve ;
-    skos:definition "Relates to the 3D MultiCurve geometry of the MassPointRelief. This association role is used to represent break lines."@en .
-
-dem:BreaklineRelief.ridgeOrValleyLines a owl:ObjectProperty ;
-    rdfs:label "ridgeOrValleyLines"@en ;
-    rdfs:domain dem:BreaklineRelief ;
-    rdfs:range gmlowl:MultiCurve ;
-    skos:definition "Relates to the 3D MultiCurve geometry of the MassPointRelief. This association role is used to represent ridge or valley lines."@en .
-
-dem:MassPointRelief.reliefPoints a owl:ObjectProperty ;
-    rdfs:label "reliefPoints"@en ;
-    rdfs:domain dem:MassPointRelief ;
-    rdfs:range gmlowl:MultiPoint ;
-    skos:definition "Relates to the 3D MultiPoint geometry of the MassPointRelief."@en .
 
 dem:RasterRelief a owl:Class ;
     rdfs:label "RasterRelief"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom iso19123:CV_DiscreteGridPointCoverage ;
-            owl:onProperty dem:RasterRelief.grid ],
+            owl:onProperty dem:grid ],
         [ a owl:Restriction ;
             owl:onClass iso19123:CV_DiscreteGridPointCoverage ;
-            owl:onProperty dem:RasterRelief.grid ;
+            owl:onProperty dem:grid ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         dem:AbstractReliefComponent .
-
-dem:RasterRelief.grid a owl:ObjectProperty ;
-    rdfs:label "grid"@en ;
-    rdfs:domain dem:RasterRelief ;
-    rdfs:range iso19123:CV_DiscreteGridPointCoverage ;
-    skos:definition "Relates to the DiscreteGridPointCoverage of the RasterRelief."@en .
-
-dem:ReliefFeature.reliefComponent a owl:ObjectProperty ;
-    rdfs:label "reliefComponent"@en ;
-    rdfs:domain dem:ReliefFeature ;
-    rdfs:range dem:AbstractReliefComponent ;
-    skos:definition "Relates to the terrain components that are part of the ReliefFeature."@en .
 
 dem:TINRelief a owl:Class ;
     rdfs:label "TINRelief"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom iso19107-cm:GM_TriangulatedSurface ;
-            owl:onProperty dem:TINRelief.tin ],
+            owl:onProperty dem:tin ],
         [ a owl:Restriction ;
             owl:onClass iso19107-cm:GM_TriangulatedSurface ;
-            owl:onProperty dem:TINRelief.tin ;
+            owl:onProperty dem:tin ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         dem:AbstractReliefComponent .
 
-dem:TINRelief.tin a owl:ObjectProperty ;
+dem:breaklines a owl:ObjectProperty ;
+    rdfs:label "breaklines"@en ;
+    rdfs:domain dem:BreaklineRelief ;
+    rdfs:range gmlowl:MultiCurve ;
+    skos:definition "Relates to the 3D MultiCurve geometry of the MassPointRelief. This association role is used to represent break lines."@en .
+
+dem:extent a owl:ObjectProperty ;
+    rdfs:label "extent"@en ;
+    rdfs:domain dem:AbstractReliefComponent ;
+    rdfs:range gmlowl:Surface ;
+    skos:definition "Indicates the geometrical extent of the terrain component. The geometrical extent is provided as a 2D Surface geometry."@en .
+
+dem:grid a owl:ObjectProperty ;
+    rdfs:label "grid"@en ;
+    rdfs:domain dem:RasterRelief ;
+    rdfs:range iso19123:CV_DiscreteGridPointCoverage ;
+    skos:definition "Relates to the DiscreteGridPointCoverage of the RasterRelief."@en .
+
+dem:reliefComponent a owl:ObjectProperty ;
+    rdfs:label "reliefComponent"@en ;
+    rdfs:domain dem:ReliefFeature ;
+    rdfs:range dem:AbstractReliefComponent ;
+    skos:definition "Relates to the terrain components that are part of the ReliefFeature."@en .
+
+dem:reliefPoints a owl:ObjectProperty ;
+    rdfs:label "reliefPoints"@en ;
+    rdfs:domain dem:MassPointRelief ;
+    rdfs:range gmlowl:MultiPoint ;
+    skos:definition "Relates to the 3D MultiPoint geometry of the MassPointRelief."@en .
+
+dem:ridgeOrValleyLines a owl:ObjectProperty ;
+    rdfs:label "ridgeOrValleyLines"@en ;
+    rdfs:domain dem:BreaklineRelief ;
+    rdfs:range gmlowl:MultiCurve ;
+    skos:definition "Relates to the 3D MultiCurve geometry of the MassPointRelief. This association role is used to represent ridge or valley lines."@en .
+
+dem:tin a owl:ObjectProperty ;
     rdfs:label "tin"@en ;
     rdfs:domain dem:TINRelief ;
     rdfs:range iso19107-cm:GM_TriangulatedSurface ;
@@ -110,37 +107,37 @@ dem:TINRelief.tin a owl:ObjectProperty ;
 dem:BreaklineRelief a owl:Class ;
     rdfs:label "BreaklineRelief"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:MultiCurve ;
+            owl:onProperty dem:breaklines ],
+        [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:MultiCurve ;
-            owl:onProperty dem:BreaklineRelief.ridgeOrValleyLines ],
+            owl:onProperty dem:ridgeOrValleyLines ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:MultiCurve ;
-            owl:onProperty dem:BreaklineRelief.ridgeOrValleyLines ],
+            owl:onProperty dem:ridgeOrValleyLines ],
         [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:MultiCurve ;
-            owl:onProperty dem:BreaklineRelief.breaklines ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:MultiCurve ;
-            owl:onProperty dem:BreaklineRelief.breaklines ],
+            owl:onProperty dem:breaklines ],
         dem:AbstractReliefComponent .
 
 dem:MassPointRelief a owl:Class ;
     rdfs:label "MassPointRelief"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractPointCloud ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/pointCloud> ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:AbstractPointCloud ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/pointCloud> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:MultiPoint ;
-            owl:onProperty dem:MassPointRelief.reliefPoints ],
+            owl:onProperty dem:reliefPoints ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:MultiPoint ;
-            owl:onProperty dem:MassPointRelief.reliefPoints ],
+            owl:onProperty dem:reliefPoints ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractPointCloud ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/pointCloud> ],
         dem:AbstractReliefComponent .
 
 dem:lod a owl:ObjectProperty ;
@@ -152,6 +149,9 @@ dem:AbstractReliefComponent a owl:Class ;
     rdfs:label "AbstractReliefComponent"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:Surface ;
+            owl:onProperty dem:extent ],
+        [ a owl:Restriction ;
             owl:onClass core:IntegerBetween0and3 ;
             owl:onProperty dem:lod ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -159,12 +159,9 @@ dem:AbstractReliefComponent a owl:Class ;
             owl:allValuesFrom core:IntegerBetween0and3 ;
             owl:onProperty dem:lod ],
         [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:Surface ;
-            owl:onProperty dem:AbstractReliefComponent.extent ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:Surface ;
-            owl:onProperty dem:AbstractReliefComponent.extent ],
+            owl:onProperty dem:extent ],
         core:AbstractSpaceBoundary .
 
 [] a owl:AllDisjointClasses ;

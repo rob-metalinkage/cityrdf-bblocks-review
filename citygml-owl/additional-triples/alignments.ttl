@@ -15,77 +15,75 @@
 #core:AbstractSpace.lod0MultiSurface rdfs:subPropertyOf geo:hasGeometry .
 #core:AbstractThematicSurface.lod0MultiSurface rdfs:subPropertyOf geo:hasGeometry .
 
-core:AbstractSpace.lod0Point rdfs:subPropertyOf geo:hasGeometry .
+core:lod0Point rdfs:subPropertyOf geo:hasGeometry .
 
-core:AbstractSpace.lod1Solid rdfs:subPropertyOf geo:hasGeometry .
+core:lod1Solid rdfs:subPropertyOf geo:hasGeometry .
 
-core:AbstractSpace.lod2MultiCurve rdfs:subPropertyOf geo:hasGeometry .
+core:lod2MultiCurve rdfs:subPropertyOf geo:hasGeometry .
 
 #these properties are defined now in package `common`
 #core:AbstractSpace.lod2MultiSurface rdfs:subPropertyOf geo:hasGeometry .
 #core:AbstractThematicSurface.lod2MultiSurface rdfs:subPropertyOf geo:hasGeometry .
 
-core:AbstractSpace.lod2Solid rdfs:subPropertyOf geo:hasGeometry .
+core:lod2Solid rdfs:subPropertyOf geo:hasGeometry .
 
-core:AbstractSpace.lod3MultiCurve rdfs:subPropertyOf geo:hasGeometry .
+core:lod3MultiCurve rdfs:subPropertyOf geo:hasGeometry .
 
 #these properties are defined now in package `common`
 #core:AbstractSpace.lod3MultiSurface rdfs:subPropertyOf geo:hasGeometry .
 #core:AbstractThematicSurface.lod3MultiSurface rdfs:subPropertyOf geo:hasGeometry .
 
-core:AbstractSpace.lod3Solid rdfs:subPropertyOf geo:hasGeometry .
+core:lod3Solid rdfs:subPropertyOf geo:hasGeometry .
 
-core:AbstractThematicSurface.lod1MultiSurface rdfs:subPropertyOf geo:hasGeometry .
+core:lod1MultiSurface rdfs:subPropertyOf geo:hasGeometry .
 
-core:ImplicitGeometry.referencePoint rdfs:subPropertyOf geo:hasGeometry .
+core:relativeGeometry rdfs:subPropertyOf geo:hasGeometry .
 
-core:ImplicitGeometry.relativeGeometry rdfs:subPropertyOf geo:hasGeometry .
-
-core:Address.multiPoint rdfs:subPropertyOf geo:hasGeometry .
+core:multiPoint rdfs:subPropertyOf geo:hasGeometry .
 
 # OWL-Time alignments
 core:AbstractFeatureWithLifespan rdfs:subClassOf
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass time:Instant ;
-            owl:onProperty core:AbstractFeatureWithLifespan.validTo ],
+            owl:onProperty core:validTo ],
         [ a owl:Restriction ;
             owl:allValuesFrom time:Instant ;
-            owl:onProperty core:AbstractFeatureWithLifespan.validTo ],
+            owl:onProperty core:validTo ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass time:Instant ;
-            owl:onProperty core:AbstractFeatureWithLifespan.validFrom ],
+            owl:onProperty core:validFrom ],
         [ a owl:Restriction ;
             owl:allValuesFrom time:Instant ;
-            owl:onProperty core:AbstractFeatureWithLifespan.validFrom ],
+            owl:onProperty core:validFrom ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass time:Instant ;
-            owl:onProperty core:AbstractFeatureWithLifespan.creationDate ],
+            owl:onProperty core:creationDate ],
         [ a owl:Restriction ;
             owl:allValuesFrom time:Instant ;
-            owl:onProperty core:AbstractFeatureWithLifespan.creationDate ],
+            owl:onProperty core:creationDate ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass time:Instant ;
-            owl:onProperty core:AbstractFeatureWithLifespan.terminationDate ] ,
+            owl:onProperty core:terminationDate ] ,
         [ a owl:Restriction ;
             owl:allValuesFrom time:Instant ;
-            owl:onProperty core:AbstractFeatureWithLifespan.terminationDate ] .
+            owl:onProperty core:terminationDate ] .
 
-core:AbstractFeatureWithLifespan.validFrom a owl:ObjectProperty ;
+core:validFrom a owl:ObjectProperty ;
     rdfs:subPropertyOf time:hasBeginning ;
     rdfs:range time:Instant .
 
-core:AbstractFeatureWithLifespan.validTo a owl:ObjectProperty ;
+core:validTo a owl:ObjectProperty ;
     rdfs:subPropertyOf time:hasEnd ;
     rdfs:range time:Instant .
 
-core:AbstractFeatureWithLifespan.creationDate a owl:ObjectProperty ;
+core:creationDate a owl:ObjectProperty ;
     rdfs:subPropertyOf time:hasBeginning ;
     rdfs:range time:Instant .
 
-core:AbstractFeatureWithLifespan.terminationDate a owl:ObjectProperty ;
+core:terminationDate a owl:ObjectProperty ;
     rdfs:subPropertyOf time:hasEnd ;
     rdfs:range time:Instant .

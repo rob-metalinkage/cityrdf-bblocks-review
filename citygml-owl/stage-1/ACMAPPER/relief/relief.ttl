@@ -27,10 +27,9 @@ dem:AbstractReliefComponent
         rdf:type               owl:Class;
         rdfs:label             "AbstractReliefComponent"@en;
         rdfs:subClassOf        core:AbstractSpaceBoundary;
-        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
-                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                                 owl:onClass                  gmlowl:Surface;
-                                 owl:onProperty               dem:AbstractReliefComponent.extent
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  gmlowl:Surface;
+                                 owl:onProperty     dem:AbstractReliefComponent.extent
                                ];
         rdfs:subClassOf        [ rdf:type                  owl:Restriction;
                                  owl:onClass               core:IntegerBetween0and3;
@@ -38,16 +37,17 @@ dem:AbstractReliefComponent
                                  owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  gmlowl:Surface;
-                                 owl:onProperty     dem:AbstractReliefComponent.extent
+                                 owl:allValuesFrom  dem:ADEOfAbstractReliefComponent;
+                                 owl:onProperty     dem:adeOfAbstractReliefComponent
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
                                  owl:allValuesFrom  core:IntegerBetween0and3;
                                  owl:onProperty     dem:lod
                                ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  dem:ADEOfAbstractReliefComponent;
-                                 owl:onProperty     dem:adeOfAbstractReliefComponent
+        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
+                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                                 owl:onClass                  gmlowl:Surface;
+                                 owl:onProperty               dem:AbstractReliefComponent.extent
                                ];
         iso19150-2:isAbstract  true;
         skos:definition        "An AbstractReliefComponent represents an element of the terrain surface - either a TIN, a raster or grid, mass points or break lines."@en .
@@ -84,10 +84,6 @@ dem:ReliefFeature  rdf:type  owl:Class;
                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ];
         skos:definition  "A ReliefFeature is a collection of terrain components representing the Earth's surface, also known as the Digital Terrain Model."@en .
-
-[ rdf:type     owl:AllDisjointClasses;
-  owl:members  ( dem:BreaklineRelief dem:MassPointRelief dem:RasterRelief dem:TINRelief )
-] .
 
 dem:BreaklineRelief.ridgeOrValleyLines
         rdf:type         owl:ObjectProperty;
@@ -220,6 +216,10 @@ dem:adeOfBreaklineRelief
         rdfs:label       "adeOfBreaklineRelief"@en;
         rdfs:range       dem:ADEOfBreaklineRelief;
         skos:definition  "Augments the BreaklineRelief with properties defined in an ADE."@en .
+
+[ rdf:type     owl:AllDisjointClasses;
+  owl:members  ( dem:BreaklineRelief dem:MassPointRelief dem:RasterRelief dem:TINRelief )
+] .
 
 dem:RasterRelief  rdf:type  owl:Class;
         rdfs:label       "RasterRelief"@en;

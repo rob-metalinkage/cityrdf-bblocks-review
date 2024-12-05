@@ -6,7 +6,6 @@
 common:class rdf:type owl:ObjectProperty; rdfs:label "class"@en.
 common:usage rdf:type owl:ObjectProperty; rdfs:label "usage"@en.
 common:function rdf:type owl:ObjectProperty; rdfs:label "function"@en.
-common:value rdf:type owl:ObjectProperty; rdfs:label "value"@en.
 
 common:address rdf:type owl:ObjectProperty; rdfs:label "address"@en.
 common:appearance  rdf:type owl:ObjectProperty; rdfs:label "appearance"@en .
@@ -35,7 +34,6 @@ common:pointCloud  rdf:type owl:ObjectProperty; rdfs:label "pointCloud"@en .
 common:referencePoint  rdf:type owl:ObjectProperty; rdfs:label "referencePoint"@en .
 common:relatedTo  rdf:type owl:ObjectProperty; rdfs:label "relatedTo"@en .
 common:section  rdf:type owl:ObjectProperty; rdfs:label "section"@en .
-common:status rdf:type owl:DatatypeProperty; rdfs:label "status"@en.
 common:textureParameterization  rdf:type owl:ObjectProperty; rdfs:label "textureParameterization"@en .
 common:tunnelFurniture  rdf:type owl:ObjectProperty; rdfs:label "tunnelFurniture"@en .
 common:tunnelInstallation  rdf:type owl:ObjectProperty; rdfs:label "tunnelInstallation"@en .
@@ -43,11 +41,15 @@ common:versionMember  rdf:type owl:ObjectProperty; rdfs:label "versionMember"@en
 
 common:name rdf:type owl:DatatypeProperty; rdfs:label "name"@en .
 common:description rdf:type owl:DatatypeProperty; rdfs:label "description"@en .
+common:value rdf:type owl:DatatypeProperty; rdfs:label "value"@en.
+common:status rdf:type owl:DatatypeProperty; rdfs:label "status"@en.
 
 # GeoSPARQL alignments for common properties
 common:lod0MultiCurve rdfs:subPropertyOf geo:hasGeometry .
 common:lod0MultiSurface rdfs:subPropertyOf geo:hasGeometry .
 common:lod2MultiSurface rdfs:subPropertyOf geo:hasGeometry .
 common:lod3MultiSurface rdfs:subPropertyOf geo:hasGeometry .
+common:referencePoint rdfs:subPropertyOf geo:hasGeometry .
+
 #this property axiom is NOT officially declared in the CityGML 3.0, but we need it to do change request
 common:boundary rdfs:subPropertyOf geo:hasGeometry .

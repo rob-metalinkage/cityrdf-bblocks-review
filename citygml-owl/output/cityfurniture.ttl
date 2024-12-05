@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix frn: <https://www.opengis.net/ont/citygml/cityfurniture/> .
 @prefix frncode: <https://www.opengis.net/ont/citygml/cityfurniture/code/> .
-@prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -17,23 +16,19 @@
 frn:CityFurniture a owl:Class ;
     rdfs:label "CityFurniture"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom frn:ADEOfCityFurniture ;
-            owl:onProperty frn:adeOfCityFurniture ],
-        [ a owl:Restriction ;
             owl:allValuesFrom frn:CityFurnitureUsageValue ;
-            owl:onProperty frn:usage ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom frn:CityFurnitureFunctionValue ;
-            owl:onProperty frn:function ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/function> ],
         [ a owl:Restriction ;
             owl:allValuesFrom frn:CityFurnitureClassValue ;
-            owl:onProperty frn:class ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass frn:CityFurnitureClassValue ;
-            owl:onProperty frn:class ],
-        core:AbstractOccupiedSpace ;
-    skos:definition "CityFurniture is an object or piece of equipment installed in the outdoor environment for various purposes. Examples include street signs, traffic signals, street lamps, benches, fountains."@en .
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
+        core:AbstractOccupiedSpace .
 
 frn:code a owl:Ontology .
 
@@ -52,28 +47,15 @@ frncode:CityFurnitureUsageValue a skos:ConceptScheme ;
     dct:isFormatOf frn:CityFurnitureUsageValue ;
     skos:definition "CityFurnitureUsageValue is a code list that enumerates the different uses of a CityFurniture."@en .
 
-frn:adeOfCityFurniture a owl:ObjectProperty ;
-    rdfs:label "adeOfCityFurniture"@en ;
-    rdfs:range frn:ADEOfCityFurniture ;
-    skos:definition "Augments the CityFurniture with properties defined in an ADE."@en .
-
-frn:function a owl:ObjectProperty ;
-    rdfs:label "function"@en ;
+<https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
     rdfs:range frn:CityFurnitureFunctionValue ;
     skos:definition "Specifies the intended purposes of the CityFurniture."@en .
 
-frn:usage a owl:ObjectProperty ;
-    rdfs:label "usage"@en ;
+<https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
     rdfs:range frn:CityFurnitureUsageValue ;
     skos:definition "Specifies the actual uses of the CityFurniture."@en .
 
-frn:ADEOfCityFurniture a owl:Class ;
-    rdfs:label "ADEOfCityFurniture"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfCityFurniture acts as a hook to define properties within an ADE that are to be added to a CityFurniture."@en .
-
-frn:class a owl:ObjectProperty ;
-    rdfs:label "class"@en ;
+<https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
     rdfs:range frn:CityFurnitureClassValue ;
     skos:definition "Indicates the specific type of the CityFurniture."@en .
 

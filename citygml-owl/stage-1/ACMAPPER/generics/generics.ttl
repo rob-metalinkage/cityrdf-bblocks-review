@@ -157,16 +157,6 @@ gen:GenericAttributeSet
         rdf:type         owl:Class;
         rdfs:label       "GenericAttributeSet"@en;
         rdfs:subClassOf  core:AbstractGenericAttribute;
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  core:AbstractGenericAttribute;
-                           owl:onProperty               gen:GenericAttributeSet.genericAttribute
-                         ];
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               xsd:string;
-                           owl:onProperty            gen:name;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:string;
                            owl:onProperty     gen:name
@@ -175,14 +165,24 @@ gen:GenericAttributeSet
                            owl:allValuesFrom  core:AbstractGenericAttribute;
                            owl:onProperty     gen:GenericAttributeSet.genericAttribute
                          ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:anyURI;
+                           owl:onProperty     gen:codeSpace
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  core:AbstractGenericAttribute;
+                           owl:onProperty               gen:GenericAttributeSet.genericAttribute
+                         ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  xsd:anyURI;
                            owl:onProperty               gen:codeSpace
                          ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:anyURI;
-                           owl:onProperty     gen:codeSpace
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:string;
+                           owl:onProperty            gen:name;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ];
         skos:definition  "A GenericAttributeSet is a named collection of generic attributes."@en .
 

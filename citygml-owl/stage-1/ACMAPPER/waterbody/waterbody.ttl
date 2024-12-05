@@ -45,29 +45,29 @@ wtr:WaterBody  rdf:type  owl:Class;
         rdfs:label       "WaterBody"@en;
         rdfs:subClassOf  core:AbstractOccupiedSpace;
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  wtr:WaterBodyUsageValue;
-                           owl:onProperty     wtr:usage
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  wtr:WaterBodyClassValue;
-                           owl:onProperty     wtr:class
+                           owl:allValuesFrom  wtr:WaterBodyFunctionValue;
+                           owl:onProperty     wtr:function
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  wtr:AbstractWaterBoundarySurface;
                            owl:onProperty     wtr:WaterBody.boundary
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  wtr:WaterBodyClassValue;
+                           owl:onProperty     wtr:class
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  wtr:ADEOfWaterBody;
                            owl:onProperty     wtr:adeOfWaterBody
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  wtr:WaterBodyUsageValue;
+                           owl:onProperty     wtr:usage
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  wtr:WaterBodyClassValue;
                            owl:onProperty               wtr:class
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  wtr:WaterBodyFunctionValue;
-                           owl:onProperty     wtr:function
                          ];
         skos:definition  "A WaterBody represents significant and permanent or semi-permanent accumulations of surface water, usually covering a part of the Earth."@en .
 

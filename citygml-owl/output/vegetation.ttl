@@ -19,45 +19,41 @@
 veg:PlantCover a owl:Class ;
     rdfs:label "PlantCover"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange sc:Measure ;
+            owl:allValuesFrom sc:Measure ;
             owl:onProperty veg:maxHeight ],
         [ a owl:Restriction ;
+            owl:allValuesFrom veg:PlantCoverClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom sc:Measure ;
-            owl:onProperty veg:averageHeight ],
+            owl:onProperty veg:minHeight ],
         [ a owl:Restriction ;
             owl:allValuesFrom veg:PlantCoverFunctionValue ;
-            owl:onProperty veg:function ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange sc:Measure ;
-            owl:onProperty veg:averageHeight ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sc:Measure ;
-            owl:onProperty veg:minHeight ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom veg:ADEOfPlantCover ;
-            owl:onProperty veg:adeOfPlantCover ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange sc:Measure ;
-            owl:onProperty veg:minHeight ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom veg:PlantCoverClassValue ;
-            owl:onProperty veg:class ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/function> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass veg:PlantCoverClassValue ;
-            owl:onProperty veg:class ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
         [ a owl:Restriction ;
             owl:allValuesFrom sc:Measure ;
-            owl:onProperty veg:maxHeight ],
+            owl:onProperty veg:averageHeight ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange sc:Measure ;
+            owl:onProperty veg:minHeight ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange sc:Measure ;
+            owl:onProperty veg:averageHeight ],
         [ a owl:Restriction ;
             owl:allValuesFrom veg:PlantCoverUsageValue ;
-            owl:onProperty veg:usage ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/usage> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange sc:Measure ;
+            owl:onProperty veg:maxHeight ],
         veg:AbstractVegetationObject ;
-    owl:disjointWith veg:SolitaryVegetationObject ;
-    skos:definition "A PlantCover represents a space covered by vegetation."@en .
+    owl:disjointWith veg:SolitaryVegetationObject .
 
 veg:code a owl:Ontology .
 
@@ -99,54 +95,42 @@ vegcode:SpeciesValue a skos:ConceptScheme ;
 veg:SolitaryVegetationObject a owl:Class ;
     rdfs:label "SolitaryVegetationObject"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom veg:PlantCoverUsageValue ;
-            owl:onProperty veg:usage ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange sc:Measure ;
-            owl:onProperty veg:rootBallDiameter ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange sc:Measure ;
-            owl:onProperty veg:trunkDiameter ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom veg:ADEOfSolitaryVegetationObject ;
-            owl:onProperty veg:adeOfSolitaryVegetationObject ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass veg:SpeciesValue ;
-            owl:onProperty veg:species ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange sc:Measure ;
             owl:onProperty veg:height ],
         [ a owl:Restriction ;
-            owl:allValuesFrom veg:PlantCoverFunctionValue ;
-            owl:onProperty veg:function ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange sc:Measure ;
-            owl:onProperty veg:maxRootBallDepth ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange sc:Measure ;
-            owl:onProperty veg:crownDiameter ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sc:Measure ;
-            owl:onProperty veg:maxRootBallDepth ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass veg:PlantCoverClassValue ;
-            owl:onProperty veg:class ],
+            owl:allValuesFrom veg:PlantCoverClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
         [ a owl:Restriction ;
             owl:allValuesFrom veg:SpeciesValue ;
             owl:onProperty veg:species ],
         [ a owl:Restriction ;
-            owl:allValuesFrom veg:PlantCoverClassValue ;
-            owl:onProperty veg:class ],
+            owl:allValuesFrom veg:PlantCoverFunctionValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/function> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom veg:PlantCoverUsageValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/usage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sc:Measure ;
+            owl:onProperty veg:maxRootBallDepth ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange sc:Measure ;
+            owl:onProperty veg:rootBallDiameter ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass veg:PlantCoverClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sc:Measure ;
+            owl:onProperty veg:trunkDiameter ],
         [ a owl:Restriction ;
             owl:allValuesFrom sc:Measure ;
             owl:onProperty veg:height ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange sc:Measure ;
+            owl:onProperty veg:trunkDiameter ],
         [ a owl:Restriction ;
             owl:allValuesFrom sc:Measure ;
             owl:onProperty veg:crownDiameter ],
@@ -154,10 +138,18 @@ veg:SolitaryVegetationObject a owl:Class ;
             owl:allValuesFrom sc:Measure ;
             owl:onProperty veg:rootBallDiameter ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sc:Measure ;
-            owl:onProperty veg:trunkDiameter ],
-        veg:AbstractVegetationObject ;
-    skos:definition "A SolitaryVegetationObject represents individual vegetation objects, e.g. trees or bushes."@en .
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange sc:Measure ;
+            owl:onProperty veg:crownDiameter ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange sc:Measure ;
+            owl:onProperty veg:maxRootBallDepth ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass veg:SpeciesValue ;
+            owl:onProperty veg:species ],
+        veg:AbstractVegetationObject .
 
 veg:SolitaryVegetationObjectClassValue a owl:Class ;
     rdfs:label "SolitaryVegetationObjectClassValue"@en ;
@@ -174,44 +166,18 @@ veg:SolitaryVegetationObjectUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "SolitaryVegetationObjectUsageValue is a code list that enumerates the different uses of a SolitaryVegetationObject."@en .
 
-veg:adeOfAbstractVegetationObject a owl:ObjectProperty ;
-    rdfs:label "adeOfAbstractVegetationObject"@en ;
-    rdfs:range veg:ADEOfAbstractVegetationObject ;
-    skos:definition "Augments AbstractVegetationObject with properties defined in an ADE."@en .
+<https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
+    rdfs:range veg:PlantCoverFunctionValue ;
+    skos:definition "Specifies the intended purposes of the PlantCover."@en .
 
-veg:adeOfPlantCover a owl:ObjectProperty ;
-    rdfs:label "adeOfPlantCover"@en ;
-    rdfs:range veg:ADEOfPlantCover ;
-    skos:definition "Augments the PlantCover with properties defined in an ADE."@en .
-
-veg:adeOfSolitaryVegetationObject a owl:ObjectProperty ;
-    rdfs:label "adeOfSolitaryVegetationObject"@en ;
-    rdfs:range veg:ADEOfSolitaryVegetationObject ;
-    skos:definition "Augments the SolitaryVegetationObject with properties defined in an ADE."@en .
-
-veg:ADEOfAbstractVegetationObject a owl:Class ;
-    rdfs:label "ADEOfAbstractVegetationObject"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfAbstractVegetationObject acts as a hook to define properties within an ADE that are to be added to AbstractVegetationObject."@en .
-
-veg:ADEOfPlantCover a owl:Class ;
-    rdfs:label "ADEOfPlantCover"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfPlantCover acts as a hook to define properties within an ADE that are to be added to a PlantCover."@en .
-
-veg:ADEOfSolitaryVegetationObject a owl:Class ;
-    rdfs:label "ADEOfSolitaryVegetationObject"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfSolitaryVegetationObject acts as a hook to define properties within an ADE that are to be added to a SolitaryVegetationObject."@en .
+<https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
+    rdfs:range veg:PlantCoverUsageValue ;
+    skos:definition "Specifies the actual uses of the PlantCover."@en .
 
 veg:AbstractVegetationObject a owl:Class ;
     rdfs:label "AbstractVegetationObject"@en ;
     iso19150-2:isAbstract true ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom veg:ADEOfAbstractVegetationObject ;
-            owl:onProperty veg:adeOfAbstractVegetationObject ],
-        core:AbstractOccupiedSpace ;
-    skos:definition "AbstractVegetationObject is the abstract superclass for all kinds of vegetation objects."@en .
+    rdfs:subClassOf core:AbstractOccupiedSpace .
 
 veg:averageHeight a owl:DatatypeProperty ;
     rdfs:label "averageHeight"@en ;
@@ -222,11 +188,6 @@ veg:crownDiameter a owl:DatatypeProperty ;
     rdfs:label "crownDiameter"@en ;
     rdfs:range sc:Measure ;
     skos:definition "Specifies the diameter of the SolitaryCityObject's crown."@en .
-
-veg:function a owl:ObjectProperty ;
-    rdfs:label "function"@en ;
-    rdfs:range veg:PlantCoverFunctionValue ;
-    skos:definition "Specifies the intended purposes of the PlantCover."@en .
 
 veg:height a owl:DatatypeProperty ;
     rdfs:label "height"@en ;
@@ -263,10 +224,9 @@ veg:trunkDiameter a owl:DatatypeProperty ;
     rdfs:range sc:Measure ;
     skos:definition "Specifies the diameter of the SolitaryCityObject's trunk."@en .
 
-veg:usage a owl:ObjectProperty ;
-    rdfs:label "usage"@en ;
-    rdfs:range veg:PlantCoverUsageValue ;
-    skos:definition "Specifies the actual uses of the PlantCover."@en .
+<https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
+    rdfs:range veg:PlantCoverClassValue ;
+    skos:definition "Indicates the specific type of the PlantCover."@en .
 
 veg:PlantCoverFunctionValue a owl:Class ;
     rdfs:label "PlantCoverFunctionValue"@en ;
@@ -282,11 +242,6 @@ veg:SpeciesValue a owl:Class ;
     rdfs:label "SpeciesValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "A SpeciesValue is a code list that enumerates the species of a SolitaryVegetationObject."@en .
-
-veg:class a owl:ObjectProperty ;
-    rdfs:label "class"@en ;
-    rdfs:range veg:PlantCoverClassValue ;
-    skos:definition "Indicates the specific type of the PlantCover."@en .
 
 veg:PlantCoverClassValue a owl:Class ;
     rdfs:label "PlantCoverClassValue"@en ;

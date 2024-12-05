@@ -111,6 +111,7 @@ files=("./output/appearance.ttl" "./output/bridge.ttl" "./output/building.ttl" "
         "./output/tunnel.ttl" "./output/vegetation.ttl" "./output/versioning.ttl" "./output/waterbody.ttl" "./output/workspace.ttl")
 
 for file in ${files[@]}; do
+echo $file
 
 ### added removal of ADE*/ade*
 ### #5 deletes bnodes representing restrictions involving ade* objprops AND subclass axioms mentioning those bnodes
@@ -160,7 +161,7 @@ delete {
     }}'
 
 ### #1. inserts common:propertyname where ns:propertyname refs to package level
-echo $file
+
 echo 'inserting common:propertyname'
 
 python update_graph.py $file $file \
@@ -180,7 +181,7 @@ where {
               rdfs:label ?label;
               skos:definition ?def .
     bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
-    filter (?x in ("class", "usage", "function", "value", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
+    filter (?x in ("class", "usage", "function", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
     bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?x)) as ?new)
        }}'
 
@@ -202,7 +203,7 @@ where {
        rdfs:range ?range ;
        skos:definition ?def .
     bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
-    filter (?x in ("name", "description"))
+    filter (?x in ("name", "description", "value", "status"))
         bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?x)) as ?new)
     }}'
 
@@ -228,7 +229,7 @@ python update_graph.py $file $file \
         	?s rdfs:range ?range .
         	?s skos:definition ?def .
             bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
-  			filter (?x in ("class", "usage", "function", "value", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))
+  			filter (?x in ("class", "usage", "function", "mimeType", "occupancy", "elevation","lowReference","highReference"))
         filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
 "https://www.opengis.net/ont/citygml/bridge/", 
 "https://www.opengis.net/ont/citygml/building/", 
@@ -269,7 +270,7 @@ python update_graph.py $file $file \
         	?s rdfs:range ?range .
         	?s skos:definition ?def .
             bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
-  			filter (?x in ("name", "description"))
+  			filter (?x in ("name", "description", "value", "status"))
         filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
 "https://www.opengis.net/ont/citygml/bridge/", 
 "https://www.opengis.net/ont/citygml/building/", 
@@ -306,10 +307,9 @@ insert {
 where { 
     select ?s ?new
     where {
-    ?old a owl:ObjectProperty . 
 	?s owl:onProperty ?old ;
 	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
-    filter (?x in ("class", "usage", "function", "value", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
+    filter (?x in ("name", "description", "class", "usage", "value", "function", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
     bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?x)) as ?new)
     }}'
 
@@ -323,10 +323,11 @@ delete {
 	?s owl:onProperty ?old .
 }
 where {
-    ?old a owl:ObjectProperty .
+    select ?s ?old
+    where {
     ?s owl:onProperty ?old.
 	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
-    filter (?x in ("class", "usage", "function", "value", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
+    filter (?x in ("name", "description", "class", "usage", "value", "function", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
     filter (strbefore(str(?old),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
 "https://www.opengis.net/ont/citygml/bridge/", 
 "https://www.opengis.net/ont/citygml/building/", 
@@ -346,7 +347,7 @@ where {
 "https://www.opengis.net/ont/citygml/versioning/",
 "https://www.opengis.net/ont/citygml/waterbody/", 
 "https://www.opengis.net/ont/citygml/workspace/"))
-}'
+}}'
 
 ### 6 adds new global properties for those reused >1 per CityGML family
 echo 'add properties reused more than once per CityGML family'
@@ -577,8 +578,6 @@ select ?s ?domain ?range ?def ?label
 
 ### #12 inserts owl:onProperty for simplified (=without class in ns:Class.prop) local props used once in a package
 
-pause
-
 echo '#12 inserts owl:onProperty for simplified (=without class in ns:Class.prop) local props used once in a package'
 
 python update_graph.py $file $file \
@@ -589,14 +588,15 @@ insert {
     ?s owl:onProperty ?new .
 }
 where { 
-select ?s ?new
+    select ?s ?new
     where {
-	      ?s owl:onProperty ?old .
-	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
-    optional{bind(strafter(?x,".") as ?classIndependentPropName).}
-    filter(?classIndependentPropName !="")
-    bind (IRI(concat(strbefore(str(?old),str(?x)),?classIndependentPropName)) as ?new)
-    }}'
+	    ?s owl:onProperty ?old .
+	    bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
+        bind(strafter(?x,".") as ?classIndependentPropName).
+        filter(?classIndependentPropName !="")
+        bind (IRI(concat(strbefore(str(?old),str(?x)),?classIndependentPropName)) as ?new)
+    }
+}'
 
 ### #13 deletes owl:onProperty for initial (=with class in ns:Class.prop) local props used once in a package
 

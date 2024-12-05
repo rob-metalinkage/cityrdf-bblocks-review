@@ -456,15 +456,8 @@ tran:AuxiliaryTrafficArea a owl:Class ;
             owl:onClass tran:SurfaceMaterialValue ;
             owl:onProperty tran:surfaceMaterial ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:RoadClassValue ;
+            owl:allValuesFrom tran:RoadClassValue ;
             owl:onProperty tran:class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:ADEOfAuxiliaryTrafficArea ;
-            owl:onProperty tran:adeOfAuxiliaryTrafficArea ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:SurfaceMaterialValue ;
             owl:onProperty tran:surfaceMaterial ],
@@ -472,8 +465,15 @@ tran:AuxiliaryTrafficArea a owl:Class ;
             owl:allValuesFrom tran:RoadUsageValue ;
             owl:onProperty tran:usage ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:RoadClassValue ;
             owl:onProperty tran:class ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty tran:function ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:ADEOfAuxiliaryTrafficArea ;
+            owl:onProperty tran:adeOfAuxiliaryTrafficArea ],
         core:AbstractThematicSurface ;
     skos:definition "An AuxiliaryTrafficArea is the ground surface of an AuxiliaryTrafficSpace."@en .
 
@@ -521,21 +521,21 @@ tran:Marking a owl:Class ;
 tran:TrafficArea a owl:Class ;
     rdfs:label "TrafficArea"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:RoadClassValue ;
+            owl:allValuesFrom tran:RoadClassValue ;
             owl:onProperty tran:class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:SurfaceMaterialValue ;
             owl:onProperty tran:surfaceMaterial ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty tran:function ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
             owl:onProperty tran:usage ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:RoadClassValue ;
+            owl:onProperty tran:class ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:ADEOfTrafficArea ;
             owl:onProperty tran:adeOfTrafficArea ],
@@ -554,45 +554,42 @@ tran:occupancy a owl:ObjectProperty ;
 tran:AuxiliaryTrafficSpace a owl:Class ;
     rdfs:label "AuxiliaryTrafficSpace"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
+            owl:allValuesFrom tran:AuxiliaryTrafficArea ;
+            owl:onProperty tran:AuxiliaryTrafficSpace.boundary ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:RoadClassValue ;
             owl:onProperty tran:class ],
         [ a owl:Restriction ;
             owl:onDataRange tran:GranularityValue ;
             owl:onProperty tran:granularity ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:RoadClassValue ;
-            owl:onProperty tran:class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadUsageValue ;
-            owl:onProperty tran:usage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:AuxiliaryTrafficArea ;
-            owl:onProperty tran:AuxiliaryTrafficSpace.boundary ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:ADEOfAuxiliaryTrafficSpace ;
             owl:onProperty tran:adeOfAuxiliaryTrafficSpace ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:GranularityValue ;
             owl:onProperty tran:granularity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty tran:function ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadUsageValue ;
+            owl:onProperty tran:usage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty tran:class ],
         core:AbstractUnoccupiedSpace ;
     skos:definition "An AuxiliaryTrafficSpace is a space within the transportation space not intended for traffic purposes."@en .
 
 tran:Railway a owl:Class ;
     rdfs:label "Railway"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:ADEOfRailway ;
-            owl:onProperty tran:adeOfRailway ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadFunctionValue ;
             owl:onProperty tran:function ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:Section ;
+            owl:onProperty tran:Railway.section ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:Intersection ;
             owl:onProperty tran:Railway.intersection ],
@@ -601,11 +598,14 @@ tran:Railway a owl:Class ;
             owl:onClass tran:RoadClassValue ;
             owl:onProperty tran:class ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:Section ;
-            owl:onProperty tran:Railway.section ],
+            owl:allValuesFrom tran:ADEOfRailway ;
+            owl:onProperty tran:adeOfRailway ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
             owl:onProperty tran:usage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty tran:class ],
         tran:AbstractTransportationSpace ;
     skos:definition "A Railway is a transportation space used by wheeled vehicles on rails."@en .
 
@@ -615,50 +615,50 @@ tran:Road a owl:Class ;
             owl:allValuesFrom tran:Intersection ;
             owl:onProperty tran:Road.intersection ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:Section ;
-            owl:onProperty tran:Road.section ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tran:RoadClassValue ;
             owl:onProperty tran:class ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty tran:function ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
             owl:onProperty tran:usage ],
         [ a owl:Restriction ;
+            owl:allValuesFrom tran:Section ;
+            owl:onProperty tran:Road.section ],
+        [ a owl:Restriction ;
             owl:allValuesFrom tran:ADEOfRoad ;
             owl:onProperty tran:adeOfRoad ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty tran:class ],
         tran:AbstractTransportationSpace ;
     skos:definition "A Road is a transportation space used by vehicles, bicycles and/or pedestrians."@en .
 
 tran:Track a owl:Class ;
     rdfs:label "Track"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom tran:ADEOfTrack ;
+            owl:onProperty tran:adeOfTrack ],
+        [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadFunctionValue ;
             owl:onProperty tran:function ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass tran:RoadClassValue ;
+            owl:allValuesFrom tran:RoadClassValue ;
             owl:onProperty tran:class ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
             owl:onProperty tran:usage ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:Intersection ;
-            owl:onProperty tran:Track.intersection ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:ADEOfTrack ;
-            owl:onProperty tran:adeOfTrack ],
-        [ a owl:Restriction ;
             owl:allValuesFrom tran:Section ;
             owl:onProperty tran:Track.section ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
+            owl:allValuesFrom tran:Intersection ;
+            owl:onProperty tran:Track.intersection ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass tran:RoadClassValue ;
             owl:onProperty tran:class ],
         tran:AbstractTransportationSpace ;
     skos:definition "A Track is a small path mainly used by pedestrians. Tracks can be segmented into Sections and Intersections."@en .
@@ -666,27 +666,27 @@ tran:Track a owl:Class ;
 tran:Waterway a owl:Class ;
     rdfs:label "Waterway"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:Section ;
-            owl:onProperty tran:Waterway.section ],
+            owl:allValuesFrom tran:ADEOfWaterway ;
+            owl:onProperty tran:adeOfWaterway ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:Intersection ;
-            owl:onProperty tran:Waterway.intersection ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty tran:function ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tran:RoadClassValue ;
             owl:onProperty tran:class ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:ADEOfWaterway ;
-            owl:onProperty tran:adeOfWaterway ],
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty tran:class ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:Intersection ;
+            owl:onProperty tran:Waterway.intersection ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:Section ;
+            owl:onProperty tran:Waterway.section ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
             owl:onProperty tran:usage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
         tran:AbstractTransportationSpace ;
     skos:definition "A Waterway is a transportation space used for the movement of vessels upon or within a water body."@en .
 
@@ -775,20 +775,43 @@ tran:RoadUsageValue a owl:Class ;
 tran:TrafficSpace a owl:Class ;
     rdfs:label "TrafficSpace"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficDirectionValue ;
-            owl:onProperty tran:trafficDirection ],
+            owl:allValuesFrom tran:TrafficArea ;
+            owl:onProperty tran:TrafficSpace.boundary ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:Occupancy ;
-            owl:onProperty tran:occupancy ],
+            owl:onDataRange tran:GranularityValue ;
+            owl:onProperty tran:granularity ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty tran:function ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange tran:TrafficDirectionValue ;
+            owl:onProperty tran:trafficDirection ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:TrafficSpace ;
             owl:onProperty tran:TrafficSpace.successor ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficArea ;
-            owl:onProperty tran:TrafficSpace.boundary ],
+            owl:allValuesFrom tran:TrafficDirectionValue ;
+            owl:onProperty tran:trafficDirection ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty tran:function ],
+            owl:allValuesFrom tran:GranularityValue ;
+            owl:onProperty tran:granularity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:TrafficSpace ;
+            owl:onProperty tran:TrafficSpace.predecessor ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:ClearanceSpace ;
+            owl:onProperty tran:TrafficSpace.clearanceSpace ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadClassValue ;
+            owl:onProperty tran:class ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:Occupancy ;
+            owl:onProperty tran:occupancy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:ADEOfTrafficSpace ;
+            owl:onProperty tran:adeOfTrafficSpace ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass tran:RoadClassValue ;
@@ -796,29 +819,6 @@ tran:TrafficSpace a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
             owl:onProperty tran:usage ],
-        [ a owl:Restriction ;
-            owl:onDataRange tran:GranularityValue ;
-            owl:onProperty tran:granularity ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadClassValue ;
-            owl:onProperty tran:class ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:ADEOfTrafficSpace ;
-            owl:onProperty tran:adeOfTrafficSpace ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficSpace ;
-            owl:onProperty tran:TrafficSpace.predecessor ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:GranularityValue ;
-            owl:onProperty tran:granularity ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange tran:TrafficDirectionValue ;
-            owl:onProperty tran:trafficDirection ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:ClearanceSpace ;
-            owl:onProperty tran:TrafficSpace.clearanceSpace ],
         core:AbstractUnoccupiedSpace ;
     skos:definition "A TrafficSpace is a space in which traffic takes place. Traffic includes the movement of entities such as trains, vehicles, pedestrians, ships, or other transportation types."@en .
 
@@ -826,30 +826,30 @@ tran:AbstractTransportationSpace a owl:Class ;
     rdfs:label "AbstractTransportationSpace"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom tran:ADEOfAbstractTransportationSpace ;
-            owl:onProperty tran:adeOfAbstractTransportationSpace ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange tran:TrafficDirectionValue ;
             owl:onProperty tran:trafficDirection ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficSpace ;
-            owl:onProperty tran:AbstractTransportationSpace.trafficSpace ],
+            owl:allValuesFrom core:Occupancy ;
+            owl:onProperty tran:occupancy ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:TrafficDirectionValue ;
-            owl:onProperty tran:trafficDirection ],
+            owl:allValuesFrom tran:Marking ;
+            owl:onProperty tran:AbstractTransportationSpace.marking ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:AuxiliaryTrafficSpace ;
             owl:onProperty tran:AbstractTransportationSpace.auxiliaryTrafficSpace ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:Occupancy ;
-            owl:onProperty tran:occupancy ],
+            owl:allValuesFrom tran:TrafficDirectionValue ;
+            owl:onProperty tran:trafficDirection ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom tran:ADEOfAbstractTransportationSpace ;
+            owl:onProperty tran:adeOfAbstractTransportationSpace ],
         [ a owl:Restriction ;
             owl:allValuesFrom tran:Hole ;
             owl:onProperty tran:AbstractTransportationSpace.hole ],
         [ a owl:Restriction ;
-            owl:allValuesFrom tran:Marking ;
-            owl:onProperty tran:AbstractTransportationSpace.marking ],
+            owl:allValuesFrom tran:TrafficSpace ;
+            owl:onProperty tran:AbstractTransportationSpace.trafficSpace ],
         core:AbstractUnoccupiedSpace ;
     skos:definition "AbstractTransportationSpace is the abstract superclass of transportation objects such as Roads, Tracks, Railways, Waterways or Squares."@en .
 
