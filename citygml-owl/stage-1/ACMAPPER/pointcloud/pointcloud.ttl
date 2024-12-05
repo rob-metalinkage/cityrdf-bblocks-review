@@ -44,14 +44,10 @@ pcl:PointCloud.points
 pcl:PointCloud  rdf:type  owl:Class;
         rdfs:label       "PointCloud"@en;
         rdfs:subClassOf  core:AbstractPointCloud;
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  core:MimeTypeValue;
-                           owl:onProperty     pcl:mimeType
-                         ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  core:MimeTypeValue;
-                           owl:onProperty               pcl:mimeType
+                           owl:onClass                  xsd:string;
+                           owl:onProperty               pcl:pointFileSrsName
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  gmlowl:MultiPoint;
@@ -59,13 +55,12 @@ pcl:PointCloud  rdf:type  owl:Class;
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:string;
-                           owl:onProperty               pcl:pointFileSrsName
+                           owl:onClass                  core:MimeTypeValue;
+                           owl:onProperty               pcl:mimeType
                          ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:anyURI;
-                           owl:onProperty               pcl:pointFile
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  core:MimeTypeValue;
+                           owl:onProperty     pcl:mimeType
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -73,12 +68,17 @@ pcl:PointCloud  rdf:type  owl:Class;
                            owl:onProperty               pcl:PointCloud.points
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     pcl:pointFileSrsName
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:anyURI;
                            owl:onProperty     pcl:pointFile
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  xsd:anyURI;
+                           owl:onProperty               pcl:pointFile
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     pcl:pointFileSrsName
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  pcl:ADEOfPointCloud;

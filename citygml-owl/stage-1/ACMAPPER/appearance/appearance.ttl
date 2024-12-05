@@ -96,40 +96,40 @@ app:GeoreferencedTexture
         rdf:type          owl:Class;
         rdfs:label        "GeoreferencedTexture"@en;
         rdfs:subClassOf   app:AbstractTexture;
-        rdfs:subClassOf   [ rdf:type           owl:Restriction;
-                            owl:allValuesFrom  xsd:boolean;
-                            owl:onProperty     app:preferWorldFile
-                          ];
-        rdfs:subClassOf   [ rdf:type           owl:Restriction;
-                            owl:allValuesFrom  xsd:anyURI;
-                            owl:onProperty     app:target
-                          ];
-        rdfs:subClassOf   [ rdf:type           owl:Restriction;
-                            owl:allValuesFrom  core:TransformationMatrix2x2;
-                            owl:onProperty     app:orientation
-                          ];
-        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
-                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                            owl:onClass                  gmlowl:Point;
-                            owl:onProperty               app:GeoreferencedTexture.referencePoint
-                          ];
-        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
-                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                            owl:onClass                  xsd:boolean;
-                            owl:onProperty               app:preferWorldFile
-                          ];
-        rdfs:subClassOf   [ rdf:type           owl:Restriction;
-                            owl:allValuesFrom  app:ADEOfGeoreferencedTexture;
-                            owl:onProperty     app:adeOfGeoreferencedTexture
-                          ];
         rdfs:subClassOf   [ rdf:type                     owl:Restriction;
                             owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                             owl:onClass                  core:TransformationMatrix2x2;
                             owl:onProperty               app:orientation
                           ];
         rdfs:subClassOf   [ rdf:type           owl:Restriction;
+                            owl:allValuesFrom  xsd:boolean;
+                            owl:onProperty     app:preferWorldFile
+                          ];
+        rdfs:subClassOf   [ rdf:type           owl:Restriction;
                             owl:allValuesFrom  gmlowl:Point;
                             owl:onProperty     app:GeoreferencedTexture.referencePoint
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  gmlowl:Point;
+                            owl:onProperty               app:GeoreferencedTexture.referencePoint
+                          ];
+        rdfs:subClassOf   [ rdf:type           owl:Restriction;
+                            owl:allValuesFrom  app:ADEOfGeoreferencedTexture;
+                            owl:onProperty     app:adeOfGeoreferencedTexture
+                          ];
+        rdfs:subClassOf   [ rdf:type           owl:Restriction;
+                            owl:allValuesFrom  core:TransformationMatrix2x2;
+                            owl:onProperty     app:orientation
+                          ];
+        rdfs:subClassOf   [ rdf:type           owl:Restriction;
+                            owl:allValuesFrom  xsd:anyURI;
+                            owl:onProperty     app:target
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  xsd:boolean;
+                            owl:onProperty               app:preferWorldFile
                           ];
         owl:disjointWith  app:ParameterizedTexture;
         skos:definition   "A GeoreferencedTexture is a texture that uses a planimetric projection. It contains an implicit parameterization that is either stored within the image file, an accompanying world file or specified using the orientation and referencePoint elements."@en .
@@ -267,6 +267,41 @@ app:transparency  rdf:type  owl:ObjectProperty;
 app:X3DMaterial  rdf:type  owl:Class;
         rdfs:label       "X3DMaterial"@en;
         rdfs:subClassOf  app:AbstractSurfaceData;
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  core:DoubleBetween0and1;
+                           owl:onProperty               app:transparency
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  app:ADEOfX3DMaterial;
+                           owl:onProperty     app:adeOfX3DMaterial
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  app:Color;
+                           owl:onProperty     app:emissiveColor
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  app:Color;
+                           owl:onProperty     app:specularColor
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  core:DoubleBetween0and1;
+                           owl:onProperty     app:transparency
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  core:DoubleBetween0and1;
+                           owl:onProperty               app:shininess
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  core:DoubleBetween0and1;
+                           owl:onProperty     app:ambientIntensity
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  app:Color;
+                           owl:onProperty               app:specularColor
+                         ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:boolean;
                            owl:onProperty     app:isSmooth
@@ -278,33 +313,12 @@ app:X3DMaterial  rdf:type  owl:Class;
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  core:DoubleBetween0and1;
-                           owl:onProperty               app:shininess
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  core:DoubleBetween0and1;
-                           owl:onProperty     app:ambientIntensity
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  app:ADEOfX3DMaterial;
-                           owl:onProperty     app:adeOfX3DMaterial
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  app:Color;
                            owl:onProperty               app:emissiveColor
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:anyURI;
-                           owl:onProperty     app:target
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  core:DoubleBetween0and1;
                            owl:onProperty     app:shininess
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  app:Color;
-                           owl:onProperty     app:specularColor
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -316,27 +330,13 @@ app:X3DMaterial  rdf:type  owl:Class;
                            owl:onProperty     app:diffuseColor
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  core:DoubleBetween0and1;
-                           owl:onProperty     app:transparency
+                           owl:allValuesFrom  xsd:anyURI;
+                           owl:onProperty     app:target
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  app:Color;
                            owl:onProperty               app:diffuseColor
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  app:Color;
-                           owl:onProperty               app:specularColor
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  core:DoubleBetween0and1;
-                           owl:onProperty               app:transparency
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  app:Color;
-                           owl:onProperty     app:emissiveColor
                          ];
         skos:definition  "X3DMaterial defines properties for surface geometry objects based on the material definitions from the X3D and COLLADA standards."@en .
 
@@ -368,17 +368,36 @@ app:adeOfAbstractSurfaceData
 app:AbstractTexture  rdf:type  owl:Class;
         rdfs:label             "AbstractTexture"@en;
         rdfs:subClassOf        app:AbstractSurfaceData;
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  app:WrapMode;
-                                 owl:onProperty     app:wrapMode
+        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
+                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                                 owl:onClass                  core:MimeTypeValue;
+                                 owl:onProperty               app:mimeType
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  app:ColorPlusOpacity;
-                                 owl:onProperty     app:borderColor
+                                 owl:allValuesFrom  app:TextureType;
+                                 owl:onProperty     app:textureType
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  app:ADEOfAbstractTexture;
+                                 owl:onProperty     app:adeOfAbstractTexture
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  xsd:anyURI;
+                                 owl:onProperty     app:imageURI
+                               ];
+        rdfs:subClassOf        [ rdf:type                  owl:Restriction;
+                                 owl:onClass               xsd:anyURI;
+                                 owl:onProperty            app:imageURI;
+                                 owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
                                  owl:allValuesFrom  core:MimeTypeValue;
                                  owl:onProperty     app:mimeType
+                               ];
+        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
+                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                                 owl:onClass                  app:TextureType;
+                                 owl:onProperty               app:textureType
                                ];
         rdfs:subClassOf        [ rdf:type                     owl:Restriction;
                                  owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -387,35 +406,16 @@ app:AbstractTexture  rdf:type  owl:Class;
                                ];
         rdfs:subClassOf        [ rdf:type                     owl:Restriction;
                                  owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                                 owl:onClass                  app:TextureType;
-                                 owl:onProperty               app:textureType
-                               ];
-        rdfs:subClassOf        [ rdf:type                  owl:Restriction;
-                                 owl:onClass               xsd:anyURI;
-                                 owl:onProperty            app:imageURI;
-                                 owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  xsd:anyURI;
-                                 owl:onProperty     app:imageURI
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  app:ADEOfAbstractTexture;
-                                 owl:onProperty     app:adeOfAbstractTexture
-                               ];
-        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
-                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                                 owl:onClass                  core:MimeTypeValue;
-                                 owl:onProperty               app:mimeType
-                               ];
-        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
-                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                                  owl:onClass                  app:ColorPlusOpacity;
                                  owl:onProperty               app:borderColor
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  app:TextureType;
-                                 owl:onProperty     app:textureType
+                                 owl:allValuesFrom  app:WrapMode;
+                                 owl:onProperty     app:wrapMode
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  app:ColorPlusOpacity;
+                                 owl:onProperty     app:borderColor
                                ];
         iso19150-2:isAbstract  true;
         owl:disjointWith       app:X3DMaterial;

@@ -69,8 +69,29 @@ grp:CityObjectGroup  rdf:type  owl:Class;
         rdfs:label       "CityObjectGroup"@en;
         rdfs:subClassOf  core:AbstractLogicalSpace;
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  core:AbstractCityObject;
+                           owl:onProperty     grp:CityObjectGroup.parent
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  grp:ADEOfCityObjectGroup;
+                           owl:onProperty     grp:adeOfCityObjectGroup
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  grp:CityObjectGroupClassValue;
+                           owl:onProperty     grp:class
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  grp:Role;
                            owl:onProperty     grp:CityObjectGroup.groupMember
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  grp:CityObjectGroupFunctionValue;
+                           owl:onProperty     grp:function
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  core:AbstractCityObject;
+                           owl:onProperty               grp:CityObjectGroup.parent
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -78,29 +99,8 @@ grp:CityObjectGroup  rdf:type  owl:Class;
                            owl:onProperty               grp:class
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  grp:CityObjectGroupFunctionValue;
-                           owl:onProperty     grp:function
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  core:AbstractCityObject;
-                           owl:onProperty     grp:CityObjectGroup.parent
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  core:AbstractCityObject;
-                           owl:onProperty               grp:CityObjectGroup.parent
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  grp:CityObjectGroupClassValue;
-                           owl:onProperty     grp:class
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  grp:CityObjectGroupUsageValue;
                            owl:onProperty     grp:usage
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  grp:ADEOfCityObjectGroup;
-                           owl:onProperty     grp:adeOfCityObjectGroup
                          ];
         skos:definition  "A CityObjectGroup represents an application-specific aggregation of city objects according to some user-defined criteria. Examples for groups are the buildings in a specific region, the result of a query, or objects put together for visualization purposes. Each member of a group may be qualified by a role name, reflecting the role each city object plays in the context of the group."@en .
 

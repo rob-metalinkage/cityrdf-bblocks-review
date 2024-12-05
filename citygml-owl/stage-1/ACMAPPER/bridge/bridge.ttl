@@ -240,30 +240,21 @@ brid:AbstractBridge  rdf:type  owl:Class;
         rdfs:label             "AbstractBridge"@en;
         rdfs:subClassOf        con:AbstractConstruction;
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  brid:BridgeConstructiveElementFunctionValue;
-                                 owl:onProperty     brid:function
-                               ];
-        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
-                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                                 owl:onClass                  brid:BridgeConstructiveElementClassValue;
-                                 owl:onProperty               brid:class
+                                 owl:allValuesFrom  xsd:boolean;
+                                 owl:onProperty     brid:isMovable
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
                                  owl:allValuesFrom  brid:BridgeConstructiveElementClassValue;
                                  owl:onProperty     brid:class
                                ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  brid:BridgeInstallation;
+                                 owl:onProperty     brid:AbstractBridge.bridgeInstallation
+                               ];
         rdfs:subClassOf        [ rdf:type                     owl:Restriction;
                                  owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                                  owl:onClass                  xsd:boolean;
                                  owl:onProperty               brid:isMovable
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  core:Address;
-                                 owl:onProperty     brid:AbstractBridge.address
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  brid:BridgeConstructiveElementUsageValue;
-                                 owl:onProperty     brid:usage
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
                                  owl:allValuesFrom  brid:ADEOfAbstractBridge;
@@ -274,20 +265,29 @@ brid:AbstractBridge  rdf:type  owl:Class;
                                  owl:onProperty     brid:AbstractBridge.bridgeConstructiveElement
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  brid:BridgeInstallation;
-                                 owl:onProperty     brid:AbstractBridge.bridgeInstallation
+                                 owl:allValuesFrom  brid:BridgeRoom;
+                                 owl:onProperty     brid:AbstractBridge.bridgeRoom
+                               ];
+        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
+                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                                 owl:onClass                  brid:BridgeConstructiveElementClassValue;
+                                 owl:onProperty               brid:class
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
                                  owl:allValuesFrom  brid:BridgeFurniture;
                                  owl:onProperty     brid:AbstractBridge.bridgeFurniture
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  xsd:boolean;
-                                 owl:onProperty     brid:isMovable
+                                 owl:allValuesFrom  core:Address;
+                                 owl:onProperty     brid:AbstractBridge.address
                                ];
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  brid:BridgeRoom;
-                                 owl:onProperty     brid:AbstractBridge.bridgeRoom
+                                 owl:allValuesFrom  brid:BridgeConstructiveElementFunctionValue;
+                                 owl:onProperty     brid:function
+                               ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  brid:BridgeConstructiveElementUsageValue;
+                                 owl:onProperty     brid:usage
                                ];
         iso19150-2:isAbstract  true;
         skos:definition        "AbstractBridge is an abstract superclass representing the common attributes and associations of the classes Bridge and BridgePart."@en .
@@ -354,38 +354,38 @@ brid:adeOfBridgePart  rdf:type  owl:ObjectProperty;
 brid:BridgeRoom  rdf:type  owl:Class;
         rdfs:label       "BridgeRoom"@en;
         rdfs:subClassOf  core:AbstractUnoccupiedSpace;
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  brid:BridgeConstructiveElementClassValue;
-                           owl:onProperty               brid:class
-                         ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  brid:BridgeFurniture;
-                           owl:onProperty     brid:BridgeRoom.bridgeFurniture
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  brid:BridgeConstructiveElementUsageValue;
-                           owl:onProperty     brid:usage
+                           owl:allValuesFrom  brid:ADEOfBridgeRoom;
+                           owl:onProperty     brid:adeOfBridgeRoom
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  core:AbstractThematicSurface;
                            owl:onProperty     brid:BridgeRoom.boundary
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  brid:ADEOfBridgeRoom;
-                           owl:onProperty     brid:adeOfBridgeRoom
+                           owl:allValuesFrom  brid:BridgeFurniture;
+                           owl:onProperty     brid:BridgeRoom.bridgeFurniture
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  brid:BridgeConstructiveElementClassValue;
+                           owl:onProperty     brid:class
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  brid:BridgeConstructiveElementUsageValue;
+                           owl:onProperty     brid:usage
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  brid:BridgeInstallation;
                            owl:onProperty     brid:BridgeRoom.bridgeInstallation
                          ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  brid:BridgeConstructiveElementClassValue;
+                           owl:onProperty               brid:class
+                         ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  brid:BridgeConstructiveElementFunctionValue;
                            owl:onProperty     brid:function
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  brid:BridgeConstructiveElementClassValue;
-                           owl:onProperty     brid:class
                          ];
         skos:definition  "A BridgeRoom is a space within a Bridge or BridgePart intended for human occupancy (e.g. a place of work or recreation) and/or containment (storage) of animals or things. A BridgeRoom is bounded physically and/or virtually (e.g. by ClosureSurfaces or GenericSurfaces)."@en .
 

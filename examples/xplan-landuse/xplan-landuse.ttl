@@ -1,0 +1,44 @@
+BASE   <https://graphdb.accordproject.eu/resource/tegel/>
+PREFIX GML:     <http://www.opengis.net/gml/3.2>
+PREFIX X:       <http://www.xplanung.de/xplangml/6/0>
+PREFIX XSPARQL: <http://xsparql.deri.org/demo/xquery/xsparql.xquery>
+PREFIX geo:     <http://www.opengis.net/ont/geosparql#>
+PREFIX gml:     <http://www.opengis.net/ont/gml#>
+PREFIX owl:     <http://www.w3.org/2002/07/owl#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+PREFIX xlink:   <http://www.w3.org/1999/xlink>
+PREFIX xp:      <https://graphdb.accordproject.eu/resource/xplanung/>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+<GML_025ded53-00c8-4737-981c-589304e9da9e/geo>
+        rdf:type   geo:Geometry;
+        geo:asGML  "<gml:Polygon srsName=\"EPSG:25833\" gml:id=\"GML_88eea395-dde7-456f-84b3-f33e117ddbf1\">\n          <gml:exterior>\n            <gml:LinearRing>\n              <gml:posList srsDimension=\"2\" count=\"11\">384209.4565 5824101.1457 384224.2449 5824137.4079 384211.1361 5824154.3493 384166.6559 5824211.8363 384004.0530 5824189.7189 383943.3273 5824041.0924 384020.5386 5823941.4641 384133.5749 5823956.8345 384155.3494 5823975.2109 384159.2265 5823978.4828 384209.4565 5824101.1457 </gml:posList>\n            </gml:LinearRing>\n          </gml:exterior>\n        </gml:Polygon>"^^geo:gmlLiteral .
+
+<GML_025ded53-00c8-4737-981c-589304e9da9e>
+        rdf:type                     xp:BuildingSubArea;
+        geo:hasDefaultGeometry       <GML_025ded53-00c8-4737-981c-589304e9da9e/geo>;
+        gml:id                       "GML_025ded53-00c8-4737-981c-589304e9da9e";
+        xp:additionalContingentArea  <GML_e4087ee5-f9e2-4340-b60c-30b01b7389f8> , <GML_76c42eb1-db0f-4d0b-8bbf-e31fa86f1b71> , <GML_f76a5638-0dc9-441c-8c2d-9aa7d615a5c4>;
+        xp:floorSpaceIndex           1.2;
+        xp:generalLandUse            <ComplexSpecialUse/generalLandUse/2800>;
+        xp:inscription               <ComplexSpecialUse/inscription/UNIVERSITY>;
+        xp:isSurfaceClosed           true;
+        xp:legalNature               <legalNature/1000>;
+        xp:level                     0;
+        xp:name                      "§ Section 9 (1) no. 1 of the Building Code in conjunction with Section 11 of the Land Utilisation Ordinance";
+        xp:noiseDuringDaytime        57;
+        xp:noiseDuringNight          43;
+        xp:outline1                  "SO2";
+        xp:plan                      <GML_2572F3F8-9020-4298-89F3-512388F7D7E2>;
+        xp:referenceURL              <https://registry.gdi-de.org/codelist/de.xleitstelle.inspire_plu/LandUse/3_23_2_2_Hochschule>;
+        xp:regulation                <GML_2D94919F-BA9B-4BAB-BAA2-575FD262FF77> , <GML_CBB51317-E7B2-4DB6-8F82-D7CA03598EE4> , <GML_42994615-7D26-4880-8D07-225A77E3CEF5> , <GML_B60DF06B-75A9-4ACA-A739-BD9ACDAD629C> , <GML_6F909574-5AD0-4534-8E79-3866F1EB8370> , <GML_C1D8BC0E-B7FC-4EB6-BC2B-BBF6C2753E43> , <GML_4B16A770-CD55-4EB4-AEB8-0A5570628411>;
+        xp:specialTypeOfBuildingUse  <specialTypeOfBuildingUse/2100> .
+
+<GML_037A3048-D804-45D9-9D86-A24CAF1C38E0/height>
+        rdf:type  xp:Height;
+        xp:from   <heightReferenceFrom/1000>;
+        xp:to     <heightReferenceTo/3000>;
+        xp:value  57.5 .
+        

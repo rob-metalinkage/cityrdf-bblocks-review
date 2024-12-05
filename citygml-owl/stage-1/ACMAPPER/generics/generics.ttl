@@ -157,13 +157,10 @@ gen:GenericAttributeSet
         rdf:type         owl:Class;
         rdfs:label       "GenericAttributeSet"@en;
         rdfs:subClassOf  core:AbstractGenericAttribute;
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     gen:name
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  core:AbstractGenericAttribute;
-                           owl:onProperty     gen:GenericAttributeSet.genericAttribute
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:string;
+                           owl:onProperty            gen:name;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:anyURI;
@@ -179,10 +176,13 @@ gen:GenericAttributeSet
                            owl:onClass                  xsd:anyURI;
                            owl:onProperty               gen:codeSpace
                          ];
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               xsd:string;
-                           owl:onProperty            gen:name;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  core:AbstractGenericAttribute;
+                           owl:onProperty     gen:GenericAttributeSet.genericAttribute
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     gen:name
                          ];
         skos:definition  "A GenericAttributeSet is a named collection of generic attributes."@en .
 

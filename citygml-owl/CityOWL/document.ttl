@@ -1,0 +1,147 @@
+@prefix core: <https://www.opengis.net/ont/citygml/core/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix doc: <https://www.opengis.net/ont/citygml/document/> .
+@prefix doccode: <https://www.opengis.net/ont/citygml/document/code/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.opengis.net/ont/citygml/document> a owl:Ontology ;
+    rdfs:label "Document"@en ;
+    owl:imports <file:///home/nata/work/gml3/cityrdf/citygml-owl/stage-1/ACMAPPER/document/www.w3.org/2006/time>,
+        <http://def.isotc211.org/iso19150/-2/2012/base>,
+        <https://www.opengis.net/ont/citygml/core> .
+
+doc:Document.referringTo a owl:ObjectProperty ;
+    rdfs:label "referringTo"@en ;
+    rdfs:domain doc:Document ;
+    rdfs:range doc:Reference .
+
+doc:Document.tag a owl:ObjectProperty ;
+    rdfs:label "tag"@en ;
+    rdfs:domain doc:Document ;
+    rdfs:range doc:Tag .
+
+doc:Reference.referringTo a owl:ObjectProperty ;
+    rdfs:label "referringTo"@en ;
+    rdfs:domain doc:Reference ;
+    rdfs:range core:AbstractFeatureWithLifespan .
+
+doc:code a owl:Ontology .
+
+doccode:PurposeTypeValue a skos:ConceptScheme ;
+    rdfs:label "PurposeTypeValue"@en ;
+    dct:isFormatOf doc:PurposeTypeValue .
+
+doc:count a owl:DatatypeProperty ;
+    rdfs:label "count"@en ;
+    rdfs:range xsd:integer .
+
+doc:purpose a owl:DatatypeProperty ;
+    rdfs:label "purpose"@en ;
+    rdfs:range xsd:string .
+
+doc:title a owl:DatatypeProperty ;
+    rdfs:label "title"@en ;
+    rdfs:range xsd:string .
+
+doc:uri a owl:DatatypeProperty ;
+    rdfs:label "uri"@en ;
+    rdfs:range xsd:anyURI .
+
+doc:Document a owl:Class ;
+    rdfs:label "Document"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom doc:Tag ;
+            owl:onProperty doc:tag ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom doc:Reference ;
+            owl:onProperty doc:referringTo ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty doc:uri ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty doc:title ],
+        core:AbstractFeatureWithLifespan .
+
+doc:Tag a owl:Class ;
+    rdfs:label "Tag"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty doc:count ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty doc:text ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty doc:text ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+doc:coveragePeriod a owl:ObjectProperty ;
+    rdfs:label "coveragePeriod"@en ;
+    rdfs:range time:Interval .
+
+doc:purposeType a owl:ObjectProperty ;
+    rdfs:label "purposeType"@en ;
+    rdfs:range doc:PurposeTypeValue .
+
+doc:referenceText a owl:DatatypeProperty ;
+    rdfs:label "referenceText"@en ;
+    rdfs:range xsd:string .
+
+doc:referringDate a owl:DatatypeProperty ;
+    rdfs:label "referringDate"@en ;
+    rdfs:range xsd:dateTime .
+
+doc:text a owl:DatatypeProperty ;
+    rdfs:label "text"@en ;
+    rdfs:range xsd:string .
+
+doc:Reference a owl:Class ;
+    rdfs:label "Reference"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom doc:PurposeTypeValue ;
+            owl:onProperty doc:purposeType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty doc:purpose ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty doc:referenceText ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass doc:PurposeTypeValue ;
+            owl:onProperty doc:purposeType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractFeatureWithLifespan ;
+            owl:onProperty doc:referringTo ],
+        [ a owl:Restriction ;
+            owl:onClass core:AbstractFeatureWithLifespan ;
+            owl:onProperty doc:referringTo ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty doc:referenceText ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass time:Interval ;
+            owl:onProperty doc:coveragePeriod ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:dateTime ;
+            owl:onProperty doc:referringDate ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:dateTime ;
+            owl:onProperty doc:referringDate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom time:Interval ;
+            owl:onProperty doc:coveragePeriod ] .
+
+doc:PurposeTypeValue a owl:Class ;
+    rdfs:label "PurposeTypeValue"@en ;
+    rdfs:subClassOf skos:Concept .
+

@@ -1,0 +1,76 @@
+@prefix core: <https://www.opengis.net/ont/citygml/core/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix frn: <https://www.opengis.net/ont/citygml/cityfurniture/> .
+@prefix frncode: <https://www.opengis.net/ont/citygml/cityfurniture/code/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.opengis.net/ont/citygml/cityfurniture> a owl:Ontology ;
+    rdfs:label "CityFurniture"@en ;
+    owl:imports <http://def.isotc211.org/iso19150/-2/2012/base>,
+        <https://www.opengis.net/ont/citygml/core> ;
+    skos:definition "The CityFurniture module supports representation of city furniture objects. City furniture objects are immovable objects like lanterns, traffic signs, advertising columns, benches, or bus stops that can be found in traffic areas, residential areas, on squares, or in built-up areas."@en .
+
+frn:CityFurniture a owl:Class ;
+    rdfs:label "CityFurniture"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom frn:CityFurnitureUsageValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/usage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom frn:CityFurnitureFunctionValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/function> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom frn:CityFurnitureClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass frn:CityFurnitureClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
+        core:AbstractOccupiedSpace .
+
+frn:code a owl:Ontology .
+
+frncode:CityFurnitureClassValue a skos:ConceptScheme ;
+    rdfs:label "CityFurnitureClassValue"@en ;
+    dct:isFormatOf frn:CityFurnitureClassValue ;
+    skos:definition "CityFurnitureClassValue is a code list used to further classify a CityFurniture."@en .
+
+frncode:CityFurnitureFunctionValue a skos:ConceptScheme ;
+    rdfs:label "CityFurnitureFunctionValue"@en ;
+    dct:isFormatOf frn:CityFurnitureFunctionValue ;
+    skos:definition "CityFurnitureFunctionValue is a code list that enumerates the different purposes of a CityFurniture."@en .
+
+frncode:CityFurnitureUsageValue a skos:ConceptScheme ;
+    rdfs:label "CityFurnitureUsageValue"@en ;
+    dct:isFormatOf frn:CityFurnitureUsageValue ;
+    skos:definition "CityFurnitureUsageValue is a code list that enumerates the different uses of a CityFurniture."@en .
+
+<https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
+    rdfs:range frn:CityFurnitureFunctionValue ;
+    skos:definition "Specifies the intended purposes of the CityFurniture."@en .
+
+<https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
+    rdfs:range frn:CityFurnitureUsageValue ;
+    skos:definition "Specifies the actual uses of the CityFurniture."@en .
+
+<https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
+    rdfs:range frn:CityFurnitureClassValue ;
+    skos:definition "Indicates the specific type of the CityFurniture."@en .
+
+frn:CityFurnitureFunctionValue a owl:Class ;
+    rdfs:label "CityFurnitureFunctionValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "CityFurnitureFunctionValue is a code list that enumerates the different purposes of a CityFurniture."@en .
+
+frn:CityFurnitureUsageValue a owl:Class ;
+    rdfs:label "CityFurnitureUsageValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "CityFurnitureUsageValue is a code list that enumerates the different uses of a CityFurniture."@en .
+
+frn:CityFurnitureClassValue a owl:Class ;
+    rdfs:label "CityFurnitureClassValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "CityFurnitureClassValue is a code list used to further classify a CityFurniture."@en .
+

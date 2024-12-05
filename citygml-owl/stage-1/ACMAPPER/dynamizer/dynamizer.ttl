@@ -99,17 +99,12 @@ dyn:AbstractTimeseries
         rdfs:label             "AbstractTimeseries"@en;
         rdfs:subClassOf        core:AbstractFeature;
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  time:TemporalPosition;
-                                 owl:onProperty     dyn:lastTimestamp
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
                                  owl:allValuesFrom  dyn:ADEOfAbstractTimeseries;
                                  owl:onProperty     dyn:adeOfAbstractTimeseries
                                ];
-        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
-                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                                 owl:onClass                  time:TemporalPosition;
-                                 owl:onProperty               dyn:firstTimestamp
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  time:TemporalPosition;
+                                 owl:onProperty     dyn:lastTimestamp
                                ];
         rdfs:subClassOf        [ rdf:type                     owl:Restriction;
                                  owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -119,6 +114,11 @@ dyn:AbstractTimeseries
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
                                  owl:allValuesFrom  time:TemporalPosition;
                                  owl:onProperty     dyn:firstTimestamp
+                               ];
+        rdfs:subClassOf        [ rdf:type                     owl:Restriction;
+                                 owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                                 owl:onClass                  time:TemporalPosition;
+                                 owl:onProperty               dyn:firstTimestamp
                                ];
         iso19150-2:isAbstract  true;
         skos:definition        "AbstractTimeseries is the abstract superclass representing any type of timeseries data."@en .
@@ -149,16 +149,12 @@ dyn:Dynamizer  rdf:type  owl:Class;
         rdfs:label       "Dynamizer"@en;
         rdfs:subClassOf  core:AbstractDynamizer;
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  dyn:ADEOfDynamizer;
-                           owl:onProperty     dyn:adeOfDynamizer
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  dyn:AbstractTimeseries;
-                           owl:onProperty     dyn:Dynamizer.dynamicData
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  time:TemporalPosition;
-                           owl:onProperty     dyn:endTime
+                           owl:onProperty     dyn:startTime
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     dyn:attributeRef
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -167,11 +163,16 @@ dyn:Dynamizer  rdf:type  owl:Class;
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  time:TemporalPosition;
-                           owl:onProperty     dyn:startTime
+                           owl:onProperty     dyn:endTime
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  dyn:SensorConnection;
-                           owl:onProperty     dyn:Dynamizer.sensorConnection
+                           owl:allValuesFrom  dyn:ADEOfDynamizer;
+                           owl:onProperty     dyn:adeOfDynamizer
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  dyn:AbstractTimeseries;
+                           owl:onProperty               dyn:Dynamizer.dynamicData
                          ];
         rdfs:subClassOf  [ rdf:type                  owl:Restriction;
                            owl:onClass               xsd:string;
@@ -180,22 +181,21 @@ dyn:Dynamizer  rdf:type  owl:Class;
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  time:TemporalPosition;
-                           owl:onProperty               dyn:startTime
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:attributeRef
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  dyn:SensorConnection;
                            owl:onProperty               dyn:Dynamizer.sensorConnection
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  dyn:AbstractTimeseries;
-                           owl:onProperty               dyn:Dynamizer.dynamicData
+                           owl:onClass                  time:TemporalPosition;
+                           owl:onProperty               dyn:startTime
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  dyn:SensorConnection;
+                           owl:onProperty     dyn:Dynamizer.sensorConnection
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  dyn:AbstractTimeseries;
+                           owl:onProperty     dyn:Dynamizer.dynamicData
                          ];
         skos:definition  "A Dynamizer is an object that injects timeseries data for an individual attribute of the city object in which it is included. The timeseries data overrides the static value of the referenced city object attribute in order to represent dynamic (time-dependent) variations of its value."@en .
 
@@ -280,26 +280,26 @@ dyn:StandardFileTimeseries
                            owl:onProperty            dyn:fileLocation;
                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  core:MimeTypeValue;
+                           owl:onProperty               dyn:mimeType
+                         ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:anyURI;
                            owl:onProperty     dyn:fileLocation
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  core:MimeTypeValue;
-                           owl:onProperty     dyn:mimeType
+                           owl:allValuesFrom  dyn:ADEOfStandardFileTimeseries;
+                           owl:onProperty     dyn:adeOfStandardFileTimeseries
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  dyn:StandardFileTypeValue;
                            owl:onProperty     dyn:fileType
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  dyn:ADEOfStandardFileTimeseries;
-                           owl:onProperty     dyn:adeOfStandardFileTimeseries
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  core:MimeTypeValue;
-                           owl:onProperty               dyn:mimeType
+                           owl:allValuesFrom  core:MimeTypeValue;
+                           owl:onProperty     dyn:mimeType
                          ];
         rdfs:subClassOf  [ rdf:type                  owl:Restriction;
                            owl:onClass               dyn:StandardFileTypeValue;
@@ -312,6 +312,10 @@ dyn:adeOfDynamizer  rdf:type  owl:ObjectProperty;
         rdfs:label       "adeOfDynamizer"@en;
         rdfs:range       dyn:ADEOfDynamizer;
         skos:definition  "Augments the Dynamizer with properties defined in an ADE."@en .
+
+[ rdf:type     owl:AllDisjointClasses;
+  owl:members  ( dyn:GenericTimeseries dyn:StandardFileTimeseries dyn:TabulatedFileTimeseries )
+] .
 
 dyn:valueType  rdf:type  owl:ObjectProperty;
         rdfs:label       "valueType"@en;
@@ -414,39 +418,34 @@ dyn:SensorConnection  rdf:type  owl:Class;
         rdfs:label       "SensorConnection"@en;
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:anyURI;
-                           owl:onProperty               dyn:baseURL
+                           owl:onClass                  xsd:string;
+                           owl:onProperty               dyn:mqttServer
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  xsd:string;
+                           owl:onProperty               dyn:sensorID
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     dyn:observationID
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:string;
                            owl:onProperty     dyn:sensorName
                          ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  dyn:AuthenticationTypeValue;
-                           owl:onProperty               dyn:authType
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     dyn:sensorID
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:mqttTopic
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  core:AbstractCityObject;
-                           owl:onProperty     dyn:SensorConnection.sensorLocation
+                           owl:onProperty     dyn:linkToSensorDescription
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  xsd:string;
-                           owl:onProperty               dyn:sensorName
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:anyURI;
-                           owl:onProperty     dyn:baseURL
-                         ];
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               xsd:string;
-                           owl:onProperty            dyn:observationProperty;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                           owl:onProperty               dyn:datastreamID
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:string;
@@ -456,37 +455,10 @@ dyn:SensorConnection  rdf:type  owl:Class;
                            owl:allValuesFrom  dyn:AuthenticationTypeValue;
                            owl:onProperty     dyn:authType
                          ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:linkToObservation
-                         ];
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               dyn:SensorConnectionTypeValue;
-                           owl:onProperty            dyn:connectionType;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:string;
-                           owl:onProperty               dyn:mqttTopic
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:sensorID
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:string;
-                           owl:onProperty               dyn:sensorID
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:mqttServer
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:string;
-                           owl:onProperty               dyn:uom
+                           owl:onClass                  dyn:AuthenticationTypeValue;
+                           owl:onProperty               dyn:authType
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  dyn:SensorConnectionTypeValue;
@@ -495,21 +467,25 @@ dyn:SensorConnection  rdf:type  owl:Class;
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  xsd:string;
-                           owl:onProperty               dyn:mqttServer
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:string;
                            owl:onProperty               dyn:linkToSensorDescription
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:linkToSensorDescription
+                           owl:onProperty     dyn:mqttServer
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  xsd:string;
+                           owl:onProperty               dyn:mqttTopic
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  xsd:string;
                            owl:onProperty               dyn:linkToObservation
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     dyn:mqttTopic
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -517,26 +493,54 @@ dyn:SensorConnection  rdf:type  owl:Class;
                            owl:onProperty               dyn:SensorConnection.sensorLocation
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:observationID
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:uom
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:observationProperty
+                           owl:allValuesFrom  xsd:anyURI;
+                           owl:onProperty     dyn:baseURL
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  xsd:string;
-                           owl:onProperty               dyn:datastreamID
+                           owl:onProperty               dyn:sensorName
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  xsd:string;
                            owl:onProperty               dyn:observationID
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               dyn:SensorConnectionTypeValue;
+                           owl:onProperty            dyn:connectionType;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  core:AbstractCityObject;
+                           owl:onProperty     dyn:SensorConnection.sensorLocation
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  xsd:string;
+                           owl:onProperty               dyn:uom
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  xsd:anyURI;
+                           owl:onProperty               dyn:baseURL
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     dyn:linkToObservation
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     dyn:uom
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:string;
+                           owl:onProperty            dyn:observationProperty;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     dyn:observationProperty
                          ];
         skos:definition  "A SensorConnection provides all details that are required to retrieve a specific datastream from an external sensor web service. This data type comprises the service type (e.g. OGC SensorThings API, OGC Sensor Observation Services, MQTT, proprietary platforms), the URL of the sensor service, the identifier for the sensor or thing, and its observed property as well as information about the required authentication method."@en .
 
@@ -593,7 +597,7 @@ dyn:AbstractAtomicTimeseries
         rdfs:subClassOf        dyn:AbstractTimeseries;
         rdfs:subClassOf        [ rdf:type           owl:Restriction;
                                  owl:allValuesFrom  xsd:string;
-                                 owl:onProperty     dyn:observationProperty
+                                 owl:onProperty     dyn:uom
                                ];
         rdfs:subClassOf        [ rdf:type                     owl:Restriction;
                                  owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -604,14 +608,14 @@ dyn:AbstractAtomicTimeseries
                                  owl:allValuesFrom  dyn:ADEOfAbstractAtomicTimeseries;
                                  owl:onProperty     dyn:adeOfAbstractAtomicTimeseries
                                ];
+        rdfs:subClassOf        [ rdf:type           owl:Restriction;
+                                 owl:allValuesFrom  xsd:string;
+                                 owl:onProperty     dyn:observationProperty
+                               ];
         rdfs:subClassOf        [ rdf:type                  owl:Restriction;
                                  owl:onClass               xsd:string;
                                  owl:onProperty            dyn:observationProperty;
                                  owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                               ];
-        rdfs:subClassOf        [ rdf:type           owl:Restriction;
-                                 owl:allValuesFrom  xsd:string;
-                                 owl:onProperty     dyn:uom
                                ];
         iso19150-2:isAbstract  true;
         owl:disjointWith       dyn:CompositeTimeseries;
@@ -649,22 +653,9 @@ dyn:TabulatedFileTimeseries
         rdf:type         owl:Class;
         rdfs:label       "TabulatedFileTimeseries"@en;
         rdfs:subClassOf  dyn:AbstractAtomicTimeseries;
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:decimalSymbol
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:idColumnName
-                         ];
         rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               dyn:StandardFileTypeValue;
-                           owl:onProperty            dyn:fileType;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ];
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               xsd:anyURI;
-                           owl:onProperty            dyn:fileLocation;
+                           owl:onClass               xsd:string;
+                           owl:onProperty            dyn:fieldSeparator;
                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
@@ -674,15 +665,51 @@ dyn:TabulatedFileTimeseries
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:timeColumnName
+                           owl:onProperty     dyn:idColumnName
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  dyn:ADEOfTabulatedFileTimeseries;
-                           owl:onProperty     dyn:adeOfTabulatedFileTimeseries
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     dyn:idValue
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:anyURI;
                            owl:onProperty     dyn:fileLocation
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               dyn:StandardFileTypeValue;
+                           owl:onProperty            dyn:fileType;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  xsd:string;
+                           owl:onProperty               dyn:timeColumnName
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  dyn:StandardFileTypeValue;
+                           owl:onProperty     dyn:fileType
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               xsd:anyURI;
+                           owl:onProperty            dyn:fileLocation;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     dyn:timeColumnName
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     dyn:valueColumnName
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     dyn:decimalSymbol
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  core:MimeTypeValue;
+                           owl:onProperty               dyn:mimeType
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:integer;
@@ -699,25 +726,30 @@ dyn:TabulatedFileTimeseries
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:string;
-                           owl:onProperty               dyn:timeColumnName
+                           owl:onClass                  xsd:integer;
+                           owl:onProperty               dyn:numberOfHeaderLines
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:valueColumnName
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:integer;
-                           owl:onProperty     dyn:idColumnNo
+                           owl:allValuesFrom  core:MimeTypeValue;
+                           owl:onProperty     dyn:mimeType
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  xsd:string;
                            owl:onProperty               dyn:decimalSymbol
                          ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  xsd:string;
+                           owl:onProperty               dyn:valueColumnName
+                         ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  dyn:StandardFileTypeValue;
-                           owl:onProperty     dyn:fileType
+                           owl:allValuesFrom  dyn:ADEOfTabulatedFileTimeseries;
+                           owl:onProperty     dyn:adeOfTabulatedFileTimeseries
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  dyn:TimeseriesTypeValue;
+                           owl:onProperty     dyn:valueType
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:integer;
@@ -725,12 +757,12 @@ dyn:TabulatedFileTimeseries
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:integer;
-                           owl:onProperty               dyn:idColumnNo
+                           owl:onClass                  xsd:string;
+                           owl:onProperty               dyn:idColumnName
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:idValue
+                           owl:onProperty     dyn:fieldSeparator
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -740,50 +772,18 @@ dyn:TabulatedFileTimeseries
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  xsd:integer;
-                           owl:onProperty               dyn:valueColumnNo
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:string;
-                           owl:onProperty               dyn:valueColumnName
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:string;
-                           owl:onProperty               dyn:idColumnName
+                           owl:onProperty               dyn:idColumnNo
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  dyn:TimeseriesTypeValue;
-                           owl:onProperty     dyn:valueType
+                           owl:allValuesFrom  xsd:integer;
+                           owl:onProperty     dyn:idColumnNo
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  xsd:integer;
-                           owl:onProperty               dyn:numberOfHeaderLines
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  core:MimeTypeValue;
-                           owl:onProperty               dyn:mimeType
-                         ];
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               xsd:string;
-                           owl:onProperty            dyn:fieldSeparator;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  core:MimeTypeValue;
-                           owl:onProperty     dyn:mimeType
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:fieldSeparator
+                           owl:onProperty               dyn:valueColumnNo
                          ];
         skos:definition  "A TabulatedFileTimeseries represents time-varying data of a specific data type for a single contiguous time interval. The data is provided in an external file referenced in the TabulatedFileTimeseries. The file contains table structured data using an appropriate file format such as comma-separated values (CSV), Microsoft Excel (XLSX) or Google Spreadsheet. The timestamps and the values are given in specific columns of the table. Each row represents a single time-value-pair. A subset of rows can be selected using the idColumn and idValue attributes."@en .
-
-[ rdf:type     owl:AllDisjointClasses;
-  owl:members  ( dyn:GenericTimeseries dyn:StandardFileTimeseries dyn:TabulatedFileTimeseries )
-] .
 
 dyn:ADEOfDynamizer  rdf:type   owl:Class;
         rdfs:label             "ADEOfDynamizer"@en;
@@ -892,12 +892,12 @@ dyn:TimeValuePair  rdf:type  owl:Class;
         rdfs:label       "TimeValuePair"@en;
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:anyURI;
-                           owl:onProperty               dyn:uriValue
+                           owl:onClass                  xsd:integer;
+                           owl:onProperty               dyn:intValue
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  time:TemporalPosition;
-                           owl:onProperty     dyn:timestamp
+                           owl:allValuesFrom  core:ImplicitGeometry;
+                           owl:onProperty     dyn:implicitGeometryValue
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -906,43 +906,8 @@ dyn:TimeValuePair  rdf:type  owl:Class;
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  core:ImplicitGeometry;
-                           owl:onProperty               dyn:implicitGeometryValue
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:double;
-                           owl:onProperty     dyn:doubleValue
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  gmlowl:AbstractGeometry;
-                           owl:onProperty     dyn:geometryValue
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:boolean;
-                           owl:onProperty     dyn:boolValue
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:boolean;
-                           owl:onProperty               dyn:boolValue
-                         ];
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
-                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  xsd:integer;
-                           owl:onProperty               dyn:intValue
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  core:AbstractAppearance;
-                           owl:onProperty     dyn:appearanceValue
-                         ];
-        rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  xsd:string;
-                           owl:onProperty     dyn:stringValue
-                         ];
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
-                           owl:onClass               time:TemporalPosition;
-                           owl:onProperty            dyn:timestamp;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                           owl:onClass                  core:AbstractAppearance;
+                           owl:onProperty               dyn:appearanceValue
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
@@ -953,22 +918,57 @@ dyn:TimeValuePair  rdf:type  owl:Class;
                            owl:allValuesFrom  xsd:anyURI;
                            owl:onProperty     dyn:uriValue
                          ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  xsd:boolean;
+                           owl:onProperty               dyn:boolValue
+                         ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
-                           owl:allValuesFrom  core:ImplicitGeometry;
-                           owl:onProperty     dyn:implicitGeometryValue
+                           owl:allValuesFrom  xsd:boolean;
+                           owl:onProperty     dyn:boolValue
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               time:TemporalPosition;
+                           owl:onProperty            dyn:timestamp;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:double;
+                           owl:onProperty     dyn:doubleValue
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  gmlowl:AbstractGeometry;
+                           owl:onProperty     dyn:geometryValue
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  xsd:string;
+                           owl:onProperty     dyn:stringValue
                          ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
-                           owl:onClass                  core:AbstractAppearance;
-                           owl:onProperty               dyn:appearanceValue
+                           owl:onClass                  xsd:anyURI;
+                           owl:onProperty               dyn:uriValue
                          ];
         rdfs:subClassOf  [ rdf:type           owl:Restriction;
                            owl:allValuesFrom  xsd:integer;
                            owl:onProperty     dyn:intValue
                          ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  core:AbstractAppearance;
+                           owl:onProperty     dyn:appearanceValue
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  core:ImplicitGeometry;
+                           owl:onProperty               dyn:implicitGeometryValue
+                         ];
         rdfs:subClassOf  [ rdf:type                     owl:Restriction;
                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
                            owl:onClass                  xsd:string;
                            owl:onProperty               dyn:stringValue
+                         ];
+        rdfs:subClassOf  [ rdf:type           owl:Restriction;
+                           owl:allValuesFrom  time:TemporalPosition;
+                           owl:onProperty     dyn:timestamp
                          ];
         skos:definition  "A TimeValuePair represents a value that is valid for a given timepoint. For each TimeValuePair, only one of the value properties can be used mutually exclusive. Which value property has to be provided depends on the selected value type in the GenericTimeSeries feature, in which the TimeValuePair is included."@en .
