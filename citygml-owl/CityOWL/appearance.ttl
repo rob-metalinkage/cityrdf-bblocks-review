@@ -34,29 +34,29 @@ app:Appearance a owl:Class ;
 app:GeoreferencedTexture a owl:Class ;
     rdfs:label "GeoreferencedTexture"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:boolean ;
-            owl:onProperty app:preferWorldFile ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty app:target ],
-        [ a owl:Restriction ;
             owl:allValuesFrom core:TransformationMatrix2x2 ;
             owl:onProperty app:orientation ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:Point ;
+            owl:allValuesFrom gmlowl:Point ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/referencePoint> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty app:preferWorldFile ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:TransformationMatrix2x2 ;
             owl:onProperty app:orientation ],
         [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:Point ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty app:preferWorldFile ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty app:preferWorldFile ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:Point ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/referencePoint> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty app:target ],
         app:AbstractTexture ;
     owl:disjointWith app:ParameterizedTexture .
 
@@ -102,23 +102,44 @@ app:TexCoordList a owl:Class ;
 app:X3DMaterial a owl:Class ;
     rdfs:label "X3DMaterial"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass app:Color ;
+            owl:onProperty app:emissiveColor ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom app:Color ;
+            owl:onProperty app:emissiveColor ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom app:Color ;
+            owl:onProperty app:diffuseColor ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass app:Color ;
+            owl:onProperty app:specularColor ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:boolean ;
             owl:onProperty app:isSmooth ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:DoubleBetween0and1 ;
-            owl:onProperty app:ambientIntensity ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:DoubleBetween0and1 ;
-            owl:onProperty app:shininess ],
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty app:isSmooth ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:DoubleBetween0and1 ;
             owl:onProperty app:ambientIntensity ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:DoubleBetween0and1 ;
+            owl:onProperty app:transparency ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:DoubleBetween0and1 ;
+            owl:onProperty app:shininess ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass app:Color ;
-            owl:onProperty app:emissiveColor ],
+            owl:onProperty app:diffuseColor ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:DoubleBetween0and1 ;
+            owl:onProperty app:transparency ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:anyURI ;
             owl:onProperty app:target ],
@@ -126,33 +147,12 @@ app:X3DMaterial a owl:Class ;
             owl:allValuesFrom core:DoubleBetween0and1 ;
             owl:onProperty app:shininess ],
         [ a owl:Restriction ;
-            owl:allValuesFrom app:Color ;
-            owl:onProperty app:specularColor ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty app:isSmooth ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom app:Color ;
-            owl:onProperty app:diffuseColor ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:DoubleBetween0and1 ;
-            owl:onProperty app:transparency ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass app:Color ;
-            owl:onProperty app:diffuseColor ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass app:Color ;
-            owl:onProperty app:specularColor ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:DoubleBetween0and1 ;
-            owl:onProperty app:transparency ],
+            owl:onProperty app:ambientIntensity ],
         [ a owl:Restriction ;
             owl:allValuesFrom app:Color ;
-            owl:onProperty app:emissiveColor ],
+            owl:onProperty app:specularColor ],
         app:AbstractSurfaceData .
 
 app:surfaceData a owl:ObjectProperty ;
@@ -165,39 +165,39 @@ app:AbstractTexture a owl:Class ;
     rdfs:label "AbstractTexture"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom app:WrapMode ;
-            owl:onProperty app:wrapMode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom app:ColorPlusOpacity ;
-            owl:onProperty app:borderColor ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:MimeTypeValue ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:MimeTypeValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange app:WrapMode ;
-            owl:onProperty app:wrapMode ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange app:TextureType ;
-            owl:onProperty app:textureType ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:anyURI ;
             owl:onProperty app:imageURI ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty app:imageURI ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:MimeTypeValue ;
+            owl:allValuesFrom core:MimeTypeValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom app:ColorPlusOpacity ;
+            owl:onProperty app:borderColor ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom app:WrapMode ;
+            owl:onProperty app:wrapMode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom app:TextureType ;
+            owl:onProperty app:textureType ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass app:ColorPlusOpacity ;
             owl:onProperty app:borderColor ],
         [ a owl:Restriction ;
-            owl:allValuesFrom app:TextureType ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange app:WrapMode ;
+            owl:onProperty app:wrapMode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty app:imageURI ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange app:TextureType ;
             owl:onProperty app:textureType ],
         app:AbstractSurfaceData ;
     owl:disjointWith app:X3DMaterial .

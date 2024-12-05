@@ -10,24 +10,20 @@
 
 <https://www.opengis.net/ont/citygml/document> a owl:Ontology ;
     rdfs:label "Document"@en ;
-    owl:imports <file:///home/nata/work/gml3/cityrdf/citygml-owl/stage-1/ACMAPPER/document/www.w3.org/2006/time>,
-        <http://def.isotc211.org/iso19150/-2/2012/base>,
+    owl:imports <http://def.isotc211.org/iso19150/-2/2012/base>,
+        <http://www.w3.org/2006/time>,
         <https://www.opengis.net/ont/citygml/core> .
 
-doc:Document.referringTo a owl:ObjectProperty ;
-    rdfs:label "referringTo"@en ;
-    rdfs:domain doc:Document ;
-    rdfs:range doc:Reference .
+<https://www.opengis.net/ont/citygml/common/referringTo> 
+    schema:domainIncludes doc:Document,
+        doc:Reference ;
+    schema:rangeIncludes doc:Reference,
+        core:AbstractFeatureWithLifespan .
 
-doc:Document.tag a owl:ObjectProperty ;
+doc:tag a owl:ObjectProperty ;
     rdfs:label "tag"@en ;
     rdfs:domain doc:Document ;
     rdfs:range doc:Tag .
-
-doc:Reference.referringTo a owl:ObjectProperty ;
-    rdfs:label "referringTo"@en ;
-    rdfs:domain doc:Reference ;
-    rdfs:range core:AbstractFeatureWithLifespan .
 
 doc:code a owl:Ontology .
 
@@ -58,7 +54,7 @@ doc:Document a owl:Class ;
             owl:onProperty doc:tag ],
         [ a owl:Restriction ;
             owl:allValuesFrom doc:Reference ;
-            owl:onProperty doc:referringTo ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/referringTo> ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:anyURI ;
             owl:onProperty doc:uri ],
@@ -106,40 +102,40 @@ doc:Reference a owl:Class ;
             owl:allValuesFrom doc:PurposeTypeValue ;
             owl:onProperty doc:purposeType ],
         [ a owl:Restriction ;
+            owl:allValuesFrom time:Interval ;
+            owl:onProperty doc:coveragePeriod ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty doc:purpose ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty doc:referenceText ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass doc:PurposeTypeValue ;
-            owl:onProperty doc:purposeType ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractFeatureWithLifespan ;
-            owl:onProperty doc:referringTo ],
-        [ a owl:Restriction ;
-            owl:onClass core:AbstractFeatureWithLifespan ;
-            owl:onProperty doc:referringTo ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty doc:referenceText ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass time:Interval ;
             owl:onProperty doc:coveragePeriod ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:onClass core:AbstractFeatureWithLifespan ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/referringTo> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:dateTime ;
             owl:onProperty doc:referringDate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty doc:referenceText ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:dateTime ;
             owl:onProperty doc:referringDate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:allValuesFrom time:Interval ;
-            owl:onProperty doc:coveragePeriod ] .
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass doc:PurposeTypeValue ;
+            owl:onProperty doc:purposeType ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty doc:referenceText ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractFeatureWithLifespan ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/referringTo> ] .
 
 doc:PurposeTypeValue a owl:Class ;
     rdfs:label "PurposeTypeValue"@en ;

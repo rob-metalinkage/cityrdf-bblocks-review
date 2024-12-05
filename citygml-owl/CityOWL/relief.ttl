@@ -21,10 +21,6 @@
 dem:ReliefFeature a owl:Class ;
     rdfs:label "ReliefFeature"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass core:IntegerBetween0and3 ;
-            owl:onProperty dem:lod ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:allValuesFrom dem:AbstractReliefComponent ;
             owl:onProperty dem:reliefComponent ],
         [ a owl:Restriction ;
@@ -34,6 +30,10 @@ dem:ReliefFeature a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom core:IntegerBetween0and3 ;
             owl:onProperty dem:lod ],
+        [ a owl:Restriction ;
+            owl:onClass core:IntegerBetween0and3 ;
+            owl:onProperty dem:lod ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         core:AbstractSpaceBoundary .
 
 <https://www.opengis.net/ont/citygml/common/pointCloud> skos:definition "Relates to the 3D PointCloud of the MassPointRelief."@en ;
@@ -149,15 +149,15 @@ dem:AbstractReliefComponent a owl:Class ;
     rdfs:label "AbstractReliefComponent"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:Surface ;
-            owl:onProperty dem:extent ],
+            owl:allValuesFrom core:IntegerBetween0and3 ;
+            owl:onProperty dem:lod ],
         [ a owl:Restriction ;
             owl:onClass core:IntegerBetween0and3 ;
             owl:onProperty dem:lod ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:IntegerBetween0and3 ;
-            owl:onProperty dem:lod ],
+            owl:allValuesFrom gmlowl:Surface ;
+            owl:onProperty dem:extent ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:Surface ;

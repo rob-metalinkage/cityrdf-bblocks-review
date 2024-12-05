@@ -1,7 +1,7 @@
 # #!/bin/sh
 
-if test ! -d ../output; then
-    mkdir ../output
+if test ! -d ../CityOWL; then
+    mkdir ../CityOWL
 fi
 
 # ### Add codeList concept schemes, copy files without codeLists
@@ -109,10 +109,10 @@ python update_graph.py ../CityOWL/building.ttl ../CityOWL/building.ttl \
 
 ### sequence added for global attributes ###
 
-files=("./output/appearance.ttl" "./output/bridge.ttl" "./output/building.ttl" "./output/cityfurniture.ttl" 
-        "./output/cityobjectgroup.ttl" "./output/construction.ttl" "./output/core.ttl" "./output/document.ttl" "./output/dynamizer.ttl" 
-        "./output/generics.ttl" "./output/landuse.ttl" "./output/pointcloud.ttl" "./output/relief.ttl" "./output/transportation.ttl"
-        "./output/tunnel.ttl" "./output/vegetation.ttl" "./output/versioning.ttl" "./output/waterbody.ttl" "./output/workspace.ttl")
+files=("../CityOWL/appearance.ttl" "../CityOWL/bridge.ttl" "../CityOWL/building.ttl" "../CityOWL/cityfurniture.ttl" 
+        "../CityOWL/cityobjectgroup.ttl" "../CityOWL/construction.ttl" "../CityOWL/core.ttl" "../CityOWL/document.ttl" "../CityOWL/dynamizer.ttl" 
+        "../CityOWL/generics.ttl" "../CityOWL/landuse.ttl" "../CityOWL/pointcloud.ttl" "../CityOWL/relief.ttl" "../CityOWL/transportation.ttl"
+        "../CityOWL/tunnel.ttl" "../CityOWL/vegetation.ttl" "../CityOWL/versioning.ttl" "../CityOWL/waterbody.ttl" "../CityOWL/workspace.ttl")
 
 for file in ${files[@]}; do
 echo $file
@@ -379,7 +379,7 @@ where {
     ?s rdfs:domain ?domainToInclude .
     ?s rdfs:range ?rangeToInclude .
     ?s skos:definition ?def .    
-    filter (str(?classIndependentPropName) in ("boundary","address","mimeType","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","occupancy","elevation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
+    filter (str(?classIndependentPropName) in ("boundary","address","mimeType","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","occupancy","elevation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization", "referringTo"))
     bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",str(?classIndependentPropName))) 
             					as ?classIndependentPropNameNew)
     }}'
@@ -408,7 +408,7 @@ where { select ?s ?classIndependentPropName ?domainToInclude ?rangeToInclude ?de
     ?s rdfs:domain ?domainToInclude .
     ?s rdfs:range ?rangeToInclude .
     ?s skos:definition ?def .    
-    filter (str(?classIndependentPropName) in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
+    filter (str(?classIndependentPropName) in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization", "referringTo"))
         filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
 "https://www.opengis.net/ont/citygml/bridge/", 
 "https://www.opengis.net/ont/citygml/building/", 
@@ -447,7 +447,7 @@ where {
     where {
 	?s owl:onProperty ?old ;
     bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
-    filter (strafter(?x,".") in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
+    filter (strafter(?x,".") in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization", "referringTo"))
 bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",strafter(?x,"."))) as ?new)
     }}
 '
@@ -466,7 +466,7 @@ where {
     where {
     ?s owl:onProperty ?old.
   	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
-    filter (strafter(?x,".") in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization"))
+    filter (strafter(?x,".") in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization", "referringTo"))
     filter (strbefore(str(?old),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
 "https://www.opengis.net/ont/citygml/bridge/", 
 "https://www.opengis.net/ont/citygml/building/", 
@@ -647,17 +647,17 @@ done
 for file in ../stage-2/*
 do 
     file_name=$(basename "$file")
-    if test ! -f "./output/$file_name" ; then
+    if test ! -f "../CityOWL/$file_name" ; then
         echo "Copying $file to ../CityOWL/$file_name"
         cp $file ../CityOWL/$file_name
     fi
 done
 
-echo 'Copying CityOWL.ttl to output'
-cp ../additional-triples/CityOWL.ttl ../output
-echo 'Copying transactiontypevalues.ttl to output'
-cp ../additional-triples/transactiontypevalues.ttl ../output
-echo 'Copying common.ttl to output'
-cp ../additional-triples/common.ttl ../output
+echo 'Copying CityOWL.ttl to CityOWL'
+cp ../additional-triples/CityOWL.ttl ../CityOWL
+echo 'Copying transactiontypevalues.ttl to CityOWL'
+cp ../additional-triples/transactiontypevalues.ttl ../CityOWL
+echo 'Copying common.ttl to CityOWL'
+cp ../additional-triples/common.ttl ../CityOWL
 
 read -p "Continue?"

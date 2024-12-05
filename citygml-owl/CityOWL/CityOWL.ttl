@@ -2,11 +2,11 @@
 
 <https://www.opengis.net/ont/citygml/CityOWL> a owl:Ontology ;
     owl:versionIRI <https://www.opengis.net/ont/citygml/CityOWL/3.0.0/>;
-    owl:versionInfo "3.0.0" ;
+    owl:versionInfo "3.0.0"
     owl:imports <https://www.opengis.net/ont/citygml/appearance>,
         <https://www.opengis.net/ont/citygml/bridge>,
-        <https://www.opengis.net/ont/citygml/building> ,
-        <https://www.opengis.net/ont/citygml/pointcloud> ,
+        <https://www.opengis.net/ont/citygml/building>,
+        <https://www.opengis.net/ont/citygml/pointcloud>,
         <https://www.opengis.net/ont/citygml/cityfurniture>,
         <https://www.opengis.net/ont/citygml/cityobjectgroup>,
         <https://www.opengis.net/ont/citygml/construction>,

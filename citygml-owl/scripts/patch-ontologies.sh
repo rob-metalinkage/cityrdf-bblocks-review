@@ -19,6 +19,20 @@ python ontologyPatcher.py ../stage-1/ACMAPPER/construction/construction.ttl ../s
 echo "patching core.ttl"
 python ontologyPatcher.py ../stage-1/ACMAPPER/core/core.ttl ../stage-2/core.ttl
 echo "patching document.ttl"
+python update_graph.py ../stage-1/ACMAPPER/document/document.ttl ../stage-1/ACMAPPER/document/document.ttl \
+   'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+    DELETE 
+		{<https://www.opengis.net/ont/citygml/document> owl:imports ?s . }
+	where {
+			select *
+			where {
+			<https://www.opengis.net/ont/citygml/document> owl:imports ?s . 
+    		filter(strends(str(?s),"time")=true)
+		}};
+    INSERT DATA {
+        <https://www.opengis.net/ont/citygml/document> owl:imports <http://www.w3.org/2006/time> .
+    }'
+
 python ontologyPatcher.py ../stage-1/ACMAPPER/document/document.ttl ../stage-2/document.ttl
 echo "patching dynamizer.ttl"
 python ontologyPatcher.py ../stage-1/ACMAPPER/dynamizer/dynamizer.ttl ../stage-2/dynamizer.ttl
