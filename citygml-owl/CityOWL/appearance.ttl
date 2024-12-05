@@ -306,8 +306,8 @@ app:wrapMode a owl:DatatypeProperty ;
     skos:definition "Specifies the behaviour of the texture when the texture is smaller than the surface to which it is applied."@en .
 
 <https://www.opengis.net/ont/citygml/common/mimeType> rdfs:label "mimeType"@en ;
-    rdfs:range core:MimeTypeValue ;
-    skos:definition "Specifies the MIME type of the external point cloud file."@en .
+    skos:definition "Specifies the MIME type of the external point cloud file."@en ;
+    schema:rangeIncludes core:MimeTypeValue .
 
 <https://www.opengis.net/ont/citygml/common/referencePoint> skos:definition "Relates to the 2D Point geometry that represents the center of the upper left image pixel in world space."@en ;
     schema:domainIncludes app:GeoreferencedTexture ;

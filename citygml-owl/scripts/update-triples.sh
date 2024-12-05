@@ -172,8 +172,9 @@ python update_graph.py $file $file \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <https://schema.org/>
 insert { 
-        ?new rdfs:range ?range .
+        ?new schema:rangeIncludes ?range .
     	?new rdfs:label ?label .
         ?new skos:definition ?def .
     }
@@ -194,8 +195,9 @@ python update_graph.py $file $file \
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX common: <https://ogcblocks.org/CityGML/3.0/common/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <https://schema.org/>
 insert { 
-    ?new rdfs:range ?range .
+    ?new schema:rangeIncludes ?range .
     ?new rdfs:label ?label .
     ?new skos:definition ?def .
 }

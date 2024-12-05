@@ -235,8 +235,8 @@ bldg:storey a owl:ObjectProperty ;
     skos:definition "Relates to the storeys on which the BuildingUnit is located."@en .
 
 <https://www.opengis.net/ont/citygml/common/elevation> rdfs:label "elevation"@en ;
-    rdfs:range con:Elevation ;
-    skos:definition "Specifies qualified elevations of the building subdivision in relation to a well-defined surface which is commonly taken as origin (e.g. geoid or water level). [cf. INSPIRE]"@en .
+    skos:definition "Specifies qualified elevations of the building subdivision in relation to a well-defined surface which is commonly taken as origin (e.g. geoid or water level). [cf. INSPIRE]"@en ;
+    schema:rangeIncludes con:Elevation .
 
 bldg:RoomHeight a owl:Class ;
     rdfs:label "RoomHeight"@en ;
@@ -325,20 +325,20 @@ bldg:storeysBelowGround a owl:DatatypeProperty ;
     schema:rangeIncludes bldg:BuildingRoom .
 
 <https://www.opengis.net/ont/citygml/common/highReference> rdfs:label "highReference"@en ;
-    rdfs:range bldg:RoomElevationReferenceValue ;
-    skos:definition "Indicates the high point used to calculate the value of the room height."@en .
+    skos:definition "Indicates the high point used to calculate the value of the room height."@en ;
+    schema:rangeIncludes bldg:RoomElevationReferenceValue .
 
 <https://www.opengis.net/ont/citygml/common/lowReference> rdfs:label "lowReference"@en ;
-    rdfs:range bldg:RoomElevationReferenceValue ;
-    skos:definition "Indicates the low point used to calculate the value of the room height."@en .
+    skos:definition "Indicates the low point used to calculate the value of the room height."@en ;
+    schema:rangeIncludes bldg:RoomElevationReferenceValue .
 
 <https://www.opengis.net/ont/citygml/common/status> rdfs:label "status"@en ;
-    rdfs:range con:HeightStatusValue ;
-    skos:definition "Indicates the way the room height has been captured."@en .
+    skos:definition "Indicates the way the room height has been captured."@en ;
+    schema:rangeIncludes con:HeightStatusValue .
 
 <https://www.opengis.net/ont/citygml/common/value> rdfs:label "value"@en ;
-    rdfs:range sc:Measure ;
-    skos:definition "Specifies the value of the room height."@en .
+    skos:definition "Specifies the value of the room height."@en ;
+    schema:rangeIncludes sc:Measure .
 
 bldg:BuildingConstructiveElement a owl:Class ;
     rdfs:label "BuildingConstructiveElement"@en ;
@@ -467,12 +467,12 @@ bldg:BuildingRoom a owl:Class ;
         core:AbstractUnoccupiedSpace .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    rdfs:range bldg:BuildingInstallationFunctionValue ;
-    skos:definition "Specifies the intended purposes of the BuildingInstallation."@en .
+    skos:definition "Specifies the intended purposes of the BuildingInstallation."@en ;
+    schema:rangeIncludes bldg:BuildingInstallationFunctionValue .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    rdfs:range bldg:BuildingInstallationUsageValue ;
-    skos:definition "Specifies the actual uses of the BuildingInstallation."@en .
+    skos:definition "Specifies the actual uses of the BuildingInstallation."@en ;
+    schema:rangeIncludes bldg:BuildingInstallationUsageValue .
 
 bldg:RoomElevationReferenceValue a owl:Class ;
     rdfs:label "RoomElevationReferenceValue"@en ;
@@ -601,8 +601,8 @@ bldg:BuildingInstallationUsageValue a owl:Class ;
     skos:definition "BuildingInstallationUsageValue is a code list that enumerates the different uses of a BuildingInstallation."@en .
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    rdfs:range bldg:BuildingInstallationClassValue ;
-    skos:definition "Indicates the specific type of the BuildingInstallation."@en .
+    skos:definition "Indicates the specific type of the BuildingInstallation."@en ;
+    schema:rangeIncludes bldg:BuildingInstallationClassValue .
 
 bldg:BuildingInstallationClassValue a owl:Class ;
     rdfs:label "BuildingInstallationClassValue"@en ;

@@ -287,12 +287,12 @@ brid:BridgeRoom a owl:Class ;
         core:AbstractUnoccupiedSpace .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    rdfs:range brid:BridgeConstructiveElementFunctionValue ;
-    skos:definition "Specifies the intended purposes of the BridgeConstructiveElement."@en .
+    skos:definition "Specifies the intended purposes of the BridgeConstructiveElement."@en ;
+    schema:rangeIncludes brid:BridgeConstructiveElementFunctionValue .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    rdfs:range brid:BridgeConstructiveElementUsageValue ;
-    skos:definition "Specifies the actual uses of the BridgeConstructiveElement."@en .
+    skos:definition "Specifies the actual uses of the BridgeConstructiveElement."@en ;
+    schema:rangeIncludes brid:BridgeConstructiveElementUsageValue .
 
 brid:AbstractBridge a owl:Class ;
     rdfs:label "AbstractBridge"@en ;
@@ -345,8 +345,8 @@ brid:BridgeConstructiveElementUsageValue a owl:Class ;
     skos:definition "BridgeConstructiveElementUsageValue is a code list that enumerates the different uses of a BridgeConstructiveElement."@en .
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    rdfs:range brid:BridgeConstructiveElementClassValue ;
-    skos:definition "Indicates the specific type of the BridgeConstructiveElement."@en .
+    skos:definition "Indicates the specific type of the BridgeConstructiveElement."@en ;
+    schema:rangeIncludes brid:BridgeConstructiveElementClassValue .
 
 brid:BridgeConstructiveElementClassValue a owl:Class ;
     rdfs:label "BridgeConstructiveElementClassValue"@en ;

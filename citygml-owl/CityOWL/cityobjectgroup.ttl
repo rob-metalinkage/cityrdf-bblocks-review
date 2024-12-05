@@ -32,12 +32,12 @@ grpcode:CityObjectGroupUsageValue a skos:ConceptScheme ;
     skos:definition "CityObjectGroupUsageValue is a code list that enumerates the different uses of a CityObjectGroup."@en .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    rdfs:range grp:CityObjectGroupFunctionValue ;
-    skos:definition "Specifies the intended purposes of the CityObjectGroup."@en .
+    skos:definition "Specifies the intended purposes of the CityObjectGroup."@en ;
+    schema:rangeIncludes grp:CityObjectGroupFunctionValue .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    rdfs:range grp:CityObjectGroupUsageValue ;
-    skos:definition "Specifies the actual usages of the CityObjectGroup."@en .
+    skos:definition "Specifies the actual usages of the CityObjectGroup."@en ;
+    schema:rangeIncludes grp:CityObjectGroupUsageValue .
 
 grp:CityObjectGroup a owl:Class ;
     rdfs:label "CityObjectGroup"@en ;
@@ -78,8 +78,8 @@ grp:role a owl:DatatypeProperty ;
     skos:definition "Describes the role the city object plays within the CityObjectGroup."@en .
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    rdfs:range grp:CityObjectGroupClassValue ;
-    skos:definition "Indicates the specific type of the CityObjectGroup."@en .
+    skos:definition "Indicates the specific type of the CityObjectGroup."@en ;
+    schema:rangeIncludes grp:CityObjectGroupClassValue .
 
 grp:CityObjectGroupFunctionValue a owl:Class ;
     rdfs:label "CityObjectGroupFunctionValue"@en ;

@@ -358,12 +358,12 @@ gen:codeSpace a owl:DatatypeProperty ;
     skos:definition "Associates the GenericAttributeSet with an authority that maintains the collection of generic attributes."@en .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    rdfs:range gen:GenericUnoccupiedSpaceFunctionValue ;
-    skos:definition "Specifies the intended purposes of the GenericUnoccupiedSpace."@en .
+    skos:definition "Specifies the intended purposes of the GenericUnoccupiedSpace."@en ;
+    schema:rangeIncludes gen:GenericUnoccupiedSpaceFunctionValue .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    rdfs:range gen:GenericUnoccupiedSpaceUsageValue ;
-    skos:definition "Specifies the actual uses of the GenericUnoccupiedSpace."@en .
+    skos:definition "Specifies the actual uses of the GenericUnoccupiedSpace."@en ;
+    schema:rangeIncludes gen:GenericUnoccupiedSpaceUsageValue .
 
 gen:GenericUnoccupiedSpaceFunctionValue a owl:Class ;
     rdfs:label "GenericUnoccupiedSpaceFunctionValue"@en ;
@@ -376,8 +376,8 @@ gen:GenericUnoccupiedSpaceUsageValue a owl:Class ;
     skos:definition "GenericUnoccupiedSpaceUsageValue is a code list that enumerates the different uses of a GenericUnoccupiedSpace."@en .
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    rdfs:range gen:GenericUnoccupiedSpaceClassValue ;
-    skos:definition "Indicates the specific type of the GenericUnoccupiedSpace."@en .
+    skos:definition "Indicates the specific type of the GenericUnoccupiedSpace."@en ;
+    schema:rangeIncludes gen:GenericUnoccupiedSpaceClassValue .
 
 gen:GenericUnoccupiedSpaceClassValue a owl:Class ;
     rdfs:label "GenericUnoccupiedSpaceClassValue"@en ;
@@ -385,10 +385,10 @@ gen:GenericUnoccupiedSpaceClassValue a owl:Class ;
     skos:definition "GenericUnoccupiedSpaceClassValue is a code list used to further classify a GenericUnoccupiedSpace."@en .
 
 <https://www.opengis.net/ont/citygml/common/value> rdfs:label "value"@en ;
-    rdfs:range xsd:double ;
-    skos:definition "Specifies the \"Double\" value."@en .
+    skos:definition "Specifies the \"Double\" value."@en ;
+    schema:rangeIncludes xsd:double .
 
 <https://www.opengis.net/ont/citygml/common/name> rdfs:label "name"@en ;
-    rdfs:range xsd:string ;
-    skos:definition "Specifies the name of the DoubleAttribute."@en .
+    skos:definition "Specifies the name of the DoubleAttribute."@en ;
+    schema:rangeIncludes xsd:string .
 

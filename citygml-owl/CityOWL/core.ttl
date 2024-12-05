@@ -209,8 +209,8 @@ corecode:TopologicalRelationTypeValue a skos:ConceptScheme ;
     schema:rangeIncludes core:AbstractSpaceBoundary .
 
 <https://www.opengis.net/ont/citygml/common/name> rdfs:label "name"@en ;
-    rdfs:range xsd:Name ;
-    skos:definition "Specifies the name of the feature."@en .
+    skos:definition "Specifies the name of the feature."@en ;
+    schema:rangeIncludes xsd:Name .
 
 core:AbstractUnoccupiedSpace a owl:Class ;
     rdfs:label "AbstractUnoccupiedSpace"@en ;
@@ -271,8 +271,8 @@ core:generalizesTo a owl:ObjectProperty ;
     schema:rangeIncludes core:AbstractAppearance .
 
 <https://www.opengis.net/ont/citygml/common/description> rdfs:label "description"@en ;
-    rdfs:range xsd:string ;
-    skos:definition "Provides further information on the feature."@en .
+    skos:definition "Provides further information on the feature."@en ;
+    schema:rangeIncludes xsd:string .
 
 <https://www.opengis.net/ont/citygml/common/genericAttribute> skos:definition "Relates generic attributes to the CityObjectRelation."@en,
         "Relates generic attributes to the city object."@en ;
@@ -281,8 +281,8 @@ core:generalizesTo a owl:ObjectProperty ;
     schema:rangeIncludes core:AbstractGenericAttribute .
 
 <https://www.opengis.net/ont/citygml/common/mimeType> rdfs:label "mimeType"@en ;
-    rdfs:range core:MimeTypeValue ;
-    skos:definition "Specifies the MIME type of the external file that stores the prototypical geometry."@en .
+    skos:definition "Specifies the MIME type of the external file that stores the prototypical geometry."@en ;
+    schema:rangeIncludes core:MimeTypeValue .
 
 <https://www.opengis.net/ont/citygml/common/referencePoint> skos:definition "Relates to a 3D Point geometry that represents the base point of the object in the world coordinate system."@en ;
     schema:domainIncludes core:ImplicitGeometry ;
@@ -632,8 +632,8 @@ core:xalAddress a owl:ObjectProperty ;
         core:CityObjectRelation .
 
 <https://www.opengis.net/ont/citygml/common/value> rdfs:label "value"@en ;
-    rdfs:range xsd:double ;
-    skos:definition "Specifies the double value."@en .
+    skos:definition "Specifies the double value."@en ;
+    schema:rangeIncludes xsd:double .
 
 core:AbstractDynamizer a owl:Class ;
     rdfs:label "AbstractDynamizer"@en ;

@@ -399,8 +399,8 @@ tran:trafficSpace a owl:ObjectProperty ;
         tran:TrafficArea .
 
 <https://www.opengis.net/ont/citygml/common/occupancy> rdfs:label "occupancy"@en ;
-    rdfs:range core:Occupancy ;
-    skos:definition "Provides information on the residency of persons, vehicles, or other moving features in the transportation space."@en .
+    skos:definition "Provides information on the residency of persons, vehicles, or other moving features in the transportation space."@en ;
+    schema:rangeIncludes core:Occupancy .
 
 tran:AuxiliaryTrafficArea a owl:Class ;
     rdfs:label "AuxiliaryTrafficArea"@en ;
@@ -673,12 +673,12 @@ tran:SurfaceMaterialValue a owl:Class ;
     skos:definition "SurfaceMaterialValue is a code list that enumerates the different surface materials."@en .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    rdfs:range tran:RoadFunctionValue ;
-    skos:definition "Specifies the intended purposes of the Road."@en .
+    skos:definition "Specifies the intended purposes of the Road."@en ;
+    schema:rangeIncludes tran:RoadFunctionValue .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    rdfs:range tran:RoadUsageValue ;
-    skos:definition "Specifies the actual uses of the Road."@en .
+    skos:definition "Specifies the actual uses of the Road."@en ;
+    schema:rangeIncludes tran:RoadUsageValue .
 
 tran:TrafficSpace a owl:Class ;
     rdfs:label "TrafficSpace"@en ;
@@ -764,8 +764,8 @@ tran:RoadUsageValue a owl:Class ;
     skos:definition "RoadUsageValue is a code list that enumerates the different uses of a Road."@en .
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    rdfs:range tran:RoadClassValue ;
-    skos:definition "Indicates the specific type of the Road."@en .
+    skos:definition "Indicates the specific type of the Road."@en ;
+    schema:rangeIncludes tran:RoadClassValue .
 
 tran:RoadClassValue a owl:Class ;
     rdfs:label "RoadClassValue"@en ;

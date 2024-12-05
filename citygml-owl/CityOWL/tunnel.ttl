@@ -252,12 +252,12 @@ tun:TunnelPart a owl:Class ;
     rdfs:subClassOf tun:AbstractTunnel .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    rdfs:range tun:HollowSpaceFunctionValue ;
-    skos:definition "Specifies the intended purposes of the HollowSpace."@en .
+    skos:definition "Specifies the intended purposes of the HollowSpace."@en ;
+    schema:rangeIncludes tun:HollowSpaceFunctionValue .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    rdfs:range tun:HollowSpaceUsageValue ;
-    skos:definition "Specifies the actual uses of the HollowSpace."@en .
+    skos:definition "Specifies the actual uses of the HollowSpace."@en ;
+    schema:rangeIncludes tun:HollowSpaceUsageValue .
 
 tun:HollowSpace a owl:Class ;
     rdfs:label "HollowSpace"@en ;
@@ -326,8 +326,8 @@ tun:HollowSpaceUsageValue a owl:Class ;
     skos:definition "HollowSpaceUsageValue is a code list that enumerates the different uses of a HollowSpace."@en .
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    rdfs:range tun:HollowSpaceClassValue ;
-    skos:definition "Indicates the specific type of the HollowSpace."@en .
+    skos:definition "Indicates the specific type of the HollowSpace."@en ;
+    schema:rangeIncludes tun:HollowSpaceClassValue .
 
 tun:HollowSpaceClassValue a owl:Class ;
     rdfs:label "HollowSpaceClassValue"@en ;

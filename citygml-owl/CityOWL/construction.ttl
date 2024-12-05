@@ -89,12 +89,12 @@ concode:WindowUsageValue a skos:ConceptScheme ;
     skos:definition "WindowUsageValue is a code list that enumerates the different uses of a Window."@en .
 
 <https://www.opengis.net/ont/citygml/common/elevation> rdfs:label "elevation"@en ;
-    rdfs:range con:Elevation ;
-    skos:definition "Specifies qualified elevations of the construction in relation to a well-defined surface which is commonly taken as origin (e.g. geoid or water level). [cf. INSPIRE]"@en .
+    skos:definition "Specifies qualified elevations of the construction in relation to a well-defined surface which is commonly taken as origin (e.g. geoid or water level). [cf. INSPIRE]"@en ;
+    schema:rangeIncludes con:Elevation .
 
 <https://www.opengis.net/ont/citygml/common/occupancy> rdfs:label "occupancy"@en ;
-    rdfs:range core:Occupancy ;
-    skos:definition "Provides qualified information on the residency of persons, animals, or other moveable objects in the construction."@en .
+    skos:definition "Provides qualified information on the residency of persons, animals, or other moveable objects in the construction."@en ;
+    schema:rangeIncludes core:Occupancy .
 
 con:AbstractInstallation a owl:Class ;
     rdfs:label "AbstractInstallation"@en ;
@@ -219,24 +219,24 @@ con:height a owl:ObjectProperty ;
     schema:rangeIncludes core:Address .
 
 <https://www.opengis.net/ont/citygml/common/description> rdfs:label "description"@en ;
-    rdfs:range xsd:string ;
-    skos:definition "Provides additional information on the event."@en .
+    skos:definition "Provides additional information on the event."@en ;
+    schema:rangeIncludes xsd:string .
 
 <https://www.opengis.net/ont/citygml/common/highReference> rdfs:label "highReference"@en ;
-    rdfs:range con:ElevationReferenceValue ;
-    skos:definition "Indicates the high point used to calculate the value of the height. [cf. INSPIRE]"@en .
+    skos:definition "Indicates the high point used to calculate the value of the height. [cf. INSPIRE]"@en ;
+    schema:rangeIncludes con:ElevationReferenceValue .
 
 <https://www.opengis.net/ont/citygml/common/lowReference> rdfs:label "lowReference"@en ;
-    rdfs:range con:ElevationReferenceValue ;
-    skos:definition "Indicates the low point used to calculate the value of the height. [cf. INSPIRE]"@en .
+    skos:definition "Indicates the low point used to calculate the value of the height. [cf. INSPIRE]"@en ;
+    schema:rangeIncludes con:ElevationReferenceValue .
 
 <https://www.opengis.net/ont/citygml/common/status> rdfs:label "status"@en ;
-    rdfs:range con:HeightStatusValue ;
-    skos:definition "Indicates the way the height has been captured. [cf. INSPIRE]"@en .
+    skos:definition "Indicates the way the height has been captured. [cf. INSPIRE]"@en ;
+    schema:rangeIncludes con:HeightStatusValue .
 
 <https://www.opengis.net/ont/citygml/common/value> rdfs:label "value"@en ;
-    rdfs:range sc:Measure ;
-    skos:definition "Specifies the value of the height above or below ground. [cf. INSPIRE]"@en .
+    skos:definition "Specifies the value of the height above or below ground. [cf. INSPIRE]"@en ;
+    schema:rangeIncludes sc:Measure .
 
 con:AbstractConstruction a owl:Class ;
     rdfs:label "AbstractConstruction"@en ;
@@ -462,12 +462,12 @@ con:relationToConstruction a owl:DatatypeProperty ;
     skos:definition "Indicates whether the installation is located inside and/or outside of the construction."@en .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    rdfs:range con:DoorFunctionValue ;
-    skos:definition "Specifies the intended purposes of the Door."@en .
+    skos:definition "Specifies the intended purposes of the Door."@en ;
+    schema:rangeIncludes con:DoorFunctionValue .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    rdfs:range con:DoorUsageValue ;
-    skos:definition "Specifies the actual uses of the Door."@en .
+    skos:definition "Specifies the actual uses of the Door."@en ;
+    schema:rangeIncludes con:DoorUsageValue .
 
 con:ConditionOfConstructionValue a rdfs:Datatype ;
     rdfs:label "ConditionOfConstructionValue"@en ;
@@ -539,8 +539,8 @@ con:DoorUsageValue a owl:Class ;
     skos:definition "DoorUsageValue is a code list that enumerates the different uses of a Door."@en .
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    rdfs:range con:DoorClassValue ;
-    skos:definition "Indicates the specific type of the Door."@en .
+    skos:definition "Indicates the specific type of the Door."@en ;
+    schema:rangeIncludes con:DoorClassValue .
 
 con:DoorClassValue a owl:Class ;
     rdfs:label "DoorClassValue"@en ;

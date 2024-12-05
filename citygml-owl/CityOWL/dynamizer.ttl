@@ -7,6 +7,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -550,8 +551,8 @@ dyn:TimeValuePair a owl:Class ;
     skos:definition "A TimeValuePair represents a value that is valid for a given timepoint. For each TimeValuePair, only one of the value properties can be used mutually exclusive. Which value property has to be provided depends on the selected value type in the GenericTimeSeries feature, in which the TimeValuePair is included."@en .
 
 <https://www.opengis.net/ont/citygml/common/mimeType> rdfs:label "mimeType"@en ;
-    rdfs:range core:MimeTypeValue ;
-    skos:definition "Specifies the MIME type of the external timeseries file."@en .
+    skos:definition "Specifies the MIME type of the external timeseries file."@en ;
+    schema:rangeIncludes core:MimeTypeValue .
 
 dyn:AuthenticationTypeValue a owl:Class ;
     rdfs:label "AuthenticationTypeValue"@en ;
