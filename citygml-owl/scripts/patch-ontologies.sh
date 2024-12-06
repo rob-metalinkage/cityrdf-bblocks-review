@@ -35,6 +35,20 @@ python update_graph.py ../stage-1/ACMAPPER/document/document.ttl ../stage-1/ACMA
 
 python ontologyPatcher.py ../stage-1/ACMAPPER/document/document.ttl ../stage-2/document.ttl
 echo "patching dynamizer.ttl"
+python update_graph.py ../stage-1/ACMAPPER/dynamizer/dynamizer.ttl ../stage-1/ACMAPPER/dynamizer/dynamizer.ttl \
+   'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+    DELETE 
+		{<https://www.opengis.net/ont/citygml/dynamizer> owl:imports ?s . }
+	where {
+			select *
+			where {
+			<https://www.opengis.net/ont/citygml/dynamizer> owl:imports ?s . 
+    		filter(strends(str(?s),"time")=true)
+		}};
+    INSERT DATA {
+        <https://www.opengis.net/ont/citygml/dynamizer> owl:imports <http://www.w3.org/2006/time> .
+    }'
+
 python ontologyPatcher.py ../stage-1/ACMAPPER/dynamizer/dynamizer.ttl ../stage-2/dynamizer.ttl
 echo "patching generics.ttl"
 python ontologyPatcher.py ../stage-1/ACMAPPER/generics/generics.ttl ../stage-2/generics.ttl
