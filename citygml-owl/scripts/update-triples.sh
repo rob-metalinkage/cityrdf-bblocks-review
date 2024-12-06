@@ -439,7 +439,7 @@ echo 'inserts presence of global properties in axioms'
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX common: <https://www.opengis.net/ont/citygml/common#>
+PREFIX common: <https://www.opengis.net/ont/citygml/common>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 insert { 
     ?s owl:onProperty ?new .
