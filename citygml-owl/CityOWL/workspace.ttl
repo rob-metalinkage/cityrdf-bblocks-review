@@ -1,6 +1,7 @@
 @prefix core: <https://www.opengis.net/ont/citygml/core/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vers: <https://www.opengis.net/ont/citygml/versioning/> .
 @prefix wksp: <https://www.opengis.net/ont/citygml/workspace/> .
@@ -9,8 +10,11 @@
 <https://www.opengis.net/ont/citygml/workspace> a owl:Ontology ;
     rdfs:label "Workspace"@en ;
     owl:imports <http://def.isotc211.org/iso19150/-2/2012/base>,
+        <https://www.opengis.net/ont/citygml/common>,
         <https://www.opengis.net/ont/citygml/core>,
         <https://www.opengis.net/ont/citygml/versioning> ;
+    owl:versionIRI <https://www.opengis.net/ont/citygml/workspace/3.0.0/> ;
+    owl:versionInfo "3.0.0" ;
     skos:definition "This pattern provides a starting point for modeling a GML Application Schema which is a specialized xml schema that uses the Geographic Markup Language to model Features to provide the basis for interoperability within a community of interest."@en .
 
 wksp:ConcensusSpace a owl:Class ;
@@ -18,25 +22,8 @@ wksp:ConcensusSpace a owl:Class ;
     rdfs:subClassOf wksp:Space ;
     owl:disjointWith wksp:PropositionSpace .
 
-wksp:Scenario.versionMember a owl:ObjectProperty ;
-    rdfs:label "versionMember"@en ;
-    rdfs:domain wksp:Scenario ;
-    rdfs:range vers:Version .
-
-wksp:Scenario.versionTransitionMember a owl:ObjectProperty ;
-    rdfs:label "versionTransitionMember"@en ;
-    rdfs:domain wksp:Scenario ;
-    rdfs:range vers:VersionTransition .
-
-wksp:Space.scenarioMember a owl:ObjectProperty ;
-    rdfs:label "scenarioMember"@en ;
-    rdfs:domain wksp:Space ;
-    rdfs:range wksp:Scenario .
-
-wksp:Workspace.spaceMember a owl:ObjectProperty ;
-    rdfs:label "spaceMember"@en ;
-    rdfs:domain wksp:Workspace ;
-    rdfs:range wksp:Space .
+<https://www.opengis.net/ont/citygml/common/versionMember> schema:domainIncludes wksp:Scenario ;
+    schema:rangeIncludes vers:Version .
 
 wksp:PropositionSpace a owl:Class ;
     rdfs:label "PropositionSpace"@en ;
@@ -60,9 +47,24 @@ wksp:Workspace a owl:Class ;
             owl:onProperty wksp:creator ],
         core:AbstractFeatureWithLifespan .
 
+wksp:versionTransitionMember a owl:ObjectProperty ;
+    rdfs:label "versionTransitionMember"@en ;
+    rdfs:domain wksp:Scenario ;
+    rdfs:range vers:VersionTransition .
+
+wksp:scenarioMember a owl:ObjectProperty ;
+    rdfs:label "scenarioMember"@en ;
+    rdfs:domain wksp:Space ;
+    rdfs:range wksp:Scenario .
+
 wksp:creator a owl:DatatypeProperty ;
     rdfs:label "creator"@en ;
     rdfs:range xsd:string .
+
+wksp:spaceMember a owl:ObjectProperty ;
+    rdfs:label "spaceMember"@en ;
+    rdfs:domain wksp:Workspace ;
+    rdfs:range wksp:Space .
 
 wksp:Scenario a owl:Class ;
     rdfs:label "Scenario"@en ;
@@ -80,14 +82,14 @@ wksp:Scenario a owl:Class ;
 wksp:Space a owl:Class ;
     rdfs:label "Space"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass wksp:Scenario ;
+            owl:onProperty wksp:scenarioMember ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty wksp:creator ],
         [ a owl:Restriction ;
             owl:allValuesFrom wksp:Scenario ;
-            owl:onProperty wksp:scenarioMember ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass wksp:Scenario ;
             owl:onProperty wksp:scenarioMember ],
         core:AbstractFeatureWithLifespan .
 

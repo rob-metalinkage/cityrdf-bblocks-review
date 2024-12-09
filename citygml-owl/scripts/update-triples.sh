@@ -12,6 +12,11 @@ python add_triples.py ../stage-2/bridge.ttl ../stage-1/ACMAPPER/bridge/bridge_co
 echo 'Adding building-codes.ttl'
 python add_triples.py ../stage-2/building.ttl ../stage-1/ACMAPPER/building/building_codes.ttl ../CityOWL/building.ttl
 echo 'Adding construction-codes.ttl'
+echo 'Adding group-codes.ttl'
+python add_triples.py ../stage-2/cityfurniture.ttl ../stage-1/ACMAPPER/cityfurniture/cityfurniture_codes.ttl ../CityOWL/cityfurniture.ttl
+echo 'Adding generics-codes.ttl'
+python add_triples.py ../stage-2/cityobjectgroup.ttl ../stage-1/ACMAPPER/cityobjectgroup/cityobjectgroup_codes.ttl ../CityOWL/cityobjectgroup.ttl
+echo 'Adding landuse-codes.ttl'
 python add_triples.py ../stage-2/construction.ttl ../stage-1/ACMAPPER/construction/construction_codes.ttl ../CityOWL/construction.ttl
 echo 'Adding core-codes.ttl'
 python add_triples.py ../stage-2/core.ttl ../stage-1/ACMAPPER/core/core_codes.ttl ../CityOWL/core.ttl
@@ -20,14 +25,13 @@ python add_triples.py ../stage-2/document.ttl ../stage-1/ACMAPPER/document/docum
 echo 'Adding dynamizer-codes.ttl'
 python add_triples.py ../stage-2/dynamizer.ttl ../stage-1/ACMAPPER/dynamizer/dynamizer_codes.ttl ../CityOWL/dynamizer.ttl
 echo 'Adding furniture-codes.ttl'
-python add_triples.py ../stage-2/cityfurniture.ttl ../stage-1/ACMAPPER/cityfurniture/cityfurniture_codes.ttl ../CityOWL/cityfurniture.ttl
-echo 'Adding generics-codes.ttl'
 python add_triples.py ../stage-2/generics.ttl ../stage-1/ACMAPPER/generics/generics_codes.ttl ../CityOWL/generics.ttl
-echo 'Adding group-codes.ttl'
-python add_triples.py ../stage-2/cityobjectgroup.ttl ../stage-1/ACMAPPER/cityobjectgroup/cityobjectgroup_codes.ttl ../CityOWL/cityobjectgroup.ttl
-echo 'Adding landuse-codes.ttl'
 python add_triples.py ../stage-2/landuse.ttl ../stage-1/ACMAPPER/landuse/landuse_codes.ttl ../CityOWL/landuse.ttl
 echo 'Adding transportation-codes.ttl'
+echo 'Copying pointcloud.ttl'
+cp ../stage-2/pointcloud.ttl ../CityOWL/
+echo 'Copying relief.ttl'
+cp ../stage-2/relief.ttl ../CityOWL/
 python add_triples.py ../stage-2/transportation.ttl ../stage-1/ACMAPPER/transportation/transportation_codes.ttl ../CityOWL/transportation.ttl
 echo 'Adding tunnel-codes.ttl'
 python add_triples.py ../stage-2/tunnel.ttl ../stage-1/ACMAPPER/tunnel/tunnel_codes.ttl ../CityOWL/tunnel.ttl
@@ -35,12 +39,10 @@ echo 'Adding vegetation-codes.ttl'
 python add_triples.py ../stage-2/vegetation.ttl ../stage-1/ACMAPPER/vegetation/vegetation_codes.ttl ../CityOWL/vegetation.ttl
 echo 'Copying versioning.ttl'
 cp ../stage-2/versioning.ttl ../CityOWL/
-echo 'Copying relief.ttl'
-cp ../stage-2/relief.ttl ../CityOWL/
-echo 'Copying pointcloud.ttl'
-cp ../stage-2/pointcloud.ttl ../CityOWL/
 echo 'Adding waterbody-codes.ttl'
 python add_triples.py ../stage-2/waterbody.ttl ../stage-1/ACMAPPER/waterbody/waterbody_codes.ttl ../CityOWL/waterbody.ttl
+echo 'Copying workspace.ttl'
+cp ../stage-2/workspace.ttl ../CityOWL/
 
 # ### Additional modification ###
 echo 'Adding cityModelMember modifications'
@@ -117,10 +119,27 @@ files=("../CityOWL/appearance.ttl" "../CityOWL/bridge.ttl" "../CityOWL/building.
 for file in ${files[@]}; do
 echo $file
 
-### added removal of ADE*/ade*
-### #5 deletes bnodes representing restrictions involving ade* objprops AND subclass axioms mentioning those bnodes
+python update_graph.py $file $file \
+    'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+     INSERT {
+        ?ont owl:versionIRI ?vers .
+	    ?ont owl:versionInfo "3.0.0" .    
+        } where {select ?ont ?vers where {?ont a owl:Ontology .
+                bind(IRI(concat(str(?ont), "/3.0.0/")) as ?vers)
+            }}'
 
-echo 'deletes presence of ADE* classes and ade* properties'
+python update_graph.py $file $file \
+    'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+     INSERT {
+        ?ont owl:imports <https://www.opengis.net/ont/citygml/common> .     
+            } where {select ?ont where {?ont a owl:Ontology .
+        filter(strends(str(?ont),"code")=false) }}'
+
+
+### added removal of ADE*/ade*
+### #1 deletes bnodes representing restrictions involving ade* objprops AND subclass axioms mentioning those bnodes
+
+echo '#1 removal of ADE* classes and ade* properties'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -164,9 +183,9 @@ delete {
         	filter (strstarts(?xc, "ADE") )
     }}'
 
-### #1. inserts common:propertyname where ns:propertyname refs to package level
+### #2. inserts common:propertyname where ns:propertyname refs to package level
 
-echo 'inserting common:propertyname'
+echo '#2 insert common:propertyname'
 
 python update_graph.py $file $file \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -213,8 +232,8 @@ where {
         bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?x)) as ?new)
     }}'
 
-### #2 deletes all objprops defs that will be replaced with global scope ones
-echo 'deleting package-level ns:propertyname for common properties'
+### #3 deletes all objprops defs that will be replaced with global scope ones
+echo '#3 delete package-level ns:propertyname for common properties'
 
 python update_graph.py $file $file \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -298,9 +317,9 @@ python update_graph.py $file $file \
 "https://www.opengis.net/ont/citygml/workspace/"))
     }}'
 
-### #3 inserts common:objprops refs into axioms
+### #4 inserts common:objprops refs into axioms
 
-echo 'inserts presence of global properties in axioms'
+echo '#4 insert global properties in axioms'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -319,8 +338,8 @@ where {
     bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?x)) as ?new)
     }}'
 
-### #4 deletes all objprops mentions in axioms that will be replaced with global scope ones
-echo 'deletes presence of global properties in axioms'
+### #5 delete all objprops mentions in axioms that will be replaced with global scope ones
+echo '#5 delete local-scoped reused properties in axioms'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -355,8 +374,8 @@ where {
 "https://www.opengis.net/ont/citygml/workspace/"))
 }}'
 
-### 6 adds new global properties for those reused >1 per CityGML family
-echo 'add properties reused more than once per CityGML family'
+### 6 add new global properties for those reused >1 per CityGML family
+echo '#6 add properties reused more than once per CityGML family'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -380,18 +399,17 @@ where {
     ?s rdfs:label ?classIndependentPropName .
     ?s rdfs:domain ?domainToInclude .
     ?s rdfs:range ?rangeToInclude .
-    ?s skos:definition ?def .    
+    optional{?s skos:definition ?def .}
     filter (str(?classIndependentPropName) in ("boundary","address","mimeType","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","occupancy","elevation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization", "referringTo"))
     bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",str(?classIndependentPropName))) 
             					as ?classIndependentPropNameNew)
     }}'
 
 ### 7 removes old definitions of (local) properties for those reused >1 per CityGML family
-echo 'removes old definitions of properties reused more than once per CityGML family'
+echo '#7 remove old definitions of properties reused more than once per CityGML family'
 
 python update_graph.py $file $file \
-    '#7
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 delete { 
@@ -409,7 +427,7 @@ where { select ?s ?classIndependentPropName ?domainToInclude ?rangeToInclude ?de
 	?s rdfs:label ?classIndependentPropName .
     ?s rdfs:domain ?domainToInclude .
     ?s rdfs:range ?rangeToInclude .
-    ?s skos:definition ?def .    
+    optional{?s skos:definition ?def .}
     filter (str(?classIndependentPropName) in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization", "referringTo"))
         filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
 "https://www.opengis.net/ont/citygml/bridge/", 
@@ -434,7 +452,7 @@ where { select ?s ?classIndependentPropName ?domainToInclude ?rangeToInclude ?de
 
 ### #8 inserts common:props refs into axioms for those properties that are reused > 1 per Ontology family
 
-echo 'inserts presence of global properties in axioms'
+echo '#8 insert presence of global properties in axioms'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -455,7 +473,7 @@ bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",strafter(?x,".")))
 '
 
 ### #9 deletes all (local) props mentions in axioms for those properties reused >1 
-echo 'deletes presence of global properties in axioms'
+echo '#9 delete presence of global properties in axioms'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -490,8 +508,8 @@ where {
 "https://www.opengis.net/ont/citygml/workspace/"))
     }}'
 
-### #10 inserts simplified (=without class in ns:Class.prop) local props used once in a package
-echo 'inserts simplified (=without class in ns:Class.prop) local props used once in a package'
+### #10 inserts class-less (=without class in ns:Class.prop) local props used once in a package
+echo '#10 insert class-less (=without class in ns:Class.prop) local props used once in a package'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -536,8 +554,51 @@ select ?s ?domain ?range ?def ?classIndependentPropName ?new
 "https://www.opengis.net/ont/citygml/workspace/"))
     }}'
 
+### for properties defined without skos:definition
+python update_graph.py $file $file \
+     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+insert { 
+    ?new a owl:ObjectProperty .    
+    ?new rdfs:range ?range .
+    ?new rdfs:label ?classIndependentPropName .
+    ?new rdfs:domain ?domain .
+    }
+where {
+select ?domain ?range ?def ?classIndependentPropName ?new
+    where {
+	      ?s a owl:ObjectProperty .
+          optional{?s rdfs:domain ?domain.}
+          ?s rdfs:range ?range .
+          ?s rdfs:label ?classIndependentPropName .
+	bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
+    filter(?classIndependentPropName !="")
+    bind (IRI(concat(strbefore(str(?s),str(?x)),?classIndependentPropName)) as ?new)
+    filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
+"https://www.opengis.net/ont/citygml/bridge/", 
+"https://www.opengis.net/ont/citygml/building/", 
+"https://www.opengis.net/ont/citygml/cityfurniture/", 
+"https://www.opengis.net/ont/citygml/cityobjectgroup/", 
+"https://www.opengis.net/ont/citygml/construction/",  
+"https://www.opengis.net/ont/citygml/core/",  
+"https://www.opengis.net/ont/citygml/document/",  
+"https://www.opengis.net/ont/citygml/dynamizer/", 
+"https://www.opengis.net/ont/citygml/generics/", 
+"https://www.opengis.net/ont/citygml/landuse/", 
+"https://www.opengis.net/ont/citygml/pointcloud/", 
+"https://www.opengis.net/ont/citygml/relief/", 
+"https://www.opengis.net/ont/citygml/transportation/", 
+"https://www.opengis.net/ont/citygml/tunnel/", 
+"https://www.opengis.net/ont/citygml/vegetation/", 
+"https://www.opengis.net/ont/citygml/versioning/",
+"https://www.opengis.net/ont/citygml/waterbody/", 
+"https://www.opengis.net/ont/citygml/workspace/"))
+    }}'
+
+
 ### #11 deletes initial (=with class in ns:Class.prop) local props used once in a package
-echo '#11 deletes initial (=with class in ns:Class.prop) local props used once in a package'
+echo '#11 delete initial (=with class in ns:Class.prop) local props used once in a package'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -582,9 +643,53 @@ select ?s ?domain ?range ?def ?label
 "https://www.opengis.net/ont/citygml/workspace/"))
     }}'
 
+###for properties defined without skos:definition
+
+python update_graph.py $file $file \
+'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+delete { 
+        ?s a owl:ObjectProperty .
+        ?s rdfs:label ?label .
+        ?s rdfs:range ?range .
+    	?s rdfs:domain ?domain .
+    }
+where {
+select ?s ?domain ?range ?def ?label 
+    where {
+	      ?s a owl:ObjectProperty .
+          optional{?s rdfs:domain ?domain.}
+          ?s  rdfs:range ?range ;
+              rdfs:label ?label;
+	bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
+    bind(strbefore(?x,".") as ?class).
+    filter(?class !="")
+    filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
+"https://www.opengis.net/ont/citygml/bridge/", 
+"https://www.opengis.net/ont/citygml/building/", 
+"https://www.opengis.net/ont/citygml/cityfurniture/", 
+"https://www.opengis.net/ont/citygml/cityobjectgroup/", 
+"https://www.opengis.net/ont/citygml/construction/",  
+"https://www.opengis.net/ont/citygml/core/",  
+"https://www.opengis.net/ont/citygml/document/",  
+"https://www.opengis.net/ont/citygml/dynamizer/", 
+"https://www.opengis.net/ont/citygml/generics/", 
+"https://www.opengis.net/ont/citygml/landuse/", 
+"https://www.opengis.net/ont/citygml/pointcloud/", 
+"https://www.opengis.net/ont/citygml/relief/", 
+"https://www.opengis.net/ont/citygml/transportation/", 
+"https://www.opengis.net/ont/citygml/tunnel/", 
+"https://www.opengis.net/ont/citygml/vegetation/", 
+"https://www.opengis.net/ont/citygml/versioning/",
+"https://www.opengis.net/ont/citygml/waterbody/", 
+"https://www.opengis.net/ont/citygml/workspace/"))
+    }}'
+
+
 ### #12 inserts owl:onProperty for simplified (=without class in ns:Class.prop) local props used once in a package
 
-echo '#12 inserts owl:onProperty for simplified (=without class in ns:Class.prop) local props used once in a package'
+echo '#12 insert owl:onProperty for simplified (=without class in ns:Class.prop) local props used once in a package'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -606,7 +711,7 @@ where {
 
 ### #13 deletes owl:onProperty for initial (=with class in ns:Class.prop) local props used once in a package
 
-echo 'deletes owl:onProperty for initial (=with class in ns:Class.prop) local props used once in a package'
+echo '#13 delete owl:onProperty for initial (=with class in ns:Class.prop) local props used once in a package'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>

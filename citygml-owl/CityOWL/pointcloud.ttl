@@ -11,24 +11,35 @@
     rdfs:label "PointCloud"@en ;
     owl:imports <http://def.isotc211.org/iso19150/-2/2012/base>,
         <http://www.opengis.net/ont/gml>,
+        <https://www.opengis.net/ont/citygml/common>,
         <https://www.opengis.net/ont/citygml/core> ;
+    owl:versionIRI <https://www.opengis.net/ont/citygml/pointcloud/3.0.0/> ;
+    owl:versionInfo "3.0.0" ;
     skos:definition "The PointCloud module supports representation of CityGML features by a collection of points."@en .
 
 pcl:PointCloud a owl:Class ;
     rdfs:label "PointCloud"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anyURI ;
             owl:onProperty pcl:pointFile ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:MimeTypeValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:MultiPoint ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:MultiPoint ;
             owl:onProperty pcl:points ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:anyURI ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty pcl:pointFileSrsName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:MultiPoint ;
+            owl:onProperty pcl:points ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
             owl:onProperty pcl:pointFile ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:MimeTypeValue ;
@@ -36,14 +47,6 @@ pcl:PointCloud a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty pcl:pointFileSrsName ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty pcl:pointFileSrsName ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:MultiPoint ;
-            owl:onProperty pcl:points ],
         core:AbstractPointCloud .
 
 <https://www.opengis.net/ont/citygml/common/mimeType> rdfs:label "mimeType"@en ;

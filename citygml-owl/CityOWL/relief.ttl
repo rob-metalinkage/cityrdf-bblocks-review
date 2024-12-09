@@ -15,12 +15,19 @@
     rdfs:label "Relief"@en ;
     owl:imports <http://def.isotc211.org/iso19150/-2/2012/base>,
         <http://www.opengis.net/ont/gml>,
+        <https://www.opengis.net/ont/citygml/common>,
         <https://www.opengis.net/ont/citygml/core> ;
+    owl:versionIRI <https://www.opengis.net/ont/citygml/relief/3.0.0/> ;
+    owl:versionInfo "3.0.0" ;
     skos:definition "The Relief module supports representation of the terrain. CityGML supports terrain representations at different levels of detail, reflecting different accuracies or resolutions. Terrain may be specified as a regular raster or grid, as a TIN, by break lines, and/or by mass points."@en .
 
 dem:ReliefFeature a owl:Class ;
     rdfs:label "ReliefFeature"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass core:IntegerBetween0and3 ;
+            owl:onProperty dem:lod ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:allValuesFrom dem:AbstractReliefComponent ;
             owl:onProperty dem:reliefComponent ],
         [ a owl:Restriction ;
@@ -30,10 +37,6 @@ dem:ReliefFeature a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom core:IntegerBetween0and3 ;
             owl:onProperty dem:lod ],
-        [ a owl:Restriction ;
-            owl:onClass core:IntegerBetween0and3 ;
-            owl:onProperty dem:lod ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         core:AbstractSpaceBoundary .
 
 <https://www.opengis.net/ont/citygml/common/pointCloud> skos:definition "Relates to the 3D PointCloud of the MassPointRelief."@en ;
@@ -107,28 +110,24 @@ dem:tin a owl:ObjectProperty ;
 dem:BreaklineRelief a owl:Class ;
     rdfs:label "BreaklineRelief"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:MultiCurve ;
+            owl:onProperty dem:ridgeOrValleyLines ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:MultiCurve ;
+            owl:onProperty dem:ridgeOrValleyLines ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:MultiCurve ;
             owl:onProperty dem:breaklines ],
         [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:MultiCurve ;
-            owl:onProperty dem:ridgeOrValleyLines ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:MultiCurve ;
-            owl:onProperty dem:ridgeOrValleyLines ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:MultiCurve ;
             owl:onProperty dem:breaklines ],
         dem:AbstractReliefComponent .
 
 dem:MassPointRelief a owl:Class ;
     rdfs:label "MassPointRelief"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:AbstractPointCloud ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/pointCloud> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:MultiPoint ;
             owl:onProperty dem:reliefPoints ],
         [ a owl:Restriction ;
@@ -137,6 +136,10 @@ dem:MassPointRelief a owl:Class ;
             owl:onProperty dem:reliefPoints ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:AbstractPointCloud ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/pointCloud> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:AbstractPointCloud ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/pointCloud> ],
         dem:AbstractReliefComponent .
 
@@ -152,16 +155,16 @@ dem:AbstractReliefComponent a owl:Class ;
             owl:allValuesFrom core:IntegerBetween0and3 ;
             owl:onProperty dem:lod ],
         [ a owl:Restriction ;
-            owl:onClass core:IntegerBetween0and3 ;
-            owl:onProperty dem:lod ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:Surface ;
             owl:onProperty dem:extent ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:Surface ;
             owl:onProperty dem:extent ],
+        [ a owl:Restriction ;
+            owl:onClass core:IntegerBetween0and3 ;
+            owl:onProperty dem:lod ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         core:AbstractSpaceBoundary .
 
 [] a owl:AllDisjointClasses ;

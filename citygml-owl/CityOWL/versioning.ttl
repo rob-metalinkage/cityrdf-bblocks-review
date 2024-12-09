@@ -10,7 +10,10 @@
 <https://www.opengis.net/ont/citygml/versioning> a owl:Ontology ;
     rdfs:label "Versioning"@en ;
     owl:imports <http://def.isotc211.org/iso19150/-2/2012/base>,
+        <https://www.opengis.net/ont/citygml/common>,
         <https://www.opengis.net/ont/citygml/core> ;
+    owl:versionIRI <https://www.opengis.net/ont/citygml/versioning/3.0.0/> ;
+    owl:versionInfo "3.0.0" ;
     skos:definition "The Versioning module supports representation of multiple versions of CityGML features within a single CityGML model. In addition, also the version transitions and transactions that lead to the different versions can be represented."@en .
 
 vers:TransactionTypeValue a owl:Class ;
@@ -72,13 +75,36 @@ vers:to a owl:ObjectProperty ;
 vers:VersionTransition a owl:Class ;
     rdfs:label "VersionTransition"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange vers:TransitionTypeValue ;
-            owl:onProperty vers:type ],
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty vers:reason ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty vers:clonePredecessor ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass vers:Version ;
             owl:onProperty vers:to ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom vers:Version ;
+            owl:onProperty vers:from ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange vers:TransitionTypeValue ;
+            owl:onProperty vers:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty vers:clonePredecessor ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass vers:Version ;
+            owl:onProperty vers:from ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom vers:Version ;
+            owl:onProperty vers:to ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom vers:Transaction ;
+            owl:onProperty vers:transaction ],
         [ a owl:Restriction ;
             owl:allValuesFrom vers:TransitionTypeValue ;
             owl:onProperty vers:type ],
@@ -86,29 +112,6 @@ vers:VersionTransition a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty vers:reason ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom vers:Version ;
-            owl:onProperty vers:from ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty vers:reason ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom vers:Transaction ;
-            owl:onProperty vers:transaction ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass vers:Version ;
-            owl:onProperty vers:from ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:boolean ;
-            owl:onProperty vers:clonePredecessor ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom vers:Version ;
-            owl:onProperty vers:to ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty vers:clonePredecessor ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         core:AbstractVersionTransition .
 
 vers:Transaction a owl:Class ;

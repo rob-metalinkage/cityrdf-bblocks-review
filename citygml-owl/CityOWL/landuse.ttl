@@ -11,7 +11,10 @@
 <https://www.opengis.net/ont/citygml/landuse> a owl:Ontology ;
     rdfs:label "LandUse"@en ;
     owl:imports <http://def.isotc211.org/iso19150/-2/2012/base>,
+        <https://www.opengis.net/ont/citygml/common>,
         <https://www.opengis.net/ont/citygml/core> ;
+    owl:versionIRI <https://www.opengis.net/ont/citygml/landuse/3.0.0/> ;
+    owl:versionInfo "3.0.0" ;
     skos:definition "The LandUse module supports representation of areas of the earth’s surface dedicated to a specific land use."@en .
 
 luse:LandUse a owl:Class ;
@@ -31,7 +34,9 @@ luse:LandUse a owl:Class ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
         core:AbstractThematicSurface .
 
-luse:code a owl:Ontology .
+luse:code a owl:Ontology ;
+    owl:versionIRI <https://www.opengis.net/ont/citygml/landuse/code/3.0.0/> ;
+    owl:versionInfo "3.0.0" .
 
 lusecode:LandUseClassValue a skos:ConceptScheme ;
     rdfs:label "LandUseClassValue"@en ;
