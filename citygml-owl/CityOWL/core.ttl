@@ -413,12 +413,9 @@ core:ExternalReference a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "ExternalReference is a reference to a corresponding object in another information system, for example in the German cadastre (ALKIS), the German topographic information system (ATKIS), or the OS UK MasterMap®."@en .
 
-core:creationDate a owl:DatatypeProperty,
-        owl:ObjectProperty ;
+core:creationDate a owl:DatatypeProperty ;
     rdfs:label "creationDate"@en ;
-    rdfs:range xsd:dateTime,
-        time:Instant ;
-    rdfs:subPropertyOf time:hasBeginning ;
+    rdfs:range xsd:dateTime ;
     skos:definition "Indicates the date at which a CityGML feature was added to the CityModel."@en .
 
 core:engineeringCRS a owl:ObjectProperty ;
@@ -585,12 +582,9 @@ core:targetResource a owl:DatatypeProperty ;
     rdfs:range xsd:anyURI ;
     skos:definition "Specifies the URI that points to the object in the external information system."@en .
 
-core:terminationDate a owl:DatatypeProperty,
-        owl:ObjectProperty ;
+core:terminationDate a owl:DatatypeProperty ;
     rdfs:label "terminationDate"@en ;
-    rdfs:range xsd:dateTime,
-        time:Instant ;
-    rdfs:subPropertyOf time:hasEnd ;
+    rdfs:range xsd:dateTime ;
     skos:definition "Indicates the date at which a CityGML feature was removed from the CityModel."@en .
 
 core:transformationMatrix a owl:ObjectProperty ;
@@ -608,20 +602,14 @@ core:typeOfVolume a owl:ObjectProperty ;
     rdfs:range core:QualifiedVolumeTypeValue ;
     skos:definition "Indicates the specific type of the QualifiedVolume."@en .
 
-core:validFrom a owl:DatatypeProperty,
-        owl:ObjectProperty ;
+core:validFrom a owl:DatatypeProperty ;
     rdfs:label "validFrom"@en ;
-    rdfs:range xsd:dateTime,
-        time:Instant ;
-    rdfs:subPropertyOf time:hasBeginning ;
+    rdfs:range xsd:dateTime ;
     skos:definition "Indicates the date at which a CityGML feature started to exist in the real world."@en .
 
-core:validTo a owl:DatatypeProperty,
-        owl:ObjectProperty ;
+core:validTo a owl:DatatypeProperty ;
     rdfs:label "validTo"@en ;
-    rdfs:range xsd:dateTime,
-        time:Instant ;
-    rdfs:subPropertyOf time:hasEnd ;
+    rdfs:range xsd:dateTime ;
     skos:definition "Indicates the date at which a CityGML feature ended to exist in the real world."@en .
 
 core:xalAddress a owl:ObjectProperty ;
@@ -1006,34 +994,34 @@ core:AbstractAppearance a owl:Class ;
 core:AbstractFeatureWithLifespan a owl:Class ;
     rdfs:label "AbstractFeatureWithLifespan"@en ;
     iso19150-2:isAbstract true ;
-    rdfs:subClassOf [ a owl:Restriction ;
+    rdfs:subClassOf [ a owl:Restriction ;    
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass time:Instant ;
-            owl:onProperty core:validTo ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom time:Instant ;
+            owl:onDataRange xsd:dateTime ;
             owl:onProperty core:validTo ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass time:Instant ;
-            owl:onProperty core:validFrom ],
+            owl:onDataRange xsd:dateTime ;
+            owl:onProperty core:creationDate ],
         [ a owl:Restriction ;
-            owl:allValuesFrom time:Instant ;
+            owl:allValuesFrom xsd:dateTime ;
+            owl:onProperty core:terminationDate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:dateTime ;
+            owl:onProperty core:validTo ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:dateTime ;
             owl:onProperty core:validFrom ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass time:Instant ;
-            owl:onProperty core:creationDate ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom time:Instant ;
-            owl:onProperty core:creationDate ],
+            owl:onDataRange xsd:dateTime ;
+            owl:onProperty core:validFrom ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass time:Instant ;
+            owl:onDataRange xsd:dateTime ;
             owl:onProperty core:terminationDate ],
         [ a owl:Restriction ;
-            owl:allValuesFrom time:Instant ;
-            owl:onProperty core:terminationDate ],
+            owl:allValuesFrom xsd:dateTime ;
+            owl:onProperty core:creationDate ],
         core:AbstractFeature .
 
 core:AbstractPhysicalSpace a owl:Class ;
