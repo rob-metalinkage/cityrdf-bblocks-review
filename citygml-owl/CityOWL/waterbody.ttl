@@ -61,6 +61,13 @@ wtrcode:WaterLevelValue a skos:ConceptScheme ;
 wtr:WaterBody a owl:Class ;
     rdfs:label "WaterBody"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom wtr:AbstractWaterBoundarySurface ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/boundary> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass wtr:WaterBodyClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom wtr:WaterBodyClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
         [ a owl:Restriction ;
@@ -69,13 +76,6 @@ wtr:WaterBody a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom wtr:WaterBodyFunctionValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/function> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom wtr:AbstractWaterBoundarySurface ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/boundary> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass wtr:WaterBodyClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
         core:AbstractOccupiedSpace .
 
 wtr:WaterSurface a owl:Class ;

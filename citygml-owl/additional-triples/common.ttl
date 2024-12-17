@@ -32,6 +32,7 @@ common:occupancy  rdf:type owl:ObjectProperty; rdfs:label "occupancy"@en .
 common:occupancy rdf:type owl:ObjectProperty; rdfs:label "occupancy"@en.
 common:pointCloud  rdf:type owl:ObjectProperty; rdfs:label "pointCloud"@en .
 common:referencePoint  rdf:type owl:ObjectProperty; rdfs:label "referencePoint"@en .
+common:referringTo  rdf:type owl:ObjectProperty; rdfs:label "referringTo"@en .
 common:relatedTo  rdf:type owl:ObjectProperty; rdfs:label "relatedTo"@en .
 common:section  rdf:type owl:ObjectProperty; rdfs:label "section"@en .
 common:textureParameterization  rdf:type owl:ObjectProperty; rdfs:label "textureParameterization"@en .

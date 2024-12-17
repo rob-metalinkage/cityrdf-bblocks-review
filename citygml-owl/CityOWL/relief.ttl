@@ -155,16 +155,16 @@ dem:AbstractReliefComponent a owl:Class ;
             owl:allValuesFrom core:IntegerBetween0and3 ;
             owl:onProperty dem:lod ],
         [ a owl:Restriction ;
+            owl:onClass core:IntegerBetween0and3 ;
+            owl:onProperty dem:lod ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:Surface ;
             owl:onProperty dem:extent ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:Surface ;
             owl:onProperty dem:extent ],
-        [ a owl:Restriction ;
-            owl:onClass core:IntegerBetween0and3 ;
-            owl:onProperty dem:lod ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         core:AbstractSpaceBoundary .
 
 [] a owl:AllDisjointClasses ;

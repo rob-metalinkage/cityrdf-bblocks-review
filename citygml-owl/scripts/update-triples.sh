@@ -96,10 +96,9 @@ python update_graph.py ../CityOWL/versioning.ttl ../CityOWL/versioning.ttl \
         vers:TransactionTypeValue a owl:Class ;
             rdfs:subClassOf skos:Concept .
     }'
-echo 'patching room height status'
+echo 'patching room height status: 1/5'
 python update_graph.py ../CityOWL/building.ttl ../CityOWL/building.ttl \
    'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX bldg: <https://www.opengis.net/ont/citygml/building/>
 
     DELETE DATA {
@@ -108,6 +107,112 @@ python update_graph.py ../CityOWL/building.ttl ../CityOWL/building.ttl \
     INSERT DATA {
         bldg:status a owl:DatatypeProperty .
     }'
+echo 'patching room height status: 2/5'
+python update_graph.py ../CityOWL/building.ttl ../CityOWL/building.ttl \
+   'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX con: <https://www.opengis.net/ont/citygml/construction/>
+insert { 
+    ?s owl:onDataRange con:HeightStatusValue .
+}
+where { 
+    select ?s 
+        where {
+	        ?s owl:onClass con:HeightStatusValue .
+        }}'
+echo 'patching room height status: 3/5'
+python update_graph.py ../CityOWL/construction.ttl ../CityOWL/construction.ttl \
+   'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX con: <https://www.opengis.net/ont/citygml/construction/>
+insert { 
+    ?s owl:onDataRange con:HeightStatusValue .
+}
+where { 
+    select ?s 
+        where {
+	        ?s owl:onClass con:HeightStatusValue .
+        }}'
+echo 'patching room height status: 4/5'
+python update_graph.py ../CityOWL/building.ttl ../CityOWL/building.ttl \
+   'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX con: <https://www.opengis.net/ont/citygml/construction/>
+delete { 
+    ?s owl:onClass con:HeightStatusValue .
+}
+where { 
+    select ?s 
+        where {
+	        ?s owl:onDataRange con:HeightStatusValue ;
+               owl:onClass con:HeightStatusValue .
+        }}'
+echo 'patching room height status: 5/5'
+python update_graph.py ../CityOWL/construction.ttl ../CityOWL/construction.ttl \
+   'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX con: <https://www.opengis.net/ont/citygml/construction/>
+delete { 
+    ?s owl:onClass con:HeightStatusValue .
+}
+where { 
+    select ?s 
+        where {
+	        ?s owl:onDataRange con:HeightStatusValue ;
+               owl:onClass con:HeightStatusValue .
+        }}'
+
+echo 'patching core:uRI and core:value whose ranges in restrictions mentioned as classes, should be DataRanges: 1/4'
+python update_graph.py ../CityOWL/core.ttl ../CityOWL/core.ttl \
+   'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+insert { 
+    ?s owl:onDataRange xsd:anyURI .
+}
+where { 
+    select ?s 
+        where {
+	        ?s owl:onClass xsd:anyURI ;
+               owl:onProperty core:uRI .
+        }}'
+
+echo 'patching core:uRI and core:value whose ranges in restrictions mentioned as classes, should be DataRanges: 2/4'
+python update_graph.py ../CityOWL/core.ttl ../CityOWL/core.ttl \
+   'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+delete { 
+    ?s owl:onClass xsd:anyURI .
+}
+where { 
+    select ?s 
+        where {
+	        ?s owl:onClass xsd:anyURI ;
+               owl:onDataRange xsd:anyURI .
+        }}'
+
+echo 'patching core:uRI and core:value whose ranges in restrictions mentioned as classes, should be DataRanges: 3/4'
+python update_graph.py ../CityOWL/core.ttl ../CityOWL/core.ttl \
+   'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+insert { 
+    ?s owl:onDataRange xsd:double .
+}
+where { 
+    select ?s 
+        where {
+	        ?s owl:onClass xsd:double ;
+               owl:onProperty core:value .
+        }}'
+
+echo 'patching core:uRI and core:value whose ranges in restrictions mentioned as classes, should be DataRanges: 4/4'
+python update_graph.py ../CityOWL/core.ttl ../CityOWL/core.ttl \
+   'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+delete { 
+    ?s owl:onClass xsd:double .
+}
+where { 
+    select ?s 
+        where {
+	        ?s owl:onClass xsd:double ;
+               owl:onDataRange xsd:double .
+        }}'
 
 ### sequence added for global attributes ###
 
