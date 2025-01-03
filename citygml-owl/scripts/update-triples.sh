@@ -310,7 +310,7 @@ where {
               rdfs:label ?label;
               skos:definition ?def .
     bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
-    filter (?x in ("class", "usage", "function", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
+    filter (?x in ("area", "class", "usage", "function", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
     bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?x)) as ?new)
        }}'
 
@@ -359,7 +359,7 @@ python update_graph.py $file $file \
         	?s rdfs:range ?range .
         	?s skos:definition ?def .
             bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
-  			filter (?x in ("class", "usage", "function", "mimeType", "occupancy", "elevation","lowReference","highReference"))
+  			filter (?x in ("area", "class", "usage", "function", "mimeType", "occupancy", "elevation","lowReference","highReference"))
         filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
 "https://www.opengis.net/ont/citygml/bridge/", 
 "https://www.opengis.net/ont/citygml/building/", 
@@ -439,7 +439,7 @@ where {
     where {
 	?s owl:onProperty ?old ;
 	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
-    filter (?x in ("name", "description", "class", "usage", "value", "function", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
+    filter (?x in ("name", "description", "area", "class", "usage", "value", "function", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
     bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?x)) as ?new)
     }}'
 
@@ -457,7 +457,7 @@ where {
     where {
     ?s owl:onProperty ?old.
 	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
-    filter (?x in ("name", "description", "class", "usage", "value", "function", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
+    filter (?x in ("name", "description", "area", "class", "usage", "value", "function", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
     filter (strbefore(str(?old),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
 "https://www.opengis.net/ont/citygml/bridge/", 
 "https://www.opengis.net/ont/citygml/building/", 
@@ -479,7 +479,7 @@ where {
 "https://www.opengis.net/ont/citygml/workspace/"))
 }}'
 
-### 6 add new global properties for those reused >1 per CityGML family
+### 6 add new global properties for those reused >1 per CityGML family and having names like ns:Class.prop
 echo '#6 add properties reused more than once per CityGML family'
 
 python update_graph.py $file $file \

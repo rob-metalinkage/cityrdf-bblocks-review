@@ -759,6 +759,10 @@ core:volume a owl:ObjectProperty ;
     rdfs:range core:QualifiedVolume ;
     skos:definition "Specifies qualified volumes related to the space."@en .
 
+<https://www.opengis.net/ont/citygml/common/area> rdfs:label "area"@en ;
+    skos:definition "Specifies qualified areas related to the space."@en ;
+    schema:rangeIncludes core:QualifiedArea .
+
 <https://www.opengis.net/ont/citygml/common/lod0MultiCurve> skos:definition "Relates to a 3D MultiCurve geometry that represents the space in Level of Detail 0."@en,
         "Relates to a 3D MultiCurve geometry that represents the thematic surface in Level of Detail 0."@en ;
     schema:domainIncludes core:AbstractSpace,
@@ -878,11 +882,6 @@ core:TransformationMatrix4x4 a owl:Class ;
     rdfs:subClassOf core:DoubleList ;
     skos:definition "TransformationMatrix4x4 is a 4 by 4 matrix represented as a list of sixteen double values in row major order."@en .
 
-core:area a owl:ObjectProperty ;
-    rdfs:label "area"@en ;
-    rdfs:range core:QualifiedArea ;
-    skos:definition "Specifies qualified areas related to the space."@en .
-
 core:relationType a owl:ObjectProperty ;
     rdfs:label "relationType"@en ;
     rdfs:range core:RelationTypeValue ;
@@ -899,10 +898,10 @@ core:QualifiedArea a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:QualifiedArea ;
-            owl:onProperty core:area ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/area> ],
         [ a owl:Restriction ;
             owl:onClass core:QualifiedArea ;
-            owl:onProperty core:area ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/area> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "QualifiedArea is an application-dependent measure of the area of a space or of a thematic surface."@en .
 
@@ -1060,7 +1059,7 @@ core:AbstractThematicSurface a owl:Class ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/lod2MultiSurface> ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:QualifiedArea ;
-            owl:onProperty core:area ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/area> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:MultiSurface ;
@@ -1149,7 +1148,7 @@ core:AbstractSpace a owl:Class ;
             owl:onProperty core:lod3Solid ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:QualifiedArea ;
-            owl:onProperty core:area ],
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/area> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:Solid ;
             owl:onProperty core:lod2Solid ],
