@@ -9,6 +9,7 @@ common:function rdf:type owl:ObjectProperty; rdfs:label "function"@en.
 
 common:address rdf:type owl:ObjectProperty; rdfs:label "address"@en.
 common:appearance  rdf:type owl:ObjectProperty; rdfs:label "appearance"@en .
+common:area  rdf:type owl:ObjectProperty; rdfs:label "area"@en .
 common:boundary rdf:type owl:ObjectProperty; rdfs:label "boundary"@en.
 common:bridgeFurniture  rdf:type owl:ObjectProperty; rdfs:label "bridgeFurniture"@en .
 common:bridgeInstallation  rdf:type owl:ObjectProperty; rdfs:label "bridgeInstallation"@en .
@@ -17,7 +18,6 @@ common:buildingFurniture  rdf:type owl:ObjectProperty; rdfs:label "buildingFurni
 common:buildingInstallation  rdf:type owl:ObjectProperty; rdfs:label "buildingInstallation"@en .
 common:buildingRoom  rdf:type owl:ObjectProperty; rdfs:label "buildingRoom"@en .
 common:elevation  rdf:type owl:ObjectProperty; rdfs:label "elevation"@en .
-common:elevation rdf:type owl:ObjectProperty; rdfs:label "elevation"@en.
 common:genericAttribute  rdf:type owl:ObjectProperty; rdfs:label "genericAttribute"@en .
 common:groupMember  rdf:type owl:ObjectProperty; rdfs:label "groupMember"@en .
 common:highReference  rdf:type owl:ObjectProperty; rdfs:label "highReference"@en .
