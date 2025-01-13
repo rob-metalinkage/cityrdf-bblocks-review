@@ -224,6 +224,7 @@ files=("../CityOWL/appearance.ttl" "../CityOWL/bridge.ttl" "../CityOWL/building.
 for file in ${files[@]}; do
 echo $file
 
+echo 'adding current CityGML version info: 3.0.0'
 python update_graph.py $file $file \
     'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
      INSERT {
@@ -288,9 +289,9 @@ delete {
         	filter (strstarts(?xc, "ADE") )
     }}'
 
-### #2. inserts common:propertyname where ns:propertyname refs to package level
+### #2. inserts common:property where ns:property refs to package level
 
-echo '#2 insert common:propertyname'
+echo '#2 insert common:property mentioning in packages: 1/2'
 
 python update_graph.py $file $file \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -314,6 +315,7 @@ where {
     bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?x)) as ?new)
        }}'
 
+echo '#2 insert common:property mentioning in packages: 2/2'
 python update_graph.py $file $file \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -338,7 +340,7 @@ where {
     }}'
 
 ### #3 deletes all objprops defs that will be replaced with global scope ones
-echo '#3 delete package-level ns:propertyname for common properties'
+echo '#3 delete package-level mentioning of ns:property for common properties: 1/2'
 
 python update_graph.py $file $file \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -381,6 +383,7 @@ python update_graph.py $file $file \
 "https://www.opengis.net/ont/citygml/workspace/"))
     }}'
 
+echo '#3 delete package-level mentioning of ns:property for common properties: 2/2'
 python update_graph.py $file $file \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -424,7 +427,7 @@ python update_graph.py $file $file \
 
 ### #4 inserts common:objprops refs into axioms
 
-echo '#4 insert global properties in axioms'
+echo '#4 insert mentioning of common:property in axioms'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -444,7 +447,7 @@ where {
     }}'
 
 ### #5 delete all objprops mentions in axioms that will be replaced with global scope ones
-echo '#5 delete local-scoped reused properties in axioms'
+echo '#5 delete mentioning of ns:property in axioms'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -480,7 +483,7 @@ where {
 }}'
 
 ### 6 add new global properties for those reused >1 per CityGML family and having names like ns:Class.prop
-echo '#6 add properties reused more than once per CityGML family'
+echo '#6 add definitions of properties ns:Class.prop and reused more than once per CityGML family'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -511,7 +514,7 @@ where {
     }}'
 
 ### 7 removes old definitions of (local) properties for those reused >1 per CityGML family
-echo '#7 remove old definitions of properties reused more than once per CityGML family'
+echo '#7 remove old definitions of properties ns:Class.prop reused more than once per CityGML family'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -557,7 +560,7 @@ where { select ?s ?classIndependentPropName ?domainToInclude ?rangeToInclude ?de
 
 ### #8 inserts common:props refs into axioms for those properties that are reused > 1 per Ontology family
 
-echo '#8 insert presence of global properties in axioms'
+echo '#8 insert mentioning of ns:property in axioms for properties that are reused more than once in Ontology family'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -578,7 +581,7 @@ bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",strafter(?x,".")))
 '
 
 ### #9 deletes all (local) props mentions in axioms for those properties reused >1 
-echo '#9 delete presence of global properties in axioms'
+echo '#9 delete mentioning of ns:Class.prop in axioms for properties that are reused more than once in Ontology family'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -660,6 +663,7 @@ select ?s ?domain ?range ?def ?classIndependentPropName ?new
     }}'
 
 ### for properties defined without skos:definition
+echo "#10 insert properties satisfying conditions of #6 but without skos:definition"
 python update_graph.py $file $file \
      'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -703,7 +707,7 @@ select ?domain ?range ?def ?classIndependentPropName ?new
 
 
 ### #11 deletes initial (=with class in ns:Class.prop) local props used once in a package
-echo '#11 delete initial (=with class in ns:Class.prop) local props used once in a package'
+echo '#11 delete properties satisfying the conditions of #7 but without skos:definition: 1/2'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -749,6 +753,7 @@ select ?s ?domain ?range ?def ?label
     }}'
 
 ###for properties defined without skos:definition
+echo '#11 delete properties satisfying the conditions of #7 but without skos:definition: 2/2'
 
 python update_graph.py $file $file \
 'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -794,7 +799,7 @@ select ?s ?domain ?range ?def ?label
 
 ### #12 inserts owl:onProperty for simplified (=without class in ns:Class.prop) local props used once in a package
 
-echo '#12 insert owl:onProperty for simplified (=without class in ns:Class.prop) local props used once in a package'
+echo '#12 insert mentions of created properties (=without class in ns:Class.prop) in axioms'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -816,7 +821,7 @@ where {
 
 ### #13 deletes owl:onProperty for initial (=with class in ns:Class.prop) local props used once in a package
 
-echo '#13 delete owl:onProperty for initial (=with class in ns:Class.prop) local props used once in a package'
+echo '#13 delete mentioning of initial (=with class in ns:Class.prop) local properties used once in a package'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>

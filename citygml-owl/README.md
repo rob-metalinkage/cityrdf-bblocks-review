@@ -1,19 +1,17 @@
 # CityGML-OWL derivation
 
 This directory is used to define a CityGML OWL derived from the UML source.
-
 The intention is to set this up as a proof of concept that can be migrated to the (or an) official CityGML specification repository.
-
 
 ## Background
 
 A proposal to implement a CityGML OWL representation to support RDF encodings was presented to the CityGML Working Group in June 2023.
 
-The CHEK project has identified a need to reconcile related sources of information from different systems and designed an approach around "semantic uplift" to a minimal profile of each standard used to a common model that can support regulation evaluation. (Thus this complex task does not need to be repeated for each version of each encoding approach - such as CityGML, CityJSON, BIM/IFC and various planning GIS layers.)
+The [CHEK project](https://info.cype.com/en/research/chek-dbp/) has identified a need to reconcile related sources of information from different systems and designed an approach around "semantic uplift" to a minimal profile of each standard used to a common model that can support regulation evaluation. Thus this complex task does not need to be repeated for each version of each encoding approach - such as CityGML, CityJSON, BIM/IFC and various planning GIS layers.
 
 Resources described in CityGML WG proposal (thanks to Diego Vinasco-Alvarez)
 
-* CityGML 3.0 ShapeChange config: https://github.com/VCityTeam/UD-Graph/blob/master/Transformations/ShapeChange/CityGML3.0_to_OWL_config.xml
+* CityGML 3.0 ShapeChange configs: https://github.com/VCityTeam/UD-Graph/blob/master/Transformations/ShapeChange/CityGML3.0_to_OWL_config.xml for CityOWL CWA and https://github.com/VCityTeam/UD-Reproducibility/blob/master/Computations/RDF/CityOWL/shapechange-configs/CityGML3.0_to_OWL_lite_config.xml for CityOWL OWA. 
 
 * The most recent generated CityGML 3.0 OWL Ontologies: https://dataset-dl.liris.cnrs.fr/rdf-owl-urban-data-ontologies/Ontologies/CityGML/3.0/
 
@@ -21,11 +19,33 @@ Resources described in CityGML WG proposal (thanks to Diego Vinasco-Alvarez)
 
 * A Repository serving as a source of evidence for generated OWL: https://github.com/VCityTeam/UD-Reproducibility/tree/master/Computations/RDF/CityOWL 
 
+## Dependencies
+1) ShapeChange (we tested the solution with ShapeChange 3.1.1 built from sources[https://github.com/ShapeChange/ShapeChange])
+2) Python3
+
+## The structure of the repository
+|Folder               | Purpose                                                                   |
+|------               | ------                                                                    |
+|\additional-triples  | files used in the workflow                                                |
+|\CityOWL             | final result of the transformation                                        |
+|\examples            | some CityGML files and their Turtle representations                       |
+|\scripts             | all necessary scripts used in the transformation                          |
+|\statistics          | results of qualifying SPARQL queries affecting the transformation actions |
+
 ## Current solution
 
 We use [CityGML_3.0-workspaces-documents_shapechange-export.xml](https://github.com/VCityTeam/UD-Graph/blob/master/Transformations/test-data/UML/CityGML_3.0-workspaces-documents_shapechange-export.xml) as a source of CityGML3.0 model.
 
-We added `<<Union>>` stereotype conversion and experiment with `rule-owl-prop-globalScopeAttributes`.
+We added `<<Union>>` stereotype conversion (`rule-owl-cls-union`) and made use of `rule-owl-prop-globalScopeAttributes` to de-duplicate to a certain extent (see below) properties defined more than once per package and across packages.
+
+The sequence of steps is as follows:
+1) Using shell script to perform ShapeChange transformation of CityGML 3.0 UML into initial set of onotologies.
+2) Using shell script `patch-ontologies.sh` make the initial set of ontologies readable in Protege.
+3) Using shell script `update-triples.sh` perform SPARQL based transformation of the ontologies.
+
+The whole workflow can be executed with `run-workflow.sh` script.
+
+### Step 1
 
 To run the ShapeChange conversion write in bash
 
@@ -33,16 +53,19 @@ To run the ShapeChange conversion write in bash
 
 The results will be in the folder `stage-1`.
 
+### Step 2
 To apply patches to make the results better viewable in Protege, see the explanation in [VCityTeam solution](https://github.com/VCityTeam/UD-Graph/tree/master/Transformations/ShapeChange) that is the solution to get the [initial version of CityGML3.0 in OWL](https://dataset-dl.liris.cnrs.fr/rdf-owl-urban-data-ontologies/Ontologies/CityGML/3.0/) and run the second script:
 
 ```./patch-ontologies.sh```
 
 The results will be in the folder `stage-2`.
 
+### Step 3
+
 VCityTeam detected several obsolete/hanging definitions that were to be patched, and proposed `update-triples.sh` to patch them. 
 The script did the following:
 
-- merges in one file an ontology for the UML package with codelist values defined in it.
+- merges in one file an ontology for the UML package with codelists' values defined in it.
 - adds cityModelMember modifications
 - adds GeoSPARQL and OWL-Time alignments
 - removes outdated core triples and correspondent hanging restrictions
@@ -50,7 +73,7 @@ The script did the following:
 
 We extended this script to implement our vision on how we can benefit from custom UML-to-OWL conversion, taking into account abilities of OWL.
 
-### Global Properties explication
+#### Global Properties explication
 
 There are some attributes named equally in different packages, such as `usage`, `class`, `function`, `address`, `value` and others, so there are `brid:usage` and `bldg:usage` that differ only on ranges of property and definitions.
 
@@ -58,14 +81,13 @@ In OWL object/datatype properties are first-class citizens whereas in UML and UM
 
 We explicate such attributes, and make a custom postprocessing step.
 
-The explication query is below, resulting in lists of [object properties](./statistics/citygml-how%20many%20ObjectProperties%20reuse%20the%20same%20label.csv), [datatype properties](./statistics/citygml-how%20many%20DatatypeProperites%20reuse%20the%20same%20label.csv)
+To explicate we use the data in the folder `stage-2`, uploaded them into a knowledge graph using Ontotext GraphDB(C), and perform the following explication query, resulting in lists of [object properties](./statistics/citygml-how%20many%20ObjectProperties%20reuse%20the%20same%20label.csv), [datatype properties](./statistics/citygml-how%20many%20DatatypeProperites%20reuse%20the%20same%20label.csv):
 
 ```sparql
 select ?o (count(?s) as ?count) where { 
 	?s rdfs:label ?o .
-        ?s a owl:ObjectProperty .
-#       ?s rdfs:label ?o .
-#       ?s a owl:DatatypeProperty .
+    ?s a owl:ObjectProperty .
+#    ?s a owl:DatatypeProperty .
 } group by ?o having (count(?s)>1)
 order by desc(?count)
 ```
@@ -84,20 +106,20 @@ will be splitted into the one defined in the particular package
 common:usage  rdfs:range       con:DoorUsageValue;
         skos:definition  "Specifies the actual uses of the Door."@en .
 ```
-and another defined once in the `common` package
+and another defined once in the `common` package that we propose to be created to store all reused parts of such attributes' definitions:
 
 ```turtle
 common:usage  rdf:type      owl:ObjectProperty;
         rdfs:label       "usage"@en;
 ```
 We add the following:
-- we introduce an ontology `/additional-triples/common.ttl` and a namespace `PREFIX common: <https://www.opengis.net/ont/citygml/common/>` keeping all ObjectProperties and DatatypeProperties sharing the same domain and varying in the `rdfs:range` (and `rdfs:label/skos:definition`). 
+- we introduce an ontology `/additional-triples/common.ttl` and a namespace `PREFIX common: <https://www.opengis.net/ont/citygml/common/>` keeping all owl:ObjectProperties and owl:DatatypeProperties sharing the same domain and varying in the `rdfs:range` (and `rdfs:label/skos:definition`). 
 
-We apply four SPARQL queries ([##1-4 in the file](./update-triples.sh)) across all ontologies in `stage-2` to do this.
+We apply four SPARQL queries ([##2-5 in the file](./update-triples.sh)) across all ontologies in `stage-2` to do this.
 
-However there are object/datatype properties schematically presented as `packagename#Class.prop`. For example, object property `boundary` has domain in some abstract class 4 times, and 9 times is has a non-abstract domain (in total, 13 occurences) (see the full list of duplications in abstract classes [here](./statistics/citygml-duplications%20of%20properties%20with%20domain%20in%20Abstractclass.csv)). Following the same argument, we would like to avoid repetitions of definitions in package-level ontologies and apply some more actions on duplicated definitions of object/datatype properties as described below.
+There are also object/datatype properties schematically presented as `packagename#Class.property`. For example, object property `boundary` has domain in some abstract class 4 times, and 9 times is has a non-abstract domain (in total, 13 occurences) (see the full list of duplications in abstract classes [here](./statistics/citygml-duplications%20of%20properties%20with%20domain%20in%20Abstractclass.csv)). Following the same argument, we would like to avoid repetitions of definitions in package-level ontologies and apply some more actions on duplicated definitions of object/datatype properties as described below.
 
-### ADE* classes/ade* properties removal
+#### ADE* classes/ade* properties removal
 As far as the implementation of Application Domain Extensions (ADEs) is optional, we decided to remove mentioning of ADE* classes/ade* properties from CityGML ontologies.
 
 Here is the typical example of a restriction involving ADE* class and ade* property:
@@ -118,13 +140,13 @@ luse:ADEOfLandUse a owl:Class ;
     iso19150-2:isAbstract true ;
     skos:definition "ADEOfLandUse acts as a hook to define properties within an ADE that are to be added to a LandUse."@en .
 ```
-We apply one SPARQL query ([#5 in the file](./update-triples.sh)) across all ontologies in `stage-2` to do this.
+We apply one SPARQL query ([#1 in the file](./update-triples.sh)) across all ontologies in `stage-2` to do this.
 
-### Removal duplicate definitions for properties of the kind `packagename#Class.property` 
+#### Removal of duplicate definitions for properties of the kind `packagename#Class.property` 
 
-We propose to do the following:
+We propose to do the following (we present both alternatives):
 
-each property of the kind is defined with relaxed domain and range restriction using [schema:domainIncludes](https://schema.org/domainIncludes)/[schema:rangeIncludes](https://schema.org/rangeIncludes).
+1) Relaxed semantics: each property of the kind is defined with relaxed domain and range restriction using [schema:domainIncludes](https://schema.org/domainIncludes)/[schema:rangeIncludes](https://schema.org/rangeIncludes).
 
 Qualifying query making use of the naming conventions in OWL generated by ShapeChange:
 
@@ -172,7 +194,7 @@ core:AbstractThematicSurface.lod0MultiCurve a owl:ObjectProperty ;
 ```
 - a property is not unique within the whole family, and used across package ontologies, for example, `boundary`:
 
-in construction package
+For example, in *construction* package
 
 ```turtle
 con:AbstractConstruction.boundary a owl:ObjectProperty ;
@@ -181,7 +203,7 @@ con:AbstractConstruction.boundary a owl:ObjectProperty ;
     rdfs:range core:AbstractThematicSurface ;
     skos:definition "Relates to the surfaces that bound the construction. This relation is inherited from the Core module."@en .
 ```
-in core package
+in *core* package
 
 ```turtle
 core:AbstractSpace.boundary a owl:ObjectProperty ;
@@ -190,7 +212,7 @@ core:AbstractSpace.boundary a owl:ObjectProperty ;
     rdfs:range core:AbstractSpaceBoundary ;
     skos:definition "Relates to surfaces that bound the space."@en .
 ```
-in building package (used twice)
+in *building* package (used twice)
 
 ```turtle
 bldg:BuildingRoom.boundary a owl:ObjectProperty ;
@@ -223,7 +245,6 @@ where {
 	?s rdfs:label ?classIndependentPropName .
     ?s rdfs:domain ?domainToInclude .
     ?s rdfs:range ?rangeToInclude .
-    filter (strafter(str(?domainToInclude),"Abstract") = "")
     filter (str(?classIndependentPropName)="boundary")
 }
 ```
@@ -246,9 +267,9 @@ We aim at creating a definition of the kind:
 ```turtle
 common:boundary a owl:ObjectProperty ;
     rdfs:label "boundary"@en ;
-# all non-abstract classes in domain
+# all classes in domain
     schema:domainIncludes bldg:BuildingRoom, bldg:Storey, wtr:WaterBody, tun:HollowSpace, transportation:AuxiliaryTrafficSpace, transportation:TrafficSpace, con:Door, con:Window, brid:BridgeRoom ;
-# all non-abstract classes in range
+# all classes in range
     schema:rangeIncludes con:WindowSurface, con:DoorSurface, transportation:TrafficArea, transportation:AuxiliaryTrafficArea .
 ```
 and in each of ontologies mentioning `boundary` (here `bldg`, `wtr`, `tun`, `transportation`, `con`, `brid`):
@@ -258,11 +279,59 @@ common:boundary skos:definition "Here goes the definition that originate in the 
         for each package it will be different"
 ```
 
+2) Strict semantics: each property of the kind having more than one class in its domain is defined with `owl:unionOf` for its range and if necessary for its domain
+
+```turtle
+common:boundary a owl:ObjectProperty ;
+    rdfs:label "boundary"@en ;
+# all classes in domain
+    rdfs:domain [a owl:Class;
+                   owl:unionOf (bldg:BuildingRoom, 
+                                bldg:Storey, 
+                                wtr:WaterBody, 
+                                tun:HollowSpace, 
+                                transportation:AuxiliaryTrafficSpace, 
+                                transportation:TrafficSpace, 
+                                con:Door, 
+                                con:Window, 
+                                brid:BridgeRoom)];
+# all classes in range
+    rdfs:domain [a owl:Class;
+                   owl:unionOf (con:WindowSurface, 
+                                con:DoorSurface, 
+                                transportation:TrafficArea, 
+                                transportation:AuxiliaryTrafficArea)].
+```
+Such semantics makes OWL reasoning applicable.
+
 ## Samples
 
-We prepare several small examples of BIMs in GML taking freely available data from GitHub repository [OloOcki/awesome-citygml](https://github.com/OloOcki/awesome-citygml?tab=readme-ov-file), in particular:
+We prepare several small examples of BIMs in GML taking freely available data from GitHub repository [OloOcki/awesome-citygml](https://github.com/OloOcki/awesome-citygml?tab=readme-ov-file), but having in mind the real cases from [ACCORD project](https://accordproject.eu) in particular:
 
-- [lod3-sample-fail.gml](./examples/lod3-sample-fail.gml) taken from [Ingolstadt, Germany](https://github.com/savenow/lod3-road-space-models/blob/main/models/building/lod3/combined/citygml/lod3_building_models.gml)  
-- [lod3-sample-ok.gml](./examples/lod3-sample-ok.gml) taken from [Ingolstadt, Germany](https://github.com/savenow/lod3-road-space-models/blob/main/models/building/lod3/combined/citygml/lod3_building_models.gml) and converted into CityGML 3.0
+- [building-lod3-sample-fail.gml](./examples/building-lod3-sample-fail.gml) taken from [Ingolstadt, Germany](https://github.com/savenow/lod3-road-space-models/blob/main/models/building/lod3/combined/citygml/lod3_building_models.gml)  
+- [building-lod3-sample1-ok.gml](./examples/building-lod3-sample1-ok.gml) taken from [Ingolstadt, Germany](https://github.com/savenow/lod3-road-space-models/blob/main/models/building/lod3/combined/citygml/lod3_building_models.gml) and converted into CityGML 3.0
+- [building-lod3-sample2-ok.gml](./examples/building-lod3-sample2-ok.gml) taken from [Ingolstadt, Germany](https://github.com/savenow/lod3-road-space-models/blob/main/models/building/lod3/combined/citygml/lod3_building_models.gml) and converted into CityGML 3.0
+- [building-lod2-sample.gml](./examples/building-lod2-sample.gml) taken from [sachsen.de, Germany](https://www.geodaten.sachsen.de/digitale-hoehenmodelle-3994.html) 
 
-- [lod2-sample.gml](./examples/lod2-sample.gml) taken from [sachsen.de, Germany](https://www.geodaten.sachsen.de/digitale-hoehenmodelle-3994.html) 
+The conversion of CityGML into RDF/Turtle is conducted by custom xSPARQL script relying on the typical structure of the CityGML
+```xml
+CityModel
+    boundedBy
+        Envelope
+    cityObjectMember
+        Building
+            ...
+            genericAttribute
+                StringAttribute|DoubleAttribute|...
+                    name
+                    value
+                ...
+            stringAttribute|doubleAttribute|...
+                value
+            ...
+    lodNUMGeometry|...
+        MultiSurface|CompositeSurface|...
+            surfaceMember
+                Polygon
+                ...
+```
