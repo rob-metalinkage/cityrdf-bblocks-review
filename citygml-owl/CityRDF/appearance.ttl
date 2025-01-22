@@ -6,7 +6,6 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -37,6 +36,9 @@ app:Appearance a owl:Class ;
 app:GeoreferencedTexture a owl:Class ;
     rdfs:label "GeoreferencedTexture"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:Point ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/referencePoint> ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty app:preferWorldFile ],
@@ -57,9 +59,6 @@ app:GeoreferencedTexture a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:anyURI ;
             owl:onProperty app:target ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:Point ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/referencePoint> ],
         app:AbstractTexture ;
     owl:disjointWith app:ParameterizedTexture .
 
@@ -309,12 +308,11 @@ app:wrapMode a owl:DatatypeProperty ;
     skos:definition "Specifies the behaviour of the texture when the texture is smaller than the surface to which it is applied."@en .
 
 <https://www.opengis.net/ont/citygml/common/mimeType> rdfs:label "mimeType"@en ;
-    skos:definition "Specifies the MIME type of the external point cloud file."@en ;
-    schema:rangeIncludes core:MimeTypeValue .
+    skos:definition "Specifies the MIME type of the external point cloud file."@en .
 
-<https://www.opengis.net/ont/citygml/common/referencePoint> skos:definition "Relates to the 2D Point geometry that represents the center of the upper left image pixel in world space."@en ;
-    schema:domainIncludes app:GeoreferencedTexture ;
-    schema:rangeIncludes gmlowl:Point .
+<https://www.opengis.net/ont/citygml/common/referencePoint> rdfs:domain app:GeoreferencedTexture ;
+    rdfs:range gmlowl:Point ;
+    skos:definition "Relates to the 2D Point geometry that represents the center of the upper left image pixel in world space."@en .
 
 app:TextureAssociation a owl:Class ;
     rdfs:label "TextureAssociation"@en ;
@@ -346,11 +344,11 @@ app:WrapMode a rdfs:Datatype ;
             owl:oneOf ( "none" "wrap" "mirror" "clamp" "border" ) ] ;
     skos:definition "WrapMode enumerates the different fill modes for textures."@en .
 
-<https://www.opengis.net/ont/citygml/common/textureParameterization> skos:definition "Relates to the texture coordinates or transformation matrices used for parameterization."@en ;
-    schema:domainIncludes app:ParameterizedTexture,
-        app:TextureAssociation ;
-    schema:rangeIncludes app:AbstractTextureParameterization,
-        app:TextureAssociation .
+<https://www.opengis.net/ont/citygml/common/textureParameterization> rdfs:domain [ a owl:Class ;
+            owl:unionOf ( app:TextureAssociation app:ParameterizedTexture ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( app:TextureAssociation app:AbstractTextureParameterization ) ] ;
+    skos:definition "Relates to the texture coordinates or transformation matrices used for parameterization."@en .
 
 app:AbstractSurfaceData a owl:Class ;
     rdfs:label "AbstractSurfaceData"@en ;

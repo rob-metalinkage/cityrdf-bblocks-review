@@ -7,7 +7,6 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -39,9 +38,9 @@ dem:ReliefFeature a owl:Class ;
             owl:onProperty dem:lod ],
         core:AbstractSpaceBoundary .
 
-<https://www.opengis.net/ont/citygml/common/pointCloud> skos:definition "Relates to the 3D PointCloud of the MassPointRelief."@en ;
-    schema:domainIncludes dem:MassPointRelief ;
-    schema:rangeIncludes core:AbstractPointCloud .
+<https://www.opengis.net/ont/citygml/common/pointCloud> rdfs:domain dem:MassPointRelief ;
+    rdfs:range core:AbstractPointCloud ;
+    skos:definition "Relates to the 3D PointCloud of the MassPointRelief."@en .
 
 dem:RasterRelief a owl:Class ;
     rdfs:label "RasterRelief"@en ;
@@ -110,9 +109,6 @@ dem:tin a owl:ObjectProperty ;
 dem:BreaklineRelief a owl:Class ;
     rdfs:label "BreaklineRelief"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:MultiCurve ;
-            owl:onProperty dem:ridgeOrValleyLines ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:MultiCurve ;
             owl:onProperty dem:ridgeOrValleyLines ],
@@ -123,6 +119,9 @@ dem:BreaklineRelief a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:MultiCurve ;
             owl:onProperty dem:breaklines ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:MultiCurve ;
+            owl:onProperty dem:ridgeOrValleyLines ],
         dem:AbstractReliefComponent .
 
 dem:MassPointRelief a owl:Class ;

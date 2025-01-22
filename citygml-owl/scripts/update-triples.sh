@@ -1,56 +1,56 @@
 # #!/bin/sh
 
-if test ! -d ../CityOWL; then
-    mkdir ../CityOWL
+if test ! -d ../CityRDF; then
+    mkdir ../CityRDF
 fi
 
 # ### Add codeList concept schemes, copy files without codeLists
 echo 'Copying appearance.ttl'
-cp ../stage-2/appearance.ttl ../CityOWL/
+cp ../stage-2/appearance.ttl ../CityRDF/
 echo 'Adding bridge-codes.ttl'
-python add_triples.py ../stage-2/bridge.ttl ../stage-1/ACMAPPER/bridge/bridge_codes.ttl ../CityOWL/bridge.ttl
+python add_triples.py ../stage-2/bridge.ttl ../stage-1/ACMAPPER/bridge/bridge_codes.ttl ../CityRDF/bridge.ttl
 echo 'Adding building-codes.ttl'
-python add_triples.py ../stage-2/building.ttl ../stage-1/ACMAPPER/building/building_codes.ttl ../CityOWL/building.ttl
+python add_triples.py ../stage-2/building.ttl ../stage-1/ACMAPPER/building/building_codes.ttl ../CityRDF/building.ttl
 echo 'Adding construction-codes.ttl'
 echo 'Adding group-codes.ttl'
-python add_triples.py ../stage-2/cityfurniture.ttl ../stage-1/ACMAPPER/cityfurniture/cityfurniture_codes.ttl ../CityOWL/cityfurniture.ttl
+python add_triples.py ../stage-2/cityfurniture.ttl ../stage-1/ACMAPPER/cityfurniture/cityfurniture_codes.ttl ../CityRDF/cityfurniture.ttl
 echo 'Adding generics-codes.ttl'
-python add_triples.py ../stage-2/cityobjectgroup.ttl ../stage-1/ACMAPPER/cityobjectgroup/cityobjectgroup_codes.ttl ../CityOWL/cityobjectgroup.ttl
+python add_triples.py ../stage-2/cityobjectgroup.ttl ../stage-1/ACMAPPER/cityobjectgroup/cityobjectgroup_codes.ttl ../CityRDF/cityobjectgroup.ttl
 echo 'Adding landuse-codes.ttl'
-python add_triples.py ../stage-2/construction.ttl ../stage-1/ACMAPPER/construction/construction_codes.ttl ../CityOWL/construction.ttl
+python add_triples.py ../stage-2/construction.ttl ../stage-1/ACMAPPER/construction/construction_codes.ttl ../CityRDF/construction.ttl
 echo 'Adding core-codes.ttl'
-python add_triples.py ../stage-2/core.ttl ../stage-1/ACMAPPER/core/core_codes.ttl ../CityOWL/core.ttl
+python add_triples.py ../stage-2/core.ttl ../stage-1/ACMAPPER/core/core_codes.ttl ../CityRDF/core.ttl
 echo 'Adding document-codes.ttl'
-python add_triples.py ../stage-2/document.ttl ../stage-1/ACMAPPER/document/document_codes.ttl ../CityOWL/document.ttl
+python add_triples.py ../stage-2/document.ttl ../stage-1/ACMAPPER/document/document_codes.ttl ../CityRDF/document.ttl
 echo 'Adding dynamizer-codes.ttl'
-python add_triples.py ../stage-2/dynamizer.ttl ../stage-1/ACMAPPER/dynamizer/dynamizer_codes.ttl ../CityOWL/dynamizer.ttl
+python add_triples.py ../stage-2/dynamizer.ttl ../stage-1/ACMAPPER/dynamizer/dynamizer_codes.ttl ../CityRDF/dynamizer.ttl
 echo 'Adding furniture-codes.ttl'
-python add_triples.py ../stage-2/generics.ttl ../stage-1/ACMAPPER/generics/generics_codes.ttl ../CityOWL/generics.ttl
-python add_triples.py ../stage-2/landuse.ttl ../stage-1/ACMAPPER/landuse/landuse_codes.ttl ../CityOWL/landuse.ttl
+python add_triples.py ../stage-2/generics.ttl ../stage-1/ACMAPPER/generics/generics_codes.ttl ../CityRDF/generics.ttl
+python add_triples.py ../stage-2/landuse.ttl ../stage-1/ACMAPPER/landuse/landuse_codes.ttl ../CityRDF/landuse.ttl
 echo 'Adding transportation-codes.ttl'
 echo 'Copying pointcloud.ttl'
-cp ../stage-2/pointcloud.ttl ../CityOWL/
+cp ../stage-2/pointcloud.ttl ../CityRDF/
 echo 'Copying relief.ttl'
-cp ../stage-2/relief.ttl ../CityOWL/
-python add_triples.py ../stage-2/transportation.ttl ../stage-1/ACMAPPER/transportation/transportation_codes.ttl ../CityOWL/transportation.ttl
+cp ../stage-2/relief.ttl ../CityRDF/
+python add_triples.py ../stage-2/transportation.ttl ../stage-1/ACMAPPER/transportation/transportation_codes.ttl ../CityRDF/transportation.ttl
 echo 'Adding tunnel-codes.ttl'
-python add_triples.py ../stage-2/tunnel.ttl ../stage-1/ACMAPPER/tunnel/tunnel_codes.ttl ../CityOWL/tunnel.ttl
+python add_triples.py ../stage-2/tunnel.ttl ../stage-1/ACMAPPER/tunnel/tunnel_codes.ttl ../CityRDF/tunnel.ttl
 echo 'Adding vegetation-codes.ttl'
-python add_triples.py ../stage-2/vegetation.ttl ../stage-1/ACMAPPER/vegetation/vegetation_codes.ttl ../CityOWL/vegetation.ttl
+python add_triples.py ../stage-2/vegetation.ttl ../stage-1/ACMAPPER/vegetation/vegetation_codes.ttl ../CityRDF/vegetation.ttl
 echo 'Copying versioning.ttl'
-cp ../stage-2/versioning.ttl ../CityOWL/
+cp ../stage-2/versioning.ttl ../CityRDF/
 echo 'Adding waterbody-codes.ttl'
-python add_triples.py ../stage-2/waterbody.ttl ../stage-1/ACMAPPER/waterbody/waterbody_codes.ttl ../CityOWL/waterbody.ttl
+python add_triples.py ../stage-2/waterbody.ttl ../stage-1/ACMAPPER/waterbody/waterbody_codes.ttl ../CityRDF/waterbody.ttl
 echo 'Copying workspace.ttl'
-cp ../stage-2/workspace.ttl ../CityOWL/
+cp ../stage-2/workspace.ttl ../CityRDF/
 
 # ### Additional modification ###
 echo 'Adding cityModelMember modifications'
-python add_triples.py ../CityOWL/core.ttl ../additional-triples/citymodelmember.ttl ../CityOWL/core.ttl
+python add_triples.py ../CityRDF/core.ttl ../additional-triples/citymodelmember.ttl ../CityRDF/core.ttl
 echo 'Adding GeoSPARQL and OWL-Time alignments'
-python add_triples.py ../CityOWL/core.ttl ../additional-triples/alignments.ttl ../CityOWL/core.ttl
+python add_triples.py ../CityRDF/core.ttl ../additional-triples/alignments.ttl ../CityRDF/core.ttl
 echo 'Removing outdated core triples'
-python update_graph.py ../CityOWL/core.ttl ../CityOWL/core.ttl \
+python update_graph.py ../CityRDF/core.ttl ../CityRDF/core.ttl \
    'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
@@ -67,7 +67,7 @@ python update_graph.py ../CityOWL/core.ttl ../CityOWL/core.ttl \
             rdfs:range xsd:dateTime .
     }'
 echo 'Removing hanging restrictions'
-python update_graph.py ../CityOWL/core.ttl ../CityOWL/core.ttl \
+python update_graph.py ../CityRDF/core.ttl ../CityRDF/core.ttl \
    'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
@@ -84,7 +84,7 @@ python update_graph.py ../CityOWL/core.ttl ../CityOWL/core.ttl \
             ?predicate ?object .
     }'
 echo 'Removing outdated versioning triples'
-python update_graph.py ../CityOWL/versioning.ttl ../CityOWL/versioning.ttl \
+python update_graph.py ../CityRDF/versioning.ttl ../CityRDF/versioning.ttl \
     'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX vers: <https://www.opengis.net/ont/citygml/versioning/>
@@ -96,8 +96,12 @@ python update_graph.py ../CityOWL/versioning.ttl ../CityOWL/versioning.ttl \
         vers:TransactionTypeValue a owl:Class ;
             rdfs:subClassOf skos:Concept .
     }'
+
+# this has been added to UD-Graph transformation since errors appeared when 
+# open the resulting files in Protege after conversion
+
 echo 'patching room height status: 1/5'
-python update_graph.py ../CityOWL/building.ttl ../CityOWL/building.ttl \
+python update_graph.py ../CityRDF/building.ttl ../CityRDF/building.ttl \
    'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
     PREFIX bldg: <https://www.opengis.net/ont/citygml/building/>
 
@@ -108,7 +112,7 @@ python update_graph.py ../CityOWL/building.ttl ../CityOWL/building.ttl \
         bldg:status a owl:DatatypeProperty .
     }'
 echo 'patching room height status: 2/5'
-python update_graph.py ../CityOWL/building.ttl ../CityOWL/building.ttl \
+python update_graph.py ../CityRDF/building.ttl ../CityRDF/building.ttl \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX con: <https://www.opengis.net/ont/citygml/construction/>
 insert { 
@@ -120,7 +124,7 @@ where {
 	        ?s owl:onClass con:HeightStatusValue .
         }}'
 echo 'patching room height status: 3/5'
-python update_graph.py ../CityOWL/construction.ttl ../CityOWL/construction.ttl \
+python update_graph.py ../CityRDF/construction.ttl ../CityRDF/construction.ttl \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX con: <https://www.opengis.net/ont/citygml/construction/>
 insert { 
@@ -132,7 +136,7 @@ where {
 	        ?s owl:onClass con:HeightStatusValue .
         }}'
 echo 'patching room height status: 4/5'
-python update_graph.py ../CityOWL/building.ttl ../CityOWL/building.ttl \
+python update_graph.py ../CityRDF/building.ttl ../CityRDF/building.ttl \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX con: <https://www.opengis.net/ont/citygml/construction/>
 delete { 
@@ -145,7 +149,7 @@ where {
                owl:onClass con:HeightStatusValue .
         }}'
 echo 'patching room height status: 5/5'
-python update_graph.py ../CityOWL/construction.ttl ../CityOWL/construction.ttl \
+python update_graph.py ../CityRDF/construction.ttl ../CityRDF/construction.ttl \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX con: <https://www.opengis.net/ont/citygml/construction/>
 delete { 
@@ -159,7 +163,7 @@ where {
         }}'
 
 echo 'patching core:uRI and core:value whose ranges in restrictions mentioned as classes, should be DataRanges: 1/4'
-python update_graph.py ../CityOWL/core.ttl ../CityOWL/core.ttl \
+python update_graph.py ../CityRDF/core.ttl ../CityRDF/core.ttl \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 insert { 
@@ -173,7 +177,7 @@ where {
         }}'
 
 echo 'patching core:uRI and core:value whose ranges in restrictions mentioned as classes, should be DataRanges: 2/4'
-python update_graph.py ../CityOWL/core.ttl ../CityOWL/core.ttl \
+python update_graph.py ../CityRDF/core.ttl ../CityRDF/core.ttl \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 delete { 
@@ -187,7 +191,7 @@ where {
         }}'
 
 echo 'patching core:uRI and core:value whose ranges in restrictions mentioned as classes, should be DataRanges: 3/4'
-python update_graph.py ../CityOWL/core.ttl ../CityOWL/core.ttl \
+python update_graph.py ../CityRDF/core.ttl ../CityRDF/core.ttl \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 insert { 
@@ -201,7 +205,7 @@ where {
         }}'
 
 echo 'patching core:uRI and core:value whose ranges in restrictions mentioned as classes, should be DataRanges: 4/4'
-python update_graph.py ../CityOWL/core.ttl ../CityOWL/core.ttl \
+python update_graph.py ../CityRDF/core.ttl ../CityRDF/core.ttl \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 delete { 
@@ -216,10 +220,10 @@ where {
 
 ### sequence added for global attributes ###
 
-files=("../CityOWL/appearance.ttl" "../CityOWL/bridge.ttl" "../CityOWL/building.ttl" "../CityOWL/cityfurniture.ttl" 
-        "../CityOWL/cityobjectgroup.ttl" "../CityOWL/construction.ttl" "../CityOWL/core.ttl" "../CityOWL/document.ttl" "../CityOWL/dynamizer.ttl" 
-        "../CityOWL/generics.ttl" "../CityOWL/landuse.ttl" "../CityOWL/pointcloud.ttl" "../CityOWL/relief.ttl" "../CityOWL/transportation.ttl"
-        "../CityOWL/tunnel.ttl" "../CityOWL/vegetation.ttl" "../CityOWL/versioning.ttl" "../CityOWL/waterbody.ttl" "../CityOWL/workspace.ttl")
+files=("../CityRDF/appearance.ttl" "../CityRDF/bridge.ttl" "../CityRDF/building.ttl" "../CityRDF/cityfurniture.ttl" 
+        "../CityRDF/cityobjectgroup.ttl" "../CityRDF/construction.ttl" "../CityRDF/core.ttl" "../CityRDF/document.ttl" "../CityRDF/dynamizer.ttl" 
+        "../CityRDF/generics.ttl" "../CityRDF/landuse.ttl" "../CityRDF/pointcloud.ttl" "../CityRDF/relief.ttl" "../CityRDF/transportation.ttl"
+        "../CityRDF/tunnel.ttl" "../CityRDF/vegetation.ttl" "../CityRDF/versioning.ttl" "../CityRDF/waterbody.ttl" "../CityRDF/workspace.ttl")
 
 for file in ${files[@]}; do
 echo $file
@@ -864,17 +868,17 @@ done
 for file in ../stage-2/*
 do 
     file_name=$(basename "$file")
-    if test ! -f "../CityOWL/$file_name" ; then
-        echo "Copying $file to ../CityOWL/$file_name"
-        cp $file ../CityOWL/$file_name
+    if test ! -f "../CityRDF/$file_name" ; then
+        echo "Copying $file to ../CityRDF/$file_name"
+        cp $file ../CityRDF/$file_name
     fi
 done
 
-echo 'Copying CityOWL.ttl to CityOWL'
-cp ../additional-triples/CityOWL.ttl ../CityOWL
-echo 'Copying transactiontypevalues.ttl to CityOWL'
-cp ../additional-triples/transactiontypevalues.ttl ../CityOWL
-echo 'Copying common.ttl to CityOWL'
-cp ../additional-triples/common.ttl ../CityOWL
+echo 'Copying CityRDF.ttl to CityRDF'
+cp ../additional-triples/CityRDF.ttl ../CityRDF
+echo 'Copying transactiontypevalues.ttl to CityRDF'
+cp ../additional-triples/transactiontypevalues.ttl ../CityRDF
+echo 'Copying common.ttl to CityRDF'
+cp ../additional-triples/common.ttl ../CityRDF
 
 read -p "Continue?"

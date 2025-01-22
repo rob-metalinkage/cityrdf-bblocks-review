@@ -4,7 +4,6 @@
 @prefix frncode: <https://www.opengis.net/ont/citygml/cityfurniture/code/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -54,16 +53,10 @@ frncode:CityFurnitureUsageValue a skos:ConceptScheme ;
     skos:definition "CityFurnitureUsageValue is a code list that enumerates the different uses of a CityFurniture."@en .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    skos:definition "Specifies the intended purposes of the CityFurniture."@en ;
-    schema:rangeIncludes frn:CityFurnitureFunctionValue .
+    skos:definition "Specifies the intended purposes of the CityFurniture."@en .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    skos:definition "Specifies the actual uses of the CityFurniture."@en ;
-    schema:rangeIncludes frn:CityFurnitureUsageValue .
-
-<https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    skos:definition "Indicates the specific type of the CityFurniture."@en ;
-    schema:rangeIncludes frn:CityFurnitureClassValue .
+    skos:definition "Specifies the actual uses of the CityFurniture."@en .
 
 frn:CityFurnitureFunctionValue a owl:Class ;
     rdfs:label "CityFurnitureFunctionValue"@en ;
@@ -74,6 +67,9 @@ frn:CityFurnitureUsageValue a owl:Class ;
     rdfs:label "CityFurnitureUsageValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "CityFurnitureUsageValue is a code list that enumerates the different uses of a CityFurniture."@en .
+
+<https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
+    skos:definition "Indicates the specific type of the CityFurniture."@en .
 
 frn:CityFurnitureClassValue a owl:Class ;
     rdfs:label "CityFurnitureClassValue"@en ;

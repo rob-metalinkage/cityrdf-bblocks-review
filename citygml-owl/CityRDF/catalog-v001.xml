@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <uri id="User Entered Import Resolution" name="http://www.w3.org/2006/time" uri="file:/home/nata/work/gml3/cityrdf/citygml-owl/additional-triples/time.ttl"/>
-    <uri id="User Entered Import Resolution" name="http://def.isotc211.org/iso19150/-2/2012/base" uri="file:/home/nata/work/gml3/cityrdf/citygml-owl/additional-triples/iso19150-2-base.rdf"/>
     <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/transactiontypevalues" uri="transactiontypevalues.ttl"/>
     <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/pointcloud" uri="pointcloud.ttl"/>
     <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/versioning" uri="versioning.ttl"/>

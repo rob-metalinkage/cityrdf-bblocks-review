@@ -1,7 +1,7 @@
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 
-<https://www.opengis.net/ont/citygml/CityOWL> a owl:Ontology ;
-    owl:versionIRI <https://www.opengis.net/ont/citygml/CityOWL/3.0.0/>;
+<https://www.opengis.net/ont/citygml/CityRDF> a owl:Ontology ;
+    owl:versionIRI <https://www.opengis.net/ont/citygml/CityRDF/3.0.0/>;
     owl:versionInfo "3.0.0";
     owl:imports <https://www.opengis.net/ont/citygml/appearance>,
         <https://www.opengis.net/ont/citygml/bridge>,

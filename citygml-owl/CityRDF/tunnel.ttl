@@ -3,8 +3,8 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix tun: <https://www.opengis.net/ont/citygml/tunnel/> .
 @prefix tuncode: <https://www.opengis.net/ont/citygml/tunnel/code/> .
@@ -99,9 +99,9 @@ tuncode:TunnelUsageValue a skos:ConceptScheme ;
     dct:isFormatOf tun:TunnelUsageValue ;
     skos:definition "TunnelUsageValue is a code list that enumerates the different uses of a Tunnel."@en .
 
-<https://www.opengis.net/ont/citygml/common/boundary> skos:definition "Relates to the surfaces that bound the HollowSpace. This relation is inherited from the Core module."@en ;
-    schema:domainIncludes tun:HollowSpace ;
-    schema:rangeIncludes core:AbstractThematicSurface .
+<https://www.opengis.net/ont/citygml/common/boundary> rdfs:domain tun:HollowSpace ;
+    rdfs:range core:AbstractThematicSurface ;
+    skos:definition "Relates to the surfaces that bound the HollowSpace. This relation is inherited from the Core module."@en .
 
 tun:Tunnel a owl:Class ;
     rdfs:label "Tunnel"@en ;
@@ -189,17 +189,17 @@ tun:tunnelPart a owl:ObjectProperty ;
     rdfs:range tun:TunnelPart ;
     skos:definition "Relates the tunnel parts to the Tunnel."@en .
 
-<https://www.opengis.net/ont/citygml/common/tunnelFurniture> skos:definition "Relates the furniture objects to the HollowSpace."@en,
-        "Relates the furniture objects to the Tunnel or TunnelPart."@en ;
-    schema:domainIncludes tun:AbstractTunnel,
-        tun:HollowSpace ;
-    schema:rangeIncludes tun:TunnelFurniture .
+<https://www.opengis.net/ont/citygml/common/tunnelFurniture> rdfs:domain [ a owl:Class ;
+            owl:unionOf ( tun:HollowSpace tun:AbstractTunnel ) ] ;
+    rdfs:range tun:TunnelFurniture ;
+    skos:definition "Relates the furniture objects to the HollowSpace."@en,
+        "Relates the furniture objects to the Tunnel or TunnelPart."@en .
 
-<https://www.opengis.net/ont/citygml/common/tunnelInstallation> skos:definition "Relates the installation objects to the HollowSpace."@en,
-        "Relates the installation objects to the Tunnel or TunnelPart."@en ;
-    schema:domainIncludes tun:AbstractTunnel,
-        tun:HollowSpace ;
-    schema:rangeIncludes tun:TunnelInstallation .
+<https://www.opengis.net/ont/citygml/common/tunnelInstallation> rdfs:domain [ a owl:Class ;
+            owl:unionOf ( tun:HollowSpace tun:AbstractTunnel ) ] ;
+    rdfs:range tun:TunnelInstallation ;
+    skos:definition "Relates the installation objects to the HollowSpace."@en,
+        "Relates the installation objects to the Tunnel or TunnelPart."@en .
 
 tun:TunnelConstructiveElement a owl:Class ;
     rdfs:label "TunnelConstructiveElement"@en ;
@@ -257,12 +257,10 @@ tun:TunnelPart a owl:Class ;
     rdfs:subClassOf tun:AbstractTunnel .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    skos:definition "Specifies the intended purposes of the HollowSpace."@en ;
-    schema:rangeIncludes tun:HollowSpaceFunctionValue .
+    skos:definition "Specifies the intended purposes of the HollowSpace."@en .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    skos:definition "Specifies the actual uses of the HollowSpace."@en ;
-    schema:rangeIncludes tun:HollowSpaceUsageValue .
+    skos:definition "Specifies the actual uses of the HollowSpace."@en .
 
 tun:HollowSpace a owl:Class ;
     rdfs:label "HollowSpace"@en ;
@@ -331,8 +329,7 @@ tun:HollowSpaceUsageValue a owl:Class ;
     skos:definition "HollowSpaceUsageValue is a code list that enumerates the different uses of a HollowSpace."@en .
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    skos:definition "Indicates the specific type of the HollowSpace."@en ;
-    schema:rangeIncludes tun:HollowSpaceClassValue .
+    skos:definition "Indicates the specific type of the HollowSpace."@en .
 
 tun:HollowSpaceClassValue a owl:Class ;
     rdfs:label "HollowSpaceClassValue"@en ;

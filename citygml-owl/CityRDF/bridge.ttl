@@ -5,8 +5,8 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -185,13 +185,13 @@ brid:bridgeRoom a owl:ObjectProperty ;
     rdfs:range brid:BridgeRoom ;
     skos:definition "Relates the rooms to the Bridge or BridgePart."@en .
 
-<https://www.opengis.net/ont/citygml/common/address> skos:definition "Relates the addresses to the Bridge or BridgePart."@en ;
-    schema:domainIncludes brid:AbstractBridge ;
-    schema:rangeIncludes core:Address .
+<https://www.opengis.net/ont/citygml/common/address> rdfs:domain brid:AbstractBridge ;
+    rdfs:range core:Address ;
+    skos:definition "Relates the addresses to the Bridge or BridgePart."@en .
 
-<https://www.opengis.net/ont/citygml/common/boundary> skos:definition "Relates to the surfaces that bound the BridgeRoom. This relation is inherited from the Core module."@en ;
-    schema:domainIncludes brid:BridgeRoom ;
-    schema:rangeIncludes core:AbstractThematicSurface .
+<https://www.opengis.net/ont/citygml/common/boundary> rdfs:domain brid:BridgeRoom ;
+    rdfs:range core:AbstractThematicSurface ;
+    skos:definition "Relates to the surfaces that bound the BridgeRoom. This relation is inherited from the Core module."@en .
 
 brid:BridgeConstructiveElement a owl:Class ;
     rdfs:label "BridgeConstructiveElement"@en ;
@@ -215,17 +215,17 @@ brid:isMovable a owl:DatatypeProperty ;
     rdfs:range xsd:boolean ;
     skos:definition "Indicates whether the Bridge or BridgePart can be moved to allow for watercraft to pass."@en .
 
-<https://www.opengis.net/ont/citygml/common/bridgeFurniture> skos:definition "Relates the furniture objects to the Bridge or BridgePart."@en,
-        "Relates the furniture objects to the BridgeRoom."@en ;
-    schema:domainIncludes brid:AbstractBridge,
-        brid:BridgeRoom ;
-    schema:rangeIncludes brid:BridgeFurniture .
+<https://www.opengis.net/ont/citygml/common/bridgeFurniture> rdfs:domain [ a owl:Class ;
+            owl:unionOf ( brid:BridgeRoom brid:AbstractBridge ) ] ;
+    rdfs:range brid:BridgeFurniture ;
+    skos:definition "Relates the furniture objects to the Bridge or BridgePart."@en,
+        "Relates the furniture objects to the BridgeRoom."@en .
 
-<https://www.opengis.net/ont/citygml/common/bridgeInstallation> skos:definition "Relates the installation objects to the Bridge or BridgePart."@en,
-        "Relates to the installation objects to the BridgeRoom."@en ;
-    schema:domainIncludes brid:AbstractBridge,
-        brid:BridgeRoom ;
-    schema:rangeIncludes brid:BridgeInstallation .
+<https://www.opengis.net/ont/citygml/common/bridgeInstallation> rdfs:domain [ a owl:Class ;
+            owl:unionOf ( brid:BridgeRoom brid:AbstractBridge ) ] ;
+    rdfs:range brid:BridgeInstallation ;
+    skos:definition "Relates the installation objects to the Bridge or BridgePart."@en,
+        "Relates to the installation objects to the BridgeRoom."@en .
 
 brid:BridgeFurniture a owl:Class ;
     rdfs:label "BridgeFurniture"@en ;
@@ -292,12 +292,20 @@ brid:BridgeRoom a owl:Class ;
         core:AbstractUnoccupiedSpace .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    skos:definition "Specifies the intended purposes of the BridgeConstructiveElement."@en ;
-    schema:rangeIncludes brid:BridgeConstructiveElementFunctionValue .
+    skos:definition "Specifies the intended purposes of the BridgeConstructiveElement."@en .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    skos:definition "Specifies the actual uses of the BridgeConstructiveElement."@en ;
-    schema:rangeIncludes brid:BridgeConstructiveElementUsageValue .
+    skos:definition "Specifies the actual uses of the BridgeConstructiveElement."@en .
+
+brid:BridgeConstructiveElementFunctionValue a owl:Class ;
+    rdfs:label "BridgeConstructiveElementFunctionValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "BridgeConstructiveElementFunctionValue is a code list that enumerates the different purposes of a BridgeConstructiveElement."@en .
+
+brid:BridgeConstructiveElementUsageValue a owl:Class ;
+    rdfs:label "BridgeConstructiveElementUsageValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "BridgeConstructiveElementUsageValue is a code list that enumerates the different uses of a BridgeConstructiveElement."@en .
 
 brid:AbstractBridge a owl:Class ;
     rdfs:label "AbstractBridge"@en ;
@@ -339,19 +347,8 @@ brid:AbstractBridge a owl:Class ;
             owl:onProperty brid:isMovable ],
         con:AbstractConstruction .
 
-brid:BridgeConstructiveElementFunctionValue a owl:Class ;
-    rdfs:label "BridgeConstructiveElementFunctionValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "BridgeConstructiveElementFunctionValue is a code list that enumerates the different purposes of a BridgeConstructiveElement."@en .
-
-brid:BridgeConstructiveElementUsageValue a owl:Class ;
-    rdfs:label "BridgeConstructiveElementUsageValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "BridgeConstructiveElementUsageValue is a code list that enumerates the different uses of a BridgeConstructiveElement."@en .
-
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    skos:definition "Indicates the specific type of the BridgeConstructiveElement."@en ;
-    schema:rangeIncludes brid:BridgeConstructiveElementClassValue .
+    skos:definition "Indicates the specific type of the BridgeConstructiveElement."@en .
 
 brid:BridgeConstructiveElementClassValue a owl:Class ;
     rdfs:label "BridgeConstructiveElementClassValue"@en ;

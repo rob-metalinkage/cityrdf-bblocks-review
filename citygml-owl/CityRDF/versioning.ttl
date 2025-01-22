@@ -2,7 +2,6 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vers: <https://www.opengis.net/ont/citygml/versioning/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -23,9 +22,9 @@ vers:TransactionTypeValue a owl:Class ;
             owl:oneOf ( "insert" "delete" "replace" ) ] ;
     skos:definition "TransactionTypeValue enumerates the three possible types of transactions: insert, delete, or replace."@en .
 
-<https://www.opengis.net/ont/citygml/common/versionMember> skos:definition "Relates to all city objects that are part of the city model version."@en ;
-    schema:domainIncludes vers:Version ;
-    schema:rangeIncludes core:AbstractFeatureWithLifespan .
+<https://www.opengis.net/ont/citygml/common/versionMember> rdfs:domain vers:Version ;
+    rdfs:range core:AbstractFeatureWithLifespan ;
+    skos:definition "Relates to all city objects that are part of the city model version."@en .
 
 vers:tag a owl:DatatypeProperty ;
     rdfs:label "tag"@en ;
@@ -75,24 +74,6 @@ vers:to a owl:ObjectProperty ;
 vers:VersionTransition a owl:Class ;
     rdfs:label "VersionTransition"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom vers:TransitionTypeValue ;
-            owl:onProperty vers:type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass vers:Version ;
-            owl:onProperty vers:from ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass vers:Version ;
-            owl:onProperty vers:to ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty vers:clonePredecessor ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty vers:reason ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty vers:reason ],
@@ -112,6 +93,24 @@ vers:VersionTransition a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom vers:Transaction ;
             owl:onProperty vers:transaction ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom vers:TransitionTypeValue ;
+            owl:onProperty vers:type ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass vers:Version ;
+            owl:onProperty vers:from ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass vers:Version ;
+            owl:onProperty vers:to ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty vers:clonePredecessor ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty vers:reason ],
         core:AbstractVersionTransition .
 
 vers:Transaction a owl:Class ;

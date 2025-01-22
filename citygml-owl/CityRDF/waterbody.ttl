@@ -3,7 +3,6 @@
 @prefix iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix wtr: <https://www.opengis.net/ont/citygml/waterbody/> .
 @prefix wtrcode: <https://www.opengis.net/ont/citygml/waterbody/code/> .
@@ -47,16 +46,14 @@ wtrcode:WaterLevelValue a skos:ConceptScheme ;
     dct:isFormatOf wtr:WaterLevelValue ;
     skos:definition "WaterLevelValue is a code list that enumerates the different levels of a water surface."@en .
 
-<https://www.opengis.net/ont/citygml/common/boundary> schema:domainIncludes wtr:WaterBody ;
-    schema:rangeIncludes wtr:AbstractWaterBoundarySurface .
+<https://www.opengis.net/ont/citygml/common/boundary> rdfs:domain wtr:WaterBody ;
+    rdfs:range wtr:AbstractWaterBoundarySurface .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    skos:definition "Specifies the intended purposes of the WaterBody."@en ;
-    schema:rangeIncludes wtr:WaterBodyFunctionValue .
+    skos:definition "Specifies the intended purposes of the WaterBody."@en .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    skos:definition "Specifies the actual uses of the WaterBody."@en ;
-    schema:rangeIncludes wtr:WaterBodyUsageValue .
+    skos:definition "Specifies the actual uses of the WaterBody."@en .
 
 wtr:WaterBody a owl:Class ;
     rdfs:label "WaterBody"@en ;
@@ -90,13 +87,7 @@ wtr:WaterSurface a owl:Class ;
         wtr:AbstractWaterBoundarySurface .
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    skos:definition "Indicates the specific type of the WaterBody."@en ;
-    schema:rangeIncludes wtr:WaterBodyClassValue .
-
-wtr:waterLevel a owl:ObjectProperty ;
-    rdfs:label "waterLevel"@en ;
-    rdfs:range wtr:WaterLevelValue ;
-    skos:definition "Specifies the level of the WaterSurface."@en .
+    skos:definition "Indicates the specific type of the WaterBody."@en .
 
 wtr:WaterBodyFunctionValue a owl:Class ;
     rdfs:label "WaterBodyFunctionValue"@en ;
@@ -108,15 +99,20 @@ wtr:WaterBodyUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "WaterBodyUsageValue is a code list that enumerates the different uses of a WaterBody."@en .
 
-wtr:AbstractWaterBoundarySurface a owl:Class ;
-    rdfs:label "AbstractWaterBoundarySurface"@en ;
-    iso19150-2:isAbstract true ;
-    rdfs:subClassOf core:AbstractThematicSurface .
+wtr:waterLevel a owl:ObjectProperty ;
+    rdfs:label "waterLevel"@en ;
+    rdfs:range wtr:WaterLevelValue ;
+    skos:definition "Specifies the level of the WaterSurface."@en .
 
 wtr:WaterBodyClassValue a owl:Class ;
     rdfs:label "WaterBodyClassValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "WaterBodyClassValue is a code list used to further classify a WaterBody."@en .
+
+wtr:AbstractWaterBoundarySurface a owl:Class ;
+    rdfs:label "AbstractWaterBoundarySurface"@en ;
+    iso19150-2:isAbstract true ;
+    rdfs:subClassOf core:AbstractThematicSurface .
 
 wtr:WaterLevelValue a owl:Class ;
     rdfs:label "WaterLevelValue"@en ;

@@ -3,13 +3,15 @@
 This directory is used to define a CityGML OWL derived from the UML source.
 The intention is to set this up as a proof of concept that can be migrated to the (or an) official CityGML specification repository.
 
+We propose **CityRDF** as a name for the target family of ontologies. 
+
 ## Background
 
 A proposal to implement a CityGML OWL representation to support RDF encodings was presented to the CityGML Working Group in June 2023.
 
 The [CHEK project](https://info.cype.com/en/research/chek-dbp/) has identified a need to reconcile related sources of information from different systems and designed an approach around "semantic uplift" to a minimal profile of each standard used to a common model that can support regulation evaluation. Thus this complex task does not need to be repeated for each version of each encoding approach - such as CityGML, CityJSON, BIM/IFC and various planning GIS layers.
 
-Resources described in CityGML WG proposal (thanks to Diego Vinasco-Alvarez)
+Resources described in CityGML WG proposal (thanks to [Diego Vinasco-Alvarez](https://github.com/DiegoVinasco))
 
 * CityGML 3.0 ShapeChange configs: https://github.com/VCityTeam/UD-Graph/blob/master/Transformations/ShapeChange/CityGML3.0_to_OWL_config.xml for CityOWL CWA and https://github.com/VCityTeam/UD-Reproducibility/blob/master/Computations/RDF/CityOWL/shapechange-configs/CityGML3.0_to_OWL_lite_config.xml for CityOWL OWA. 
 
@@ -27,7 +29,7 @@ Resources described in CityGML WG proposal (thanks to Diego Vinasco-Alvarez)
 |Folder               | Purpose                                                                   |
 |------               | ------                                                                    |
 |\additional-triples  | files used in the workflow                                                |
-|\CityOWL             | final result of the transformation                                        |
+|\CityRDF             | final result of the transformation                                        |
 |\examples            | some CityGML files and their Turtle representations                       |
 |\scripts             | all necessary scripts used in the transformation                          |
 |\statistics          | results of qualifying SPARQL queries affecting the transformation actions |
@@ -39,9 +41,10 @@ We use [CityGML_3.0-workspaces-documents_shapechange-export.xml](https://github.
 We added `<<Union>>` stereotype conversion (`rule-owl-cls-union`) and made use of `rule-owl-prop-globalScopeAttributes` to de-duplicate to a certain extent (see below) properties defined more than once per package and across packages.
 
 The sequence of steps is as follows:
-1) Using shell script to perform ShapeChange transformation of CityGML 3.0 UML into initial set of onotologies.
+1) Using shell script `run.sh` perform ShapeChange transformation of CityGML 3.0 UML into initial set of onotologies.
 2) Using shell script `patch-ontologies.sh` make the initial set of ontologies readable in Protege.
 3) Using shell script `update-triples.sh` perform SPARQL based transformation of the ontologies.
+4) (optional) Using shell script `refactor.sh` apply additional transformation of `schema:domainIncludes`/`schemaRangeIncludes` to wrap up multiple classes into `owl:unionOf` classes accesible with `rdfs:domain`/`rdfs:range` (see below) 
 
 The whole workflow can be executed with `run-workflow.sh` script.
 
@@ -72,6 +75,30 @@ The script did the following:
 - patches RoomHeight.status range
 
 We extended this script to implement our vision on how we can benefit from custom UML-to-OWL conversion, taking into account abilities of OWL.
+
+#### ADE* classes/ade* properties removal
+
+As far as the implementation of Application Domain Extensions (ADEs) is optional, we decided to remove mentioning of ADE* classes/ade* properties from CityGML ontologies.
+
+Here is the typical example of a restriction involving ADE* class and ade* property:
+
+```turtle
+luse:LandUse a owl:Class ;
+    rdfs:label "LandUse"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom luse:ADEOfLandUse ;
+            owl:onProperty luse:adeOfLandUse ],
+    ...
+luse:adeOfLandUse a owl:ObjectProperty ;
+    rdfs:label "adeOfLandUse"@en ;
+    rdfs:range luse:ADEOfLandUse ;
+    skos:definition "Augments the LandUse with properties defined in an ADE."@en .
+luse:ADEOfLandUse a owl:Class ;
+    rdfs:label "ADEOfLandUse"@en ;
+    iso19150-2:isAbstract true ;
+    skos:definition "ADEOfLandUse acts as a hook to define properties within an ADE that are to be added to a LandUse."@en .
+```
+We apply one SPARQL query ([#1 in the file](./update-triples.sh)) across all ontologies in `stage-2` to do this.
 
 #### Global Properties explication
 
@@ -117,30 +144,7 @@ We add the following:
 
 We apply four SPARQL queries ([##2-5 in the file](./update-triples.sh)) across all ontologies in `stage-2` to do this.
 
-There are also object/datatype properties schematically presented as `packagename#Class.property`. For example, object property `boundary` has domain in some abstract class 4 times, and 9 times is has a non-abstract domain (in total, 13 occurences) (see the full list of duplications in abstract classes [here](./statistics/citygml-duplications%20of%20properties%20with%20domain%20in%20Abstractclass.csv)). Following the same argument, we would like to avoid repetitions of definitions in package-level ontologies and apply some more actions on duplicated definitions of object/datatype properties as described below.
-
-#### ADE* classes/ade* properties removal
-As far as the implementation of Application Domain Extensions (ADEs) is optional, we decided to remove mentioning of ADE* classes/ade* properties from CityGML ontologies.
-
-Here is the typical example of a restriction involving ADE* class and ade* property:
-
-```turtle
-luse:LandUse a owl:Class ;
-    rdfs:label "LandUse"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom luse:ADEOfLandUse ;
-            owl:onProperty luse:adeOfLandUse ],
-    ...
-luse:adeOfLandUse a owl:ObjectProperty ;
-    rdfs:label "adeOfLandUse"@en ;
-    rdfs:range luse:ADEOfLandUse ;
-    skos:definition "Augments the LandUse with properties defined in an ADE."@en .
-luse:ADEOfLandUse a owl:Class ;
-    rdfs:label "ADEOfLandUse"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "ADEOfLandUse acts as a hook to define properties within an ADE that are to be added to a LandUse."@en .
-```
-We apply one SPARQL query ([#1 in the file](./update-triples.sh)) across all ontologies in `stage-2` to do this.
+There are also object/datatype properties schematically presented as `packagename#Class.property`. For example, object property `boundary` has domain in some abstract class 4 times, and 9 times is has a non-abstract domain (in total, 13 occurences). Following the same argument, we would like to avoid repetitions of definitions in package-level ontologies and apply some more actions on duplicated definitions of object/datatype properties as described below.
 
 #### Removal of duplicate definitions for properties of the kind `packagename#Class.property` 
 
@@ -151,7 +155,7 @@ We propose to do the following (we present both alternatives):
 Qualifying query making use of the naming conventions in OWL generated by ShapeChange:
 
 ```sparql
-#duplications of properties with domain in Abstract* class
+#duplications of ObjectProperties 
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 select 
@@ -159,6 +163,7 @@ select
   ?classIndependentPropName 
 where { 
 	?s a owl:ObjectProperty .
+#	?s a owl:DatatypeProperty .
     optional{bind(strafter(str(?s),"#") as ?classIndependentPropName).}
     optional{bind(strbefore(strafter(str(?s),"#"),".") as ?classThePropDepends).}
 	?s rdfs:label ?classIndependentPropName .

@@ -10,7 +10,6 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sc: <http://shapechange.net/resources/ont/base#> .
-@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix tun: <https://www.opengis.net/ont/citygml/tunnel/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -94,12 +93,10 @@ concode:WindowUsageValue a skos:ConceptScheme ;
     skos:definition "WindowUsageValue is a code list that enumerates the different uses of a Window."@en .
 
 <https://www.opengis.net/ont/citygml/common/elevation> rdfs:label "elevation"@en ;
-    skos:definition "Specifies qualified elevations of the construction in relation to a well-defined surface which is commonly taken as origin (e.g. geoid or water level). [cf. INSPIRE]"@en ;
-    schema:rangeIncludes con:Elevation .
+    skos:definition "Specifies qualified elevations of the construction in relation to a well-defined surface which is commonly taken as origin (e.g. geoid or water level). [cf. INSPIRE]"@en .
 
 <https://www.opengis.net/ont/citygml/common/occupancy> rdfs:label "occupancy"@en ;
-    skos:definition "Provides qualified information on the residency of persons, animals, or other moveable objects in the construction."@en ;
-    schema:rangeIncludes core:Occupancy .
+    skos:definition "Provides qualified information on the residency of persons, animals, or other moveable objects in the construction."@en .
 
 con:AbstractInstallation a owl:Class ;
     rdfs:label "AbstractInstallation"@en ;
@@ -119,6 +116,24 @@ con:AbstractInstallation a owl:Class ;
 con:CeilingSurface a owl:Class ;
     rdfs:label "CeilingSurface"@en ;
     rdfs:subClassOf con:AbstractConstructionSurface .
+
+con:Elevation a owl:Class ;
+    rdfs:label "Elevation"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:Point ;
+            owl:onProperty con:elevationValue ],
+        [ a owl:Restriction ;
+            owl:onClass gmlowl:Point ;
+            owl:onProperty con:elevationValue ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom con:ElevationReferenceValue ;
+            owl:onProperty con:elevationReference ],
+        [ a owl:Restriction ;
+            owl:onClass con:ElevationReferenceValue ;
+            owl:onProperty con:elevationReference ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:definition "Elevation is a data type that includes the elevation value itself and information on how this elevation was measured. [cf. INSPIRE]"@en .
 
 con:FloorSurface a owl:Class ;
     rdfs:label "FloorSurface"@en ;
@@ -217,43 +232,31 @@ con:height a owl:ObjectProperty ;
     rdfs:range con:Height ;
     skos:definition "Specifies qualified heights of the construction above ground or below ground. [cf. INSPIRE]"@en .
 
-<https://www.opengis.net/ont/citygml/common/address> skos:definition "Relates to the addresses that are assigned to the Door."@en,
-        "Relates to the addresses that are assigned to the DoorSurface."@en ;
-    schema:domainIncludes con:Door,
-        con:DoorSurface ;
-    schema:rangeIncludes core:Address .
+<https://www.opengis.net/ont/citygml/common/address> rdfs:domain [ a owl:Class ;
+            owl:unionOf ( con:Door con:DoorSurface ) ] ;
+    rdfs:range core:Address ;
+    skos:definition "Relates to the addresses that are assigned to the Door."@en,
+        "Relates to the addresses that are assigned to the DoorSurface."@en .
 
 <https://www.opengis.net/ont/citygml/common/description> rdfs:label "description"@en ;
-    skos:definition "Provides additional information on the event."@en ;
-    schema:rangeIncludes xsd:string .
+    skos:definition "Provides additional information on the event."@en .
 
 <https://www.opengis.net/ont/citygml/common/highReference> rdfs:label "highReference"@en ;
-    skos:definition "Indicates the high point used to calculate the value of the height. [cf. INSPIRE]"@en ;
-    schema:rangeIncludes con:ElevationReferenceValue .
+    skos:definition "Indicates the high point used to calculate the value of the height. [cf. INSPIRE]"@en .
 
 <https://www.opengis.net/ont/citygml/common/lowReference> rdfs:label "lowReference"@en ;
-    skos:definition "Indicates the low point used to calculate the value of the height. [cf. INSPIRE]"@en ;
-    schema:rangeIncludes con:ElevationReferenceValue .
+    skos:definition "Indicates the low point used to calculate the value of the height. [cf. INSPIRE]"@en .
 
 <https://www.opengis.net/ont/citygml/common/status> rdfs:label "status"@en ;
-    skos:definition "Indicates the way the height has been captured. [cf. INSPIRE]"@en ;
-    schema:rangeIncludes con:HeightStatusValue .
+    skos:definition "Indicates the way the height has been captured. [cf. INSPIRE]"@en .
 
 <https://www.opengis.net/ont/citygml/common/value> rdfs:label "value"@en ;
-    skos:definition "Specifies the value of the height above or below ground. [cf. INSPIRE]"@en ;
-    schema:rangeIncludes sc:Measure .
+    skos:definition "Specifies the value of the height above or below ground. [cf. INSPIRE]"@en .
 
 con:AbstractConstruction a owl:Class ;
     rdfs:label "AbstractConstruction"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom con:Height ;
-            owl:onProperty con:height ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange con:ConditionOfConstructionValue ;
-            owl:onProperty con:conditionOfConstruction ],
-        [ a owl:Restriction ;
             owl:allValuesFrom con:ConstructionEvent ;
             owl:onProperty con:constructionEvent ],
         [ a owl:Restriction ;
@@ -282,6 +285,13 @@ con:AbstractConstruction a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:date ;
             owl:onProperty con:dateOfDemolition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom con:Height ;
+            owl:onProperty con:height ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange con:ConditionOfConstructionValue ;
+            owl:onProperty con:conditionOfConstruction ],
         core:AbstractOccupiedSpace .
 
 con:AbstractConstructiveElement a owl:Class ;
@@ -351,24 +361,6 @@ con:Door a owl:Class ;
         con:AbstractFillingElement ;
     owl:disjointWith con:Window .
 
-con:Elevation a owl:Class ;
-    rdfs:label "Elevation"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:Point ;
-            owl:onProperty con:elevationValue ],
-        [ a owl:Restriction ;
-            owl:onClass gmlowl:Point ;
-            owl:onProperty con:elevationValue ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom con:ElevationReferenceValue ;
-            owl:onProperty con:elevationReference ],
-        [ a owl:Restriction ;
-            owl:onClass con:ElevationReferenceValue ;
-            owl:onProperty con:elevationReference ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
-    skos:definition "Elevation is a data type that includes the elevation value itself and information on how this elevation was measured. [cf. INSPIRE]"@en .
-
 con:Height a owl:Class ;
     rdfs:label "Height"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -400,6 +392,12 @@ con:Height a owl:Class ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/lowReference> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Height represents a vertical distance (measured or estimated) between a low reference and a high reference. [cf. INSPIRE]"@en .
+
+con:HeightStatusValue a rdfs:Datatype ;
+    rdfs:label "HeightStatusValue"@en ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "estimated" "measured" ) ] ;
+    skos:definition "HeightStatusValue enumerates the different methods used to capture a height. [cf. INSPIRE]"@en .
 
 con:Window a owl:Class ;
     rdfs:label "Window"@en ;
@@ -467,12 +465,10 @@ con:relationToConstruction a owl:DatatypeProperty ;
     skos:definition "Indicates whether the installation is located inside and/or outside of the construction."@en .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    skos:definition "Specifies the intended purposes of the Door."@en ;
-    schema:rangeIncludes con:DoorFunctionValue .
+    skos:definition "Specifies the intended purposes of the Door."@en .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    skos:definition "Specifies the actual uses of the Door."@en ;
-    schema:rangeIncludes con:DoorUsageValue .
+    skos:definition "Specifies the actual uses of the Door."@en .
 
 con:ConditionOfConstructionValue a rdfs:Datatype ;
     rdfs:label "ConditionOfConstructionValue"@en ;
@@ -487,12 +483,6 @@ con:DoorSurface a owl:Class ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/address> ],
         con:AbstractFillingSurface ;
     owl:disjointWith con:WindowSurface .
-
-con:HeightStatusValue a rdfs:Datatype ;
-    rdfs:label "HeightStatusValue"@en ;
-    owl:equivalentClass [ a rdfs:Datatype ;
-            owl:oneOf ( "estimated" "measured" ) ] ;
-    skos:definition "HeightStatusValue enumerates the different methods used to capture a height. [cf. INSPIRE]"@en .
 
 con:RelationToConstruction a rdfs:Datatype ;
     rdfs:label "RelationToConstruction"@en ;
@@ -514,25 +504,6 @@ con:AbstractFillingSurface a owl:Class ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf core:AbstractThematicSurface .
 
-con:EventValue a owl:Class ;
-    rdfs:label "EventValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "EventValue is a code list that enumerates the different events of a construction."@en .
-
-<https://www.opengis.net/ont/citygml/common/boundary> skos:definition "Relates to the door surfaces that bound the Door. This relation is inherited from the Core module."@en,
-        "Relates to the surfaces that bound the construction. This relation is inherited from the Core module."@en,
-        "Relates to the surfaces that bound the constructive element. This relation is inherited from the Core module."@en,
-        "Relates to the surfaces that bound the installation. This relation is inherited from the Core module."@en,
-        "Relates to the window surfaces that bound the Window. This relation is inherited from the Core module."@en ;
-    schema:domainIncludes con:AbstractConstruction,
-        con:AbstractConstructiveElement,
-        con:AbstractInstallation,
-        con:Door,
-        con:Window ;
-    schema:rangeIncludes con:DoorSurface,
-        con:WindowSurface,
-        core:AbstractThematicSurface .
-
 con:DoorFunctionValue a owl:Class ;
     rdfs:label "DoorFunctionValue"@en ;
     rdfs:subClassOf skos:Concept ;
@@ -543,14 +514,33 @@ con:DoorUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "DoorUsageValue is a code list that enumerates the different uses of a Door."@en .
 
+con:EventValue a owl:Class ;
+    rdfs:label "EventValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "EventValue is a code list that enumerates the different events of a construction."@en .
+
+<https://www.opengis.net/ont/citygml/common/boundary> rdfs:domain [ a owl:Class ;
+            owl:unionOf ( con:AbstractInstallation con:Window con:Door con:AbstractConstruction con:AbstractConstructiveElement ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( con:DoorSurface con:WindowSurface core:AbstractThematicSurface ) ] ;
+    skos:definition "Relates to the door surfaces that bound the Door. This relation is inherited from the Core module."@en,
+        "Relates to the surfaces that bound the construction. This relation is inherited from the Core module."@en,
+        "Relates to the surfaces that bound the constructive element. This relation is inherited from the Core module."@en,
+        "Relates to the surfaces that bound the installation. This relation is inherited from the Core module."@en,
+        "Relates to the window surfaces that bound the Window. This relation is inherited from the Core module."@en .
+
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    skos:definition "Indicates the specific type of the Door."@en ;
-    schema:rangeIncludes con:DoorClassValue .
+    skos:definition "Indicates the specific type of the Door."@en .
 
 con:DoorClassValue a owl:Class ;
     rdfs:label "DoorClassValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "DoorClassValue is a code list used to further classify a Door."@en .
+
+con:ElevationReferenceValue a owl:Class ;
+    rdfs:label "ElevationReferenceValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "ElevationReferenceValue is a code list that enumerates the different elevation reference levels used to measure construction heights."@en .
 
 con:AbstractConstructionSurface a owl:Class ;
     rdfs:label "AbstractConstructionSurface"@en ;
@@ -559,11 +549,6 @@ con:AbstractConstructionSurface a owl:Class ;
             owl:allValuesFrom con:AbstractFillingSurface ;
             owl:onProperty con:fillingSurface ],
         core:AbstractThematicSurface .
-
-con:ElevationReferenceValue a owl:Class ;
-    rdfs:label "ElevationReferenceValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "ElevationReferenceValue is a code list that enumerates the different elevation reference levels used to measure construction heights."@en .
 
 [] a owl:AllDisjointClasses ;
     owl:members ( brid:BridgeConstructiveElement bldg:BuildingConstructiveElement tun:TunnelConstructiveElement ) .

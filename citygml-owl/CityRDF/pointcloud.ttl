@@ -3,7 +3,6 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pcl: <https://www.opengis.net/ont/citygml/pointcloud/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -50,8 +49,7 @@ pcl:PointCloud a owl:Class ;
         core:AbstractPointCloud .
 
 <https://www.opengis.net/ont/citygml/common/mimeType> rdfs:label "mimeType"@en ;
-    skos:definition "Specifies the MIME type of the external point cloud file."@en ;
-    schema:rangeIncludes core:MimeTypeValue .
+    skos:definition "Specifies the MIME type of the external point cloud file."@en .
 
 pcl:pointFile a owl:DatatypeProperty ;
     rdfs:label "pointFile"@en ;

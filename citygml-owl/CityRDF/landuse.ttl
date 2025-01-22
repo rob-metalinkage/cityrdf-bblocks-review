@@ -4,7 +4,6 @@
 @prefix lusecode: <https://www.opengis.net/ont/citygml/landuse/code/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -54,16 +53,13 @@ lusecode:LandUseUsageValue a skos:ConceptScheme ;
     skos:definition "LandUseUsageValue is a code list that enumerates the different uses of a LandUse."@en .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    skos:definition "Specifies the intended purposes of the LandUse."@en ;
-    schema:rangeIncludes luse:LandUseFunctionValue .
+    skos:definition "Specifies the intended purposes of the LandUse."@en .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    skos:definition "Specifies the actual uses of the LandUse."@en ;
-    schema:rangeIncludes luse:LandUseUsageValue .
+    skos:definition "Specifies the actual uses of the LandUse."@en .
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    skos:definition "Indicates the specific type of the LandUse."@en ;
-    schema:rangeIncludes luse:LandUseClassValue .
+    skos:definition "Indicates the specific type of the LandUse."@en .
 
 luse:LandUseFunctionValue a owl:Class ;
     rdfs:label "LandUseFunctionValue"@en ;

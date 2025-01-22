@@ -4,7 +4,6 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sc: <http://shapechange.net/resources/ont/base#> .
-@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix veg: <https://www.opengis.net/ont/citygml/vegetation/> .
 @prefix vegcode: <https://www.opengis.net/ont/citygml/vegetation/code/> .
@@ -26,6 +25,9 @@ veg:PlantCover a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange sc:Measure ;
             owl:onProperty veg:minHeight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom veg:PlantCoverUsageValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/usage> ],
         [ a owl:Restriction ;
             owl:allValuesFrom veg:PlantCoverFunctionValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/function> ],
@@ -53,9 +55,6 @@ veg:PlantCover a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass veg:PlantCoverClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom veg:PlantCoverUsageValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/usage> ],
         veg:AbstractVegetationObject ;
     owl:disjointWith veg:SolitaryVegetationObject .
 
@@ -173,12 +172,10 @@ veg:SolitaryVegetationObjectUsageValue a owl:Class ;
     skos:definition "SolitaryVegetationObjectUsageValue is a code list that enumerates the different uses of a SolitaryVegetationObject."@en .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    skos:definition "Specifies the intended purposes of the PlantCover."@en ;
-    schema:rangeIncludes veg:PlantCoverFunctionValue .
+    skos:definition "Specifies the intended purposes of the PlantCover."@en .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    skos:definition "Specifies the actual uses of the PlantCover."@en ;
-    schema:rangeIncludes veg:PlantCoverUsageValue .
+    skos:definition "Specifies the actual uses of the PlantCover."@en .
 
 veg:AbstractVegetationObject a owl:Class ;
     rdfs:label "AbstractVegetationObject"@en ;
@@ -230,10 +227,6 @@ veg:trunkDiameter a owl:DatatypeProperty ;
     rdfs:range sc:Measure ;
     skos:definition "Specifies the diameter of the SolitaryCityObject's trunk."@en .
 
-<https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    skos:definition "Indicates the specific type of the PlantCover."@en ;
-    schema:rangeIncludes veg:PlantCoverClassValue .
-
 veg:PlantCoverFunctionValue a owl:Class ;
     rdfs:label "PlantCoverFunctionValue"@en ;
     rdfs:subClassOf skos:Concept ;
@@ -243,6 +236,9 @@ veg:PlantCoverUsageValue a owl:Class ;
     rdfs:label "PlantCoverUsageValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "PlantCoverUsageValue is a code list that enumerates the different uses of a PlantCover."@en .
+
+<https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
+    skos:definition "Indicates the specific type of the PlantCover."@en .
 
 veg:SpeciesValue a owl:Class ;
     rdfs:label "SpeciesValue"@en ;

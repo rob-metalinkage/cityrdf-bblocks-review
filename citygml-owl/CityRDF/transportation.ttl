@@ -4,7 +4,6 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix tran: <https://www.opengis.net/ont/citygml/transportation/> .
 @prefix trancode: <https://www.opengis.net/ont/citygml/transportation/code/> .
@@ -396,20 +395,22 @@ tran:trafficSpace a owl:ObjectProperty ;
     rdfs:range tran:TrafficSpace ;
     skos:definition "Relates to the traffic spaces that are part of the transportation space."@en .
 
-<https://www.opengis.net/ont/citygml/common/boundary> skos:definition "Relates to the auxiliary traffic areas that bound the AuxiliaryTrafficSpace. This relation is inherited from the Core module."@en,
-        "Relates to the traffic areas that bound the TrafficSpace. This relation is inherited from the Core module."@en ;
-    schema:domainIncludes tran:AuxiliaryTrafficSpace,
-        tran:TrafficSpace ;
-    schema:rangeIncludes tran:AuxiliaryTrafficArea,
-        tran:TrafficArea .
+<https://www.opengis.net/ont/citygml/common/boundary> rdfs:domain [ a owl:Class ;
+            owl:unionOf ( tran:AuxiliaryTrafficSpace tran:TrafficSpace ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( tran:TrafficArea tran:AuxiliaryTrafficArea ) ] ;
+    skos:definition "Relates to the auxiliary traffic areas that bound the AuxiliaryTrafficSpace. This relation is inherited from the Core module."@en,
+        "Relates to the traffic areas that bound the TrafficSpace. This relation is inherited from the Core module."@en .
 
 <https://www.opengis.net/ont/citygml/common/occupancy> rdfs:label "occupancy"@en ;
-    skos:definition "Provides information on the residency of persons, vehicles, or other moving features in the transportation space."@en ;
-    schema:rangeIncludes core:Occupancy .
+    skos:definition "Provides information on the residency of persons, vehicles, or other moving features in the transportation space."@en .
 
 tran:AuxiliaryTrafficArea a owl:Class ;
     rdfs:label "AuxiliaryTrafficArea"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom tran:RoadFunctionValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/function> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom tran:RoadUsageValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/usage> ],
         [ a owl:Restriction ;
@@ -426,9 +427,6 @@ tran:AuxiliaryTrafficArea a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom tran:SurfaceMaterialValue ;
             owl:onProperty tran:surfaceMaterial ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom tran:RoadFunctionValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/function> ],
         core:AbstractThematicSurface .
 
 tran:ClearanceSpace a owl:Class ;
@@ -603,25 +601,21 @@ tran:Waterway a owl:Class ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/usage> ],
         tran:AbstractTransportationSpace .
 
-<https://www.opengis.net/ont/citygml/common/intersection> skos:definition "Relates to the intersections that are part of the Railway."@en,
+<https://www.opengis.net/ont/citygml/common/intersection> rdfs:domain [ a owl:Class ;
+            owl:unionOf ( tran:Track tran:Waterway tran:Road tran:Railway ) ] ;
+    rdfs:range tran:Intersection ;
+    skos:definition "Relates to the intersections that are part of the Railway."@en,
         "Relates to the intersections that are part of the Road."@en,
         "Relates to the intersections that are part of the Track."@en,
-        "Relates to the intersections that are part of the Waterway."@en ;
-    schema:domainIncludes tran:Railway,
-        tran:Road,
-        tran:Track,
-        tran:Waterway ;
-    schema:rangeIncludes tran:Intersection .
+        "Relates to the intersections that are part of the Waterway."@en .
 
-<https://www.opengis.net/ont/citygml/common/section> skos:definition "Relates to the sections that are part of the Railway."@en,
+<https://www.opengis.net/ont/citygml/common/section> rdfs:domain [ a owl:Class ;
+            owl:unionOf ( tran:Track tran:Waterway tran:Road tran:Railway ) ] ;
+    rdfs:range tran:Section ;
+    skos:definition "Relates to the sections that are part of the Railway."@en,
         "Relates to the sections that are part of the Road."@en,
         "Relates to the sections that are part of the Track."@en,
-        "Relates to the sections that are part of the Waterway."@en ;
-    schema:domainIncludes tran:Railway,
-        tran:Road,
-        tran:Track,
-        tran:Waterway ;
-    schema:rangeIncludes tran:Section .
+        "Relates to the sections that are part of the Waterway."@en .
 
 tran:granularity a owl:DatatypeProperty ;
     rdfs:label "granularity"@en ;
@@ -678,12 +672,20 @@ tran:SurfaceMaterialValue a owl:Class ;
     skos:definition "SurfaceMaterialValue is a code list that enumerates the different surface materials."@en .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    skos:definition "Specifies the intended purposes of the Road."@en ;
-    schema:rangeIncludes tran:RoadFunctionValue .
+    skos:definition "Specifies the intended purposes of the Road."@en .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    skos:definition "Specifies the actual uses of the Road."@en ;
-    schema:rangeIncludes tran:RoadUsageValue .
+    skos:definition "Specifies the actual uses of the Road."@en .
+
+tran:RoadFunctionValue a owl:Class ;
+    rdfs:label "RoadFunctionValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "RoadFunctionValue is a code list that enumerates the different purposes of a Road."@en .
+
+tran:RoadUsageValue a owl:Class ;
+    rdfs:label "RoadUsageValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "RoadUsageValue is a code list that enumerates the different uses of a Road."@en .
 
 tran:TrafficSpace a owl:Class ;
     rdfs:label "TrafficSpace"@en ;
@@ -758,19 +760,8 @@ tran:AbstractTransportationSpace a owl:Class ;
             owl:onProperty tran:marking ],
         core:AbstractUnoccupiedSpace .
 
-tran:RoadFunctionValue a owl:Class ;
-    rdfs:label "RoadFunctionValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "RoadFunctionValue is a code list that enumerates the different purposes of a Road."@en .
-
-tran:RoadUsageValue a owl:Class ;
-    rdfs:label "RoadUsageValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "RoadUsageValue is a code list that enumerates the different uses of a Road."@en .
-
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    skos:definition "Indicates the specific type of the Road."@en ;
-    schema:rangeIncludes tran:RoadClassValue .
+    skos:definition "Indicates the specific type of the Road."@en .
 
 tran:RoadClassValue a owl:Class ;
     rdfs:label "RoadClassValue"@en ;
