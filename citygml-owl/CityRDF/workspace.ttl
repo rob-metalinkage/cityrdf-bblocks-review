@@ -1,6 +1,7 @@
 @prefix core: <https://www.opengis.net/ont/citygml/core/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vers: <https://www.opengis.net/ont/citygml/versioning/> .
 @prefix wksp: <https://www.opengis.net/ont/citygml/workspace/> .
@@ -21,8 +22,8 @@ wksp:ConcensusSpace a owl:Class ;
     rdfs:subClassOf wksp:Space ;
     owl:disjointWith wksp:PropositionSpace .
 
-<https://www.opengis.net/ont/citygml/common/versionMember> rdfs:domain wksp:Scenario ;
-    rdfs:range vers:Version .
+<https://www.opengis.net/ont/citygml/common/versionMember> schema:domainIncludes wksp:Scenario ;
+    schema:rangeIncludes vers:Version .
 
 wksp:PropositionSpace a owl:Class ;
     rdfs:label "PropositionSpace"@en ;
@@ -81,14 +82,14 @@ wksp:Scenario a owl:Class ;
 wksp:Space a owl:Class ;
     rdfs:label "Space"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom wksp:Scenario ;
-            owl:onProperty wksp:scenarioMember ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass wksp:Scenario ;
             owl:onProperty wksp:scenarioMember ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty wksp:creator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom wksp:Scenario ;
+            owl:onProperty wksp:scenarioMember ],
         core:AbstractFeatureWithLifespan .
 

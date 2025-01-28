@@ -2,53 +2,102 @@
 
 if test ! -d ../CityRDF; then
     mkdir ../CityRDF
+    mkdir ../CityRDF/codelists
 fi
 
-# ### Add codeList concept schemes, copy files without codeLists
+# ### Move codeList concept schemes, copy files without codeLists
 echo 'Copying appearance.ttl'
 cp ../stage-2/appearance.ttl ../CityRDF/
-echo 'Adding bridge-codes.ttl'
-python add_triples.py ../stage-2/bridge.ttl ../stage-1/ACMAPPER/bridge/bridge_codes.ttl ../CityRDF/bridge.ttl
-echo 'Adding building-codes.ttl'
-python add_triples.py ../stage-2/building.ttl ../stage-1/ACMAPPER/building/building_codes.ttl ../CityRDF/building.ttl
-echo 'Adding construction-codes.ttl'
-echo 'Adding group-codes.ttl'
-python add_triples.py ../stage-2/cityfurniture.ttl ../stage-1/ACMAPPER/cityfurniture/cityfurniture_codes.ttl ../CityRDF/cityfurniture.ttl
-echo 'Adding generics-codes.ttl'
-python add_triples.py ../stage-2/cityobjectgroup.ttl ../stage-1/ACMAPPER/cityobjectgroup/cityobjectgroup_codes.ttl ../CityRDF/cityobjectgroup.ttl
-echo 'Adding landuse-codes.ttl'
-python add_triples.py ../stage-2/construction.ttl ../stage-1/ACMAPPER/construction/construction_codes.ttl ../CityRDF/construction.ttl
-echo 'Adding core-codes.ttl'
-python add_triples.py ../stage-2/core.ttl ../stage-1/ACMAPPER/core/core_codes.ttl ../CityRDF/core.ttl
-echo 'Adding document-codes.ttl'
-python add_triples.py ../stage-2/document.ttl ../stage-1/ACMAPPER/document/document_codes.ttl ../CityRDF/document.ttl
-echo 'Adding dynamizer-codes.ttl'
-python add_triples.py ../stage-2/dynamizer.ttl ../stage-1/ACMAPPER/dynamizer/dynamizer_codes.ttl ../CityRDF/dynamizer.ttl
-echo 'Adding furniture-codes.ttl'
-python add_triples.py ../stage-2/generics.ttl ../stage-1/ACMAPPER/generics/generics_codes.ttl ../CityRDF/generics.ttl
-python add_triples.py ../stage-2/landuse.ttl ../stage-1/ACMAPPER/landuse/landuse_codes.ttl ../CityRDF/landuse.ttl
-echo 'Adding transportation-codes.ttl'
+
+echo 'Copying bridge_codes.ttl'
+#python add_triples.py ../stage-2/bridge.ttl ../stage-1/ACMAPPER/bridge/bridge_codes.ttl ../CityRDF/bridge.ttl
+cp ../stage-1/ACMAPPER/bridge/bridge_codes.ttl ../CityRDF/codelists/
+cp ../stage-2/bridge.ttl ../CityRDF/
+
+echo 'Copying building_codes.ttl'
+#python add_triples.py ../stage-2/building.ttl ../stage-1/ACMAPPER/building/building_codes.ttl ../CityRDF/building.ttl
+cp ../stage-1/ACMAPPER/building/building_codes.ttl ../CityRDF/codelists/
+cp ../stage-2/building.ttl ../CityRDF/
+
+echo 'Copying construction_codes.ttl'
+#python add_triples.py ../stage-2/construction.ttl ../stage-1/ACMAPPER/construction/construction_codes.ttl ../CityRDF/construction.ttl
+cp ../stage-1/ACMAPPER/construction/construction_codes.ttl ../CityRDF/codelists/
+cp ../stage-2/construction.ttl ../CityRDF/
+
+echo 'Copying cityfurniture_codes.ttl'
+#python add_triples.py ../stage-2/cityfurniture.ttl ../stage-1/ACMAPPER/cityfurniture/cityfurniture_codes.ttl ../CityRDF/cityfurniture.ttl
+cp ../stage-1/ACMAPPER/cityfurniture/cityfurniture_codes.ttl ../CityRDF/codelists/
+cp ../stage-2/cityfurniture.ttl ../CityRDF/
+
+echo 'Copying cityobjectgroup_codes.ttl'
+#python add_triples.py ../stage-2/cityobjectgroup.ttl ../stage-1/ACMAPPER/cityobjectgroup/cityobjectgroup_codes.ttl ../CityRDF/cityobjectgroup.ttl
+cp ../stage-1/ACMAPPER/cityobjectgroup/cityobjectgroup_codes.ttl ../CityRDF/codelists/
+cp ../stage-2/cityobjectgroup.ttl ../CityRDF/
+
+echo 'Copying core_codes.ttl'
+#python add_triples.py ../stage-2/core.ttl ../stage-1/ACMAPPER/core/core_codes.ttl ../CityRDF/core.ttl
+cp ../stage-1/ACMAPPER/core/core_codes.ttl ../CityRDF/codelists/
+cp ../stage-2/core.ttl ../CityRDF/
+
+echo 'Copying document_codes.ttl'
+#python add_triples.py ../stage-2/document.ttl ../stage-1/ACMAPPER/document/document_codes.ttl ../CityRDF/document.ttl
+cp ../stage-1/ACMAPPER/document/document_codes.ttl ../CityRDF/codelists/
+cp ../stage-2/document.ttl ../CityRDF/
+
+echo 'Copying dynamizer_codes.ttl'
+#python add_triples.py ../stage-2/dynamizer.ttl ../stage-1/ACMAPPER/dynamizer/dynamizer_codes.ttl ../CityRDF/dynamizer.ttl
+cp ../stage-1/ACMAPPER/dynamizer/dynamizer_codes.ttl ../CityRDF/codelists/
+cp ../stage-2/dynamizer.ttl ../CityRDF/
+
+echo 'Copying generics_codes.ttl'
+#python add_triples.py ../stage-2/generics.ttl ../stage-1/ACMAPPER/generics/generics_codes.ttl ../CityRDF/generics.ttl
+cp ../stage-1/ACMAPPER/generics/generics_codes.ttl ../CityRDF/codelists/
+cp ../stage-2/generics.ttl ../CityRDF/
+
+echo 'Copying landuse_codes.ttl'
+#python add_triples.py ../stage-2/landuse.ttl ../stage-1/ACMAPPER/landuse/landuse_codes.ttl ../CityRDF/landuse.ttl
+cp ../stage-1/ACMAPPER/landuse/landuse_codes.ttl ../CityRDF/codelists/
+cp ../stage-2/landuse.ttl ../CityRDF/
+
+echo 'Copying transportation_codes.ttl'
+#python add_triples.py ../stage-2/transportation.ttl ../stage-1/ACMAPPER/transportation/transportation_codes.ttl ../CityRDF/transportation.ttl
+cp ../stage-1/ACMAPPER/transportation/transportation_codes.ttl ../CityRDF/codelists/
+cp ../stage-2/transportation.ttl ../CityRDF/
+
 echo 'Copying pointcloud.ttl'
 cp ../stage-2/pointcloud.ttl ../CityRDF/
+
 echo 'Copying relief.ttl'
 cp ../stage-2/relief.ttl ../CityRDF/
-python add_triples.py ../stage-2/transportation.ttl ../stage-1/ACMAPPER/transportation/transportation_codes.ttl ../CityRDF/transportation.ttl
-echo 'Adding tunnel-codes.ttl'
-python add_triples.py ../stage-2/tunnel.ttl ../stage-1/ACMAPPER/tunnel/tunnel_codes.ttl ../CityRDF/tunnel.ttl
-echo 'Adding vegetation-codes.ttl'
-python add_triples.py ../stage-2/vegetation.ttl ../stage-1/ACMAPPER/vegetation/vegetation_codes.ttl ../CityRDF/vegetation.ttl
+
+echo 'Copying tunnel_codes.ttl'
+#python add_triples.py ../stage-2/tunnel.ttl ../stage-1/ACMAPPER/tunnel/tunnel_codes.ttl ../CityRDF/tunnel.ttl
+cp ../stage-1/ACMAPPER/tunnel/tunnel_codes.ttl ../CityRDF/codelists/
+cp ../stage-2/tunnel.ttl ../CityRDF/
+
+echo 'Copying vegetation_codes.ttl'
+#python add_triples.py ../stage-2/vegetation.ttl ../stage-1/ACMAPPER/vegetation/vegetation_codes.ttl ../CityRDF/vegetation.ttl
+cp ../stage-1/ACMAPPER/vegetation/vegetation_codes.ttl ../CityRDF/codelists/
+cp ../stage-2/vegetation.ttl ../CityRDF/
+
 echo 'Copying versioning.ttl'
 cp ../stage-2/versioning.ttl ../CityRDF/
-echo 'Adding waterbody-codes.ttl'
-python add_triples.py ../stage-2/waterbody.ttl ../stage-1/ACMAPPER/waterbody/waterbody_codes.ttl ../CityRDF/waterbody.ttl
+
+echo 'Copying waterbody-codes.ttl'
+#python add_triples.py ../stage-2/waterbody.ttl ../stage-1/ACMAPPER/waterbody/waterbody_codes.ttl ../CityRDF/waterbody.ttl
+cp ../stage-1/ACMAPPER/waterbody/waterbody_codes.ttl ../CityRDF/codelists/
+cp ../stage-2/waterbody.ttl ../CityRDF/
+
 echo 'Copying workspace.ttl'
 cp ../stage-2/workspace.ttl ../CityRDF/
 
 # ### Additional modification ###
-echo 'Adding cityModelMember modifications'
-python add_triples.py ../CityRDF/core.ttl ../additional-triples/citymodelmember.ttl ../CityRDF/core.ttl
-echo 'Adding GeoSPARQL and OWL-Time alignments'
+# this one is not needed as citymodelmember.ttl (created by VCityTeam/UD-Graph) contains what we did with union class "rule-owl-cls-union", so we don't need this file
+#echo 'Copying cityModelMember modifications'
+#python add_triples.py ../CityRDF/core.ttl ../additional-triples/citymodelmember.ttl ../CityRDF/core.ttl
+echo 'Copying GeoSPARQL and OWL-Time alignments'
 python add_triples.py ../CityRDF/core.ttl ../additional-triples/alignments.ttl ../CityRDF/core.ttl
+
 echo 'Removing outdated core triples'
 python update_graph.py ../CityRDF/core.ttl ../CityRDF/core.ttl \
    'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
@@ -229,6 +278,7 @@ for file in ${files[@]}; do
 echo $file
 
 echo 'adding current CityGML version info: 3.0.0'
+
 python update_graph.py $file $file \
     'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
      INSERT {
@@ -861,6 +911,26 @@ where {
 "https://www.opengis.net/ont/citygml/waterbody/", 
 "https://www.opengis.net/ont/citygml/workspace/"))
     }}'
+
+### #14 deletes rdfs:subClassOf skos:Concept to avoid punning
+
+#echo #14 delete rdfs:subClassOf skos:Concept to avoid punning
+
+#python update_graph.py $file $file \
+#    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+#PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+#delete { 
+#	?s rdfs:subClassOf skos:Concept .
+#}
+#where { 
+#    select ?s
+#    where {
+#	      ?s a owl:Class ;
+#             rdfs:label ?label;
+#             rdfs:subClassOf skos:Concept;
+#             skos:definition ?def.
+#}}'
 
 done
 

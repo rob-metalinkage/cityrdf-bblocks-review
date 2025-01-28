@@ -1,0 +1,130 @@
+@prefix bldgcode: <https://www.opengis.net/ont/citygml/building/code/> .
+@prefix dct:      <http://purl.org/dc/terms/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+bldgcode:BuildingUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingUsageValue>;
+        skos:definition  "BuildingUsageValue is a code list that enumerates the different uses of a Building."@en .
+
+bldgcode:BuildingInstallationFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingInstallationFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingInstallationFunctionValue>;
+        skos:definition  "BuildingInstallationFunctionValue is a code list that enumerates the different purposes of a BuildingInstallation."@en .
+
+bldgcode:BuildingSubdivisionUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingSubdivisionUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingSubdivisionUsageValue>;
+        skos:definition  "BuildingSubdivisionUsageValue is a code list that enumerates the different uses of a BuildingSubdivision."@en .
+
+bldgcode:BuildingConstructiveElementFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingConstructiveElementFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingConstructiveElementFunctionValue>;
+        skos:definition  "BuildingConstructiveElementFunctionValue is a code list that enumerates the different purposes of a BuildingConstructiveElement."@en .
+
+bldgcode:BuildingFurnitureFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingFurnitureFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingFurnitureFunctionValue>;
+        skos:definition  "BuildingFurnitureFunctionValue is a code list that enumerates the different purposes of a BuildingFurniture."@en .
+
+bldgcode:RoofTypeValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "RoofTypeValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/RoofTypeValue>;
+        skos:definition  "RoofTypeValue is a code list that enumerates different roof types."@en .
+
+bldgcode:BuildingFurnitureClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingFurnitureClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingFurnitureClassValue>;
+        skos:definition  "BuildingFurnitureClassValue is a code list used to further classify a BuildingFurniture."@en .
+
+<https://www.opengis.net/ont/citygml/building/code>
+        rdf:type  owl:Ontology .
+
+bldgcode:BuildingClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingClassValue>;
+        skos:definition  "BuildingClassValue is a code list used to further classify a Building."@en .
+
+bldgcode:BuildingConstructiveElementUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingConstructiveElementUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingConstructiveElementUsageValue>;
+        skos:definition  "BuildingConstructiveElementUsageValue is a code list that enumerates the different uses of a BuildingConstructiveElement."@en .
+
+bldgcode:RoomElevationReferenceValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "RoomElevationReferenceValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/RoomElevationReferenceValue>;
+        skos:definition  "RoomElevationReferenceValue is a code list that enumerates the different elevation reference levels used to measure room heights."@en .
+
+bldgcode:BuildingRoomFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingRoomFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingRoomFunctionValue>;
+        skos:definition  "BuildingRoomFunctionValue is a code list that enumerates the different purposes of a BuildingRoom."@en .
+
+bldgcode:BuildingInstallationClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingInstallationClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingInstallationClassValue>;
+        skos:definition  "BuildingInstallationClassValue is a code list used to further classify a BuildingInstallation."@en .
+
+bldgcode:BuildingRoomClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingRoomClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingRoomClassValue>;
+        skos:definition  "BuildingRoomClassValue is a code list used to further classify a BuildingRoom."@en .
+
+bldgcode:BuildingSubdivisionFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingSubdivisionFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingSubdivisionFunctionValue>;
+        skos:definition  "BuildingSubdivisionFunctionValue is a code list that enumerates the different purposes of a BuildingSubdivision."@en .
+
+bldgcode:BuildingFurnitureUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingFurnitureUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingFurnitureUsageValue>;
+        skos:definition  "BuildingFurnitureUsageValue is a code list that enumerates the different uses of a BuildingFurniture."@en .
+
+bldgcode:BuildingSubdivisionClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingSubdivisionClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingSubdivisionClassValue>;
+        skos:definition  "BuildingSubdivisionClassValue is a code list used to further classify a BuildingSubdivision."@en .
+
+bldgcode:BuildingInstallationUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingInstallationUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingInstallationUsageValue>;
+        skos:definition  "BuildingInstallationUsageValue is a code list that enumerates the different uses of a BuildingInstallation."@en .
+
+bldgcode:BuildingFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingFunctionValue>;
+        skos:definition  "BuildingFunctionValue is a code list that enumerates the different purposes of a Building."@en .
+
+bldgcode:BuildingRoomUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingRoomUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingRoomUsageValue>;
+        skos:definition  "BuildingRoomUsageValue is a code list that enumerates the different uses of a BuildingRoom."@en .
+
+bldgcode:BuildingConstructiveElementClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "BuildingConstructiveElementClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/building/BuildingConstructiveElementClassValue>;
+        skos:definition  "BuildingConstructiveElementClassValue is a code list used to further classify a BuildingConstructiveElement."@en .

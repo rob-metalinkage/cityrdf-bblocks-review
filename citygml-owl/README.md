@@ -26,15 +26,16 @@ Resources described in CityGML WG proposal (thanks to [Diego Vinasco-Alvarez](ht
 2) Python3
 
 ## The structure of the repository
-|Folder               | Purpose                                                                   |
-|------               | ------                                                                    |
-|\additional-triples  | files used in the workflow                                                |
-|\CityRDF             | final result of the transformation                                        |
-|\examples            | some CityGML files and their Turtle representations                       |
-|\scripts             | all necessary scripts used in the transformation                          |
-|\statistics          | results of qualifying SPARQL queries affecting the transformation actions |
 
-## Current solution
+CityGML-OWL
+├── additional-triples      # additional files used in the workflow
+├── CityRDF                 # final result of the transformation
+    └── codelists           # one of the possible transformation results for CityGML3.0 code lists
+├── examples                # some CityGML files and their Turtle representations
+├── scripts                 # all necessary scripts used in the transformation
+└── statistics              # results of qualifying SPARQL queries affecting the transformation actions
+
+# Current solution
 
 We use [CityGML_3.0-workspaces-documents_shapechange-export.xml](https://github.com/VCityTeam/UD-Graph/blob/master/Transformations/test-data/UML/CityGML_3.0-workspaces-documents_shapechange-export.xml) as a source of CityGML3.0 model.
 
@@ -48,7 +49,7 @@ The sequence of steps is as follows:
 
 The whole workflow can be executed with `run-workflow.sh` script.
 
-### Step 1
+## Step 1
 
 To run the ShapeChange conversion write in bash
 
@@ -56,14 +57,14 @@ To run the ShapeChange conversion write in bash
 
 The results will be in the folder `stage-1`.
 
-### Step 2
+## Step 2
 To apply patches to make the results better viewable in Protege, see the explanation in [VCityTeam solution](https://github.com/VCityTeam/UD-Graph/tree/master/Transformations/ShapeChange) that is the solution to get the [initial version of CityGML3.0 in OWL](https://dataset-dl.liris.cnrs.fr/rdf-owl-urban-data-ontologies/Ontologies/CityGML/3.0/) and run the second script:
 
 ```./patch-ontologies.sh```
 
 The results will be in the folder `stage-2`.
 
-### Step 3
+## Step 3
 
 VCityTeam detected several obsolete/hanging definitions that were to be patched, and proposed `update-triples.sh` to patch them. 
 The script did the following:
@@ -74,9 +75,11 @@ The script did the following:
 - removes outdated core triples and correspondent hanging restrictions
 - patches RoomHeight.status range
 
-We extended this script to implement our vision on how we can benefit from custom UML-to-OWL conversion, taking into account abilities of OWL.
+We changed the script to reflect the logics behind the work with codelists: instead of merging two files - ontology file and codelists file (if codelists exist in a correspondent UML package), we put all files representing package codelists into a `/CityRDF/codelists` folder. This allowed us to avoid punning in OWL representation. 
 
-#### ADE* classes/ade* properties removal
+We extended the script to implement our vision on how we can benefit from custom UML-to-OWL conversion, taking into account abilities of OWL. 
+
+### ADE* classes/ade* properties removal
 
 As far as the implementation of Application Domain Extensions (ADEs) is optional, we decided to remove mentioning of ADE* classes/ade* properties from CityGML ontologies.
 
@@ -100,7 +103,7 @@ luse:ADEOfLandUse a owl:Class ;
 ```
 We apply one SPARQL query ([#1 in the file](./update-triples.sh)) across all ontologies in `stage-2` to do this.
 
-#### Global Properties explication
+### Global Properties explication
 
 There are some attributes named equally in different packages, such as `usage`, `class`, `function`, `address`, `value` and others, so there are `brid:usage` and `bldg:usage` that differ only on ranges of property and definitions.
 
@@ -146,11 +149,13 @@ We apply four SPARQL queries ([##2-5 in the file](./update-triples.sh)) across a
 
 There are also object/datatype properties schematically presented as `packagename#Class.property`. For example, object property `boundary` has domain in some abstract class 4 times, and 9 times is has a non-abstract domain (in total, 13 occurences). Following the same argument, we would like to avoid repetitions of definitions in package-level ontologies and apply some more actions on duplicated definitions of object/datatype properties as described below.
 
-#### Removal of duplicate definitions for properties of the kind `packagename#Class.property` 
+### Removal of duplicate definitions for properties of the kind `packagename#Class.property` 
 
 We propose to do the following (we present both alternatives):
 
-1) Relaxed semantics: each property of the kind is defined with relaxed domain and range restriction using [schema:domainIncludes](https://schema.org/domainIncludes)/[schema:rangeIncludes](https://schema.org/rangeIncludes).
+#### 1) Relaxed semantics
+
+Each property of the kind is defined with relaxed domain and range restriction using [schema:domainIncludes](https://schema.org/domainIncludes)/[schema:rangeIncludes](https://schema.org/rangeIncludes).
 
 Qualifying query making use of the naming conventions in OWL generated by ShapeChange:
 
@@ -199,7 +204,7 @@ core:AbstractThematicSurface.lod0MultiCurve a owl:ObjectProperty ;
 ```
 - a property is not unique within the whole family, and used across package ontologies, for example, `boundary`:
 
-For example, in *construction* package
+Property `boundary` in *construction* package is defined as:
 
 ```turtle
 con:AbstractConstruction.boundary a owl:ObjectProperty ;
@@ -208,7 +213,7 @@ con:AbstractConstruction.boundary a owl:ObjectProperty ;
     rdfs:range core:AbstractThematicSurface ;
     skos:definition "Relates to the surfaces that bound the construction. This relation is inherited from the Core module."@en .
 ```
-in *core* package
+in *core* package - as:
 
 ```turtle
 core:AbstractSpace.boundary a owl:ObjectProperty ;
@@ -217,7 +222,7 @@ core:AbstractSpace.boundary a owl:ObjectProperty ;
     rdfs:range core:AbstractSpaceBoundary ;
     skos:definition "Relates to surfaces that bound the space."@en .
 ```
-in *building* package (used twice)
+in *building* package  it is used twicce and is defined as:
 
 ```turtle
 bldg:BuildingRoom.boundary a owl:ObjectProperty ;
@@ -284,7 +289,9 @@ common:boundary skos:definition "Here goes the definition that originate in the 
         for each package it will be different"
 ```
 
-2) Strict semantics: each property of the kind having more than one class in its domain is defined with `owl:unionOf` for its range and if necessary for its domain
+### 2) Strict semantics 
+
+Each property of the kind having more than one class in its domain is defined with `owl:unionOf` for its range and if necessary for its domain
 
 ```turtle
 common:boundary a owl:ObjectProperty ;
@@ -307,7 +314,9 @@ common:boundary a owl:ObjectProperty ;
                                 transportation:TrafficArea, 
                                 transportation:AuxiliaryTrafficArea)].
 ```
-Such semantics makes OWL reasoning applicable.
+Enforcing strict semantics is implemented as optional step 4 of the workflow. Its results are stored in the folder `/CItyRDF-strict`
+Such strict semantics makes OWL reasoning applicable, although restricts the extension of possible domains and ranges of properties in applications. 
+
 
 ## Samples
 
@@ -340,3 +349,4 @@ CityModel
                 Polygon
                 ...
 ```
+
