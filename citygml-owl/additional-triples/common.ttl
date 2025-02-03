@@ -2,6 +2,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix common: <https://www.opengis.net/ont/citygml/common/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<https://www.opengis.net/ont/citygml/common> a owl:Ontology ;
+    rdfs:label "Common"@en ;
+    owl:versionIRI <https://www.opengis.net/ont/citygml/common/3.0.0/> ;
+    owl:versionInfo "3.0.0" ;
+    skos:definition "The Common module supports definitions of object and datatype properties reusable several times across packages of CityGML."@en .
 
 common:class rdf:type owl:ObjectProperty; rdfs:label "class"@en.
 common:usage rdf:type owl:ObjectProperty; rdfs:label "usage"@en.
