@@ -1,0 +1,378 @@
+PREFIX : <https://www.opengis.net/ont/citygml/CityRDF/>
+PREFIX lode: <https://w3id.org/lode/ns/pylode/>
+PREFIX prof: <http://www.w3.org/ns/dx/prof/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX role: <http://www.w3.org/ns/dx/prof/role/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+
+<https://www.opengis.net/ont/citygml/CityRDF/>
+    a prof:Profile ;
+    rdfs:label "CityRDF ontology" ;
+    prof:hasResource [
+        a prof:ResourceDescriptor ;
+        rdfs:label "pylode config" ;
+        dcterms:format "text/turtle" ;
+        prof:hasRole lode:config ;
+        prof:hasArtifact <https://github.com/ogcincubator/cityrdf/blob/master/pylode.ttl> ;
+    ]
+.
+
+:appearance
+    a lode:Module ;
+    prof:hasResource
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/appearance/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/appearance.ttl" ;
+                prof:hasRole role:schema
+            ];
+    sh:order 1 
+.
+
+:bridge
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/bridge/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/bridge.ttl" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/bridge/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/bridge_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 2
+.
+
+:building
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/building/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/building.ttl" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/building/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/building_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 3
+.
+
+:cityfurniture
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/cityfurniture/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/cityfurniture.ttl" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/cityfurniture/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/cityfurniture_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 4
+.
+
+:cityobjectgroup
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/cityobjectgroup/" ;
+                prof:hasArtifact "https://www.opengis.net/ont/citygml/cityobjectgroup/" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/cityobjectgroup/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/cityobjectgroup_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 5
+.
+
+:common
+
+    prof:hasResource
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/common/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/common.ttl" ;
+                prof:hasRole role:schema
+            ];
+    sh:order 6 
+.
+
+:construction
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/construction/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/construction.ttl" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/construction/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/construction_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 7
+.
+
+:core
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/core/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/core.ttl" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/core/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/core_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 8
+.
+
+:document
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/document/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/document.ttl" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/document/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/document_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 9
+.
+
+:dynamizer
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/dynamizer/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/dynamizer.ttl" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/dynamizer/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/dynamizer_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 10
+.
+
+:generics
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/generics/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/generics.ttl" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/generics/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/generics_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 11
+.
+
+:landuse
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/landuse/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/landuse.ttl" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/landuse/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/landuse_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 12
+.
+
+:pointcloud
+
+    prof:hasResource
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/pointcloud/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/pointcloud.ttl" ;
+                prof:hasRole role:schema
+            ];
+    sh:order 13 
+.
+
+:relief
+
+    prof:hasResource
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/relief/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/relief.ttl" ;
+                prof:hasRole role:schema
+            ];
+    sh:order 14 
+.
+
+:transactiontypevalues
+
+    prof:hasResource
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/transactiontypevalues/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/transactiontypevalues.ttl" ;
+                prof:hasRole role:schema
+            ];
+    sh:order 15 
+.
+
+:transportation
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/transportation/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/transportation.ttl" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/transportation/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/transportation_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 16
+.
+
+:tunnel
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/tunnel/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/tunnel.ttl" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/tunnel/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/tunnel_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 17
+.
+
+:vegetation
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/vegetation/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/vegetation.ttl" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/vegetation/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/vegetation_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 18
+.
+
+:versioning
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/versioning/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/versioning.ttl" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/versioning/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/versioning_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 19
+.
+
+:waterbody
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/waterbody/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/waterbody.ttl" ;
+                prof:hasRole role:schema
+            ] ,
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/waterbody/code/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/waterbody_codes.ttl" ;
+                prof:hasRole role:schema
+            ] ;
+    sh:order 20
+.
+
+:workspace
+
+    a lode:Module ;
+    prof:hasResource 
+            [
+                dcterms:format "text/turtle" ;
+#                prof:hasArtifact "https://www.opengis.net/ont/citygml/workspace/" ;
+                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/workspace.ttl" ;
+                prof:hasRole role:schema
+            ];
+    sh:order 21
+.
