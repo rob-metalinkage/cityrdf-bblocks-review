@@ -314,7 +314,7 @@ common:boundary a owl:ObjectProperty ;
                                 transportation:TrafficArea, 
                                 transportation:AuxiliaryTrafficArea)].
 ```
-Enforcing strict semantics is implemented as optional step 4 of the workflow. Its results are stored in the folder `/CItyRDF-strict`
+Enforcing strict semantics is implemented as optional step 4 of the workflow. Its results are stored in the folder `/CityRDF-strict`
 Such strict semantics makes OWL reasoning applicable, although restricts the extension of possible domains and ranges of properties in applications. 
 
 
