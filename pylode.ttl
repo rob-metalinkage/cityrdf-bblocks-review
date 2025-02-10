@@ -7,18 +7,6 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX role: <http://www.w3.org/ns/dx/prof/role/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
 
-<https://www.opengis.net/ont/citygml/CityRDF/>
-    a prof:Profile ;
-    rdfs:label "CityRDF ontology" ;
-    prof:hasResource [
-        a prof:ResourceDescriptor ;
-        rdfs:label "pylode config" ;
-        dcterms:format "text/turtle" ;
-        prof:hasRole lode:config ;
-        prof:hasArtifact <https://github.com/ogcincubator/cityrdf/blob/master/pylode.ttl> 
-    ];
-.
-
 :appearance
     a lode:Module ;
     prof:hasResource
