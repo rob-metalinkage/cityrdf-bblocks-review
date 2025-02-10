@@ -13,7 +13,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/appearance/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/appearance.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/appearance.ttl" ;
                 prof:hasRole role:schema
             ];
     sh:order 1 
@@ -26,13 +26,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/bridge/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/bridge.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/bridge.ttl" ;
                 prof:hasRole role:schema
             ] ,
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/bridge/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/bridge_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/bridge_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 2
@@ -45,13 +45,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/building/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/building.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/building.ttl" ;
                 prof:hasRole role:schema
             ] ,
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/building/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/building_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/building_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 3
@@ -64,13 +64,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/cityfurniture/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/cityfurniture.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/cityfurniture.ttl" ;
                 prof:hasRole role:schema
             ] ,
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/cityfurniture/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/cityfurniture_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/cityfurniture_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 4
@@ -89,7 +89,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/cityobjectgroup/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/cityobjectgroup_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/cityobjectgroup_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 5
@@ -101,7 +101,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/common/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/common.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/common.ttl" ;
                 prof:hasRole role:schema
             ];
     sh:order 6 
@@ -114,13 +114,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/construction/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/construction.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/construction.ttl" ;
                 prof:hasRole role:schema
             ] ,
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/construction/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/construction_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/construction_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 7
@@ -133,13 +133,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/core/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/core.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/core.ttl" ;
                 prof:hasRole role:schema
             ] ,
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/core/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/core_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/core_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 8
@@ -152,13 +152,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/document/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/document.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/document.ttl" ;
                 prof:hasRole role:schema
             ] ,
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/document/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/document_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/document_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 9
@@ -171,13 +171,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/dynamizer/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/dynamizer.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/dynamizer.ttl" ;
                 prof:hasRole role:schema
             ] ,
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/dynamizer/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/dynamizer_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/dynamizer_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 10
@@ -190,13 +190,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/generics/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/generics.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/generics.ttl" ;
                 prof:hasRole role:schema
             ] ,
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/generics/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/generics_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/generics_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 11
@@ -209,13 +209,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/landuse/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/landuse.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/landuse.ttl" ;
                 prof:hasRole role:schema
             ] ,
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/landuse/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/landuse_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/landuse_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 12
@@ -227,7 +227,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/pointcloud/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/pointcloud.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/pointcloud.ttl" ;
                 prof:hasRole role:schema
             ];
     sh:order 13 
@@ -239,7 +239,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/relief/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/relief.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/relief.ttl" ;
                 prof:hasRole role:schema
             ];
     sh:order 14 
@@ -251,7 +251,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/transactiontypevalues/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/transactiontypevalues.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/transactiontypevalues.ttl" ;
                 prof:hasRole role:schema
             ];
     sh:order 15 
@@ -264,13 +264,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/transportation/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/transportation.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/transportation.ttl" ;
                 prof:hasRole role:schema
             ] ,
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/transportation/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/transportation_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/transportation_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 16
@@ -283,13 +283,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/tunnel/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/tunnel.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/tunnel.ttl" ;
                 prof:hasRole role:schema
             ] ,
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/tunnel/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/tunnel_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/tunnel_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 17
@@ -302,13 +302,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/vegetation/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/vegetation.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/vegetation.ttl" ;
                 prof:hasRole role:schema
             ] ,
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/vegetation/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/vegetation_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/vegetation_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 18
@@ -321,13 +321,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/versioning/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/versioning.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/versioning.ttl" ;
                 prof:hasRole role:schema
             ] ,
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/versioning/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/versioning_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/versioning_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 19
@@ -340,13 +340,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/waterbody/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/waterbody.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/waterbody.ttl" ;
                 prof:hasRole role:schema
             ] ,
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/waterbody/code/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/codelists/waterbody_codes.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/codelists/waterbody_codes.ttl" ;
                 prof:hasRole role:schema
             ] ;
     sh:order 20
@@ -359,7 +359,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             [
                 dcterms:format "text/turtle" ;
 #                prof:hasArtifact "https://www.opengis.net/ont/citygml/workspace/" ;
-                prof:hasArtifact "https://github.com/ogcincubator/cityrdf/blob/master/citygml-owl/CityRDF/workspace.ttl" ;
+                prof:hasArtifact "https://raw.githubusercontent.com/ogcincubator/cityrdf/refs/heads/master/citygml-owl/CityRDF/workspace.ttl" ;
                 prof:hasRole role:schema
             ];
     sh:order 21
