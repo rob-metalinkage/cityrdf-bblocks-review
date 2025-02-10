@@ -15,8 +15,8 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         rdfs:label "pylode config" ;
         dcterms:format "text/turtle" ;
         prof:hasRole lode:config ;
-        prof:hasArtifact <https://github.com/ogcincubator/cityrdf/blob/master/pylode.ttl> ;
-    ]
+        prof:hasArtifact <https://github.com/ogcincubator/cityrdf/blob/master/pylode.ttl> 
+    ];
 .
 
 :appearance
