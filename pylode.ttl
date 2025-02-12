@@ -1,4 +1,4 @@
-PREFIX : <https://www.opengis.net/ont/citygml/>
+PREFIX : <https://www.opengis.net/ont/citygml>
 PREFIX lode: <https://w3id.org/lode/ns/pylode/>
 PREFIX prof: <http://www.w3.org/ns/dx/prof/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
