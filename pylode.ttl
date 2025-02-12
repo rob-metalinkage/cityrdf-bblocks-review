@@ -9,6 +9,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 :appearance
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource
             [
                 dcterms:format "text/turtle" ;
@@ -22,6 +23,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :bridge
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -41,6 +43,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :building
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -60,6 +63,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :cityfurniture
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -79,6 +83,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :cityobjectgroup
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -110,6 +115,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :construction
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -129,6 +135,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :core
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -148,6 +155,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :document
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -167,6 +175,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :dynamizer
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -186,6 +195,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :generics
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -205,6 +215,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :landuse
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -222,7 +233,8 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 .
 
 :pointcloud
-
+    a lode:Module ;
+    a prof:Profile ;
     prof:hasResource
             [
                 dcterms:format "text/turtle" ;
@@ -234,7 +246,8 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 .
 
 :relief
-
+    a lode:Module ;
+    a prof:Profile ;
     prof:hasResource
             [
                 dcterms:format "text/turtle" ;
@@ -246,7 +259,8 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 .
 
 :transactiontypevalues
-
+    a lode:Module ;
+    a prof:Profile ;
     prof:hasResource
             [
                 dcterms:format "text/turtle" ;
@@ -260,6 +274,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :transportation
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -279,6 +294,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :tunnel
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -298,6 +314,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :vegetation
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -317,6 +334,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :versioning
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -336,6 +354,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :waterbody
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
@@ -355,6 +374,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 :workspace
 
     a lode:Module ;
+    a prof:Profile ;
     prof:hasResource 
             [
                 dcterms:format "text/turtle" ;
