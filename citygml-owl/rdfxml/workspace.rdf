@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/workspace/Space">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Space</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb8"/>
+    <rdfs:subClassOf rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb9"/>
+    <rdfs:subClassOf rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb10"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractFeatureWithLifespan"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/workspace/creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb10">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/workspace/creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/workspace/Workspace">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Workspace</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb1"/>
+    <rdfs:subClassOf rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb2"/>
+    <rdfs:subClassOf rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb3"/>
+    <rdfs:subClassOf rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb4"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractFeatureWithLifespan"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/workspace/creator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">creator</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/workspace/creator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/workspace/scenarioMember">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">scenarioMember</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/workspace/Space"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/workspace/Scenario"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/workspace/PropositionSpace">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">PropositionSpace</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/workspace/Space"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/workspace/Space"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/workspace/spaceMember"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/workspace/versionTransitionMember">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">versionTransitionMember</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/workspace/Scenario"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/versioning/VersionTransition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/versioning/Version"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/versionMember"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/workspace">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="en">Workspace</rdfs:label>
+    <owl:imports rdf:resource="http://def.isotc211.org/iso19150/-2/2012/base"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/common"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/core"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/versioning"/>
+    <owl:versionIRI rdf:resource="https://www.opengis.net/ont/citygml/workspace/3.0.0/"/>
+    <owl:versionInfo>3.0.0</owl:versionInfo>
+    <skos:definition xml:lang="en">This pattern provides a starting point for modeling a GML Application Schema which is a specialized xml schema that uses the Geographic Markup Language to model Features to provide the basis for interoperability within a community of interest.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/workspace/Scenario"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/workspace/scenarioMember"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/workspace/spaceMember">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">spaceMember</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/workspace/Workspace"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/workspace/Space"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/workspace/Scenario">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Scenario</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb5"/>
+    <rdfs:subClassOf rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb6"/>
+    <rdfs:subClassOf rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb7"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractFeatureWithLifespan"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/workspace/Space"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/workspace/spaceMember"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/workspace/Scenario"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/workspace/scenarioMember"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/workspace/Space"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/workspace/spaceMember"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n48879955ab9545f5b9fa2b642a73aceeb5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/versioning/VersionTransition"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/workspace/versionTransitionMember"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/workspace/ConcensusSpace">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">ConcensusSpace</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/workspace/Space"/>
+    <owl:disjointWith rdf:resource="https://www.opengis.net/ont/citygml/workspace/PropositionSpace"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/versionMember">
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/workspace/Scenario"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/versioning/Version"/>
+  </rdf:Description>
+</rdf:RDF>

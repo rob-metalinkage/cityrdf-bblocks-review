@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:iso19150-2="http://def.isotc211.org/iso19150/-2/2012/base#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelPart">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelPart</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/tunnel/AbstractTunnel"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b30">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/HollowSpace">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">HollowSpace</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b20"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b21"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b22"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b23"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b24"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b25"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b26"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractUnoccupiedSpace"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/function">
+    <rdfs:label xml:lang="en">function</rdfs:label>
+    <skos:definition xml:lang="en">Specifies the intended purposes of the HollowSpace.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelInstallationClassValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelInstallationClassValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">TunnelInstallationClassValue is a code list used to further classify a TunnelInstallation.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceUsageValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">HollowSpaceUsageValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">HollowSpaceUsageValue is a code list that enumerates the different uses of a HollowSpace.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b17">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceFunctionValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/function"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelInstallation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelInstallation</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b16"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b17"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b18"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b19"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/construction/AbstractInstallation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b29">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/TunnelInstallation"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/tunnelInstallation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b32">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/TunnelFurniture"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/tunnelFurniture"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/AbstractTunnel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">AbstractTunnel</rdfs:label>
+    <iso19150-2:isAbstract rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</iso19150-2:isAbstract>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b27"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b28"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b29"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b30"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b31"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b32"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b33"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b34"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/construction/AbstractConstruction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b13">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b28">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpace"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/tunnel/hollowSpace"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelConstructiveElement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelConstructiveElement</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b8"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b9"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b10"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b11"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/construction/AbstractConstructiveElement"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelFurniture">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelFurniture</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b12"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b13"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b14"/>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b15"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/construction/AbstractFurniture"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/tunnelPart">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">tunnelPart</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/tunnel/Tunnel"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/tunnel/TunnelPart"/>
+    <skos:definition xml:lang="en">Relates the tunnel parts to the Tunnel.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelConstructiveElementClassValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelConstructiveElementClassValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">TunnelConstructiveElementClassValue is a code list used to further classify a TunnelConstructiveElement.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelInstallationUsageValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelInstallationUsageValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">TunnelInstallationUsageValue is a code list that enumerates the different uses of a TunnelInstallation.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b18">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b15">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceFunctionValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/function"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/usage">
+    <rdfs:label xml:lang="en">usage</rdfs:label>
+    <skos:definition xml:lang="en">Specifies the actual uses of the HollowSpace.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="en">Tunnel</rdfs:label>
+    <owl:imports rdf:resource="http://def.isotc211.org/iso19150/-2/2012/base"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/common"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/construction"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/core"/>
+    <owl:versionIRI rdf:resource="https://www.opengis.net/ont/citygml/tunnel/3.0.0/"/>
+    <owl:versionInfo>3.0.0</owl:versionInfo>
+    <skos:definition xml:lang="en">The Tunnel module supports representation of thematic and spatial aspects of tunnels, tunnel parts, tunnel installations, and interior tunnel structures.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceFunctionValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/function"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b11">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b26">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceClassValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">HollowSpaceClassValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">HollowSpaceClassValue is a code list used to further classify a HollowSpace.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelUsageValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelUsageValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">TunnelUsageValue is a code list that enumerates the different uses of a Tunnel.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelFunctionValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelFunctionValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">TunnelFunctionValue is a code list that enumerates the different purposes of a Tunnel.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b31">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceFunctionValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/function"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelFurnitureClassValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelFurnitureClassValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">TunnelFurnitureClassValue is a code list used to further classify a TunnelFurniture.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b22">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractThematicSurface"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/boundary"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b33">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/TunnelConstructiveElement"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/tunnel/tunnelConstructiveElement"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/hollowSpace">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">hollowSpace</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/tunnel/AbstractTunnel"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpace"/>
+    <skos:definition xml:lang="en">Relates the hollow spaces to the Tunnel or TunnelPart.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/tunnelConstructiveElement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">tunnelConstructiveElement</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/tunnel/AbstractTunnel"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/tunnel/TunnelConstructiveElement"/>
+    <skos:definition xml:lang="en">Relates the constructive elements to the Tunnel or TunnelPart.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/tunnelInstallation">
+    <rdfs:domain rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b5"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/tunnel/TunnelInstallation"/>
+    <skos:definition xml:lang="en">Relates the installation objects to the HollowSpace.</skos:definition>
+    <skos:definition xml:lang="en">Relates the installation objects to the Tunnel or TunnelPart.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/Tunnel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Tunnel</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b1"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/tunnel/AbstractTunnel"/>
+    <owl:disjointWith rdf:resource="https://www.opengis.net/ont/citygml/tunnel/TunnelPart"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/tunnelFurniture">
+    <rdfs:domain rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b2"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/tunnel/TunnelFurniture"/>
+    <skos:definition xml:lang="en">Relates the furniture objects to the HollowSpace.</skos:definition>
+    <skos:definition xml:lang="en">Relates the furniture objects to the Tunnel or TunnelPart.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b23">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceUsageValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/usage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b24">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceFunctionValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/function"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b34">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceUsageValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/usage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b21">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/TunnelInstallation"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/tunnelInstallation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/class">
+    <rdfs:label xml:lang="en">class</rdfs:label>
+    <skos:definition xml:lang="en">Indicates the specific type of the HollowSpace.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b27">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelConstructiveElementUsageValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelConstructiveElementUsageValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">TunnelConstructiveElementUsageValue is a code list that enumerates the different uses of a TunnelConstructiveElement.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/boundary">
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpace"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractThematicSurface"/>
+    <skos:definition xml:lang="en">Relates to the surfaces that bound the HollowSpace. This relation is inherited from the Core module.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b3">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpace"/>
+    <rdf:rest rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b4"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b7">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/tunnel/AbstractTunnel"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceFunctionValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">HollowSpaceFunctionValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">HollowSpaceFunctionValue is a code list that enumerates the different purposes of a HollowSpace.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelInstallationFunctionValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelInstallationFunctionValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">TunnelInstallationFunctionValue is a code list that enumerates the different purposes of a TunnelInstallation.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelFurnitureFunctionValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelFurnitureFunctionValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">TunnelFurnitureFunctionValue is a code list that enumerates the different purposes of a TunnelFurniture.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceUsageValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/usage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelConstructiveElementFunctionValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelConstructiveElementFunctionValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">TunnelConstructiveElementFunctionValue is a code list that enumerates the different purposes of a TunnelConstructiveElement.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b14">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceUsageValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/usage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b10">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b16">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceUsageValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/usage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b12">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b25">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpaceClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b4">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/tunnel/AbstractTunnel"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b20">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/TunnelFurniture"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/tunnelFurniture"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelFurnitureUsageValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelFurnitureUsageValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">TunnelFurnitureUsageValue is a code list that enumerates the different uses of a TunnelFurniture.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/tunnel/TunnelPart"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/tunnel/tunnelPart"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/tunnel/TunnelClassValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TunnelClassValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">TunnelClassValue is a code list used to further classify a Tunnel.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b6">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/tunnel/HollowSpace"/>
+    <rdf:rest rdf:nodeID="nf2a146926e7943c1bce72ac0532aac27b7"/>
+  </rdf:Description>
+</rdf:RDF>

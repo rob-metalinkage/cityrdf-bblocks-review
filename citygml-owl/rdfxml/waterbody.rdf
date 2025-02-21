@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:iso19150-2="http://def.isotc211.org/iso19150/-2/2012/base#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/waterbody/WaterBodyFunctionValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">WaterBodyFunctionValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">WaterBodyFunctionValue is a code list that enumerates the different purposes of a WaterBody.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n8ad3982370b94b65b8912445eaff56b4b7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/waterbody/WaterLevelValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/waterbody/waterLevel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/waterbody/WaterBodyUsageValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">WaterBodyUsageValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">WaterBodyUsageValue is a code list that enumerates the different uses of a WaterBody.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/waterbody">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="en">WaterBody</rdfs:label>
+    <owl:imports rdf:resource="http://def.isotc211.org/iso19150/-2/2012/base"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/common"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/core"/>
+    <owl:versionIRI rdf:resource="https://www.opengis.net/ont/citygml/waterbody/3.0.0/"/>
+    <owl:versionInfo>3.0.0</owl:versionInfo>
+    <skos:definition xml:lang="en">The WaterBody module supports representation of the thematic aspects and 3D geometry of rivers, canals, lakes, and basins. It does, however, not inherit any hydrological or other dynamic aspects of fluid flow.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n8ad3982370b94b65b8912445eaff56b4b2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/waterbody/WaterBodyUsageValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/usage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n8ad3982370b94b65b8912445eaff56b4b3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/waterbody/WaterBodyClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/waterbody/AbstractWaterBoundarySurface">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">AbstractWaterBoundarySurface</rdfs:label>
+    <iso19150-2:isAbstract rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</iso19150-2:isAbstract>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractThematicSurface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/waterbody/waterLevel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">waterLevel</rdfs:label>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/waterbody/WaterLevelValue"/>
+    <skos:definition xml:lang="en">Specifies the level of the WaterSurface.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/waterbody/WaterBodyClassValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">WaterBodyClassValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">WaterBodyClassValue is a code list used to further classify a WaterBody.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/class">
+    <rdfs:label xml:lang="en">class</rdfs:label>
+    <skos:definition xml:lang="en">Indicates the specific type of the WaterBody.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n8ad3982370b94b65b8912445eaff56b4b4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/waterbody/WaterBodyClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/waterbody/WaterBody">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">WaterBody</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n8ad3982370b94b65b8912445eaff56b4b1"/>
+    <rdfs:subClassOf rdf:nodeID="n8ad3982370b94b65b8912445eaff56b4b2"/>
+    <rdfs:subClassOf rdf:nodeID="n8ad3982370b94b65b8912445eaff56b4b3"/>
+    <rdfs:subClassOf rdf:nodeID="n8ad3982370b94b65b8912445eaff56b4b4"/>
+    <rdfs:subClassOf rdf:nodeID="n8ad3982370b94b65b8912445eaff56b4b5"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractOccupiedSpace"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/boundary">
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/waterbody/WaterBody"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/waterbody/AbstractWaterBoundarySurface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/waterbody/WaterSurface">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">WaterSurface</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n8ad3982370b94b65b8912445eaff56b4b6"/>
+    <rdfs:subClassOf rdf:nodeID="n8ad3982370b94b65b8912445eaff56b4b7"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/waterbody/AbstractWaterBoundarySurface"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/usage">
+    <rdfs:label xml:lang="en">usage</rdfs:label>
+    <skos:definition xml:lang="en">Specifies the actual uses of the WaterBody.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/waterbody/WaterGroundSurface">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">WaterGroundSurface</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/waterbody/AbstractWaterBoundarySurface"/>
+    <owl:disjointWith rdf:resource="https://www.opengis.net/ont/citygml/waterbody/WaterSurface"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n8ad3982370b94b65b8912445eaff56b4b1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/waterbody/AbstractWaterBoundarySurface"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/boundary"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/waterbody/WaterLevelValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">WaterLevelValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">WaterLevelValue is a code list that enumerates the different levels of a water surface.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/function">
+    <rdfs:label xml:lang="en">function</rdfs:label>
+    <skos:definition xml:lang="en">Specifies the intended purposes of the WaterBody.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n8ad3982370b94b65b8912445eaff56b4b5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/waterbody/WaterBodyFunctionValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/function"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n8ad3982370b94b65b8912445eaff56b4b6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/waterbody/WaterLevelValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/waterbody/waterLevel"/>
+  </rdf:Description>
+</rdf:RDF>

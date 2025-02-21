@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning/VersionTransition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">VersionTransition</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab5"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab6"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab7"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab8"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab9"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab10"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab11"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab12"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab13"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab14"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab15"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractVersionTransition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning/newFeature">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">newFeature</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/versioning/Transaction"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractFeatureWithLifespan"/>
+    <skos:definition xml:lang="en">Relates to the version of the city object subsequent to the Transaction.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning/oldFeature">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">oldFeature</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/versioning/Transaction"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractFeatureWithLifespan"/>
+    <skos:definition xml:lang="en">Relates to the version of the city object prior to the Transaction.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning/TransactionTypeValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TransactionTypeValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <owl:equivalentClass rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab1"/>
+    <skos:definition xml:lang="en">TransactionTypeValue enumerates the three possible types of transactions: insert, delete, or replace.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onDataRange rdf:resource="https://www.opengis.net/ont/citygml/versioning/TransitionTypeValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/type"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractFeatureWithLifespan"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/oldFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning/to">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">to</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/versioning/VersionTransition"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/versioning/Version"/>
+    <skos:definition xml:lang="en">Relates to the successor version of the VersionTransition.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning/type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">type</rdfs:label>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/versioning/TransitionTypeValue"/>
+    <skos:definition xml:lang="en">Indicates the specific type of the VersionTransition.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab10">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/versioning/Version"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/from"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning/clonePredecessor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">clonePredecessor</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <skos:definition xml:lang="en">Indicates whether the set of city object instances belonging to the successor version of the city model is either explicitly enumerated within the successor version object (attribute clonePredecessor=false),  or has to be derived from the modifications of the city model provided as a list of transactions on the city object versions contained in the predecessor version (attribute clonePredecessor=true).</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning/tag">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">tag</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <skos:definition xml:lang="en">Allows for adding keywords to the city model version.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning/Version">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Version</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab28"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab29"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractVersion"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/versionMember">
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/versioning/Version"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractFeatureWithLifespan"/>
+    <skos:definition xml:lang="en">Relates to all city objects that are part of the city model version.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning/transaction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">transaction</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/versioning/VersionTransition"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/versioning/Transaction"/>
+    <skos:definition xml:lang="en">Relates to all transactions that have been applied as part of the VersionTransition.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab26">
+    <rdf:first>fork</rdf:first>
+    <rdf:rest rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab27"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab20">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/versioning/TransitionTypeValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/type"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab14">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/reason"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/versioning/Version"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/from"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab27">
+    <rdf:first>merge</rdf:first>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab17">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractFeatureWithLifespan"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/newFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab16">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractFeatureWithLifespan"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/newFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="en">Versioning</rdfs:label>
+    <owl:imports rdf:resource="http://def.isotc211.org/iso19150/-2/2012/base"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/common"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/core"/>
+    <owl:versionIRI rdf:resource="https://www.opengis.net/ont/citygml/versioning/3.0.0/"/>
+    <owl:versionInfo>3.0.0</owl:versionInfo>
+    <skos:definition xml:lang="en">The Versioning module supports representation of multiple versions of CityGML features within a single CityGML model. In addition, also the version transitions and transactions that lead to the different versions can be represented.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab29">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/tag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/versioning/Version"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/to"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning/Transaction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Transaction</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab16"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab17"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab18"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab19"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab20"/>
+    <rdfs:subClassOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab21"/>
+    <skos:definition xml:lang="en">Transaction represents a modification of the city model by the creation, termination, or replacement of a specific city object. While the creation of a city object also marks its first object version, the termination marks the end of existence of a real world object and, hence, also terminates the final version of a city object. The replacement of a city object means that a specific version of it is replaced by a new version.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab15">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/clonePredecessor"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab25">
+    <rdf:first>historicalSuccession</rdf:first>
+    <rdf:rest rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab26"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab28">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractFeatureWithLifespan"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/versionMember"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/versioning/TransitionTypeValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/type"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab22">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <owl:oneOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab23"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab11">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/clonePredecessor"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab13">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/versioning/Transaction"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/transaction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab12">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/reason"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning/TransitionTypeValue">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label xml:lang="en">TransitionTypeValue</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab22"/>
+    <skos:definition xml:lang="en">TransitionTypeValue enumerates the different kinds of version transitions. “planned” and “fork” should be used in cases when from one city model version multiple successor versions are being created. “realized” and “merge” should be used when different city model versions are converging into a common successor version.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning/from">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">from</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/versioning/VersionTransition"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/versioning/Version"/>
+    <skos:definition xml:lang="en">Relates to the predecessor version of the VersionTransition.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab2">
+    <rdf:first>insert</rdf:first>
+    <rdf:rest rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab24">
+    <rdf:first>realized</rdf:first>
+    <rdf:rest rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab25"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab3">
+    <rdf:first>delete</rdf:first>
+    <rdf:rest rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab4"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab21">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onDataRange rdf:resource="https://www.opengis.net/ont/citygml/versioning/TransitionTypeValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/type"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/versioning/reason">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">reason</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <skos:definition xml:lang="en">Specifies why the VersionTransition has been carried out.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab23">
+    <rdf:first>planned</rdf:first>
+    <rdf:rest rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab24"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/versioning/Version"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/to"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab4">
+    <rdf:first>replace</rdf:first>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab1">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <owl:oneOf rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab2"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0339192bc03f4e96bea901cadde4b2cab18">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractFeatureWithLifespan"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/versioning/oldFeature"/>
+  </rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:iso19150-2="http://def.isotc211.org/iso19150/-2/2012/base#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeInstallation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeInstallation</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab16"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab17"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab18"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab19"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/construction/AbstractInstallation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeInstallationFunctionValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeInstallationFunctionValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeInstallationFunctionValue is a code list that enumerates the different purposes of a BridgeInstallation.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeFurniture">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeFurniture</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab12"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab13"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab14"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab15"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/construction/AbstractFurniture"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab32">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementUsageValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/usage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab33">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeRoom"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/bridge/bridgeRoom"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab18">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeRoomClassValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeRoomClassValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeRoomClassValue is a code list used to further classify a BridgeRoom.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/bridgePart">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">bridgePart</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/bridge/Bridge"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgePart"/>
+    <skos:definition xml:lang="en">Relates the bridge parts to the Bridge.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="en">Bridge</rdfs:label>
+    <owl:imports rdf:resource="http://def.isotc211.org/iso19150/-2/2012/base"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/common"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/construction"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/core"/>
+    <owl:versionIRI rdf:resource="https://www.opengis.net/ont/citygml/bridge/3.0.0/"/>
+    <owl:versionInfo>3.0.0</owl:versionInfo>
+    <skos:definition xml:lang="en">The Bridge module supports representation of thematic and spatial aspects of bridges, bridge parts, bridge installations, and interior bridge structures.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab36">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeInstallation"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/bridgeInstallation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab24">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementFunctionValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/function"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeFurnitureFunctionValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeFurnitureFunctionValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeFurnitureFunctionValue is a code list that enumerates the different purposes of a BridgeFurniture.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementUsageValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeConstructiveElementUsageValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeConstructiveElementUsageValue is a code list that enumerates the different uses of a BridgeConstructiveElement.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeUsageValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeUsageValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeUsageValue is a code list that enumerates the different uses of a Bridge.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/AbstractBridge">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">AbstractBridge</rdfs:label>
+    <iso19150-2:isAbstract rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</iso19150-2:isAbstract>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab27"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab28"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab29"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab30"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab31"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab32"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab33"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab34"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab35"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab36"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab37"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/construction/AbstractConstruction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/bridgeInstallation">
+    <rdfs:domain rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab9"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeInstallation"/>
+    <skos:definition xml:lang="en">Relates the installation objects to the Bridge or BridgePart.</skos:definition>
+    <skos:definition xml:lang="en">Relates to the installation objects to the BridgeRoom.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementClassValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeConstructiveElementClassValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeConstructiveElementClassValue is a code list used to further classify a BridgeConstructiveElement.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/isMovable">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">isMovable</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <skos:definition xml:lang="en">Indicates whether the Bridge or BridgePart can be moved to allow for watercraft to pass.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeClassValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeClassValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeClassValue is a code list used to further classify a Bridge.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeInstallationClassValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeInstallationClassValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeInstallationClassValue is a code list used to further classify a BridgeInstallation.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeRoom">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeRoom</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab20"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab21"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab22"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab23"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab24"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab25"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab26"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractUnoccupiedSpace"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementFunctionValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/function"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab21">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractThematicSurface"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/boundary"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeFurnitureUsageValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeFurnitureUsageValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeFurnitureUsageValue is a code list that enumerates the different uses of a BridgeFurniture.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/boundary">
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeRoom"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractThematicSurface"/>
+    <skos:definition xml:lang="en">Relates to the surfaces that bound the BridgeRoom. This relation is inherited from the Core module.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab7">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/bridge/AbstractBridge"/>
+    <rdf:rest rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab8"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab14">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementUsageValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/usage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/address">
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/bridge/AbstractBridge"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/core/Address"/>
+    <skos:definition xml:lang="en">Relates the addresses to the Bridge or BridgePart.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab30">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/bridge/isMovable"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab10"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeFurnitureClassValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeFurnitureClassValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeFurnitureClassValue is a code list used to further classify a BridgeFurniture.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab7"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab11">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeRoom"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab31">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeFurniture"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/bridgeFurniture"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeInstallationUsageValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeInstallationUsageValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeInstallationUsageValue is a code list that enumerates the different uses of a BridgeInstallation.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab37">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElement"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/bridge/bridgeConstructiveElement"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab29">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementFunctionValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/function"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab23">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab17">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab20">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeConstructiveElement</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab2"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab3"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab4"/>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab5"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/construction/AbstractConstructiveElement"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab22">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementUsageValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/usage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab26">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeInstallation"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/bridgeInstallation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeFunctionValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeFunctionValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeFunctionValue is a code list that enumerates the different purposes of a Bridge.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeRoomUsageValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeRoomUsageValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeRoomUsageValue is a code list that enumerates the different uses of a BridgeRoom.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/bridgeRoom">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">bridgeRoom</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/bridge/AbstractBridge"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeRoom"/>
+    <skos:definition xml:lang="en">Relates the rooms to the Bridge or BridgePart.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/Bridge">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Bridge</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab1"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/bridge/AbstractBridge"/>
+    <owl:disjointWith rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgePart"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab12">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab35">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementUsageValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/usage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgePart"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/bridge/bridgePart"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab13">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeRoomFunctionValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeRoomFunctionValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeRoomFunctionValue is a code list that enumerates the different purposes of a BridgeRoom.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/class">
+    <rdfs:label xml:lang="en">class</rdfs:label>
+    <skos:definition xml:lang="en">Indicates the specific type of the BridgeConstructiveElement.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementFunctionValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgeConstructiveElementFunctionValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">BridgeConstructiveElementFunctionValue is a code list that enumerates the different purposes of a BridgeConstructiveElement.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab34">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab10">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/bridge/AbstractBridge"/>
+    <rdf:rest rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab11"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementUsageValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/usage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab28">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/Address"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/address"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/BridgePart">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BridgePart</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/bridge/AbstractBridge"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab15">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementFunctionValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/function"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab25">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeFurniture"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/bridgeFurniture"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/bridgeFurniture">
+    <rdfs:domain rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab6"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeFurniture"/>
+    <skos:definition xml:lang="en">Relates the furniture objects to the Bridge or BridgePart.</skos:definition>
+    <skos:definition xml:lang="en">Relates the furniture objects to the BridgeRoom.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/function">
+    <rdfs:label xml:lang="en">function</rdfs:label>
+    <skos:definition xml:lang="en">Specifies the intended purposes of the BridgeConstructiveElement.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab27">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/bridge/isMovable"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab16">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElementFunctionValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/function"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/usage">
+    <rdfs:label xml:lang="en">usage</rdfs:label>
+    <skos:definition xml:lang="en">Specifies the actual uses of the BridgeConstructiveElement.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/bridge/bridgeConstructiveElement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">bridgeConstructiveElement</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/bridge/AbstractBridge"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeConstructiveElement"/>
+    <skos:definition xml:lang="en">Relates the constructive elements to the Bridge or BridgePart.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb5c62c43e3f746be99ddb067fbdb91aab8">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/bridge/BridgeRoom"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+</rdf:RDF>

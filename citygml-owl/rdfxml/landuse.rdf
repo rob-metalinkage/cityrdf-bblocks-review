@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/landuse/LandUse">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">LandUse</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n1ef8c916eb0944fea7d14a0423ee55a0b1"/>
+    <rdfs:subClassOf rdf:nodeID="n1ef8c916eb0944fea7d14a0423ee55a0b2"/>
+    <rdfs:subClassOf rdf:nodeID="n1ef8c916eb0944fea7d14a0423ee55a0b3"/>
+    <rdfs:subClassOf rdf:nodeID="n1ef8c916eb0944fea7d14a0423ee55a0b4"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractThematicSurface"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1ef8c916eb0944fea7d14a0423ee55a0b4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/landuse/LandUseClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1ef8c916eb0944fea7d14a0423ee55a0b2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/landuse/LandUseFunctionValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/function"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/usage">
+    <rdfs:label xml:lang="en">usage</rdfs:label>
+    <skos:definition xml:lang="en">Specifies the actual uses of the LandUse.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1ef8c916eb0944fea7d14a0423ee55a0b3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/landuse/LandUseClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/landuse">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="en">LandUse</rdfs:label>
+    <owl:imports rdf:resource="http://def.isotc211.org/iso19150/-2/2012/base"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/common"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/core"/>
+    <owl:versionIRI rdf:resource="https://www.opengis.net/ont/citygml/landuse/3.0.0/"/>
+    <owl:versionInfo>3.0.0</owl:versionInfo>
+    <skos:definition xml:lang="en">The LandUse module supports representation of areas of the earth’s surface dedicated to a specific land use.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/landuse/LandUseClassValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">LandUseClassValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">LandUseClassValue is a code list used to further classify a LandUse.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/landuse/LandUseUsageValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">LandUseUsageValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">LandUseUsageValue is a code list that enumerates the different uses of a LandUse.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/landuse/LandUseFunctionValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">LandUseFunctionValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">LandUseFunctionValue is a code list that enumerates the different purposes of a LandUse.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/function">
+    <rdfs:label xml:lang="en">function</rdfs:label>
+    <skos:definition xml:lang="en">Specifies the intended purposes of the LandUse.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n1ef8c916eb0944fea7d14a0423ee55a0b1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/landuse/LandUseUsageValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/usage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/class">
+    <rdfs:label xml:lang="en">class</rdfs:label>
+    <skos:definition xml:lang="en">Indicates the specific type of the LandUse.</skos:definition>
+  </rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:iso19150-2="http://def.isotc211.org/iso19150/-2/2012/base#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b59">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b60"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b48">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/target"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b44">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/appearance/TextureAssociation"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/textureParameterization"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b12">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="http://def.isotc211.org/iso19111/2007/CoordinateReferenceSystems#SC_CRS"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/crs"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b34">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/MimeTypeValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/mimeType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/TextureAssociation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TextureAssociation</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b45"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b46"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b47"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b48"/>
+    <skos:definition xml:lang="en">TextureAssociation denotes the relation of a texture to a surface geometry object.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b64">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/appearance/TextureAssociation"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/shininess">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">shininess</rdfs:label>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/core/DoubleBetween0and1"/>
+    <skos:definition xml:lang="en">Specifies the sharpness of the specular highlight.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/preferWorldFile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">preferWorldFile</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <skos:definition xml:lang="en">Indicates whether the georeference from the image file or the accompanying world file should be preferred.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/core/TransformationMatrix2x2"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/orientation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b31">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/isSmooth"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/crs">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">crs</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/appearance/TexCoordGen"/>
+    <rdfs:range rdf:resource="http://def.isotc211.org/iso19111/2007/CoordinateReferenceSystems#SC_CRS"/>
+    <skos:definition xml:lang="en">Relates to the coordinate reference system of the transformation matrix.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b30">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/core/DoubleBetween0and1"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/shininess"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/X3DMaterial">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">X3DMaterial</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b19"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b20"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b21"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b22"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b23"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b24"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b25"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b26"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b27"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b28"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b29"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b30"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b31"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b32"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b33"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/appearance/AbstractSurfaceData"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/referencePoint">
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/appearance/GeoreferencedTexture"/>
+    <rdfs:range rdf:resource="http://www.opengis.net/ont/gml#Point"/>
+    <skos:definition xml:lang="en">Relates to the 2D Point geometry that represents the center of the upper left image pixel in world space.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/TexCoordList">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TexCoordList</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b15"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b16"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b17"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b18"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/appearance/AbstractTextureParameterization"/>
+    <skos:definition xml:lang="en">TexCoordList defines texture parameterization using texture coordinates.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/theme"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b55">
+    <rdf:first>wrap</rdf:first>
+    <rdf:rest rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b56"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/Color">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Color</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/DoubleBetween0and1List"/>
+    <owl:disjointWith rdf:resource="https://www.opengis.net/ont/citygml/appearance/ColorPlusOpacity"/>
+    <skos:definition xml:lang="en">Color is a list of three double values between 0 and 1 defining an RGB color value.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b10">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/TransformationMatrix2x2"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/orientation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b25">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/appearance/Color"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/diffuseColor"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b37">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/appearance/ColorPlusOpacity"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/borderColor"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b15">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/DoubleList"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/textureCoordinates"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b27">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/appearance/Color"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/specularColor"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b47">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/target"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b49">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <owl:oneOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b50"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/textureParameterization">
+    <rdfs:domain rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b59"/>
+    <rdfs:range rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b62"/>
+    <skos:definition xml:lang="en">Relates to the texture coordinates or transformation matrices used for parameterization.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/transparency">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">transparency</rdfs:label>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/core/DoubleBetween0and1"/>
+    <skos:definition xml:lang="en">Specifies the degree of transparency of the surface geometry object.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="en">Appearance</rdfs:label>
+    <owl:imports rdf:resource="http://def.isotc211.org/iso19150/-2/2012/base"/>
+    <owl:imports rdf:resource="http://www.opengis.net/ont/gml"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/common"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/core"/>
+    <owl:versionIRI rdf:resource="https://www.opengis.net/ont/citygml/appearance/3.0.0/"/>
+    <owl:versionInfo>3.0.0</owl:versionInfo>
+    <skos:definition xml:lang="en">The Appearance module supports the modelling of the observable surface properties of CityGML features in the form of textures and material.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b66">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/isFront"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/specularColor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">specularColor</rdfs:label>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/appearance/Color"/>
+    <skos:definition xml:lang="en">Specifies the color of the light directly reflected by the surface geometry object.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b43">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/imageURI"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/isSmooth">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">isSmooth</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <skos:definition xml:lang="en">Specifies which interpolation method is used for the shading of the surface geometry object. If the attribute is set to true, vertex normals should be used for shading (Gouraud shading). Otherwise, normals should be constant for a surface patch (flat shading).</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b23">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/isSmooth"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b38">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/core/MimeTypeValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/mimeType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/textureType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">textureType</rdfs:label>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/appearance/TextureType"/>
+    <skos:definition xml:lang="en">Indicates the specific type of the texture.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/target">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">target</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <skos:definition xml:lang="en">Specifies the URI that points to the surface geometry objects to which the texture is applied.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b50">
+    <rdf:first>specific</rdf:first>
+    <rdf:rest rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b51"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b51">
+    <rdf:first>typical</rdf:first>
+    <rdf:rest rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b52"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/GeoreferencedTexture">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">GeoreferencedTexture</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b4"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b5"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b6"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b7"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b8"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b9"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b10"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/appearance/AbstractTexture"/>
+    <owl:disjointWith rdf:resource="https://www.opengis.net/ont/citygml/appearance/ParameterizedTexture"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/preferWorldFile"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="http://www.opengis.net/ont/gml#Point"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/referencePoint"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/preferWorldFile"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/ambientIntensity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">ambientIntensity</rdfs:label>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/core/DoubleBetween0and1"/>
+    <skos:definition xml:lang="en">Specifies the minimum percentage of diffuseColor that is visible regardless of light sources.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b14">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/core/TransformationMatrix3x4"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/worldToTexture"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/imageURI">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">imageURI</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <skos:definition xml:lang="en">Specifies the URI that points to the external image data file.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b46">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/appearance/AbstractTextureParameterization"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/textureParameterization"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/Appearance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Appearance</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b1"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b2"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b3"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractAppearance"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b21">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/DoubleBetween0and1"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/ambientIntensity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/ColorPlusOpacity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">ColorPlusOpacity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/DoubleBetween0and1List"/>
+    <skos:definition xml:lang="en">Color is a list of four double values between 0 and 1 defining an RGBA color value. Opacity value of 0 means transparent.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/emissiveColor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">emissiveColor</rdfs:label>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/appearance/Color"/>
+    <skos:definition xml:lang="en">Specifies the color of the light emitted by the surface geometry object.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b26">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/appearance/Color"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/emissiveColor"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b36">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onDataRange rdf:resource="https://www.opengis.net/ont/citygml/appearance/WrapMode"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/wrapMode"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/TextureType">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label xml:lang="en">TextureType</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b49"/>
+    <skos:definition xml:lang="en">TextureType enumerates the different texture types.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/AbstractSurfaceData">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">AbstractSurfaceData</rdfs:label>
+    <iso19150-2:isAbstract rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</iso19150-2:isAbstract>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b65"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b66"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/TexCoordGen">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TexCoordGen</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b11"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b12"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b13"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b14"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/appearance/AbstractTextureParameterization"/>
+    <owl:disjointWith rdf:resource="https://www.opengis.net/ont/citygml/appearance/TexCoordList"/>
+    <skos:definition xml:lang="en">TexCoordGen defines texture parameterization using a transformation matrix.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/appearance/AbstractSurfaceData"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/surfaceData"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/surfaceData">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">surfaceData</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/appearance/Appearance"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/appearance/AbstractSurfaceData"/>
+    <skos:definition xml:lang="en">Relates to the surface data that are part of the Appearance.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/AbstractTextureParameterization">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">AbstractTextureParameterization</rdfs:label>
+    <iso19150-2:isAbstract rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</iso19150-2:isAbstract>
+    <skos:definition xml:lang="en">AbstractTextureParameterization is the abstract superclass for different kinds of texture parameterizations.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/textureCoordinates">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">textureCoordinates</rdfs:label>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/core/DoubleList"/>
+    <skos:definition xml:lang="en">Specifies the coordinates of texture used for parameterization. The texture coordinates are provided separately for each LinearRing of the surface geometry object.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b13">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/TransformationMatrix3x4"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/worldToTexture"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b53">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <owl:oneOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b54"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b42">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/appearance/TextureType"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/textureType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/worldToTexture">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">worldToTexture</rdfs:label>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/core/TransformationMatrix3x4"/>
+    <skos:definition xml:lang="en">Specifies the 3x4 transformation matrix that defines the transformation between world coordinates and texture coordinates.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/diffuseColor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">diffuseColor</rdfs:label>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/appearance/Color"/>
+    <skos:definition xml:lang="en">Specifies the color of the light diffusely reflected by the surface geometry object.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b18">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/ring"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b56">
+    <rdf:first>mirror</rdf:first>
+    <rdf:rest rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b57"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b57">
+    <rdf:first>clamp</rdf:first>
+    <rdf:rest rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b58"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/AbstractTexture">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">AbstractTexture</rdfs:label>
+    <iso19150-2:isAbstract rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</iso19150-2:isAbstract>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b34"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b35"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b36"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b37"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b38"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b39"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b40"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b41"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b42"/>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b43"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/appearance/AbstractSurfaceData"/>
+    <owl:disjointWith rdf:resource="https://www.opengis.net/ont/citygml/appearance/X3DMaterial"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/ring">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">ring</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <skos:definition xml:lang="en">Specifies the URIs that point to the LinearRings that are parameterized using the given texture coordinates.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b54">
+    <rdf:first>none</rdf:first>
+    <rdf:rest rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b55"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b45">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/appearance/AbstractTextureParameterization"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/textureParameterization"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.opengis.net/ont/gml#Point"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/referencePoint"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b24">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/DoubleBetween0and1"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/shininess"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/borderColor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">borderColor</rdfs:label>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/appearance/ColorPlusOpacity"/>
+    <skos:definition xml:lang="en">Specifies the color of that part of the surface that is not covered by the texture.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/theme">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">theme</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <skos:definition xml:lang="en">Specifies the topic of the Appearance. Each Appearance contains surface data for one theme only. Examples of themes are infrared radiation, noise pollution, or earthquake-induced structural stress.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/ParameterizedTexture">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">ParameterizedTexture</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b44"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/appearance/AbstractTexture"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b63">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/appearance/AbstractTextureParameterization"/>
+    <rdf:rest rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b64"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/wrapMode">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">wrapMode</rdfs:label>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/appearance/WrapMode"/>
+    <skos:definition xml:lang="en">Specifies the behaviour of the texture when the texture is smaller than the surface to which it is applied.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b35">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/appearance/ColorPlusOpacity"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/borderColor"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b61">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/appearance/TextureAssociation"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b22">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/target"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b11">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://def.isotc211.org/iso19111/2007/CoordinateReferenceSystems#SC_CRS"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/crs"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b58">
+    <rdf:first>border</rdf:first>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b29">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/core/DoubleBetween0and1"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/transparency"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b28">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/appearance/Color"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/emissiveColor"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b41">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onDataRange rdf:resource="https://www.opengis.net/ont/citygml/appearance/TextureType"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/textureType"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b20">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/appearance/Color"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/diffuseColor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/mimeType">
+    <rdfs:label xml:lang="en">mimeType</rdfs:label>
+    <skos:definition xml:lang="en">Specifies the MIME type of the external point cloud file.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b17">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/ring"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b65">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/isFront"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b33">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/appearance/Color"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/specularColor"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/core/DoubleBetween0and1"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/ambientIntensity"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b39">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/appearance/WrapMode"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/wrapMode"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/orientation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">orientation</rdfs:label>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/core/TransformationMatrix2x2"/>
+    <skos:definition xml:lang="en">Specifies the rotation and scaling of the image in form of a 2x2 matrix.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b16">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/core/DoubleList"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/textureCoordinates"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/WrapMode">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdfs:label xml:lang="en">WrapMode</rdfs:label>
+    <owl:equivalentClass rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b53"/>
+    <skos:definition xml:lang="en">WrapMode enumerates the different fill modes for textures.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b32">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/DoubleBetween0and1"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/transparency"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b60">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/appearance/ParameterizedTexture"/>
+    <rdf:rest rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b61"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b40">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/imageURI"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b52">
+    <rdf:first>unknown</rdf:first>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/appearance/isFront">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">isFront</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <skos:definition xml:lang="en">Indicates whether the texture or material is assigned to the front side or the back side of the surface geometry object.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b62">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b63"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nf819c84ea3bb4ef78f3144d754f990d2b5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/appearance/target"/>
+  </rdf:Description>
+</rdf:RDF>

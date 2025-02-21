@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db14">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/cityobjectgroup/CityObjectGroup"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/cityobjectgroup/role">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">role</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <skos:definition xml:lang="en">Describes the role the city object plays within the CityObjectGroup.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db16">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/cityobjectgroup/Role"/>
+    <rdf:rest rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db17"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/usage">
+    <rdfs:label xml:lang="en">usage</rdfs:label>
+    <skos:definition xml:lang="en">Specifies the actual usages of the CityObjectGroup.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/cityobjectgroup/parent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">parent</rdfs:label>
+    <rdfs:domain rdf:resource="https://www.opengis.net/ont/citygml/cityobjectgroup/CityObjectGroup"/>
+    <rdfs:range rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractCityObject"/>
+    <skos:definition xml:lang="en">Relates to a city object to which the CityObjectGroup belongs.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/cityobjectgroup/CityObjectGroupUsageValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/usage"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/cityobjectgroup/CityObjectGroupFunctionValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/function"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/cityobjectgroup/Role">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Role</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db8"/>
+    <rdfs:subClassOf rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db9"/>
+    <rdfs:subClassOf rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db10"/>
+    <rdfs:subClassOf rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db11"/>
+    <skos:definition xml:lang="en">Role qualifies the function of a city object within the CityObjectGroup.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/cityobjectgroup/role"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/cityobjectgroup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="en">CityObjectGroup</rdfs:label>
+    <owl:imports rdf:resource="http://def.isotc211.org/iso19150/-2/2012/base"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/common"/>
+    <owl:imports rdf:resource="https://www.opengis.net/ont/citygml/core"/>
+    <owl:versionIRI rdf:resource="https://www.opengis.net/ont/citygml/cityobjectgroup/3.0.0/"/>
+    <owl:versionInfo>3.0.0</owl:versionInfo>
+    <skos:definition xml:lang="en">The CityObjectGroup module supports grouping of city objects. Arbitrary city objects may be aggregated in groups according to user-defined criteria. A group may be further classified by application-specific attributes.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db17">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractCityObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db13">
+    <rdf:first rdf:resource="https://www.opengis.net/ont/citygml/cityobjectgroup/Role"/>
+    <rdf:rest rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db14"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractCityObject"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/cityobjectgroup/parent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/cityobjectgroup/CityObjectGroup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">CityObjectGroup</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db1"/>
+    <rdfs:subClassOf rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db2"/>
+    <rdfs:subClassOf rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db3"/>
+    <rdfs:subClassOf rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db4"/>
+    <rdfs:subClassOf rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db5"/>
+    <rdfs:subClassOf rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db6"/>
+    <rdfs:subClassOf rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db7"/>
+    <rdfs:subClassOf rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractLogicalSpace"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/class">
+    <rdfs:label xml:lang="en">class</rdfs:label>
+    <skos:definition xml:lang="en">Indicates the specific type of the CityObjectGroup.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/function">
+    <rdfs:label xml:lang="en">function</rdfs:label>
+    <skos:definition xml:lang="en">Specifies the intended purposes of the CityObjectGroup.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db11">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractCityObject"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/groupMember"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractCityObject"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/groupMember"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db12">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db13"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/common/groupMember">
+    <rdfs:domain rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db12"/>
+    <rdfs:range rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db15"/>
+    <skos:definition xml:lang="en">Relates to the city objects that are part of the CityObjectGroup.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/cityobjectgroup/Role"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/groupMember"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/cityobjectgroup/CityObjectGroupClassValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">CityObjectGroupClassValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">CityObjectGroupClassValue is a code list used to further classify a CityObjectGroup.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/cityobjectgroup/CityObjectGroupClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/cityobjectgroup/CityObjectGroupFunctionValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">CityObjectGroupFunctionValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">CityObjectGroupFunctionValue is a code list that enumerates the different purposes of a CityObjectGroup.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://www.opengis.net/ont/citygml/cityobjectgroup/CityObjectGroupUsageValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">CityObjectGroupUsageValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:definition xml:lang="en">CityObjectGroupUsageValue is a code list that enumerates the different uses of a CityObjectGroup.</skos:definition>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://www.opengis.net/ont/citygml/cityobjectgroup/CityObjectGroupClassValue"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/common/class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db15">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db16"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onClass rdf:resource="https://www.opengis.net/ont/citygml/core/AbstractCityObject"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/cityobjectgroup/parent"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n46fc9d4c846147329e2b0300d6edfd2db10">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <owl:onProperty rdf:resource="https://www.opengis.net/ont/citygml/cityobjectgroup/role"/>
+  </rdf:Description>
+</rdf:RDF>
