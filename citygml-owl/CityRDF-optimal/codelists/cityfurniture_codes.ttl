@@ -1,0 +1,28 @@
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix frncode: <https://www.opengis.net/ont/citygml/cityfurniture/code/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+frncode:CityFurnitureClassValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "CityFurnitureClassValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityfurniture/CityFurnitureClassValue>;
+        skos:definition  "CityFurnitureClassValue is a code list used to further classify a CityFurniture."@en .
+
+<https://www.opengis.net/ont/citygml/cityfurniture/code>
+        rdf:type  owl:Ontology .
+
+frncode:CityFurnitureFunctionValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "CityFurnitureFunctionValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityfurniture/CityFurnitureFunctionValue>;
+        skos:definition  "CityFurnitureFunctionValue is a code list that enumerates the different purposes of a CityFurniture."@en .
+
+frncode:CityFurnitureUsageValue
+        rdf:type         skos:ConceptScheme;
+        rdfs:label       "CityFurnitureUsageValue"@en;
+        dct:isFormatOf   <https://www.opengis.net/ont/citygml/cityfurniture/CityFurnitureUsageValue>;
+        skos:definition  "CityFurnitureUsageValue is a code list that enumerates the different uses of a CityFurniture."@en .

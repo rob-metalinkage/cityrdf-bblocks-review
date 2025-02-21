@@ -1,0 +1,27 @@
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+<https://www.opengis.net/ont/citygml/CityRDF> a owl:Ontology ;
+    owl:versionIRI <https://www.opengis.net/ont/citygml/CityRDF/3.0.0/>;
+    owl:versionInfo "3.0.0";
+    owl:imports <https://www.opengis.net/ont/citygml/appearance>,
+        <https://www.opengis.net/ont/citygml/bridge>,
+        <https://www.opengis.net/ont/citygml/building>,
+        <https://www.opengis.net/ont/citygml/cityfurniture>,
+        <https://www.opengis.net/ont/citygml/cityobjectgroup>,
+        <https://www.opengis.net/ont/citygml/construction>,
+        <https://www.opengis.net/ont/citygml/common>,
+        <https://www.opengis.net/ont/citygml/core>,
+        <https://www.opengis.net/ont/citygml/document>,
+        <https://www.opengis.net/ont/citygml/dynamizer>,
+        <https://www.opengis.net/ont/citygml/generics>,
+        <https://www.opengis.net/ont/citygml/landuse>,
+        <https://www.opengis.net/ont/citygml/pointcloud>,
+        <https://www.opengis.net/ont/citygml/relief>,
+        <https://www.opengis.net/ont/citygml/transactiontypevalues>,
+        <https://www.opengis.net/ont/citygml/transportation>,
+        <https://www.opengis.net/ont/citygml/tunnel>,
+        <https://www.opengis.net/ont/citygml/vegetation>,
+        <https://www.opengis.net/ont/citygml/versioning>,
+        <https://www.opengis.net/ont/citygml/waterbody>,
+        <https://www.opengis.net/ont/citygml/workspace> .
+
