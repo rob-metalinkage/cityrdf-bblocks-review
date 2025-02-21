@@ -27,13 +27,17 @@ Resources described in CityGML WG proposal (thanks to [Diego Vinasco-Alvarez](ht
 
 ## The structure of the repository
 
+```bash
 CityGML-OWL
-├── additional-triples      # additional files used in the workflow
-├── CityRDF                 # final result of the transformation
-    └── codelists           # one of the possible transformation results for CityGML3.0 code lists
-├── examples                # some CityGML files and their Turtle representations
-├── scripts                 # all necessary scripts used in the transformation
-└── statistics              # results of qualifying SPARQL queries affecting the transformation actions
+├── additional-triples   # additional files used in the workflow
+├── CityRDF              # final result: relaxed domain and range restrictions with `schema:domain/rangeIncludes`
+    └── codelists        # one of the possible transformation results for CityGML3.0 code lists
+├── CityRDF-optimal      # final result: relaxed domain restriction but strict range as `owl:unionOf`
+├── CityRDF-strict       # final result: strict domain and range restrictions with `owl:unionOf`
+├── examples             # some CityGML files and their Turtle representations
+├── scripts              # all necessary scripts used in the transformation
+└── statistics           # results of qualifying SPARQL queries affecting the transformation actions
+```
 
 # Current solution
 
@@ -151,7 +155,7 @@ There are also object/datatype properties schematically presented as `packagenam
 
 ### Removal of duplicate definitions for properties of the kind `packagename#Class.property` 
 
-We propose to do the following (we present both alternatives):
+We propose to do the following (we present several alternatives):
 
 #### 1) Relaxed semantics
 
@@ -291,7 +295,7 @@ common:boundary skos:definition "Here goes the definition that originate in the 
 
 ### 2) Strict semantics 
 
-Each property of the kind having more than one class in its domain is defined with `owl:unionOf` for its range and if necessary for its domain
+Each property of the kind having more than one class in its domain is defined with [owl:unionOf](https://www.w3.org/TR/owl-ref/#unionOf-def) for its range and if necessary for its domain:
 
 ```turtle
 common:boundary a owl:ObjectProperty ;
@@ -308,15 +312,32 @@ common:boundary a owl:ObjectProperty ;
                                 con:Window, 
                                 brid:BridgeRoom)];
 # all classes in range
-    rdfs:domain [a owl:Class;
+    rdfs:range [a owl:Class;
                    owl:unionOf (con:WindowSurface, 
                                 con:DoorSurface, 
                                 transportation:TrafficArea, 
                                 transportation:AuxiliaryTrafficArea)].
 ```
-Enforcing strict semantics is implemented as optional step 4 of the workflow. Its results are stored in the folder `/CityRDF-strict`
+Enforcing strict semantics is implemented as optional step 4 of the workflow. Its results are stored in the folder `/CityRDF-strict`.
 Such strict semantics makes OWL reasoning applicable, although restricts the extension of possible domains and ranges of properties in applications. 
 
+### 3) Optimal semantics
+
+We can also leave domain restrictions more relaxed, and define them with [schema:domainIncludes](https://schema.org/domainIncludes), but provide strict semantics for ranges:
+
+```turtle
+common:boundary a owl:ObjectProperty ;
+    rdfs:label "boundary"@en ;
+# all classes in domain
+    schema:domainIncludes bldg:BuildingRoom, bldg:Storey, wtr:WaterBody, tun:HollowSpace, transportation:AuxiliaryTrafficSpace, transportation:TrafficSpace, con:Door, con:Window, brid:BridgeRoom ;    
+# all classes in range
+    rdfs:range [a owl:Class;
+                   owl:unionOf (con:WindowSurface, 
+                                con:DoorSurface, 
+                                transportation:TrafficArea, 
+                                transportation:AuxiliaryTrafficArea)].
+```
+The results are stored in the folder `/CityRDF-optimal`.
 
 ## Samples
 
