@@ -105,7 +105,7 @@ luse:ADEOfLandUse a owl:Class ;
     iso19150-2:isAbstract true ;
     skos:definition "ADEOfLandUse acts as a hook to define properties within an ADE that are to be added to a LandUse."@en .
 ```
-We apply one SPARQL query ([#1 in the file](./update-triples.sh)) across all ontologies in `stage-2` to do this.
+We apply one SPARQL query ([#1 in the file](./scripts/update-triples.sh)) across all ontologies in `stage-2` to do this.
 
 ### Global Properties explication
 
@@ -149,11 +149,11 @@ common:usage  rdf:type      owl:ObjectProperty;
 We add the following:
 - we introduce an ontology `/additional-triples/common.ttl` and a namespace `PREFIX common: <https://www.opengis.net/ont/citygml/common/>` keeping all owl:ObjectProperties and owl:DatatypeProperties sharing the same domain and varying in the `rdfs:range` (and `rdfs:label/skos:definition`). 
 
-We apply four SPARQL queries ([##2-5 in the file](./update-triples.sh)) across all ontologies in `stage-2` to do this.
+We apply four SPARQL queries ([##2-5 in the file](./scripts/update-triples.sh)) across all ontologies in `stage-2` to do this.
 
-There are also object/datatype properties schematically presented as `packagename#Class.property`. For example, object property `boundary` has domain in some abstract class 4 times, and 9 times is has a non-abstract domain (in total, 13 occurences). Following the same argument, we would like to avoid repetitions of definitions in package-level ontologies and apply some more actions on duplicated definitions of object/datatype properties as described below.
+There are also object/datatype properties schematically presented as `packagename:Class.property`. For example, object property `boundary` has domain in some abstract class 4 times, and 9 times is has a non-abstract domain (in total, 13 occurences). Following the same argument, we would like to avoid repetitions of definitions in package-level ontologies and apply some more actions on duplicated definitions of object/datatype properties as described below.
 
-### Removal of duplicate definitions for properties of the kind `packagename#Class.property` 
+### Removal of duplicate definitions for properties of the kind `packagename:Class.property` 
 
 We propose to do the following (we present several alternatives):
 
