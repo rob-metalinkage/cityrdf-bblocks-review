@@ -29,7 +29,16 @@ frn:CityFurniture a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass frn:CityFurnitureClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
-        core:AbstractOccupiedSpace .
+        core:AbstractOccupiedSpace ;
+    skos:definition "CityFurniture is an object or piece of equipment installed in the outdoor environment for various purposes. Examples include street signs, traffic signals, street lamps, benches, fountains."@en .
+
+<https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
+    rdfs:range frn:CityFurnitureFunctionValue ;
+    skos:definition "Specifies the intended purposes of the CityFurniture."@en .
+
+<https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
+    rdfs:range frn:CityFurnitureUsageValue ;
+    skos:definition "Specifies the actual uses of the CityFurniture."@en .
 
 frn:CityFurnitureFunctionValue a owl:Class ;
     rdfs:label "CityFurnitureFunctionValue"@en ;
@@ -41,17 +50,12 @@ frn:CityFurnitureUsageValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "CityFurnitureUsageValue is a code list that enumerates the different uses of a CityFurniture."@en .
 
-<https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    skos:definition "Specifies the intended purposes of the CityFurniture."@en .
-
-<https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    skos:definition "Specifies the actual uses of the CityFurniture."@en .
+<https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
+    rdfs:range frn:CityFurnitureClassValue ;
+    skos:definition "Indicates the specific type of the CityFurniture."@en .
 
 frn:CityFurnitureClassValue a owl:Class ;
     rdfs:label "CityFurnitureClassValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "CityFurnitureClassValue is a code list used to further classify a CityFurniture."@en .
-
-<https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    skos:definition "Indicates the specific type of the CityFurniture."@en .
 

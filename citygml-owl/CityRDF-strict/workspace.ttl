@@ -21,12 +21,16 @@ wksp:ConcensusSpace a owl:Class ;
     rdfs:subClassOf wksp:Space ;
     owl:disjointWith wksp:PropositionSpace .
 
-<https://www.opengis.net/ont/citygml/common/versionMember> rdfs:domain wksp:Scenario ;
-    rdfs:range vers:Version .
+<https://www.opengis.net/ont/citygml/common/versionMember> rdfs:range vers:Version .
 
 wksp:PropositionSpace a owl:Class ;
     rdfs:label "PropositionSpace"@en ;
     rdfs:subClassOf wksp:Space .
+
+wksp:versionTransitionMember a owl:ObjectProperty ;
+    rdfs:label "versionTransitionMember"@en ;
+    rdfs:domain wksp:Scenario ;
+    rdfs:range vers:VersionTransition .
 
 wksp:Workspace a owl:Class ;
     rdfs:label "Workspace"@en ;
@@ -46,11 +50,6 @@ wksp:Workspace a owl:Class ;
             owl:onProperty wksp:creator ],
         core:AbstractFeatureWithLifespan .
 
-wksp:versionTransitionMember a owl:ObjectProperty ;
-    rdfs:label "versionTransitionMember"@en ;
-    rdfs:domain wksp:Scenario ;
-    rdfs:range vers:VersionTransition .
-
 wksp:scenarioMember a owl:ObjectProperty ;
     rdfs:label "scenarioMember"@en ;
     rdfs:domain wksp:Space ;
@@ -58,6 +57,9 @@ wksp:scenarioMember a owl:ObjectProperty ;
 
 wksp:creator a owl:DatatypeProperty ;
     rdfs:label "creator"@en ;
+    rdfs:domain wksp:Scenario,
+        wksp:Space,
+        wksp:Workspace ;
     rdfs:range xsd:string .
 
 wksp:spaceMember a owl:ObjectProperty ;
@@ -81,14 +83,14 @@ wksp:Scenario a owl:Class ;
 wksp:Space a owl:Class ;
     rdfs:label "Space"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty wksp:creator ],
+        [ a owl:Restriction ;
             owl:allValuesFrom wksp:Scenario ;
             owl:onProperty wksp:scenarioMember ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass wksp:Scenario ;
             owl:onProperty wksp:scenarioMember ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty wksp:creator ],
         core:AbstractFeatureWithLifespan .
 

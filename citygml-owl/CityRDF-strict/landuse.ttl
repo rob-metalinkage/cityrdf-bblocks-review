@@ -29,13 +29,20 @@ luse:LandUse a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass luse:LandUseClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
-        core:AbstractThematicSurface .
+        core:AbstractThematicSurface ;
+    skos:definition "A LandUse object is an area of the earth's surface dedicated to a specific land use or having a specific land cover with or without vegetation, such as sand, rock, mud flats, forest, grasslands, or wetlands."@en .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
+    rdfs:range luse:LandUseFunctionValue ;
     skos:definition "Specifies the intended purposes of the LandUse."@en .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
+    rdfs:range luse:LandUseUsageValue ;
     skos:definition "Specifies the actual uses of the LandUse."@en .
+
+<https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
+    rdfs:range luse:LandUseClassValue ;
+    skos:definition "Indicates the specific type of the LandUse."@en .
 
 luse:LandUseFunctionValue a owl:Class ;
     rdfs:label "LandUseFunctionValue"@en ;
@@ -46,9 +53,6 @@ luse:LandUseUsageValue a owl:Class ;
     rdfs:label "LandUseUsageValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "LandUseUsageValue is a code list that enumerates the different uses of a LandUse."@en .
-
-<https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    skos:definition "Indicates the specific type of the LandUse."@en .
 
 luse:LandUseClassValue a owl:Class ;
     rdfs:label "LandUseClassValue"@en ;

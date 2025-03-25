@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/transactiontypevalues" uri="transactiontypevalues.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/pointcloud" uri="pointcloud.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/versioning" uri="versioning.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/workspace" uri="workspace.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/waterbody" uri="waterbody.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/vegetation" uri="vegetation.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/transportation" uri="transportation.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/relief" uri="relief.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/landuse" uri="landuse.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/generics" uri="generics.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/dynamizer" uri="dynamizer.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/document" uri="document.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/cityobjectgroup" uri="cityobjectgroup.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/cityfurniture" uri="cityfurniture.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/tunnel" uri="tunnel.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/building" uri="building.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/construction" uri="construction.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/bridge" uri="bridge.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/core" uri="core.ttl.13"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/common" uri="common.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://www.opengis.net/ont/citygml/appearance" uri="appearance.ttl.13"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base=""/>
+</catalog>

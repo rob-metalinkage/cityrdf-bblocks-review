@@ -15,19 +15,12 @@
     owl:versionInfo "3.0.0" ;
     skos:definition "The Versioning module supports representation of multiple versions of CityGML features within a single CityGML model. In addition, also the version transitions and transactions that lead to the different versions can be represented."@en .
 
-vers:TransactionTypeValue a owl:Class ;
-    rdfs:label "TransactionTypeValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    owl:equivalentClass [ a rdfs:Datatype ;
-            owl:oneOf ( "insert" "delete" "replace" ) ] ;
-    skos:definition "TransactionTypeValue enumerates the three possible types of transactions: insert, delete, or replace."@en .
-
-<https://www.opengis.net/ont/citygml/common/versionMember> rdfs:domain vers:Version ;
-    rdfs:range core:AbstractFeatureWithLifespan ;
+<https://www.opengis.net/ont/citygml/common/versionMember> rdfs:range core:AbstractFeatureWithLifespan ;
     skos:definition "Relates to all city objects that are part of the city model version."@en .
 
 vers:tag a owl:DatatypeProperty ;
     rdfs:label "tag"@en ;
+    rdfs:domain vers:Version ;
     rdfs:range xsd:string ;
     skos:definition "Allows for adding keywords to the city model version."@en .
 
@@ -39,6 +32,7 @@ vers:transaction a owl:ObjectProperty ;
 
 vers:clonePredecessor a owl:DatatypeProperty ;
     rdfs:label "clonePredecessor"@en ;
+    rdfs:domain vers:VersionTransition ;
     rdfs:range xsd:boolean ;
     skos:definition "Indicates whether the set of city object instances belonging to the successor version of the city model is either explicitly enumerated within the successor version object (attribute clonePredecessor=false),  or has to be derived from the modifications of the city model provided as a list of transactions on the city object versions contained in the predecessor version (attribute clonePredecessor=true)."@en .
 
@@ -62,6 +56,7 @@ vers:oldFeature a owl:ObjectProperty ;
 
 vers:reason a owl:DatatypeProperty ;
     rdfs:label "reason"@en ;
+    rdfs:domain vers:VersionTransition ;
     rdfs:range xsd:string ;
     skos:definition "Specifies why the VersionTransition has been carried out."@en .
 
@@ -71,47 +66,23 @@ vers:to a owl:ObjectProperty ;
     rdfs:range vers:Version ;
     skos:definition "Relates to the successor version of the VersionTransition."@en .
 
-vers:VersionTransition a owl:Class ;
-    rdfs:label "VersionTransition"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom vers:TransitionTypeValue ;
-            owl:onProperty vers:type ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass vers:Version ;
-            owl:onProperty vers:from ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange vers:TransitionTypeValue ;
-            owl:onProperty vers:type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom vers:Version ;
-            owl:onProperty vers:to ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass vers:Version ;
-            owl:onProperty vers:to ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom vers:Version ;
-            owl:onProperty vers:from ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:boolean ;
-            owl:onProperty vers:clonePredecessor ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty vers:reason ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom vers:Transaction ;
-            owl:onProperty vers:transaction ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty vers:reason ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty vers:clonePredecessor ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        core:AbstractVersionTransition .
+vers:TransactionTypeValue a rdfs:Datatype ;
+    rdfs:label "TransactionTypeValue"@en ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "insert" "delete" "replace" ) ] ;
+    skos:definition "TransactionTypeValue enumerates the three possible types of transactions: insert, delete, or replace."@en .
+
+vers:TransitionTypeValue a rdfs:Datatype ;
+    rdfs:label "TransitionTypeValue"@en ;
+    owl:equivalentClass [ a rdfs:Datatype ;
+            owl:oneOf ( "planned" "realized" "historicalSuccession" "fork" "merge" ) ] ;
+    skos:definition "TransitionTypeValue enumerates the different kinds of version transitions. “planned” and “fork” should be used in cases when from one city model version multiple successor versions are being created. “realized” and “merge” should be used when different city model versions are converging into a common successor version."@en .
+
+<https://www.opengis.net/ont/citygml/common/type> rdfs:label "type"@en ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( vers:TransactionTypeValue vers:TransitionTypeValue ) ] ;
+    skos:definition "Indicates the specific type of the Transaction."@en,
+        "Indicates the specific type of the VersionTransition."@en .
 
 vers:Transaction a owl:Class ;
     rdfs:label "Transaction"@en ;
@@ -130,24 +101,56 @@ vers:Transaction a owl:Class ;
             owl:onClass core:AbstractFeatureWithLifespan ;
             owl:onProperty vers:oldFeature ],
         [ a owl:Restriction ;
-            owl:allValuesFrom vers:TransitionTypeValue ;
-            owl:onProperty vers:type ],
+            owl:allValuesFrom vers:TransactionTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/type> ],
         [ a owl:Restriction ;
-            owl:onDataRange vers:TransitionTypeValue ;
-            owl:onProperty vers:type ;
+            owl:onDataRange vers:TransactionTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/type> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "Transaction represents a modification of the city model by the creation, termination, or replacement of a specific city object. While the creation of a city object also marks its first object version, the termination marks the end of existence of a real world object and, hence, also terminates the final version of a city object. The replacement of a city object means that a specific version of it is replaced by a new version."@en .
 
-vers:type a owl:DatatypeProperty ;
-    rdfs:label "type"@en ;
-    rdfs:range vers:TransitionTypeValue ;
-    skos:definition "Indicates the specific type of the VersionTransition."@en .
-
-vers:TransitionTypeValue a rdfs:Datatype ;
-    rdfs:label "TransitionTypeValue"@en ;
-    owl:equivalentClass [ a rdfs:Datatype ;
-            owl:oneOf ( "planned" "realized" "historicalSuccession" "fork" "merge" ) ] ;
-    skos:definition "TransitionTypeValue enumerates the different kinds of version transitions. “planned” and “fork” should be used in cases when from one city model version multiple successor versions are being created. “realized” and “merge” should be used when different city model versions are converging into a common successor version."@en .
+vers:VersionTransition a owl:Class ;
+    rdfs:label "VersionTransition"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass vers:Version ;
+            owl:onProperty vers:to ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty vers:reason ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty vers:clonePredecessor ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange vers:TransitionTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/type> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom vers:Version ;
+            owl:onProperty vers:to ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom vers:Version ;
+            owl:onProperty vers:from ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass vers:Version ;
+            owl:onProperty vers:from ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom vers:Transaction ;
+            owl:onProperty vers:transaction ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom vers:TransitionTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/type> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty vers:clonePredecessor ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty vers:reason ],
+        core:AbstractVersionTransition ;
+    skos:definition "VersionTransition describes the change of the state of a city model from one version to another. Version transitions can have names, a description and can be further qualified by a type and a reason."@en .
 
 vers:Version a owl:Class ;
     rdfs:label "Version"@en ;
@@ -157,5 +160,6 @@ vers:Version a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty vers:tag ],
-        core:AbstractVersion .
+        core:AbstractVersion ;
+    skos:definition "Version represents a defined state of a city model consisting of the dedicated versions of all city object instances that belong to the respective city model version. Versions can have names, a description and can be labeled with an arbitrary number of user defined tags."@en .
 

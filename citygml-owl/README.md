@@ -43,13 +43,13 @@ CityGML-OWL
 
 We use [CityGML_3.0-workspaces-documents_shapechange-export.xml](https://github.com/VCityTeam/UD-Graph/blob/master/Transformations/test-data/UML/CityGML_3.0-workspaces-documents_shapechange-export.xml) as a source of CityGML3.0 model.
 
-We added `<<Union>>` stereotype conversion (`rule-owl-cls-union`) and made use of `rule-owl-prop-globalScopeAttributes` to de-duplicate to a certain extent (see below) properties defined more than once per package and across packages.
+We added `<<Union>>` stereotype conversion (`rule-owl-cls-union`) and made use of `rule-owl-prop-globalScopeAttributes` to detect duplicate (see below) properties defined more than once per package and across packages.
 
 The sequence of steps is as follows:
 1) Using shell script `run.sh` perform ShapeChange transformation of CityGML 3.0 UML into initial set of onotologies.
 2) Using shell script `patch-ontologies.sh` make the initial set of ontologies readable in Protege.
 3) Using shell script `update-triples.sh` perform SPARQL based transformation of the ontologies.
-4) (optional) Using shell script `refactor.sh` apply additional transformation of `schema:domainIncludes`/`schemaRangeIncludes` to wrap up multiple classes into `owl:unionOf` classes accesible with `rdfs:domain`/`rdfs:range` (see below) 
+4) (optional) Using shell scripts `refactor-optimal.sh` and `refactor-strict.sh` apply additional transformation of `schema:domainIncludes`/`schemaRangeIncludes` to wrap up multiple classes into `owl:unionOf` classes accesible with `rdfs:domain`/`rdfs:range` (see below) 
 
 The whole workflow can be executed with `run-workflow.sh` script.
 
@@ -109,13 +109,15 @@ We apply one SPARQL query ([#1 in the file](./scripts/update-triples.sh)) across
 
 ### Global Properties explication
 
-There are some attributes named equally in different packages, such as `usage`, `class`, `function`, `address`, `value` and others, so there are `brid:usage` and `bldg:usage` that differ only on ranges of property and definitions.
+There are some attributes named equally in different packages, such as `usage`, `class`, `function`, `address`, `value` and others, so there are `brid:Someclass.usage` and `bldg:Anotherclass.usage` that differ only on ranges of property and definitions.
 
 In OWL object/datatype properties are first-class citizens whereas in UML and UML converted into OWL with ShapeChange they are converted into package-level and class-level attributes.
 
 We explicate such attributes, and make a custom postprocessing step.
 
-To explicate we use the data in the folder `stage-2`, uploaded them into a knowledge graph using Ontotext GraphDB(C), and perform the following explication query, resulting in lists of [object properties](./statistics/citygml-how%20many%20ObjectProperties%20reuse%20the%20same%20label.csv), [datatype properties](./statistics/citygml-how%20many%20DatatypeProperites%20reuse%20the%20same%20label.csv):
+To explicate, we run ShapeChange twice: first - with the rule ["rule-owl-prop-globalScopeAttributes"](https://shapechange.net/targets/ontology/uml-rdfowl-based-isois-19150-2/#rule-owl-prop-globalScopeAttributes) enabled, to detect what properties are potentially duplicated.
+
+We use the data in the folder `stage-2`, uploaded them into a knowledge graph using [Ontotext GraphDB(C)](https://graphdb.ontotext.com/), and perform the following explication query, resulting in lists of [object properties](./statistics/citygml-how%20many%20ObjectProperties%20reuse%20the%20same%20label.csv), [datatype properties](./statistics/citygml-how%20many%20DatatypeProperites%20reuse%20the%20same%20label.csv):
 
 ```sparql
 select ?o (count(?s) as ?count) where { 
@@ -129,7 +131,7 @@ order by desc(?count)
 Here is an example:
 
 ```turtle
-con:usage  rdf:type      owl:ObjectProperty;
+con:usage  rdf:type owl:ObjectProperty;
         rdfs:label       "usage"@en;
         rdfs:range       con:DoorUsageValue;
         skos:definition  "Specifies the actual uses of the Door."@en .
@@ -148,6 +150,24 @@ common:usage  rdf:type      owl:ObjectProperty;
 ```
 We add the following:
 - we introduce an ontology `/additional-triples/common.ttl` and a namespace `PREFIX common: <https://www.opengis.net/ont/citygml/common/>` keeping all owl:ObjectProperties and owl:DatatypeProperties sharing the same domain and varying in the `rdfs:range` (and `rdfs:label/skos:definition`). 
+
+Then, we applied ShapeChange second time with the rule [`rule-owl-prop-globalScopeAttributes`](https://shapechange.net/targets/ontology/uml-rdfowl-based-isois-19150-2/#rule-owl-prop-globalScopeAttributes) disabled, and [`rule-owl-prop-localScopeAll`](https://shapechange.net/targets/ontology/uml-rdfowl-based-isois-19150-2/#rule-owl-prop-localScopeAll) enabled, to get complete information on class names and property names to disambiguate class names in `rdfs:subClassOf` axioms. The full configuration of ShapeChange conversion can be found [here](./scripts/CityGML3.0_to_OWL_ontotext_config.xml).
+
+Here is the example of "ambiguity" in classes, produced by ShapeChange with `rule-owl-prop-globalScopeAttributes`. This is the expected behaviour, but we have to preserve proper class names in subclass axioms, that is why we run ShapeChange twice.
+
+```xml
+    <Warning message="Property mapping with potentially inconsistent ranges. Type of property 1 is 'BuildingRoomClassValue', while that of property 2 (to which 1 is mapped) is 'BuildingInstallationClassValue'.">
+      <Detail message="--- Context - Property 1: Model::CityGML::Building::BuildingRoom::class"/>
+      <Detail message="--- Context - Property 2: Model::CityGML::Building::BuildingInstallation::class"/>
+    </Warning>
+    <Warning message="Property mapping with potentially inconsistent definitions. Definition of property 1 is 'Indicates the specific type of the BuildingRoom.', while that of property 2 (to which 1 is mapped) is 'Indicates the specific type of the BuildingInstallation.'.">
+      <Detail message="--- Context - Property 1: Model::CityGML::Building::BuildingRoom::class"/>
+      <Detail message="--- Context - Property 2: Model::CityGML::Building::BuildingInstallation::class"/>
+    </Warning>
+    <Warning message="Property mapping with potentially inconsistent ranges. Type of property 1 is 'BuildingRoomFunctionValue', while that of property 2 (to which 1 is mapped) is 'BuildingInstallationFunctionValue'.">
+      <Detail message="--- Context - Property 1: Model::CityGML::Building::BuildingRoom::function"/>
+      <Detail message="--- Context - Property 2: Model::CityGML::Building::BuildingInstallation::function"/>
+```
 
 We apply four SPARQL queries ([##2-5 in the file](./scripts/update-triples.sh)) across all ontologies in `stage-2` to do this.
 

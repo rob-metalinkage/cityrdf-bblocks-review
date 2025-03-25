@@ -132,19 +132,20 @@ python update_graph.py ../CityRDF/core.ttl ../CityRDF/core.ttl \
             owl:allValuesFrom|owl:onDataRange xsd:dateTime ;
             ?predicate ?object .
     }'
-echo 'Removing outdated versioning triples'
-python update_graph.py ../CityRDF/versioning.ttl ../CityRDF/versioning.ttl \
-    'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    PREFIX vers: <https://www.opengis.net/ont/citygml/versioning/>
+# this has been commented because TransactionTypeValue is UML enumeration, parsed as rdfs:Datatype similarly to ConditionOfConstructionValue
+#echo 'Removing outdated versioning triples'
+#python update_graph.py ../CityRDF/versioning.ttl ../CityRDF/versioning.ttl \
+#    'PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+#    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#    PREFIX vers: <https://www.opengis.net/ont/citygml/versioning/>
 
-    DELETE DATA {
-        vers:TransactionTypeValue a rdfs:Datatype .
-    } ;
-    INSERT DATA {
-        vers:TransactionTypeValue a owl:Class ;
-            rdfs:subClassOf skos:Concept .
-    }'
+#    DELETE DATA {
+#        vers:TransactionTypeValue a rdfs:Datatype .
+#    } ;
+#    INSERT DATA {
+#        vers:TransactionTypeValue a owl:Class ;
+#            rdfs:subClassOf skos:Concept .
+#    }'
 
 # this has been added to UD-Graph transformation since errors appeared when 
 # open the resulting files in Protege after conversion
@@ -155,10 +156,10 @@ python update_graph.py ../CityRDF/building.ttl ../CityRDF/building.ttl \
     PREFIX bldg: <https://www.opengis.net/ont/citygml/building/>
 
     DELETE DATA {
-        bldg:status a owl:ObjectProperty .
+        bldg:RoomHeight.status a owl:ObjectProperty .
     } ;
     INSERT DATA {
-        bldg:status a owl:DatatypeProperty .
+        bldg:RoomHeight.status a owl:DatatypeProperty .
     }'
 echo 'patching room height status: 2/5'
 python update_graph.py ../CityRDF/building.ttl ../CityRDF/building.ttl \
@@ -211,7 +212,7 @@ where {
                owl:onClass con:HeightStatusValue .
         }}'
 
-echo 'patching core:uRI and core:value whose ranges in restrictions mentioned as classes, should be DataRanges: 1/4'
+echo 'patching core:NilReason.uRI and core:DoubleOrNilReason.value whose ranges in restrictions mentioned as classes, should be DataRanges: 1/4'
 python update_graph.py ../CityRDF/core.ttl ../CityRDF/core.ttl \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
@@ -222,10 +223,10 @@ where {
     select ?s 
         where {
 	        ?s owl:onClass xsd:anyURI ;
-               owl:onProperty core:uRI .
+               owl:onProperty core:NilReason.uRI .
         }}'
 
-echo 'patching core:uRI and core:value whose ranges in restrictions mentioned as classes, should be DataRanges: 2/4'
+echo 'patching core:NilReason.uRI and core:DoubleOrNilReason.value whose ranges in restrictions mentioned as classes, should be DataRanges: 2/4'
 python update_graph.py ../CityRDF/core.ttl ../CityRDF/core.ttl \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
@@ -239,7 +240,7 @@ where {
                owl:onDataRange xsd:anyURI .
         }}'
 
-echo 'patching core:uRI and core:value whose ranges in restrictions mentioned as classes, should be DataRanges: 3/4'
+echo 'patching core:NilReason.uRI and core:DoubleOrNilReason.value whose ranges in restrictions mentioned as classes, should be DataRanges: 3/4'
 python update_graph.py ../CityRDF/core.ttl ../CityRDF/core.ttl \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
@@ -250,10 +251,10 @@ where {
     select ?s 
         where {
 	        ?s owl:onClass xsd:double ;
-               owl:onProperty core:value .
+               owl:onProperty core:DoubleOrNilReason.value .
         }}'
 
-echo 'patching core:uRI and core:value whose ranges in restrictions mentioned as classes, should be DataRanges: 4/4'
+echo 'patching core:NilReason.uRI and core:DoubleOrNilReason.value whose ranges in restrictions mentioned as classes, should be DataRanges: 4/4'
 python update_graph.py ../CityRDF/core.ttl ../CityRDF/core.ttl \
    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
@@ -266,6 +267,7 @@ where {
 	        ?s owl:onClass xsd:double ;
                owl:onDataRange xsd:double .
         }}'
+
 
 ### sequence added for global attributes ###
 
@@ -297,7 +299,7 @@ python update_graph.py $file $file \
 
 
 ### added removal of ADE*/ade*
-### #1 deletes bnodes representing restrictions involving ade* objprops AND subclass axioms mentioning those bnodes
+### #1 deletes bnodes representing restrictions involving ade* objprops AND subclass axioms mentioning those bnodes AND those ade props/ ADE classes
 
 echo '#1 removal of ADE* classes and ade* properties'
 
@@ -307,41 +309,43 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX iso19150-2: <http://def.isotc211.org/iso19150/-2/2012/base#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 delete { 
+    ?s rdfs:subClassOf ?x .
 	?x a owl:Restriction .
     ?x owl:allValuesFrom ?adeclass .
     ?x owl:onProperty ?adeprop .
-    ?s skos:definition ?def .
-    ?s rdfs:subClassOf ?x .
+
     ?adeclass a owl:Class .
+    ?adeclass skos:definition ?defc.
+    ?adeclass iso19150-2:isAbstract true .
+    ?adeclass rdfs:label ?labelc . 
+
     ?adeprop a owl:ObjectProperty .
     ?adeprop rdfs:range ?adeclass .
-    ?adeclass rdfs:label ?labelc . 
-    ?adeclass skos:definition ?defc.
+    ?adeprop rdfs:domain ?s .
     ?adeprop rdfs:label ?labelp .
     ?adeprop skos:definition ?defp.
-    ?adeclass iso19150-2:isAbstract true .
     }
     where {
-    select ?s ?x ?adeclass ?def ?adeprop ?labelc ?labelp ?defc ?defp
+    select  ?s ?x ?adeclass ?def ?adeprop ?labelc ?defc ?labelp ?defp
     	where {
     		?s a owl:Class .
         	?s rdfs:subClassOf ?x .
-        	?s skos:definition ?def .
 			?x a owl:Restriction .
     		?x owl:allValuesFrom ?adeclass .
     		?x owl:onProperty ?adeprop .
             ?adeclass a owl:Class .
-    		?adeprop a owl:ObjectProperty .
-    		?adeprop rdfs:range ?adeclass .
             ?adeclass rdfs:label ?labelc . 
     		?adeclass skos:definition ?defc.
-    		?adeprop rdfs:label ?labelp .
+    		?adeprop a owl:ObjectProperty .
+    		?adeprop rdfs:range ?adeclass .
+	        ?adeprop rdfs:domain ?s .
+			?adeprop rdfs:label ?labelp .
     		?adeprop skos:definition ?defp.
-            bind(replace(str(?adeclass), "^.*/([^/]*)$", "$1") as ?xc)
-            bind(replace(str(?adeprop), "^.*/([^/]*)$", "$1") as ?xp)
-            filter (strstarts(?xp, "ade") )
-        	filter (strstarts(?xc, "ADE") )
-    }}'
+#            bind(replace(str(?adeclass), "^.*/([^/]*)$", "$1") as ?xc)
+#            bind(replace(str(?adeprop), "^.*/([^/]*)$", "$1") as ?xp)
+#    		optional{bind(strafter(?xp,".") as ?classIndependentPropName).}
+            filter (strstarts(?labelp, "ade") )
+        	filter (strstarts(?labelc, "ADE") ) }}'
 
 ### #2. inserts common:property where ns:property refs to package level
 
@@ -354,19 +358,22 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX schema: <https://schema.org/>
 insert { 
         ?new schema:rangeIncludes ?range .
+        ?new schema:domainIncludes ?domain .
     	?new rdfs:label ?label .
         ?new skos:definition ?def .
     }
 where { 
-    select ?new ?range ?def ?label
+    select ?new ?range ?domain ?def ?label 
     where {
 	      ?s a owl:ObjectProperty ;
               rdfs:range ?range ;
+              rdfs:domain ?domain ;
               rdfs:label ?label;
               skos:definition ?def .
-    bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
-    filter (?x in ("area", "class", "usage", "function", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
-    bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?x)) as ?new)
+    bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x).
+    bind(strafter(?x,".") as ?classIndependentPropName).
+    filter (?classIndependentPropName in ("area", "class", "usage", "function", "mimeType", "occupancy", "elevation","lowReference","highReference", "volume", "relationType", "list", "lod", "fileType"))         
+    bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?classIndependentPropName)) as ?new)
        }}'
 
 echo '#2 insert common:property mentioning in packages: 2/2'
@@ -378,6 +385,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX schema: <https://schema.org/>
 insert { 
     ?new schema:rangeIncludes ?range .
+    ?new schema:domainIncludes ?domain .
     ?new rdfs:label ?label .
     ?new skos:definition ?def .
 }
@@ -387,10 +395,12 @@ where {
 	?s a owl:DatatypeProperty ;
        rdfs:label ?label ;
        rdfs:range ?range ;
+       rdfs:domain ?domain ;
        skos:definition ?def .
     bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
-    filter (?x in ("name", "description", "value", "status"))
-        bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?x)) as ?new)
+    bind(strafter(?x,".") as ?classIndependentPropName).
+    filter (?classIndependentPropName in ("name", "description", "value", "status", "type", "granularity", "fileLocation", "observationProperty", "uom", "target",  "valueType"))
+        bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?classIndependentPropName)) as ?new)
     }}'
 
 ### #3 deletes all objprops defs that will be replaced with global scope ones
@@ -405,18 +415,21 @@ python update_graph.py $file $file \
         ?s a owl:ObjectProperty .
         ?s rdfs:label ?label .
         ?s rdfs:range ?range .
+        ?s rdfs:domain ?domain .
         ?s skos:definition ?def .
     }
     where {
-    select ?s ?label ?range ?def
+    select ?s ?label ?range ?domain ?def
     	where {
     		?s a owl:ObjectProperty .
     		?s rdfs:label ?label .
         	?s rdfs:range ?range .
+            ?s rdfs:domain ?domain .
         	?s skos:definition ?def .
             bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
-  			filter (?x in ("area", "class", "usage", "function", "mimeType", "occupancy", "elevation","lowReference","highReference"))
-        filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
+    		bind(strafter(?x,".") as ?classIndependentPropName).
+  			filter (?classIndependentPropName in ("area", "class", "usage", "function", "mimeType", "occupancy", "elevation","lowReference","highReference", "volume", "relationType", "list", "lod", "fileType"))
+            filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
 "https://www.opengis.net/ont/citygml/bridge/", 
 "https://www.opengis.net/ont/citygml/building/", 
 "https://www.opengis.net/ont/citygml/cityfurniture/", 
@@ -447,18 +460,21 @@ python update_graph.py $file $file \
         ?s a owl:DatatypeProperty .
         ?s rdfs:label ?label .
         ?s rdfs:range ?range .
+        ?s rdfs:domain ?domain .
         ?s skos:definition ?def .
     }
     where {
-    select ?s ?label ?range ?def
+    select ?s ?label ?range ?domain ?def
     	where {
     		?s a owl:DatatypeProperty .
     		?s rdfs:label ?label .
         	?s rdfs:range ?range .
+            ?s rdfs:domain ?domain .
         	?s skos:definition ?def .
             bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
-  			filter (?x in ("name", "description", "value", "status"))
-        filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
+    		bind(strafter(?x,".") as ?classIndependentPropName).
+  			filter (?classIndependentPropName in ("name", "description", "value", "status", "type", "granularity", "fileLocation", "observationProperty", "uom", "target",  "valueType"))
+            filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
 "https://www.opengis.net/ont/citygml/bridge/", 
 "https://www.opengis.net/ont/citygml/building/", 
 "https://www.opengis.net/ont/citygml/cityfurniture/", 
@@ -481,7 +497,55 @@ python update_graph.py $file $file \
 
 ### #4 inserts common:objprops refs into axioms
 
-echo '#4 insert mentioning of common:property in axioms'
+echo '#4 insert mentioning of common:property for Object Properties ranging in Classes in axioms: 1/4'
+
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX common: <https://www.opengis.net/ont/citygml/common/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+insert { 
+    ?s owl:onProperty ?new .
+    ?s2 owl:onProperty ?new .
+}
+where { 
+select ?s ?s2 ?new
+    where {
+    	?a rdfs:subClassOf ?s.
+            ?s a owl:Restriction; owl:allValuesFrom ?z ; owl:onProperty ?old .
+        ?a rdfs:subClassOf ?s2 .
+            ?s2 a owl:Restriction; owl:onClass ?z ; owl:onProperty ?old .
+		bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
+    	bind(strafter(?x,".") as ?classIndependentPropName).
+    	filter (?classIndependentPropName in ("area", "class", "usage", "function", "mimeType", "occupancy", "elevation","lowReference","highReference", "volume", "relationType", "list", "lod", "fileType"))         
+    	bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?classIndependentPropName)) as ?new)
+        }}'
+
+echo '#4 insert mentioning of common:property for properties ranging in DataRanges in axioms: 2/4'
+
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX common: <https://www.opengis.net/ont/citygml/common/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+insert { 
+    ?s owl:onProperty ?new .
+    ?s2 owl:onProperty ?new .
+}
+where { 
+select ?s ?s2 ?new
+    where {
+    	?a rdfs:subClassOf ?s.
+            ?s a owl:Restriction; owl:allValuesFrom ?z ; owl:onProperty ?old .
+        ?a rdfs:subClassOf ?s2 .
+            ?s2 a owl:Restriction; owl:onDataRange ?z ; owl:onProperty ?old .    
+		bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
+    	bind(strafter(?x,".") as ?classIndependentPropName).
+    	filter (?classIndependentPropName in ("name", "description", "value", "status", "type", "granularity", "fileLocation", "observationProperty", "uom", "target",  "valueType"))         
+    	bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?classIndependentPropName)) as ?new)
+        }}'
+
+echo '#4 insert mentioning of common:property for Object Properties when only one subclass axiom exists: 3/4'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -492,16 +556,119 @@ insert {
     ?s owl:onProperty ?new .
 }
 where { 
-    select ?s ?new
+select ?s ?new
     where {
-	?s owl:onProperty ?old ;
-	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
-    filter (?x in ("name", "description", "area", "class", "usage", "value", "function", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
-    bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?x)) as ?new)
-    }}'
+    	?a rdfs:subClassOf ?s.
+            ?s a owl:Restriction; owl:allValuesFrom ?z ; owl:onProperty ?old .
+ 		bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
+    	bind(strafter(?x,".") as ?classIndependentPropName).
+    	filter (?classIndependentPropName in ("area", "class", "usage", "function", "mimeType", "occupancy", "elevation","lowReference","highReference", "volume", "relationType", "list", "lod", "fileType"))         
+    	bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?classIndependentPropName)) as ?new)
+        }}'
+
+echo '#4 insert mentioning of common:property for properties ranging in DataRanges: most unified pattern: 4/4'
+
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX common: <https://www.opengis.net/ont/citygml/common/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+insert { 
+    ?s owl:onProperty ?new .
+}
+where { 
+select ?s ?new
+    where {
+            ?s a owl:Restriction;
+                 owl:onProperty ?old .
+		bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
+    	bind(strafter(?x,".") as ?classIndependentPropName).
+    	filter (?classIndependentPropName in ("name", "description", "value", "status", "type", "granularity", "fileLocation", "observationProperty", "uom", "target",  "valueType"))         
+    	bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",?classIndependentPropName)) as ?new)
+        }}'
+
 
 ### #5 delete all objprops mentions in axioms that will be replaced with global scope ones
-echo '#5 delete mentioning of ns:property in axioms'
+echo '#5 delete mentioning of ns:property in axioms: 1/4'
+
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+delete { 
+	?s owl:onProperty ?old .
+    ?s2 owl:onProperty ?old .
+}
+where {
+    select ?s ?s2 ?old
+    where {
+    	?a rdfs:subClassOf ?s.
+            ?s a owl:Restriction; owl:allValuesFrom ?z ; owl:onProperty ?old .
+        ?a rdfs:subClassOf ?s2 .
+            ?s2 a owl:Restriction; owl:onClass ?z ; owl:onProperty ?old .
+	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x) .
+    bind(strafter(?x,".") as ?classIndependentPropName) .
+    filter (?classIndependentPropName in ("area", "class", "usage", "function", "mimeType", "occupancy", "elevation","lowReference","highReference", "volume", "relationType", "list", "lod", "fileType"))         
+    filter (strbefore(str(?old),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
+"https://www.opengis.net/ont/citygml/bridge/", 
+"https://www.opengis.net/ont/citygml/building/", 
+"https://www.opengis.net/ont/citygml/cityfurniture/", 
+"https://www.opengis.net/ont/citygml/cityobjectgroup/", 
+"https://www.opengis.net/ont/citygml/construction/",  
+"https://www.opengis.net/ont/citygml/core/",  
+"https://www.opengis.net/ont/citygml/document/",  
+"https://www.opengis.net/ont/citygml/dynamizer/", 
+"https://www.opengis.net/ont/citygml/generics/", 
+"https://www.opengis.net/ont/citygml/landuse/", 
+"https://www.opengis.net/ont/citygml/pointcloud/", 
+"https://www.opengis.net/ont/citygml/relief/", 
+"https://www.opengis.net/ont/citygml/transportation/", 
+"https://www.opengis.net/ont/citygml/tunnel/", 
+"https://www.opengis.net/ont/citygml/vegetation/", 
+"https://www.opengis.net/ont/citygml/versioning/",
+"https://www.opengis.net/ont/citygml/waterbody/", 
+"https://www.opengis.net/ont/citygml/workspace/"))
+}}'
+
+echo '#5 delete mentioning of ns:property in axioms: 2/4'
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+delete { 
+    ?s owl:onProperty ?old .
+    ?s2 owl:onProperty ?old .
+}
+where {
+    select ?s ?old
+    where {
+    	?a rdfs:subClassOf ?s.
+            ?s a owl:Restriction; owl:allValuesFrom ?z ; owl:onProperty ?old .
+        ?a rdfs:subClassOf ?s2 .
+            ?s2 a owl:Restriction; owl:onDataRange ?z ; owl:onProperty ?old .   
+	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x) .
+    bind(strafter(?x,".") as ?classIndependentPropName) .
+    filter (?classIndependentPropName in ("name", "description", "value", "status", "type", "granularity", "fileLocation", "observationProperty", "uom", "target", "valueType"))         
+    filter (strbefore(str(?old),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
+"https://www.opengis.net/ont/citygml/bridge/", 
+"https://www.opengis.net/ont/citygml/building/", 
+"https://www.opengis.net/ont/citygml/cityfurniture/", 
+"https://www.opengis.net/ont/citygml/cityobjectgroup/", 
+"https://www.opengis.net/ont/citygml/construction/",  
+"https://www.opengis.net/ont/citygml/core/",  
+"https://www.opengis.net/ont/citygml/document/",  
+"https://www.opengis.net/ont/citygml/dynamizer/", 
+"https://www.opengis.net/ont/citygml/generics/", 
+"https://www.opengis.net/ont/citygml/landuse/", 
+"https://www.opengis.net/ont/citygml/pointcloud/", 
+"https://www.opengis.net/ont/citygml/relief/", 
+"https://www.opengis.net/ont/citygml/transportation/", 
+"https://www.opengis.net/ont/citygml/tunnel/", 
+"https://www.opengis.net/ont/citygml/vegetation/", 
+"https://www.opengis.net/ont/citygml/versioning/",
+"https://www.opengis.net/ont/citygml/waterbody/", 
+"https://www.opengis.net/ont/citygml/workspace/"))
+}}'
+
+echo '#5 delete mentioning of ns:property in axioms: 3/4'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -512,9 +679,46 @@ delete {
 where {
     select ?s ?old
     where {
-    ?s owl:onProperty ?old.
-	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
-    filter (?x in ("name", "description", "area", "class", "usage", "value", "function", "status", "mimeType", "occupancy", "elevation","lowReference","highReference"))         
+    	?a rdfs:subClassOf ?s.
+            ?s a owl:Restriction; owl:allValuesFrom ?z ; owl:onProperty ?old .
+	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x) .
+    bind(strafter(?x,".") as ?classIndependentPropName) .
+    filter (?classIndependentPropName in ("area", "class", "usage", "function", "mimeType", "occupancy", "elevation","lowReference","highReference", "volume", "relationType", "list", "lod", "fileType"))         
+    filter (strbefore(str(?old),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
+"https://www.opengis.net/ont/citygml/bridge/", 
+"https://www.opengis.net/ont/citygml/building/", 
+"https://www.opengis.net/ont/citygml/cityfurniture/", 
+"https://www.opengis.net/ont/citygml/cityobjectgroup/", 
+"https://www.opengis.net/ont/citygml/construction/",  
+"https://www.opengis.net/ont/citygml/core/",  
+"https://www.opengis.net/ont/citygml/document/",  
+"https://www.opengis.net/ont/citygml/dynamizer/", 
+"https://www.opengis.net/ont/citygml/generics/", 
+"https://www.opengis.net/ont/citygml/landuse/", 
+"https://www.opengis.net/ont/citygml/pointcloud/", 
+"https://www.opengis.net/ont/citygml/relief/", 
+"https://www.opengis.net/ont/citygml/transportation/", 
+"https://www.opengis.net/ont/citygml/tunnel/", 
+"https://www.opengis.net/ont/citygml/vegetation/", 
+"https://www.opengis.net/ont/citygml/versioning/",
+"https://www.opengis.net/ont/citygml/waterbody/", 
+"https://www.opengis.net/ont/citygml/workspace/"))
+}}'
+
+echo '#5 delete mentioning of ns:property ranging in DataRanges in axioms: most unifying pattern: 4/4'
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+delete { 
+    ?s owl:onProperty ?old .
+}
+where {
+    select ?s ?old
+    where {
+        ?s a owl:Restriction; owl:onProperty ?old .
+	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x) .
+    bind(strafter(?x,".") as ?classIndependentPropName) .
+    filter (?classIndependentPropName in ("name", "description", "value", "status", "type", "granularity", "fileLocation", "observationProperty", "uom", "target",  "valueType"))         
     filter (strbefore(str(?old),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
 "https://www.opengis.net/ont/citygml/bridge/", 
 "https://www.opengis.net/ont/citygml/building/", 
@@ -631,8 +835,7 @@ where {
     bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?x)
     filter (strafter(?x,".") in ("boundary","address","intersection","section","genericAttribute","pointCloud","buildingFurniture","buildingInstallation","appearance","relatedTo","lod0MultiCurve","lod0MultiSurface","lod2MultiSurface","lod3MultiSurface","versionMember","referencePoint","tunnelFurniture","tunnelInstallation","groupMember","buildingConstructiveElement","buildingRoom","bridgeFurniture","bridgeInstallation","textureParameterization", "referringTo"))
 bind(IRI(concat("https://www.opengis.net/ont/citygml/common/",strafter(?x,"."))) as ?new)
-    }}
-'
+    }}'
 
 ### #9 deletes all (local) props mentions in axioms for those properties reused >1 
 echo '#9 delete mentioning of ns:Class.prop in axioms for properties that are reused more than once in Ontology family'
@@ -671,7 +874,7 @@ where {
     }}'
 
 ### #10 inserts class-less (=without class in ns:Class.prop) local props used once in a package
-echo '#10 insert class-less (=without class in ns:Class.prop) local props used once in a package'
+echo '#10 insert class-less (=without class in ns:Class.prop) local props used once in a package: 1/4'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -680,19 +883,20 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 insert { 
     ?new a owl:ObjectProperty .    
     ?new rdfs:range ?range .
-    	?new rdfs:label ?classIndependentPropName .
-        ?new skos:definition ?def .
-    	?new rdfs:domain ?domain .
+    ?new rdfs:label ?label .
+    ?new skos:definition ?def .
+    ?new rdfs:domain ?domain .
     }
 where {
-select ?s ?domain ?range ?def ?classIndependentPropName ?new
+select ?s ?domain ?range ?def ?label ?new
     where {
 	      ?s a owl:ObjectProperty .
-          optional{?s rdfs:domain ?domain.}
+          ?s rdfs:domain ?domain.
           ?s rdfs:range ?range .
-          ?s rdfs:label ?classIndependentPropName .
+          ?s rdfs:label ?label .
           ?s skos:definition ?def .
 	bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
+    bind(strafter(?x,".") as ?classIndependentPropName).
     filter(?classIndependentPropName !="")
     bind (IRI(concat(strbefore(str(?s),str(?x)),?classIndependentPropName)) as ?new)
     filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
@@ -717,7 +921,7 @@ select ?s ?domain ?range ?def ?classIndependentPropName ?new
     }}'
 
 ### for properties defined without skos:definition
-echo "#10 insert properties satisfying conditions of #6 but without skos:definition"
+echo "#10 insert properties satisfying conditions of #6 but without skos:definition: 2/4"
 python update_graph.py $file $file \
      'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -725,17 +929,18 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 insert { 
     ?new a owl:ObjectProperty .    
     ?new rdfs:range ?range .
-    ?new rdfs:label ?classIndependentPropName .
+    ?new rdfs:label ?label .
     ?new rdfs:domain ?domain .
     }
 where {
-select ?domain ?range ?def ?classIndependentPropName ?new
+select ?domain ?range ?label ?new
     where {
 	      ?s a owl:ObjectProperty .
-          optional{?s rdfs:domain ?domain.}
+          ?s rdfs:domain ?domain.
           ?s rdfs:range ?range .
-          ?s rdfs:label ?classIndependentPropName .
+          ?s rdfs:label ?label .
 	bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
+    bind(strafter(?x,".") as ?classIndependentPropName).
     filter(?classIndependentPropName !="")
     bind (IRI(concat(strbefore(str(?s),str(?x)),?classIndependentPropName)) as ?new)
     filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
@@ -759,9 +964,97 @@ select ?domain ?range ?def ?classIndependentPropName ?new
 "https://www.opengis.net/ont/citygml/workspace/"))
     }}'
 
+echo "#10 insert datatype properties satisfying conditions of #6: 3/4"
+python update_graph.py $file $file \
+     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+insert { 
+    ?new a owl:DatatypeProperty .    
+    ?new rdfs:range ?range .
+    ?new rdfs:label ?label .
+    ?new rdfs:domain ?domain .
+    ?new skos:definition ?def .
+    }
+where {
+select ?domain ?range ?def ?label ?new
+    where {
+	      ?s a owl:DatatypeProperty .
+          ?s rdfs:domain ?domain.
+          ?s rdfs:range ?range .
+          ?s rdfs:label ?label .
+          ?s skos:definition ?def .
+	bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
+    bind(strafter(?x,".") as ?classIndependentPropName).
+    filter(?classIndependentPropName !="")
+    bind (IRI(concat(strbefore(str(?s),str(?x)),?classIndependentPropName)) as ?new)
+    filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
+"https://www.opengis.net/ont/citygml/bridge/", 
+"https://www.opengis.net/ont/citygml/building/", 
+"https://www.opengis.net/ont/citygml/cityfurniture/", 
+"https://www.opengis.net/ont/citygml/cityobjectgroup/", 
+"https://www.opengis.net/ont/citygml/construction/",  
+"https://www.opengis.net/ont/citygml/core/",  
+"https://www.opengis.net/ont/citygml/document/",  
+"https://www.opengis.net/ont/citygml/dynamizer/", 
+"https://www.opengis.net/ont/citygml/generics/", 
+"https://www.opengis.net/ont/citygml/landuse/", 
+"https://www.opengis.net/ont/citygml/pointcloud/", 
+"https://www.opengis.net/ont/citygml/relief/", 
+"https://www.opengis.net/ont/citygml/transportation/", 
+"https://www.opengis.net/ont/citygml/tunnel/", 
+"https://www.opengis.net/ont/citygml/vegetation/", 
+"https://www.opengis.net/ont/citygml/versioning/",
+"https://www.opengis.net/ont/citygml/waterbody/", 
+"https://www.opengis.net/ont/citygml/workspace/"))
+    }}'
+
+echo '#10 insert datatype properties satisfying conditions of #6 but without skos:definition: 4/4'
+
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+insert { 
+    ?new a owl:DatatypeProperty .    
+    ?new rdfs:range ?range .
+    ?new rdfs:label ?label .
+    ?new rdfs:domain ?domain .
+    }
+where {
+select ?s ?domain ?range ?label ?new
+    where {
+	      ?s a owl:DatatypeProperty .
+          ?s rdfs:domain ?domain.
+          ?s rdfs:range ?range .
+          ?s rdfs:label ?label .
+	bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
+    bind(strafter(?x,".") as ?classIndependentPropName).
+    filter(?classIndependentPropName !="")
+    bind (IRI(concat(strbefore(str(?s),str(?x)),?classIndependentPropName)) as ?new)
+    filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
+"https://www.opengis.net/ont/citygml/bridge/", 
+"https://www.opengis.net/ont/citygml/building/", 
+"https://www.opengis.net/ont/citygml/cityfurniture/", 
+"https://www.opengis.net/ont/citygml/cityobjectgroup/", 
+"https://www.opengis.net/ont/citygml/construction/",  
+"https://www.opengis.net/ont/citygml/core/",  
+"https://www.opengis.net/ont/citygml/document/",  
+"https://www.opengis.net/ont/citygml/dynamizer/", 
+"https://www.opengis.net/ont/citygml/generics/", 
+"https://www.opengis.net/ont/citygml/landuse/", 
+"https://www.opengis.net/ont/citygml/pointcloud/", 
+"https://www.opengis.net/ont/citygml/relief/", 
+"https://www.opengis.net/ont/citygml/transportation/", 
+"https://www.opengis.net/ont/citygml/tunnel/", 
+"https://www.opengis.net/ont/citygml/vegetation/", 
+"https://www.opengis.net/ont/citygml/versioning/",
+"https://www.opengis.net/ont/citygml/waterbody/", 
+"https://www.opengis.net/ont/citygml/workspace/"))
+    }}'
 
 ### #11 deletes initial (=with class in ns:Class.prop) local props used once in a package
-echo '#11 delete properties satisfying the conditions of #7 but without skos:definition: 1/2'
+echo '#11 delete properties satisfying the conditions of #7: 1/4'
 
 python update_graph.py $file $file \
     'PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -778,10 +1071,100 @@ where {
 select ?s ?domain ?range ?def ?label 
     where {
 	      ?s a owl:ObjectProperty .
-          optional{?s rdfs:domain ?domain.}
-          ?s  rdfs:range ?range ;
-              rdfs:label ?label;
-              skos:definition ?def .
+          ?s rdfs:domain ?domain.
+          ?s rdfs:range ?range ;
+             rdfs:label ?label;
+             skos:definition ?def .
+	bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
+    bind(strbefore(?x,".") as ?class).
+    filter(?class !="")
+    filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
+"https://www.opengis.net/ont/citygml/bridge/", 
+"https://www.opengis.net/ont/citygml/building/", 
+"https://www.opengis.net/ont/citygml/cityfurniture/", 
+"https://www.opengis.net/ont/citygml/cityobjectgroup/", 
+"https://www.opengis.net/ont/citygml/construction/",  
+"https://www.opengis.net/ont/citygml/core/",  
+"https://www.opengis.net/ont/citygml/document/",  
+"https://www.opengis.net/ont/citygml/dynamizer/", 
+"https://www.opengis.net/ont/citygml/generics/", 
+"https://www.opengis.net/ont/citygml/landuse/", 
+"https://www.opengis.net/ont/citygml/pointcloud/", 
+"https://www.opengis.net/ont/citygml/relief/", 
+"https://www.opengis.net/ont/citygml/transportation/", 
+"https://www.opengis.net/ont/citygml/tunnel/", 
+"https://www.opengis.net/ont/citygml/vegetation/", 
+"https://www.opengis.net/ont/citygml/versioning/",
+"https://www.opengis.net/ont/citygml/waterbody/", 
+"https://www.opengis.net/ont/citygml/workspace/"))
+    }}'
+
+echo '#11 delete properties satisfying the conditions of #7: 2/4'
+
+python update_graph.py $file $file \
+'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+delete { 
+        ?s a owl:DatatypeProperty .
+        ?s rdfs:label ?label .
+        ?s rdfs:range ?range .
+    	?s rdfs:domain ?domain .
+        ?s skos:definition ?def .
+    }
+where {
+select ?s ?domain ?range ?def ?label 
+    where {
+	      ?s a owl:DatatypeProperty .
+          ?s rdfs:domain ?domain.
+          ?s rdfs:range ?range .
+          ?s rdfs:label ?label .
+          ?s skos:definition ?def .
+          
+	bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
+    bind(strbefore(?x,".") as ?class).
+    filter(?class !="")
+    filter (strbefore(str(?s),str(?x)) in ("https://www.opengis.net/ont/citygml/appearance/", 
+"https://www.opengis.net/ont/citygml/bridge/", 
+"https://www.opengis.net/ont/citygml/building/", 
+"https://www.opengis.net/ont/citygml/cityfurniture/", 
+"https://www.opengis.net/ont/citygml/cityobjectgroup/", 
+"https://www.opengis.net/ont/citygml/construction/",  
+"https://www.opengis.net/ont/citygml/core/",  
+"https://www.opengis.net/ont/citygml/document/",  
+"https://www.opengis.net/ont/citygml/dynamizer/", 
+"https://www.opengis.net/ont/citygml/generics/", 
+"https://www.opengis.net/ont/citygml/landuse/", 
+"https://www.opengis.net/ont/citygml/pointcloud/", 
+"https://www.opengis.net/ont/citygml/relief/", 
+"https://www.opengis.net/ont/citygml/transportation/", 
+"https://www.opengis.net/ont/citygml/tunnel/", 
+"https://www.opengis.net/ont/citygml/vegetation/", 
+"https://www.opengis.net/ont/citygml/versioning/",
+"https://www.opengis.net/ont/citygml/waterbody/", 
+"https://www.opengis.net/ont/citygml/workspace/"))
+    }}'
+
+### #11 deletes initial (=with class in ns:Class.prop) local props used once in a package
+echo '#11 delete properties satisfying the conditions of #7  but without skos:definition: 3/4'
+
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+delete { 
+        ?s a owl:ObjectProperty .
+        ?s rdfs:label ?label .
+        ?s rdfs:range ?range .
+    	?s rdfs:domain ?domain .
+    }
+where {
+select ?s ?domain ?range ?label 
+    where {
+	      ?s a owl:ObjectProperty .
+          ?s rdfs:domain ?domain.
+          ?s rdfs:range ?range .
+          ?s rdfs:label ?label .
 	bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
     bind(strbefore(?x,".") as ?class).
     filter(?class !="")
@@ -807,25 +1190,27 @@ select ?s ?domain ?range ?def ?label
     }}'
 
 ###for properties defined without skos:definition
-echo '#11 delete properties satisfying the conditions of #7 but without skos:definition: 2/2'
+echo '#11 delete properties satisfying the conditions of #7 but without skos:definition: 4/4'
 
 python update_graph.py $file $file \
 'PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 delete { 
-        ?s a owl:ObjectProperty .
+        ?s a owl:DatatypeProperty .
         ?s rdfs:label ?label .
         ?s rdfs:range ?range .
     	?s rdfs:domain ?domain .
+
     }
 where {
-select ?s ?domain ?range ?def ?label 
+select ?s ?domain ?range ?label 
     where {
-	      ?s a owl:ObjectProperty .
-          optional{?s rdfs:domain ?domain.}
-          ?s  rdfs:range ?range ;
-              rdfs:label ?label;
+	      ?s a owl:DatatypeProperty .
+          ?s rdfs:domain ?domain.
+          ?s rdfs:range ?range .
+          ?s rdfs:label ?label .
+          
 	bind(replace(str(?s), "^.*/([^/]*)$", "$1") as ?x)
     bind(strbefore(?x,".") as ?class).
     filter(?class !="")
@@ -911,7 +1296,6 @@ where {
 "https://www.opengis.net/ont/citygml/waterbody/", 
 "https://www.opengis.net/ont/citygml/workspace/"))
     }}'
-
 ### #14 deletes rdfs:subClassOf skos:Concept to avoid punning
 
 #echo #14 delete rdfs:subClassOf skos:Concept to avoid punning

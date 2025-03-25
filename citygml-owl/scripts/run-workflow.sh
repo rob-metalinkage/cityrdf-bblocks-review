@@ -18,5 +18,6 @@ echo '=== stage 3 ==='
 ./update-triples.sh
 
 echo '=== optional stage 4 ==='
-./refactor.sh
+./refactor-strict.sh
+./refactor-optimal.sh
 echo 'Done!'
