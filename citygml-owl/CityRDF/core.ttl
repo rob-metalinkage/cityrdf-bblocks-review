@@ -680,7 +680,7 @@ core:DoubleList a owl:Class ;
     rdfs:label "DoubleList"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/list> ],
+            owl:onProperty core:DoubleList.list ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty core:list ;
@@ -698,7 +698,7 @@ core:QualifiedVolume a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom sc:Measure ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/volume> ],
+            owl:onProperty core:volume ],
         [ a owl:Restriction ;
             owl:onDataRange sc:Measure ;
             owl:onProperty core:volume ;
@@ -823,7 +823,7 @@ core:QualifiedArea a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom sc:Measure ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/area> ],
+            owl:onProperty core:area ],
         [ a owl:Restriction ;
             owl:onDataRange sc:Measure ;
             owl:onProperty core:area ;
