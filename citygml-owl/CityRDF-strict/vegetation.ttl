@@ -19,14 +19,18 @@
     skos:definition "The Vegetation module supports representation of vegetation objects with vegetation-specific thematic classes. CityGML’s vegetation model distinguishes between solitary vegetation objects like trees, and vegetation areas which represent biotopes like forests or other plant communities."@en .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( veg:PlantCover veg:SolitaryVegetationObject ) ] ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( veg:PlantCoverFunctionValue veg:SolitaryVegetationObjectFunctionValue ) ] ;
+            owl:unionOf ( veg:SolitaryVegetationObjectFunctionValue veg:PlantCoverFunctionValue ) ] ;
     skos:definition "Specifies the intended purposes of the PlantCover."@en,
         "Specifies the intended purposes of the SolitaryVegetationObject."@en .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( veg:PlantCover veg:SolitaryVegetationObject ) ] ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( veg:SolitaryVegetationObjectUsageValue veg:PlantCoverUsageValue ) ] ;
+            owl:unionOf ( veg:PlantCoverUsageValue veg:SolitaryVegetationObjectUsageValue ) ] ;
     skos:definition "Specifies the actual uses of the PlantCover."@en,
         "Specifies the actual uses of the SolitaryVegetationObject."@en .
 
@@ -110,6 +114,29 @@ veg:trunkDiameter a owl:DatatypeProperty ;
     rdfs:range sc:Measure ;
     skos:definition "Specifies the diameter of the SolitaryCityObject's trunk."@en .
 
+veg:PlantCoverClassValue a owl:Class ;
+    rdfs:label "PlantCoverClassValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "PlantCoverClassValue is a code list used to further classify a PlantCover."@en .
+
+veg:SolitaryVegetationObjectClassValue a owl:Class ;
+    rdfs:label "SolitaryVegetationObjectClassValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "SolitaryVegetationObjectClassValue is a code list used to further classify a SolitaryVegetationObject."@en .
+
+veg:SpeciesValue a owl:Class ;
+    rdfs:label "SpeciesValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "A SpeciesValue is a code list that enumerates the species of a SolitaryVegetationObject."@en .
+
+<https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( veg:PlantCover veg:SolitaryVegetationObject ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( veg:SolitaryVegetationObjectClassValue veg:PlantCoverClassValue ) ] ;
+    skos:definition "Indicates the specific type of the PlantCover."@en,
+        "Indicates the specific type of the SolitaryVegetationObject."@en .
+
 veg:PlantCover a owl:Class ;
     rdfs:label "PlantCover"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -149,27 +176,6 @@ veg:PlantCover a owl:Class ;
         veg:AbstractVegetationObject ;
     owl:disjointWith veg:SolitaryVegetationObject ;
     skos:definition "A PlantCover represents a space covered by vegetation."@en .
-
-veg:PlantCoverClassValue a owl:Class ;
-    rdfs:label "PlantCoverClassValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "PlantCoverClassValue is a code list used to further classify a PlantCover."@en .
-
-veg:SolitaryVegetationObjectClassValue a owl:Class ;
-    rdfs:label "SolitaryVegetationObjectClassValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "SolitaryVegetationObjectClassValue is a code list used to further classify a SolitaryVegetationObject."@en .
-
-veg:SpeciesValue a owl:Class ;
-    rdfs:label "SpeciesValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "A SpeciesValue is a code list that enumerates the species of a SolitaryVegetationObject."@en .
-
-<https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( veg:SolitaryVegetationObjectClassValue veg:PlantCoverClassValue ) ] ;
-    skos:definition "Indicates the specific type of the PlantCover."@en,
-        "Indicates the specific type of the SolitaryVegetationObject."@en .
 
 veg:SolitaryVegetationObject a owl:Class ;
     rdfs:label "SolitaryVegetationObject"@en ;

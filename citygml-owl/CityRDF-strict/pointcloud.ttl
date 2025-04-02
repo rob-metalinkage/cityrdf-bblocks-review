@@ -17,6 +17,7 @@
     skos:definition "The PointCloud module supports representation of CityGML features by a collection of points."@en .
 
 <https://www.opengis.net/ont/citygml/common/mimeType> rdfs:label "mimeType"@en ;
+    rdfs:domain pcl:PointCloud ;
     rdfs:range core:MimeTypeValue ;
     skos:definition "Specifies the MIME type of the external point cloud file."@en .
 

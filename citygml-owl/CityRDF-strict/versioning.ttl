@@ -15,7 +15,8 @@
     owl:versionInfo "3.0.0" ;
     skos:definition "The Versioning module supports representation of multiple versions of CityGML features within a single CityGML model. In addition, also the version transitions and transactions that lead to the different versions can be represented."@en .
 
-<https://www.opengis.net/ont/citygml/common/versionMember> rdfs:range core:AbstractFeatureWithLifespan ;
+<https://www.opengis.net/ont/citygml/common/versionMember> rdfs:domain vers:Version ;
+    rdfs:range core:AbstractFeatureWithLifespan ;
     skos:definition "Relates to all city objects that are part of the city model version."@en .
 
 vers:tag a owl:DatatypeProperty ;
@@ -79,6 +80,8 @@ vers:TransitionTypeValue a rdfs:Datatype ;
     skos:definition "TransitionTypeValue enumerates the different kinds of version transitions. “planned” and “fork” should be used in cases when from one city model version multiple successor versions are being created. “realized” and “merge” should be used when different city model versions are converging into a common successor version."@en .
 
 <https://www.opengis.net/ont/citygml/common/type> rdfs:label "type"@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( vers:VersionTransition vers:Transaction ) ] ;
     rdfs:range [ a owl:Class ;
             owl:unionOf ( vers:TransactionTypeValue vers:TransitionTypeValue ) ] ;
     skos:definition "Indicates the specific type of the Transaction."@en,

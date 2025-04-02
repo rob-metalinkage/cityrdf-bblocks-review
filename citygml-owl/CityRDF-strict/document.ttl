@@ -66,8 +66,14 @@ doc:text a owl:DatatypeProperty ;
     rdfs:domain doc:Tag ;
     rdfs:range xsd:string .
 
-<https://www.opengis.net/ont/citygml/common/referringTo> rdfs:range [ a owl:Class ;
-            owl:unionOf ( doc:Reference core:AbstractFeatureWithLifespan ) ] .
+<https://www.opengis.net/ont/citygml/common/referringTo> rdfs:domain [ a owl:Class ;
+            owl:unionOf ( doc:Document doc:Reference ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( core:AbstractFeatureWithLifespan doc:Reference ) ] .
+
+doc:PurposeTypeValue a owl:Class ;
+    rdfs:label "PurposeTypeValue"@en ;
+    rdfs:subClassOf skos:Concept .
 
 doc:Document a owl:Class ;
     rdfs:label "Document"@en ;
@@ -84,10 +90,6 @@ doc:Document a owl:Class ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty doc:title ],
         core:AbstractFeatureWithLifespan .
-
-doc:PurposeTypeValue a owl:Class ;
-    rdfs:label "PurposeTypeValue"@en ;
-    rdfs:subClassOf skos:Concept .
 
 doc:Tag a owl:Class ;
     rdfs:label "Tag"@en ;

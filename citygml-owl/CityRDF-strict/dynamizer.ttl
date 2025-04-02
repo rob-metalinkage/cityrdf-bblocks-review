@@ -20,32 +20,6 @@
     owl:versionInfo "3.0.0" ;
     skos:definition "The Dynamizer module supports the injection of timeseries data for individual attributes of CityGML features. Timeseries data can either be retrieved from external Sensor APIs (e.g. OGC SensorThings API, OGC Sensor Observation Services, MQTT, proprietary platforms), external standardized timeseries files (e.g. OGC TimeseriesML or OGC Observations & Measurements), external tabulated files (e.g CSV) or can be represented inline as basic time-value pairs."@en .
 
-dyn:StandardFileTimeseries a owl:Class ;
-    rdfs:label "StandardFileTimeseries"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass dyn:StandardFileTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileType> ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:anyURI ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileLocation> ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:MimeTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:MimeTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileLocation> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dyn:StandardFileTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileType> ],
-        dyn:AbstractAtomicTimeseries ;
-    skos:definition "A StandardFileTimeseries represents time-varying data for a single contiguous time interval. The data is provided in an external file referenced in the StandardFileTimeseries. The data within the external file is encoded according to a dedicated format for the representation of timeseries data such as using the OGC TimeseriesML or OGC Observations & Measurements Standard. The data type of the data has to be specified within the external file."@en .
-
 dyn:CompositeTimeseries a owl:Class ;
     rdfs:label "CompositeTimeseries"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -57,25 +31,6 @@ dyn:CompositeTimeseries a owl:Class ;
             owl:onProperty dyn:component ],
         dyn:AbstractTimeseries ;
     skos:definition "A CompositeTimeseries is a (possibly recursive) aggregation of atomic and composite timeseries. The components of a composite timeseries must have non-overlapping time intervals."@en .
-
-dyn:GenericTimeseries a owl:Class ;
-    rdfs:label "GenericTimeseries"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom dyn:TimeValuePair ;
-            owl:onProperty dyn:timeValuePair ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass dyn:TimeValuePair ;
-            owl:onProperty dyn:timeValuePair ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dyn:TimeseriesTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/valueType> ],
-        [ a owl:Restriction ;
-            owl:onDataRange dyn:TimeseriesTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/valueType> ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        dyn:AbstractAtomicTimeseries ;
-    skos:definition "A GenericTimeseries represents time-varying data in the form of embedded time-value-pairs of a specific data type for a single contiguous time interval."@en .
 
 dyn:additionalGap a owl:ObjectProperty ;
     rdfs:label "additionalGap"@en ;
@@ -335,6 +290,111 @@ dyn:valueColumnNo a owl:DatatypeProperty ;
     rdfs:range xsd:integer ;
     skos:definition "Specifies the number of the column that stores the value of the time-value-pair."@en .
 
+dyn:AuthenticationTypeValue a owl:Class ;
+    rdfs:label "AuthenticationTypeValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "AuthenticationTypeValue is a code list used to specify the authentication method to be used to access the referenced sensor service. Each value provides enough information such that a software application could determine the required access credentials."@en .
+
+dyn:GenericTimeseries a owl:Class ;
+    rdfs:label "GenericTimeseries"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom dyn:TimeValuePair ;
+            owl:onProperty dyn:timeValuePair ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass dyn:TimeValuePair ;
+            owl:onProperty dyn:timeValuePair ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:TimeseriesTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/valueType> ],
+        [ a owl:Restriction ;
+            owl:onDataRange dyn:TimeseriesTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/valueType> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        dyn:AbstractAtomicTimeseries ;
+    skos:definition "A GenericTimeseries represents time-varying data in the form of embedded time-value-pairs of a specific data type for a single contiguous time interval."@en .
+
+dyn:SensorConnectionTypeValue a owl:Class ;
+    rdfs:label "SensorConnectionTypeValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "SensorConnectionTypeValue is a code list used to specify the type of the referenced sensor service. Each value provides enough information such that a software application would be able to identify the API type and version."@en .
+
+dyn:StandardFileTypeValue a owl:Class ;
+    rdfs:label "StandardFileTypeValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "StandardFileTypeValue is a code list used to specify the type of the referenced external timeseries data file. Each value provides information about the standard and version."@en .
+
+dyn:TabulatedFileTypeValue a owl:Class ;
+    rdfs:label "TabulatedFileTypeValue"@en ;
+    rdfs:subClassOf skos:Concept ;
+    skos:definition "TabulatedFileTypeValue is a code list used to specify the data format of the referenced external tabulated data file."@en .
+
+<https://www.opengis.net/ont/citygml/common/fileLocation> rdfs:label "fileLocation"@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dyn:StandardFileTimeseries dyn:TabulatedFileTimeseries ) ] ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "Specifies the URI that points to the external timeseries file."@en .
+
+<https://www.opengis.net/ont/citygml/common/fileType> rdfs:label "fileType"@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dyn:StandardFileTimeseries dyn:TabulatedFileTimeseries ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( dyn:TabulatedFileTypeValue dyn:StandardFileTypeValue ) ] ;
+    skos:definition "Specifies the format used to represent the timeseries data."@en .
+
+<https://www.opengis.net/ont/citygml/common/mimeType> rdfs:label "mimeType"@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dyn:StandardFileTimeseries dyn:TabulatedFileTimeseries ) ] ;
+    rdfs:range core:MimeTypeValue ;
+    skos:definition "Specifies the MIME type of the external timeseries file."@en .
+
+<https://www.opengis.net/ont/citygml/common/observationProperty> rdfs:label "observationProperty"@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dyn:AbstractAtomicTimeseries dyn:SensorConnection ) ] ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the phenomenon for which the SensorConnection provides observations."@en,
+        "Specifies the phenomenon for which the atomic timeseries provides observation values."@en .
+
+<https://www.opengis.net/ont/citygml/common/uom> rdfs:label "uom"@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dyn:AbstractAtomicTimeseries dyn:SensorConnection ) ] ;
+    rdfs:range xsd:string ;
+    skos:definition "Specifies the unit of measurement of the observation values."@en,
+        "Specifies the unit of measurement of the observations."@en .
+
+<https://www.opengis.net/ont/citygml/common/valueType> rdfs:label "valueType"@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dyn:GenericTimeseries dyn:TabulatedFileTimeseries ) ] ;
+    rdfs:range dyn:TimeseriesTypeValue ;
+    skos:definition "Indicates the specific type of all time-value-pairs that are part of the GenericTimeseries."@en,
+        "Indicates the specific type of the timeseries data."@en .
+
+dyn:StandardFileTimeseries a owl:Class ;
+    rdfs:label "StandardFileTimeseries"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass dyn:StandardFileTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileType> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileLocation> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:MimeTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:MimeTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileLocation> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:StandardFileTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileType> ],
+        dyn:AbstractAtomicTimeseries ;
+    skos:definition "A StandardFileTimeseries represents time-varying data for a single contiguous time interval. The data is provided in an external file referenced in the StandardFileTimeseries. The data within the external file is encoded according to a dedicated format for the representation of timeseries data such as using the OGC TimeseriesML or OGC Observations & Measurements Standard. The data type of the data has to be specified within the external file."@en .
+
 dyn:AbstractAtomicTimeseries a owl:Class ;
     rdfs:label "AbstractAtomicTimeseries"@en ;
     iso19150-2:isAbstract true ;
@@ -355,54 +415,6 @@ dyn:AbstractAtomicTimeseries a owl:Class ;
         dyn:AbstractTimeseries ;
     owl:disjointWith dyn:CompositeTimeseries ;
     skos:definition "AbstractAtomicTimeseries represents the attributes and relationships that are common to all kinds of atomic timeseries (GenericTimeseries, TabulatedFileTimeseries, StandardFileTimeseries). An atomic timeseries represents time-varying data of a specific data type for a single contiguous time interval."@en .
-
-dyn:AuthenticationTypeValue a owl:Class ;
-    rdfs:label "AuthenticationTypeValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "AuthenticationTypeValue is a code list used to specify the authentication method to be used to access the referenced sensor service. Each value provides enough information such that a software application could determine the required access credentials."@en .
-
-dyn:SensorConnectionTypeValue a owl:Class ;
-    rdfs:label "SensorConnectionTypeValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "SensorConnectionTypeValue is a code list used to specify the type of the referenced sensor service. Each value provides enough information such that a software application would be able to identify the API type and version."@en .
-
-dyn:StandardFileTypeValue a owl:Class ;
-    rdfs:label "StandardFileTypeValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "StandardFileTypeValue is a code list used to specify the type of the referenced external timeseries data file. Each value provides information about the standard and version."@en .
-
-dyn:TabulatedFileTypeValue a owl:Class ;
-    rdfs:label "TabulatedFileTypeValue"@en ;
-    rdfs:subClassOf skos:Concept ;
-    skos:definition "TabulatedFileTypeValue is a code list used to specify the data format of the referenced external tabulated data file."@en .
-
-<https://www.opengis.net/ont/citygml/common/fileLocation> rdfs:label "fileLocation"@en ;
-    rdfs:range xsd:anyURI ;
-    skos:definition "Specifies the URI that points to the external timeseries file."@en .
-
-<https://www.opengis.net/ont/citygml/common/fileType> rdfs:label "fileType"@en ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( dyn:StandardFileTypeValue dyn:TabulatedFileTypeValue ) ] ;
-    skos:definition "Specifies the format used to represent the timeseries data."@en .
-
-<https://www.opengis.net/ont/citygml/common/mimeType> rdfs:label "mimeType"@en ;
-    rdfs:range core:MimeTypeValue ;
-    skos:definition "Specifies the MIME type of the external timeseries file."@en .
-
-<https://www.opengis.net/ont/citygml/common/observationProperty> rdfs:label "observationProperty"@en ;
-    rdfs:range xsd:string ;
-    skos:definition "Specifies the phenomenon for which the SensorConnection provides observations."@en,
-        "Specifies the phenomenon for which the atomic timeseries provides observation values."@en .
-
-<https://www.opengis.net/ont/citygml/common/uom> rdfs:label "uom"@en ;
-    rdfs:range xsd:string ;
-    skos:definition "Specifies the unit of measurement of the observation values."@en,
-        "Specifies the unit of measurement of the observations."@en .
-
-<https://www.opengis.net/ont/citygml/common/valueType> rdfs:label "valueType"@en ;
-    rdfs:range dyn:TimeseriesTypeValue ;
-    skos:definition "Indicates the specific type of all time-value-pairs that are part of the GenericTimeseries."@en,
-        "Indicates the specific type of the timeseries data."@en .
 
 dyn:Dynamizer a owl:Class ;
     rdfs:label "Dynamizer"@en ;
@@ -494,6 +506,73 @@ dyn:AbstractTimeseries a owl:Class ;
             owl:onProperty dyn:firstTimestamp ],
         core:AbstractFeature ;
     skos:definition "AbstractTimeseries is the abstract superclass representing any type of timeseries data."@en .
+
+dyn:TimeValuePair a owl:Class ;
+    rdfs:label "TimeValuePair"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom time:TemporalPosition ;
+            owl:onProperty dyn:timestamp ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty dyn:doubleValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty dyn:boolValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:stringValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:AbstractGeometry ;
+            owl:onProperty dyn:geometryValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:double ;
+            owl:onProperty dyn:doubleValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:ImplicitGeometry ;
+            owl:onProperty dyn:implicitGeometryValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty dyn:intValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:AbstractAppearance ;
+            owl:onProperty dyn:appearanceValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:ImplicitGeometry ;
+            owl:onProperty dyn:implicitGeometryValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:stringValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty dyn:uriValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty dyn:intValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:AbstractGeometry ;
+            owl:onProperty dyn:geometryValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty dyn:uriValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty dyn:boolValue ],
+        [ a owl:Restriction ;
+            owl:onClass time:TemporalPosition ;
+            owl:onProperty dyn:timestamp ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractAppearance ;
+            owl:onProperty dyn:appearanceValue ] ;
+    skos:definition "A TimeValuePair represents a value that is valid for a given timepoint. For each TimeValuePair, only one of the value properties can be used mutually exclusive. Which value property has to be provided depends on the selected value type in the GenericTimeSeries feature, in which the TimeValuePair is included."@en .
 
 dyn:TabulatedFileTimeseries a owl:Class ;
     rdfs:label "TabulatedFileTimeseries"@en ;
@@ -597,73 +676,6 @@ dyn:TabulatedFileTimeseries a owl:Class ;
             owl:onProperty dyn:idColumnName ],
         dyn:AbstractAtomicTimeseries ;
     skos:definition "A TabulatedFileTimeseries represents time-varying data of a specific data type for a single contiguous time interval. The data is provided in an external file referenced in the TabulatedFileTimeseries. The file contains table structured data using an appropriate file format such as comma-separated values (CSV), Microsoft Excel (XLSX) or Google Spreadsheet. The timestamps and the values are given in specific columns of the table. Each row represents a single time-value-pair. A subset of rows can be selected using the idColumn and idValue attributes."@en .
-
-dyn:TimeValuePair a owl:Class ;
-    rdfs:label "TimeValuePair"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom time:TemporalPosition ;
-            owl:onProperty dyn:timestamp ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:double ;
-            owl:onProperty dyn:doubleValue ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty dyn:boolValue ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty dyn:stringValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:AbstractGeometry ;
-            owl:onProperty dyn:geometryValue ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:double ;
-            owl:onProperty dyn:doubleValue ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:ImplicitGeometry ;
-            owl:onProperty dyn:implicitGeometryValue ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:integer ;
-            owl:onProperty dyn:intValue ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:AbstractAppearance ;
-            owl:onProperty dyn:appearanceValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:ImplicitGeometry ;
-            owl:onProperty dyn:implicitGeometryValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty dyn:stringValue ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:anyURI ;
-            owl:onProperty dyn:uriValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty dyn:intValue ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:AbstractGeometry ;
-            owl:onProperty dyn:geometryValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty dyn:uriValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:boolean ;
-            owl:onProperty dyn:boolValue ],
-        [ a owl:Restriction ;
-            owl:onClass time:TemporalPosition ;
-            owl:onProperty dyn:timestamp ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractAppearance ;
-            owl:onProperty dyn:appearanceValue ] ;
-    skos:definition "A TimeValuePair represents a value that is valid for a given timepoint. For each TimeValuePair, only one of the value properties can be used mutually exclusive. Which value property has to be provided depends on the selected value type in the GenericTimeSeries feature, in which the TimeValuePair is included."@en .
 
 dyn:SensorConnection a owl:Class ;
     rdfs:label "SensorConnection"@en ;

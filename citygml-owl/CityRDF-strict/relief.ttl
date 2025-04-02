@@ -20,6 +20,22 @@
     owl:versionInfo "3.0.0" ;
     skos:definition "The Relief module supports representation of the terrain. CityGML supports terrain representations at different levels of detail, reflecting different accuracies or resolutions. Terrain may be specified as a regular raster or grid, as a TIN, by break lines, and/or by mass points."@en .
 
+<https://www.opengis.net/ont/citygml/common/pointCloud> rdfs:domain dem:MassPointRelief ;
+    rdfs:range core:AbstractPointCloud ;
+    skos:definition "Relates to the 3D PointCloud of the MassPointRelief."@en .
+
+dem:RasterRelief a owl:Class ;
+    rdfs:label "RasterRelief"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom iso19123:CV_DiscreteGridPointCoverage ;
+            owl:onProperty dem:grid ],
+        [ a owl:Restriction ;
+            owl:onClass iso19123:CV_DiscreteGridPointCoverage ;
+            owl:onProperty dem:grid ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        dem:AbstractReliefComponent ;
+    skos:definition "A RasterRelief represents a terrain component as a regular raster or grid."@en .
+
 dem:ReliefFeature a owl:Class ;
     rdfs:label "ReliefFeature"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -38,40 +54,6 @@ dem:ReliefFeature a owl:Class ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/lod> ],
         core:AbstractSpaceBoundary ;
     skos:definition "A ReliefFeature is a collection of terrain components representing the Earth's surface, also known as the Digital Terrain Model."@en .
-
-<https://www.opengis.net/ont/citygml/common/pointCloud> rdfs:range core:AbstractPointCloud ;
-    skos:definition "Relates to the 3D PointCloud of the MassPointRelief."@en .
-
-dem:MassPointRelief a owl:Class ;
-    rdfs:label "MassPointRelief"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:MultiPoint ;
-            owl:onProperty dem:reliefPoints ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:MultiPoint ;
-            owl:onProperty dem:reliefPoints ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractPointCloud ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/pointCloud> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:AbstractPointCloud ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/pointCloud> ],
-        dem:AbstractReliefComponent ;
-    skos:definition "A MassPointRelief represents a terrain component as a collection of 3D points."@en .
-
-dem:RasterRelief a owl:Class ;
-    rdfs:label "RasterRelief"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom iso19123:CV_DiscreteGridPointCoverage ;
-            owl:onProperty dem:grid ],
-        [ a owl:Restriction ;
-            owl:onClass iso19123:CV_DiscreteGridPointCoverage ;
-            owl:onProperty dem:grid ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        dem:AbstractReliefComponent ;
-    skos:definition "A RasterRelief represents a terrain component as a regular raster or grid."@en .
 
 dem:TINRelief a owl:Class ;
     rdfs:label "TINRelief"@en ;
@@ -146,7 +128,28 @@ dem:BreaklineRelief a owl:Class ;
         dem:AbstractReliefComponent ;
     skos:definition "A BreaklineRelief represents a terrain component with 3D lines. These lines denote break lines or ridge/valley lines."@en .
 
+dem:MassPointRelief a owl:Class ;
+    rdfs:label "MassPointRelief"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:MultiPoint ;
+            owl:onProperty dem:reliefPoints ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:MultiPoint ;
+            owl:onProperty dem:reliefPoints ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractPointCloud ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/pointCloud> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:AbstractPointCloud ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/pointCloud> ],
+        dem:AbstractReliefComponent ;
+    skos:definition "A MassPointRelief represents a terrain component as a collection of 3D points."@en .
+
 <https://www.opengis.net/ont/citygml/common/lod> rdfs:label "lod"@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dem:AbstractReliefComponent dem:ReliefFeature ) ] ;
     rdfs:range core:IntegerBetween0and3 ;
     skos:definition "Indicates the Level of Detail of the ReliefFeature."@en,
         "Indicates the Level of Detail of the terrain component."@en .
