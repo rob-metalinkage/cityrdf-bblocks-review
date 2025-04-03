@@ -13,11 +13,9 @@
 <https://www.opengis.net/ont/appearance> a owl:Ontology ;
     rdfs:label "GeoSPARQL-aware Appearance module of CityGML 3 "@en ;
     owl:imports <http://def.isotc211.org/iso19150/-2/2012/base>
-        , <http://www.opengis.net/ont/gml>
-#        , <https://www.opengis.net/ont/citygml/common> 
-        ;  
-    owl:versionIRI <https://www.opengis.net/ont/appearance/0.0.1/> ;
-    owl:versionInfo "0.0.1" ;
+        , <http://www.opengis.net/ont/gml> ;  
+    owl:versionIRI <https://www.opengis.net/ont/appearance/0.0.2/> ;
+    owl:versionInfo "0.0.2" ;
     skos:definition "This Appearance module supports the modelling of the observable surface properties of any features (in the sense of ISO 19109 AnyFeature class) in the form of textures and material."@en .
 
 ###
@@ -198,12 +196,52 @@ appont:DoubleBetween0and1List a owl:Class ;
 # Here come other classes, not reused from Core module
 ###
 
+appont:AbstractTexture a owl:Class ;
+    rdfs:label "AbstractTexture"@en ;
+    iso19150-2:isAbstract true ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty appont:imageURI ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom appont:ColorPlusOpacity ;
+            owl:onProperty appont:borderColor ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty appont:imageURI ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass appont:MimeTypeValue ;
+            owl:onProperty appont:mimeType ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange appont:WrapMode ;
+            owl:onProperty appont:wrapMode ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange appont:TextureType ;
+            owl:onProperty appont:textureType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom appont:TextureType ;
+            owl:onProperty appont:textureType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom appont:WrapMode ;
+            owl:onProperty appont:wrapMode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom appont:MimeTypeValue ;
+            owl:onProperty appont:mimeType ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass appont:ColorPlusOpacity ;
+            owl:onProperty appont:borderColor ],
+        appont:AbstractSurfaceData ;
+    owl:disjointWith appont:X3DMaterial ;
+    skos:definition "AbstractTexture is the abstract superclass to represent the common attributes of the classes ParameterizedTexture and GeoreferencedTexture."@en .
 
-
-appont:ColorPlusOpacity a owl:Class ;
-    rdfs:label "ColorPlusOpacity"@en ;
-    rdfs:subClassOf appont:DoubleBetween0and1List ;
-    skos:definition "Color is a list of four double values between 0 and 1 defining an RGBA color value. Opacity value of 0 means transparent."@en .
+appont:AbstractTextureParameterization a owl:Class ;
+    rdfs:label "AbstractTextureParameterization"@en ;
+    iso19150-2:isAbstract true ;
+    skos:definition "AbstractTextureParameterization is the abstract superclass for different kinds of texture parameterizations."@en .
 
 appont:GeoreferencedTexture a owl:Class ;
     rdfs:label "GeoreferencedTexture"@en ;
@@ -266,58 +304,16 @@ appont:AbstractSurfaceData a owl:Class ;
         appont:AbstractFeature ;
     skos:definition "AbstractSurfaceData is the abstract superclass for different kinds of textures and material."@en .
 
-appont:AbstractTextureParameterization a owl:Class ;
-    rdfs:label "AbstractTextureParameterization"@en ;
-    iso19150-2:isAbstract true ;
-    skos:definition "AbstractTextureParameterization is the abstract superclass for different kinds of texture parameterizations."@en .
-
-appont:AbstractTexture a owl:Class ;
-    rdfs:label "AbstractTexture"@en ;
-    iso19150-2:isAbstract true ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty appont:imageURI ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom appont:ColorPlusOpacity ;
-            owl:onProperty appont:borderColor ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:anyURI ;
-            owl:onProperty appont:imageURI ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass appont:MimeTypeValue ;
-            owl:onProperty appont:mimeType ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange appont:WrapMode ;
-            owl:onProperty appont:wrapMode ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange appont:TextureType ;
-            owl:onProperty appont:textureType ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom appont:TextureType ;
-            owl:onProperty appont:textureType ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom appont:WrapMode ;
-            owl:onProperty appont:wrapMode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom appont:MimeTypeValue ;
-            owl:onProperty appont:mimeType ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass appont:ColorPlusOpacity ;
-            owl:onProperty appont:borderColor ],
-        appont:AbstractSurfaceData ;
-    owl:disjointWith appont:X3DMaterial ;
-    skos:definition "AbstractTexture is the abstract superclass to represent the common attributes of the classes ParameterizedTexture and GeoreferencedTexture."@en .
-
 appont:Color a owl:Class ;
     rdfs:label "Color"@en ;
     rdfs:subClassOf appont:DoubleBetween0and1List ;
     owl:disjointWith appont:ColorPlusOpacity ;
     skos:definition "Color is a list of three double values between 0 and 1 defining an RGB color value."@en .
+
+appont:ColorPlusOpacity a owl:Class ;
+    rdfs:label "ColorPlusOpacity"@en ;
+    rdfs:subClassOf appont:DoubleBetween0and1List ;
+    skos:definition "Color is a list of four double values between 0 and 1 defining an RGBA color value. Opacity value of 0 means transparent."@en .
 
 appont:X3DMaterial a owl:Class ;
     rdfs:label "X3DMaterial"@en ;
@@ -495,7 +491,3 @@ appont:wrapMode a owl:DatatypeProperty ;
     rdfs:domain appont:AbstractTexture ;
     rdfs:range appont:WrapMode ;
     skos:definition "Specifies the behaviour of the texture when the texture is smaller than the surface to which it is applied."@en .
-
-
-
-

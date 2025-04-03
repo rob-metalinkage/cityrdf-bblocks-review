@@ -59,18 +59,18 @@ def update_graph(g):
             g.add((node_union, RDF.rest, RDF.nil))
         return node_union
 
-#   for id in domains.itertuples():
-#        prop = rdflib.URIRef(id.s)
+    for id in domains.itertuples():
+        prop = rdflib.URIRef(id.s)
 #apply URIRef to each element of the row in id.domainToInclude
-#        listd = list(map(rdflib.URIRef,id.domainToInclude.split(",")))
-#        if len(listd) == 1:
-#            g.add((prop, RDFS.domain, listd[0]))            
-#        else:    
-#            node_restriction = rdflib.BNode()
-#            node_union = rdflib.BNode()
-#            g.add((node_restriction, RDF.type, OWL.Class))
-#            g.add((prop, RDFS.domain, node_restriction))
-#            g.add((node_restriction, OWL.unionOf, union_from_list(*listd) ))
+        listd = list(map(rdflib.URIRef,id.domainToInclude.split(",")))
+        if len(listd) == 1:
+            g.add((prop, RDFS.domain, listd[0]))            
+        else:    
+            node_restriction = rdflib.BNode()
+            node_union = rdflib.BNode()
+            g.add((node_restriction, RDF.type, OWL.Class))
+            g.add((prop, RDFS.domain, node_restriction))
+            g.add((node_restriction, OWL.unionOf, union_from_list(*listd) ))
 
     for id in ranges.itertuples():
         prop = rdflib.URIRef(id.s)
