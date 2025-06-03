@@ -1,5 +1,5 @@
 # Test files
-lod3-sample*.files are taken from lod3_building_models.gml
+lod3-sample*.files are taken from [Ingolstadt, Germany](https://github.com/savenow/lod3-road-space-models/blob/main/models/building/lod3/combined/citygml/lod3_building_models.gml)
 
 CityGML 2.0 property `bldg:measuredHeight` is obsolete in 3.0 and replaced with `con:height`. 
 
