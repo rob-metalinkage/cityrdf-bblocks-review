@@ -1,0 +1,38 @@
+
+
+{
+  "itemIdentifier": "ogc.geo.citygml.vegetation",
+  "name": "CityGML Vegetation module",
+  "abstract": "The Vegetation module supports representation of vegetation objects with vegetation-specific thematic classes. CityGML\u2019s vegetation model distinguishes between solitary vegetation objects like trees, and vegetation areas which represent biotopes like forests or other plant communities.",
+  "status": "under-development",
+  "dateTimeAddition": "2023-05-19T00:00:00Z",
+  "itemClass": "schema",
+  "register": "citygml",
+  "version": "3.0.0",
+  "dateOfLastChange": "2025-06-26",
+  "sources": [
+    {
+      "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
+      "link": "https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7"
+    }
+  ],
+  "maturity": "development",
+  "scope": "unstable",
+  "dependsOn": [
+    "ogc.geo.citygml.common"
+  ],
+  "tags": [
+    "feature",
+    "examples"
+  ],
+  "group": "Implementations",
+  "highlighted": true,
+  "shaclRules": {},
+  "ontology": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/annotated/geo/citygml/vegetation/ontology.ttl",
+  "sourceFiles": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/_sources/vegetation/",
+  "rdfData": [],
+  "validationPassed": true,
+  "annotatedSchema": null,
+  "gitRepository": "https://github.com/rob-metalinkage/cityrdf-bblocks-review",
+  "gitPath": "_sources/vegetation"
+}

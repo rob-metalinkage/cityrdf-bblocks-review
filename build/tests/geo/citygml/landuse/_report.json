@@ -1,0 +1,14 @@
+{
+  "title": "Validation report for ogc.geo.citygml.landuse - CityGML LandUse module",
+  "bblockName": "CityGML LandUse module",
+  "bblockId": "ogc.geo.citygml.landuse",
+  "generated": "2025-06-26T07:36:12.680957+00:00",
+  "result": true,
+  "items": [],
+  "globalErrors": {},
+  "counts": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0
+  }
+}
