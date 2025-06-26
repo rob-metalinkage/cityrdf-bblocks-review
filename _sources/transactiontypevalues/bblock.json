@@ -1,0 +1,26 @@
+{
+  "name": "CityGML Type module",
+  "abstract": "An ontology containing the default values, schemes, and collections for the CityGML 3.0 transactionType concept.",
+  "ontology": "transactiontypevalues.ttl",
+  "status": "under-development",
+  "dateTimeAddition": "2023-05-19T00:00:00Z",
+  "itemClass": "schema",
+  "register": "citygml",
+  "version": "",
+  "dateOfLastChange": "2023-05-19",
+  "sources": [
+    {
+      "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
+      "link": "https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7"
+    }
+  ],
+  "maturity": "development",
+  "scope": "unstable",
+  "dependsOn": ["ogc.geo.citygml.versioning"],
+  "tags": [
+  "feature",
+  "examples"
+  ],
+  "group": "Implementations",
+  "highlighted": true
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Validation report for ogc.geo.citygml.waterbody - CityGML WaterBody module",
+  "bblockName": "CityGML WaterBody module",
+  "bblockId": "ogc.geo.citygml.waterbody",
+  "generated": "2025-06-25T12:20:51.639332+00:00",
+  "result": true,
+  "items": [],
+  "globalErrors": {},
+  "counts": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0
+  }
+}

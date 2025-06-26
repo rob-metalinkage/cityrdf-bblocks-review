@@ -1,0 +1,14 @@
+{
+  "title": "Validation report for ogc.geo.citygml.common - CityGML Common module",
+  "bblockName": "CityGML Common module",
+  "bblockId": "ogc.geo.citygml.common",
+  "generated": "2025-06-25T12:20:47.280155+00:00",
+  "result": true,
+  "items": [],
+  "globalErrors": {},
+  "counts": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "CityGML PointCloud module",
+  "abstract": "The PointCloud module supports representation of CityGML features by a collection of points.",
+  "ontology": "pointcloud.ttl",
+  "status": "under-development",
+  "dateTimeAddition": "2023-05-19T00:00:00Z",
+  "itemClass": "schema",
+  "register": "citygml",
+  "version": "3.0.0",
+  "dateOfLastChange": "2023-05-19",
+  "sources": [
+    {
+      "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
+      "link": "https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7"
+    }
+  ],
+  "maturity": "development",
+  "scope": "unstable",
+  "dependsOn": ["ogc.geo.citygml.common"],
+  "tags": [
+  "feature",
+  "examples"
+  ],
+  "group": "Implementations",
+  "highlighted": true
+}

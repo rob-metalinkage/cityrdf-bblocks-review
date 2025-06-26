@@ -1,0 +1,26 @@
+{
+  "name": "CityGML Construction module",
+  "abstract": "The Construction module supports representation of key elements of different types of constructions. These key elements include construction surfaces (e.g floor and ceiling), windows and doors, constructive elements (e.g. beams and slabs), installations, and furniture.",
+  "ontology": "construction.ttl",
+  "status": "under-development",
+  "dateTimeAddition": "2023-05-19T00:00:00Z",
+  "itemClass": "schema",
+  "register": "citygml",
+  "version": "3.0.0",
+  "dateOfLastChange": "2023-05-19",
+  "sources": [
+    {
+      "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
+      "link": "https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7"
+    }
+  ],
+  "maturity": "development",
+  "scope": "unstable",
+  "dependsOn": ["ogc.geo.citygml.bridge", "ogc.geo.citygml.building", "ogc.geo.citygml.common", "ogc.geo.citygml.tunnel"],
+  "tags": [
+  "feature",
+  "examples"
+  ],
+  "group": "Implementations",
+  "highlighted": true
+}

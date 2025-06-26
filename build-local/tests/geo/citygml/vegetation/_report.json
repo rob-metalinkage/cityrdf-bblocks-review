@@ -1,0 +1,14 @@
+{
+  "title": "Validation report for ogc.geo.citygml.vegetation - CityGML Vegetation module",
+  "bblockName": "CityGML Vegetation module",
+  "bblockId": "ogc.geo.citygml.vegetation",
+  "generated": "2025-06-25T12:20:51.016455+00:00",
+  "result": true,
+  "items": [],
+  "globalErrors": {},
+  "counts": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0
+  }
+}

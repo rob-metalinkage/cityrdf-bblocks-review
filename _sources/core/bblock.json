@@ -1,0 +1,26 @@
+{
+  "name": "CityGML Core module",
+  "abstract": "The Core module defines the basic components of the CityGML conceptual model. This includes abstract base classes that define the core properties of more specialized thematic classes defined in other modules as well as concrete classes that are common to other modules, for example basic data types.",
+  "ontology": "core.ttl",
+  "status": "under-development",
+  "dateTimeAddition": "2023-05-19T00:00:00Z",
+  "itemClass": "schema",
+  "register": "citygml",
+  "version": "3.0.0",
+  "dateOfLastChange": "2023-05-19",
+  "sources": [
+    {
+      "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
+      "link": "https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7"
+    }
+  ],
+  "maturity": "development",
+  "scope": "unstable",
+  "dependsOn": ["ogc.geo.citygml.appearance", "ogc.geo.citygml.bridge", "ogc.geo.citygml.building", "ogc.geo.citygml.cityfurniture", "ogc.geo.citygml.cityobjectgroup", "ogc.geo.citygml.common", "ogc.geo.citygml.construction", "ogc.geo.citygml.document", "ogc.geo.citygml.dynamizer", "ogc.geo.citygml.generics", "ogc.geo.citygml.landuse", "ogc.geo.citygml.relief", "ogc.geo.citygml.transportation", "ogc.geo.citygml.tunnel", "ogc.geo.citygml.vegetation", "ogc.geo.citygml.waterbody", "ogc.geo.citygml.workspace"],
+  "tags": [
+  "feature",
+  "examples"
+  ],
+  "group": "Implementations",
+  "highlighted": true
+}

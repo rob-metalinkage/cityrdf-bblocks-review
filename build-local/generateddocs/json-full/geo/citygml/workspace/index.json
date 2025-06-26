@@ -1,0 +1,39 @@
+
+
+{
+  "itemIdentifier": "ogc.geo.citygml.workspace",
+  "name": "CityGML Workspace module",
+  "abstract": "This pattern provides a starting point for modeling a GML Application Schema which is a specialized xml schema that uses the Geographic Markup Language to model Features to provide the basis for interoperability within a community of interest.",
+  "status": "under-development",
+  "dateTimeAddition": "2023-05-19T00:00:00Z",
+  "itemClass": "schema",
+  "register": "citygml",
+  "version": "3.0.0",
+  "dateOfLastChange": "2023-05-19",
+  "sources": [
+    {
+      "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
+      "link": "https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7"
+    }
+  ],
+  "maturity": "development",
+  "scope": "unstable",
+  "dependsOn": [
+    "ogc.geo.citygml.common",
+    "ogc.geo.citygml.versioning"
+  ],
+  "tags": [
+    "feature",
+    "examples"
+  ],
+  "group": "Implementations",
+  "highlighted": true,
+  "shaclRules": {},
+  "ontology": "http://localhost:9090/register/build-local/annotated/geo/citygml/workspace/ontology.ttl",
+  "sourceFiles": "http://localhost:9090/register/_sources/workspace/",
+  "rdfData": [],
+  "validationPassed": true,
+  "annotatedSchema": null,
+  "gitRepository": "https://github.com/ogcincubator/cityrdf",
+  "gitPath": "_sources/workspace"
+}

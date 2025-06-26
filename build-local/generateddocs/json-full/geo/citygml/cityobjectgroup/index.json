@@ -1,0 +1,38 @@
+
+
+{
+  "itemIdentifier": "ogc.geo.citygml.cityobjectgroup",
+  "name": "CityGML CityObjectGroup module",
+  "abstract": "The CityObjectGroup module supports grouping of city objects. Arbitrary city objects may be aggregated in groups according to user-defined criteria. A group may be further classified by application-specific attributes.",
+  "status": "under-development",
+  "dateTimeAddition": "2023-05-19T00:00:00Z",
+  "itemClass": "schema",
+  "register": "citygml",
+  "version": "3.0.0",
+  "dateOfLastChange": "2023-05-19",
+  "sources": [
+    {
+      "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
+      "link": "https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7"
+    }
+  ],
+  "maturity": "development",
+  "scope": "unstable",
+  "dependsOn": [
+    "ogc.geo.citygml.common"
+  ],
+  "tags": [
+    "feature",
+    "examples"
+  ],
+  "group": "Implementations",
+  "highlighted": true,
+  "shaclRules": {},
+  "ontology": "http://localhost:9090/register/build-local/annotated/geo/citygml/cityobjectgroup/ontology.ttl",
+  "sourceFiles": "http://localhost:9090/register/_sources/cityobjectgroup/",
+  "rdfData": [],
+  "validationPassed": true,
+  "annotatedSchema": null,
+  "gitRepository": "https://github.com/ogcincubator/cityrdf",
+  "gitPath": "_sources/cityobjectgroup"
+}

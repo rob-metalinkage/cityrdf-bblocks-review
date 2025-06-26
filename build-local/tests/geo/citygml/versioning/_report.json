@@ -1,0 +1,14 @@
+{
+  "title": "Validation report for ogc.geo.citygml.versioning - CityGML Versioning module",
+  "bblockName": "CityGML Versioning module",
+  "bblockId": "ogc.geo.citygml.versioning",
+  "generated": "2025-06-25T12:20:51.326208+00:00",
+  "result": true,
+  "items": [],
+  "globalErrors": {},
+  "counts": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0
+  }
+}

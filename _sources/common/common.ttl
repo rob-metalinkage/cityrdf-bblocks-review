@@ -1,0 +1,76 @@
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix common: <https://www.opengis.net/ont/citygml/common/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://www.opengis.net/ont/citygml/common> a owl:Ontology ;
+    rdfs:label "Common"@en ;
+    owl:versionIRI <https://www.opengis.net/ont/citygml/common/3.0.0/> ;
+    owl:versionInfo "3.0.0" ;
+    skos:definition "The Common module supports definitions of object and datatype properties reusable several times across packages of CityGML."@en .
+
+common:class rdf:type owl:ObjectProperty; rdfs:label "class"@en.
+common:usage rdf:type owl:ObjectProperty; rdfs:label "usage"@en.
+common:function rdf:type owl:ObjectProperty; rdfs:label "function"@en.
+
+common:address rdf:type owl:ObjectProperty; rdfs:label "address"@en.
+common:appearance  rdf:type owl:ObjectProperty; rdfs:label "appearance"@en .
+common:area  rdf:type owl:ObjectProperty; rdfs:label "area"@en .
+common:boundary rdf:type owl:ObjectProperty; rdfs:label "boundary"@en.
+common:bridgeFurniture  rdf:type owl:ObjectProperty; rdfs:label "bridgeFurniture"@en .
+common:bridgeInstallation  rdf:type owl:ObjectProperty; rdfs:label "bridgeInstallation"@en .
+common:buildingConstructiveElement  rdf:type owl:ObjectProperty; rdfs:label "buildingConstructiveElement"@en .
+common:buildingFurniture  rdf:type owl:ObjectProperty; rdfs:label "buildingFurniture"@en .
+common:buildingInstallation  rdf:type owl:ObjectProperty; rdfs:label "buildingInstallation"@en .
+common:buildingRoom  rdf:type owl:ObjectProperty; rdfs:label "buildingRoom"@en .
+common:elevation  rdf:type owl:ObjectProperty; rdfs:label "elevation"@en .
+common:genericAttribute  rdf:type owl:ObjectProperty; rdfs:label "genericAttribute"@en .
+common:groupMember  rdf:type owl:ObjectProperty; rdfs:label "groupMember"@en .
+common:highReference  rdf:type owl:ObjectProperty; rdfs:label "highReference"@en .
+common:fileType  rdf:type owl:ObjectProperty; rdfs:label "fileType"@en.
+common:intersection  rdf:type owl:ObjectProperty; rdfs:label "intersection"@en .
+common:list  rdf:type owl:ObjectProperty; rdfs:label "list"@en .
+common:lod  rdf:type owl:ObjectProperty; rdfs:label "lod"@en .
+common:lod0MultiCurve  rdf:type owl:ObjectProperty; rdfs:label "lod0MultiCurve"@en .
+common:lod0MultiSurface  rdf:type owl:ObjectProperty; rdfs:label "lod0MultiSurface"@en .
+common:lod2MultiSurface  rdf:type owl:ObjectProperty; rdfs:label "lod2MultiSurface"@en .
+common:lod3MultiSurface  rdf:type owl:ObjectProperty; rdfs:label "lod3MultiSurface"@en .
+common:lowReference  rdf:type owl:ObjectProperty; rdfs:label "lowReference"@en .
+common:mimeType rdf:type owl:ObjectProperty; rdfs:label "mimeType"@en.
+common:occupancy  rdf:type owl:ObjectProperty; rdfs:label "occupancy"@en .
+common:occupancy rdf:type owl:ObjectProperty; rdfs:label "occupancy"@en.
+common:pointCloud  rdf:type owl:ObjectProperty; rdfs:label "pointCloud"@en .
+common:referencePoint  rdf:type owl:ObjectProperty; rdfs:label "referencePoint"@en .
+common:referringTo  rdf:type owl:ObjectProperty; rdfs:label "referringTo"@en .
+common:relatedTo  rdf:type owl:ObjectProperty; rdfs:label "relatedTo"@en .
+common:relationType  rdf:type owl:ObjectProperty; rdfs:label "relationType"@en .
+common:section  rdf:type owl:ObjectProperty; rdfs:label "section"@en .
+common:textureParameterization  rdf:type owl:ObjectProperty; rdfs:label "textureParameterization"@en .
+common:tunnelFurniture  rdf:type owl:ObjectProperty; rdfs:label "tunnelFurniture"@en .
+common:tunnelInstallation  rdf:type owl:ObjectProperty; rdfs:label "tunnelInstallation"@en .
+common:versionMember  rdf:type owl:ObjectProperty; rdfs:label "versionMember"@en .
+common:volume  rdf:type owl:ObjectProperty; rdfs:label "volume"@en.
+
+common:name  rdf:type owl:DatatypeProperty; rdfs:label "name"@en .
+common:description  rdf:type owl:DatatypeProperty; rdfs:label "description"@en .
+common:value  rdf:type owl:DatatypeProperty; rdfs:label "value"@en.
+common:status  rdf:type owl:DatatypeProperty; rdfs:label "status"@en.
+common:type  rdf:type owl:DatatypeProperty; rdfs:label "type"@en.
+common:granularity  rdf:type owl:DatatypeProperty; rdfs:label "granularity"@en.
+common:fileLocation  rdf:type owl:DatatypeProperty; rdfs:label "fileLocation"@en.
+common:observationProperty  rdf:type owl:DatatypeProperty; rdfs:label "observationProperty"@en.
+common:uom  rdf:type owl:DatatypeProperty; rdfs:label "uom"@en.
+common:valueType  rdf:type owl:DatatypeProperty; rdfs:label "valueType"@en.
+common:target  rdf:type owl:DatatypeProperty; rdfs:label "target"@en.
+
+# GeoSPARQL alignments for common properties
+common:lod0MultiCurve rdfs:subPropertyOf geo:hasGeometry .
+common:lod0MultiSurface rdfs:subPropertyOf geo:hasGeometry .
+common:lod2MultiSurface rdfs:subPropertyOf geo:hasGeometry .
+common:lod3MultiSurface rdfs:subPropertyOf geo:hasGeometry .
+common:referencePoint rdfs:subPropertyOf geo:hasGeometry .
+
+#this property axiom is NOT officially declared in the CityGML 3.0, but we need it to do change request
+common:boundary rdfs:subPropertyOf geo:hasGeometry .
