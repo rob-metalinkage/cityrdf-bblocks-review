@@ -32,7 +32,7 @@ gen:CodeAttribute a owl:Class ;
     rdfs:label "CodeAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass iso19136-bt:Code ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/value> ;
+            owl:onProperty gen:value ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -43,7 +43,7 @@ gen:CodeAttribute a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom iso19136-bt:Code ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/value> ],
+            owl:onProperty gen:value ],
         core:AbstractGenericAttribute ;
     skos:definition "CodeAttribute is a data type used to define generic attributes of type \"Code\"."@en .
 
