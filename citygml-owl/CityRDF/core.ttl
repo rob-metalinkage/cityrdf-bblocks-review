@@ -680,7 +680,7 @@ core:DoubleList a owl:Class ;
     rdfs:label "DoubleList"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty core:DoubleList.list ],
+            owl:onProperty core:list ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty core:list ;
