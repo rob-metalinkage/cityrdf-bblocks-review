@@ -33,6 +33,25 @@ dyn:CompositeTimeseries a owl:Class ;
         dyn:AbstractTimeseries ;
     skos:definition "A CompositeTimeseries is a (possibly recursive) aggregation of atomic and composite timeseries. The components of a composite timeseries must have non-overlapping time intervals."@en .
 
+dyn:GenericTimeseries a owl:Class ;
+    rdfs:label "GenericTimeseries"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom dyn:TimeValuePair ;
+            owl:onProperty dyn:timeValuePair ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass dyn:TimeValuePair ;
+            owl:onProperty dyn:timeValuePair ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:TimeseriesTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/valueType> ],
+        [ a owl:Restriction ;
+            owl:onDataRange dyn:TimeseriesTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/valueType> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        dyn:AbstractAtomicTimeseries ;
+    skos:definition "A GenericTimeseries represents time-varying data in the form of embedded time-value-pairs of a specific data type for a single contiguous time interval."@en .
+
 dyn:additionalGap a owl:ObjectProperty ;
     rdfs:label "additionalGap"@en ;
     rdfs:domain dyn:TimeseriesComponent ;
@@ -296,29 +315,36 @@ dyn:AuthenticationTypeValue a owl:Class ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "AuthenticationTypeValue is a code list used to specify the authentication method to be used to access the referenced sensor service. Each value provides enough information such that a software application could determine the required access credentials."@en .
 
-dyn:GenericTimeseries a owl:Class ;
-    rdfs:label "GenericTimeseries"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom dyn:TimeValuePair ;
-            owl:onProperty dyn:timeValuePair ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass dyn:TimeValuePair ;
-            owl:onProperty dyn:timeValuePair ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dyn:TimeseriesTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/valueType> ],
-        [ a owl:Restriction ;
-            owl:onDataRange dyn:TimeseriesTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/valueType> ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        dyn:AbstractAtomicTimeseries ;
-    skos:definition "A GenericTimeseries represents time-varying data in the form of embedded time-value-pairs of a specific data type for a single contiguous time interval."@en .
-
 dyn:SensorConnectionTypeValue a owl:Class ;
     rdfs:label "SensorConnectionTypeValue"@en ;
     rdfs:subClassOf skos:Concept ;
     skos:definition "SensorConnectionTypeValue is a code list used to specify the type of the referenced sensor service. Each value provides enough information such that a software application would be able to identify the API type and version."@en .
+
+dyn:StandardFileTimeseries a owl:Class ;
+    rdfs:label "StandardFileTimeseries"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:MimeTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileLocation> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:MimeTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileLocation> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:StandardFileTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileType> ],
+        [ a owl:Restriction ;
+            owl:onClass dyn:StandardFileTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileType> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        dyn:AbstractAtomicTimeseries ;
+    skos:definition "A StandardFileTimeseries represents time-varying data for a single contiguous time interval. The data is provided in an external file referenced in the StandardFileTimeseries. The data within the external file is encoded according to a dedicated format for the representation of timeseries data such as using the OGC TimeseriesML or OGC Observations & Measurements Standard. The data type of the data has to be specified within the external file."@en .
 
 dyn:StandardFileTypeValue a owl:Class ;
     rdfs:label "StandardFileTypeValue"@en ;
@@ -370,72 +396,35 @@ dyn:TabulatedFileTypeValue a owl:Class ;
         dyn:TabulatedFileTimeseries ;
     schema:rangeIncludes dyn:TimeseriesTypeValue .
 
-dyn:StandardFileTimeseries a owl:Class ;
-    rdfs:label "StandardFileTimeseries"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom core:MimeTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileLocation> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dyn:StandardFileTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileType> ],
-        [ a owl:Restriction ;
-            owl:onClass dyn:StandardFileTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileType> ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:anyURI ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileLocation> ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:MimeTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
-        dyn:AbstractAtomicTimeseries ;
-    skos:definition "A StandardFileTimeseries represents time-varying data for a single contiguous time interval. The data is provided in an external file referenced in the StandardFileTimeseries. The data within the external file is encoded according to a dedicated format for the representation of timeseries data such as using the OGC TimeseriesML or OGC Observations & Measurements Standard. The data type of the data has to be specified within the external file."@en .
-
 dyn:AbstractAtomicTimeseries a owl:Class ;
     rdfs:label "AbstractAtomicTimeseries"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/uom> ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/uom> ],
         [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/observationProperty> ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/observationProperty> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/uom> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/observationProperty> ],
         dyn:AbstractTimeseries ;
-    owl:disjointWith dyn:CompositeTimeseries ;
     skos:definition "AbstractAtomicTimeseries represents the attributes and relationships that are common to all kinds of atomic timeseries (GenericTimeseries, TabulatedFileTimeseries, StandardFileTimeseries). An atomic timeseries represents time-varying data of a specific data type for a single contiguous time interval."@en .
 
 dyn:Dynamizer a owl:Class ;
     rdfs:label "Dynamizer"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom time:TemporalPosition ;
+            owl:onProperty dyn:endTime ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty dyn:attributeRef ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty dyn:attributeRef ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom time:TemporalPosition ;
-            owl:onProperty dyn:startTime ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dyn:AbstractTimeseries ;
-            owl:onProperty dyn:dynamicData ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass time:TemporalPosition ;
-            owl:onProperty dyn:startTime ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass dyn:SensorConnection ;
@@ -445,15 +434,25 @@ dyn:Dynamizer a owl:Class ;
             owl:onClass dyn:AbstractTimeseries ;
             owl:onProperty dyn:dynamicData ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dyn:SensorConnection ;
-            owl:onProperty dyn:sensorConnection ],
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:attributeRef ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass time:TemporalPosition ;
             owl:onProperty dyn:endTime ],
         [ a owl:Restriction ;
+            owl:allValuesFrom dyn:AbstractTimeseries ;
+            owl:onProperty dyn:dynamicData ],
+        [ a owl:Restriction ;
             owl:allValuesFrom time:TemporalPosition ;
-            owl:onProperty dyn:endTime ],
+            owl:onProperty dyn:startTime ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass time:TemporalPosition ;
+            owl:onProperty dyn:startTime ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:SensorConnection ;
+            owl:onProperty dyn:sensorConnection ],
         core:AbstractDynamizer ;
     skos:definition "A Dynamizer is an object that injects timeseries data for an individual attribute of the city object in which it is included. The timeseries data overrides the static value of the referenced city object attribute in order to represent dynamic (time-dependent) variations of its value."@en .
 
@@ -492,18 +491,18 @@ dyn:AbstractTimeseries a owl:Class ;
     rdfs:label "AbstractTimeseries"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass time:TemporalPosition ;
+            owl:allValuesFrom time:TemporalPosition ;
             owl:onProperty dyn:firstTimestamp ],
         [ a owl:Restriction ;
+            owl:allValuesFrom time:TemporalPosition ;
+            owl:onProperty dyn:lastTimestamp ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass time:TemporalPosition ;
             owl:onProperty dyn:lastTimestamp ],
         [ a owl:Restriction ;
-            owl:allValuesFrom time:TemporalPosition ;
-            owl:onProperty dyn:lastTimestamp ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom time:TemporalPosition ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass time:TemporalPosition ;
             owl:onProperty dyn:firstTimestamp ],
         core:AbstractFeature ;
     skos:definition "AbstractTimeseries is the abstract superclass representing any type of timeseries data."@en .
@@ -511,236 +510,179 @@ dyn:AbstractTimeseries a owl:Class ;
 dyn:TimeValuePair a owl:Class ;
     rdfs:label "TimeValuePair"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom time:TemporalPosition ;
-            owl:onProperty dyn:timestamp ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
             owl:onProperty dyn:doubleValue ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty dyn:boolValue ],
+            owl:onDataRange xsd:integer ;
+            owl:onProperty dyn:intValue ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty dyn:stringValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom gmlowl:AbstractGeometry ;
-            owl:onProperty dyn:geometryValue ],
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty dyn:intValue ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:double ;
             owl:onProperty dyn:doubleValue ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:ImplicitGeometry ;
-            owl:onProperty dyn:implicitGeometryValue ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:integer ;
-            owl:onProperty dyn:intValue ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:AbstractAppearance ;
             owl:onProperty dyn:appearanceValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:ImplicitGeometry ;
-            owl:onProperty dyn:implicitGeometryValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty dyn:stringValue ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:anyURI ;
-            owl:onProperty dyn:uriValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty dyn:intValue ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass gmlowl:AbstractGeometry ;
-            owl:onProperty dyn:geometryValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty dyn:uriValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:boolean ;
-            owl:onProperty dyn:boolValue ],
         [ a owl:Restriction ;
             owl:onClass time:TemporalPosition ;
             owl:onProperty dyn:timestamp ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:allValuesFrom core:ImplicitGeometry ;
+            owl:onProperty dyn:implicitGeometryValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass gmlowl:AbstractGeometry ;
+            owl:onProperty dyn:geometryValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty dyn:uriValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty dyn:uriValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:ImplicitGeometry ;
+            owl:onProperty dyn:implicitGeometryValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty dyn:boolValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty dyn:boolValue ],
+        [ a owl:Restriction ;
             owl:allValuesFrom core:AbstractAppearance ;
-            owl:onProperty dyn:appearanceValue ] ;
+            owl:onProperty dyn:appearanceValue ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:stringValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom time:TemporalPosition ;
+            owl:onProperty dyn:timestamp ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom gmlowl:AbstractGeometry ;
+            owl:onProperty dyn:geometryValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:stringValue ] ;
     skos:definition "A TimeValuePair represents a value that is valid for a given timepoint. For each TimeValuePair, only one of the value properties can be used mutually exclusive. Which value property has to be provided depends on the selected value type in the GenericTimeSeries feature, in which the TimeValuePair is included."@en .
 
 dyn:TabulatedFileTimeseries a owl:Class ;
     rdfs:label "TabulatedFileTimeseries"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:integer ;
-            owl:onProperty dyn:timeColumnNo ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty dyn:idValue ],
-        [ a owl:Restriction ;
-            owl:onClass dyn:TabulatedFileTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileType> ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dyn:TabulatedFileTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileType> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty dyn:decimalSymbol ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:MimeTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
+            owl:onProperty dyn:idColumnName ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:integer ;
             owl:onProperty dyn:numberOfHeaderLines ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty dyn:timeColumnName ],
+            owl:onClass dyn:TabulatedFileTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileType> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:valueColumnName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:MimeTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:integer ;
             owl:onProperty dyn:valueColumnNo ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty dyn:idColumnName ],
+            owl:onDataRange xsd:integer ;
+            owl:onProperty dyn:idColumnNo ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:timeColumnName ],
         [ a owl:Restriction ;
             owl:onDataRange dyn:TimeseriesTypeValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/valueType> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileLocation> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty dyn:idColumnNo ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:anyURI ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileLocation> ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty dyn:valueColumnNo ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty dyn:fieldSeparator ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:fieldSeparator ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:idValue ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:integer ;
+            owl:onProperty dyn:timeColumnNo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:decimalSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:idColumnName ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:timeColumnName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:TimeseriesTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/valueType> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:idValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty dyn:timeColumnNo ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
             owl:onProperty dyn:idColumnNo ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:MimeTypeValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty dyn:valueColumnName ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty dyn:timeColumnName ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty dyn:decimalSymbol ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty dyn:fieldSeparator ],
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileLocation> ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileLocation> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
-            owl:onProperty dyn:idValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dyn:TimeseriesTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/valueType> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty dyn:timeColumnNo ],
+            owl:onProperty dyn:valueColumnName ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:integer ;
             owl:onProperty dyn:numberOfHeaderLines ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty dyn:valueColumnName ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:integer ;
-            owl:onProperty dyn:valueColumnNo ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty dyn:idColumnName ],
+            owl:allValuesFrom dyn:TabulatedFileTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/fileType> ],
         dyn:AbstractAtomicTimeseries ;
     skos:definition "A TabulatedFileTimeseries represents time-varying data of a specific data type for a single contiguous time interval. The data is provided in an external file referenced in the TabulatedFileTimeseries. The file contains table structured data using an appropriate file format such as comma-separated values (CSV), Microsoft Excel (XLSX) or Google Spreadsheet. The timestamps and the values are given in specific columns of the table. Each row represents a single time-value-pair. A subset of rows can be selected using the idColumn and idValue attributes."@en .
 
 dyn:SensorConnection a owl:Class ;
     rdfs:label "SensorConnection"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom dyn:SensorConnectionTypeValue ;
-            owl:onProperty dyn:connectionType ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dyn:AuthenticationTypeValue ;
-            owl:onProperty dyn:authType ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty dyn:linkToSensorDescription ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty dyn:sensorName ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:AbstractCityObject ;
-            owl:onProperty dyn:sensorLocation ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty dyn:datastreamID ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/uom> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty dyn:observationID ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty dyn:mqttTopic ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty dyn:mqttServer ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty dyn:sensorID ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/uom> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty dyn:linkToObservation ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/observationProperty> ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass dyn:AuthenticationTypeValue ;
-            owl:onProperty dyn:authType ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty dyn:observationID ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty dyn:linkToSensorDescription ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:anyURI ;
@@ -748,38 +690,92 @@ dyn:SensorConnection a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty dyn:sensorID ],
+            owl:onProperty dyn:observationID ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty dyn:datastreamID ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/observationProperty> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
             owl:onProperty dyn:sensorName ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty dyn:mqttServer ],
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty dyn:baseURL ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractCityObject ;
-            owl:onProperty dyn:sensorLocation ],
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/uom> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:datastreamID ],
         [ a owl:Restriction ;
             owl:onClass dyn:SensorConnectionTypeValue ;
             owl:onProperty dyn:connectionType ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty dyn:baseURL ],
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:datastreamID ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:mqttTopic ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:AuthenticationTypeValue ;
+            owl:onProperty dyn:authType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dyn:SensorConnectionTypeValue ;
+            owl:onProperty dyn:connectionType ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/observationProperty> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:mqttTopic ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:sensorID ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/uom> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/observationProperty> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:linkToObservation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:observationID ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:sensorName ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty dyn:linkToObservation ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty dyn:mqttTopic ] ;
+            owl:onProperty dyn:sensorID ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty dyn:linkToSensorDescription ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractCityObject ;
+            owl:onProperty dyn:sensorLocation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass dyn:AuthenticationTypeValue ;
+            owl:onProperty dyn:authType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:linkToSensorDescription ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty dyn:mqttServer ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:AbstractCityObject ;
+            owl:onProperty dyn:sensorLocation ] ;
     skos:definition "A SensorConnection provides all details that are required to retrieve a specific datastream from an external sensor web service. This data type comprises the service type (e.g. OGC SensorThings API, OGC Sensor Observation Services, MQTT, proprietary platforms), the URL of the sensor service, the identifier for the sensor or thing, and its observed property as well as information about the required authentication method."@en .
-
-[] a owl:AllDisjointClasses ;
-    owl:members ( dyn:GenericTimeseries dyn:StandardFileTimeseries dyn:TabulatedFileTimeseries ) .
 

@@ -19,15 +19,14 @@
 
 wksp:ConcensusSpace a owl:Class ;
     rdfs:label "ConcensusSpace"@en ;
-    rdfs:subClassOf wksp:Space ;
-    owl:disjointWith wksp:PropositionSpace .
-
-<https://www.opengis.net/ont/citygml/common/versionMember> schema:domainIncludes wksp:Scenario ;
-    schema:rangeIncludes vers:Version .
+    rdfs:subClassOf wksp:Space .
 
 wksp:PropositionSpace a owl:Class ;
     rdfs:label "PropositionSpace"@en ;
     rdfs:subClassOf wksp:Space .
+
+<https://www.opengis.net/ont/citygml/common/versionMember> schema:domainIncludes wksp:Scenario ;
+    schema:rangeIncludes vers:Version .
 
 wksp:versionTransitionMember a owl:ObjectProperty ;
     rdfs:label "versionTransitionMember"@en ;
