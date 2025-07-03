@@ -18,12 +18,6 @@
     owl:versionInfo "3.0.0" ;
     skos:definition "The Generics module supports application-specific extensions to the CityGML conceptual model. These extensions may be used to model and exchange additional attributes and features not covered by the predefined thematic classes of CityGML. Generic extensions shall only be used if appropriate thematic classes or attributes are not provided by any other CityGML module."@en .
 
-gen:value a owl:ObjectProperty ;
-    rdfs:label "value"@en ;
-    rdfs:domain gen:CodeAttribute ;
-    rdfs:range iso19136-bt:Code ;
-    skos:definition "Specifies the \"Code\" value."@en .
-
 <https://www.opengis.net/ont/citygml/common/genericAttribute> skos:definition "Relates to the generic attributes that are part of the GenericAttributeSet."@en ;
     schema:domainIncludes gen:GenericAttributeSet ;
     schema:rangeIncludes core:AbstractGenericAttribute .
@@ -206,6 +200,12 @@ gen:codeSpace a owl:DatatypeProperty ;
     rdfs:domain gen:GenericAttributeSet ;
     rdfs:range xsd:anyURI ;
     skos:definition "Associates the GenericAttributeSet with an authority that maintains the collection of generic attributes."@en .
+
+gen:value a owl:ObjectProperty ;
+    rdfs:label "value"@en ;
+    rdfs:domain gen:CodeAttribute ;
+    rdfs:range iso19136-bt:Code ;
+    skos:definition "Specifies the \"Code\" value."@en .
 
 gen:GenericAttributeSet a owl:Class ;
     rdfs:label "GenericAttributeSet"@en ;

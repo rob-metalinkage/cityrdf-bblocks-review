@@ -1316,6 +1316,146 @@ where {
 #             skos:definition ?def.
 #}}'
 
+### post-processing step curating ambiguities when a property named equally to some property listed in the Common module, but belongs to different class than in the Common module. Mainly related to Core and Generics.
+
+### #14 Patching duplicates: insert local datatype properties into axioms for those properties that in Common module are defined as object properties. 
+
+echo 'Patching duplicates 1/4: insert local datatype properties into axioms for those properties that in Common module are defined as object properties. 
+      These are core:list, core:volume and core:area.'
+
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+insert { 
+    ?s owl:onProperty ?new .
+}
+where { 
+    select ?s ?new
+    where {
+    ?c a owl:Class ;
+	   skos:definition ?def ;
+       rdfs:label ?label ;
+       rdfs:subClassOf ?s ; rdfs:subClassOf ?s2 .
+    ?s a owl:Restriction ;
+       owl:allValuesFrom ?c1 ;
+       owl:onProperty ?old .
+    ?s2 a owl:Restriction ;
+       owl:onDataRange ?c1 ;
+       owl:onProperty ?new ;
+       owl:qualifiedCardinality ?qc .
+	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?nameold)
+    bind(replace(str(?new), "^.*/([^/]*)$", "$1") as ?namenew)
+    bind(strbefore(str(?old), ?xold ) as ?baseold)
+    bind(strbefore(str(?new), ?xnew) as ?basenew)            
+    filter (?nameold = ?namenew)
+    filter (?old != ?new)
+    }
+}'
+
+### Patching duplicates:  insert local object properties into axioms for those properties that in Common module are defined as datatype properties. 
+
+echo 'Patching duplicates 2/4:  insert local object properties into axioms for those properties that in Common module are defined as datatype properties. 
+      This is gen:value.'
+
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+insert { 
+    ?s owl:onProperty ?new .
+}
+where { 
+    select ?s ?new
+    where {
+    ?c a owl:Class ;
+	   skos:definition ?def ;
+       rdfs:label ?label ;
+       rdfs:subClassOf ?s ; rdfs:subClassOf ?s2 .
+    ?s a owl:Restriction ;
+       owl:allValuesFrom ?c1 ;
+       owl:onProperty ?old .
+    ?s2 a owl:Restriction ;
+       owl:onClass ?c1 ;
+       owl:onProperty ?new ;
+       owl:qualifiedCardinality ?qc .
+	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?nameold)
+    bind(replace(str(?new), "^.*/([^/]*)$", "$1") as ?namenew)
+    bind(strbefore(str(?old), ?xold ) as ?baseold)
+    bind(strbefore(str(?new), ?xnew) as ?basenew)            
+    filter (?nameold = ?namenew)
+    filter (?old != ?new)
+    }
+}'
+
+### Patching duplicates: delete erroneous owl:onProperty for local datatype/object properties defined in Common module as object/datatype properties.
+
+echo 'Patching duplicates 3/4: delete erroneous owl:onProperty for local datatype/object properties defined in Common module as object/datatype properties.'
+
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+delete {
+    ?s owl:onProperty ?old .
+}
+where { 
+select ?s  ?old
+where { 
+    ?c a owl:Class ;
+	   skos:definition ?def ;
+       rdfs:label ?label ;
+       rdfs:subClassOf ?s ; rdfs:subClassOf ?s2 .
+    ?s a owl:Restriction ;
+       owl:allValuesFrom ?c1 ;
+       owl:onProperty ?old ;
+       owl:onProperty ?new .
+    ?s2 a owl:Restriction ;
+       owl:onDataRange ?c1 ;
+       owl:onProperty ?new ;
+       owl:qualifiedCardinality ?qc .
+	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?nameold)
+    bind(replace(str(?new), "^.*/([^/]*)$", "$1") as ?namenew)
+    bind(strbefore(str(?old), ?xold ) as ?baseold)
+    bind(strbefore(str(?new), ?xnew) as ?basenew)            
+    filter (?nameold = ?namenew)
+    filter (?old != ?new)
+    }}'
+
+### Patching duplicates: delete erroneous owl:onProperty for local datatype/object properties defined in Common module as object/datatype properties.
+
+echo 'Patching duplicates 4/4: delete erroneous owl:onProperty for local datatype/object properties defined in Common module as object/datatype properties.'
+
+python update_graph.py $file $file \
+    'PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+delete {
+    ?s owl:onProperty ?old .
+}
+where { 
+select ?s  ?old
+where { 
+    ?c a owl:Class ;
+	   skos:definition ?def ;
+       rdfs:label ?label ;
+       rdfs:subClassOf ?s ; rdfs:subClassOf ?s2 .
+    ?s a owl:Restriction ;
+       owl:allValuesFrom ?c1 ;
+       owl:onProperty ?old ;
+       owl:onProperty ?new .
+    ?s2 a owl:Restriction ;
+       owl:onClass ?c1 ;
+       owl:onProperty ?new ;
+       owl:qualifiedCardinality ?qc .
+	bind(replace(str(?old), "^.*/([^/]*)$", "$1") as ?nameold)
+    bind(replace(str(?new), "^.*/([^/]*)$", "$1") as ?namenew)
+    bind(strbefore(str(?old), ?xold ) as ?baseold)
+    bind(strbefore(str(?new), ?xnew) as ?basenew)            
+    filter (?nameold = ?namenew)
+    filter (?old != ?new)
+    }}' 
+
 done
 
 ### Copy remaining files ###

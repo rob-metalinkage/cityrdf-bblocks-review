@@ -268,7 +268,7 @@ brid:AbstractBridge a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( brid:BridgeConstructiveElementFunctionValue brid:BridgeInstallationFunctionValue brid:BridgeRoomFunctionValue brid:BridgeFunctionValue brid:BridgeFurnitureFunctionValue ) ] ;
+            owl:unionOf ( brid:BridgeInstallationFunctionValue brid:BridgeFunctionValue brid:BridgeRoomFunctionValue brid:BridgeConstructiveElementFunctionValue brid:BridgeFurnitureFunctionValue ) ] ;
     skos:definition "Specifies the intended purposes of the Bridge or BridgePart."@en,
         "Specifies the intended purposes of the BridgeConstructiveElement."@en,
         "Specifies the intended purposes of the BridgeFurniture."@en,
@@ -277,7 +277,7 @@ brid:AbstractBridge a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( brid:BridgeUsageValue brid:BridgeConstructiveElementUsageValue brid:BridgeRoomUsageValue brid:BridgeInstallationUsageValue brid:BridgeFurnitureUsageValue ) ] ;
+            owl:unionOf ( brid:BridgeInstallationUsageValue brid:BridgeRoomUsageValue brid:BridgeConstructiveElementUsageValue brid:BridgeUsageValue brid:BridgeFurnitureUsageValue ) ] ;
     skos:definition "Specifies the actual uses of the Bridge or BridgePart."@en,
         "Specifies the actual uses of the BridgeConstructiveElement."@en,
         "Specifies the actual uses of the BridgeFurniture."@en,
@@ -286,7 +286,7 @@ brid:AbstractBridge a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( brid:BridgeInstallationClassValue brid:BridgeFurnitureClassValue brid:BridgeConstructiveElementClassValue brid:BridgeRoomClassValue brid:BridgeClassValue ) ] ;
+            owl:unionOf ( brid:BridgeClassValue brid:BridgeFurnitureClassValue brid:BridgeConstructiveElementClassValue brid:BridgeRoomClassValue brid:BridgeInstallationClassValue ) ] ;
     skos:definition "Indicates the specific type of the Bridge or BridgePart."@en,
         "Indicates the specific type of the BridgeConstructiveElement."@en,
         "Indicates the specific type of the BridgeFurniture."@en,

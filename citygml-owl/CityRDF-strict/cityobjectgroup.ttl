@@ -18,6 +18,9 @@
 grp:CityObjectGroup a owl:Class ;
     rdfs:label "CityObjectGroup"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom core:AbstractCityObject ;
+            owl:onProperty grp:parent ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass grp:CityObjectGroupClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
@@ -37,9 +40,6 @@ grp:CityObjectGroup a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom grp:CityObjectGroupFunctionValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/function> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractCityObject ;
-            owl:onProperty grp:parent ],
         core:AbstractLogicalSpace ;
     skos:definition "A CityObjectGroup represents an application-specific aggregation of city objects according to some user-defined criteria. Examples for groups are the buildings in a specific region, the result of a query, or objects put together for visualization purposes. Each member of a group may be qualified by a role name, reflecting the role each city object plays in the context of the group."@en .
 

@@ -427,7 +427,7 @@ bldg:RoomElevationReferenceValue a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( bldg:BuildingFurnitureFunctionValue bldg:BuildingSubdivisionFunctionValue bldg:BuildingRoomFunctionValue bldg:BuildingConstructiveElementFunctionValue bldg:BuildingInstallationFunctionValue bldg:BuildingFunctionValue ) ] ;
+            owl:unionOf ( bldg:BuildingInstallationFunctionValue bldg:BuildingFurnitureFunctionValue bldg:BuildingFunctionValue bldg:BuildingRoomFunctionValue bldg:BuildingConstructiveElementFunctionValue bldg:BuildingSubdivisionFunctionValue ) ] ;
     skos:definition "Specifies the intended purposes of the Building or BuildingPart."@en,
         "Specifies the intended purposes of the BuildingConstructiveElement."@en,
         "Specifies the intended purposes of the BuildingFurniture."@en,
@@ -437,7 +437,7 @@ bldg:RoomElevationReferenceValue a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( bldg:BuildingInstallationUsageValue bldg:BuildingFurnitureUsageValue bldg:BuildingRoomUsageValue bldg:BuildingConstructiveElementUsageValue bldg:BuildingSubdivisionUsageValue bldg:BuildingUsageValue ) ] ;
+            owl:unionOf ( bldg:BuildingInstallationUsageValue bldg:BuildingRoomUsageValue bldg:BuildingUsageValue bldg:BuildingSubdivisionUsageValue bldg:BuildingFurnitureUsageValue bldg:BuildingConstructiveElementUsageValue ) ] ;
     skos:definition "Specifies the actual uses of the Building or BuildingPart."@en,
         "Specifies the actual uses of the BuildingConstructiveElement."@en,
         "Specifies the actual uses of the BuildingFurniture."@en,
@@ -519,7 +519,7 @@ bldg:AbstractBuilding a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( bldg:BuildingFurnitureClassValue bldg:BuildingInstallationClassValue bldg:BuildingClassValue bldg:BuildingSubdivisionClassValue bldg:BuildingConstructiveElementClassValue bldg:BuildingRoomClassValue ) ] ;
+            owl:unionOf ( bldg:BuildingRoomClassValue bldg:BuildingInstallationClassValue bldg:BuildingSubdivisionClassValue bldg:BuildingClassValue bldg:BuildingFurnitureClassValue bldg:BuildingConstructiveElementClassValue ) ] ;
     skos:definition "Indicates the specific type of the Building or BuildingPart."@en,
         "Indicates the specific type of the BuildingConstructiveElement."@en,
         "Indicates the specific type of the BuildingFurniture."@en,

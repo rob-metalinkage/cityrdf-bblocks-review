@@ -532,7 +532,7 @@ tran:TrafficDirectionValue a rdfs:Datatype ;
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( tran:AuxiliaryTrafficSpaceFunctionValue tran:TrackFunctionValue tran:TrafficAreaFunctionValue tran:RoadFunctionValue tran:SquareFunctionValue tran:TrafficSpaceFunctionValue tran:WaterwayFunctionValue tran:RailwayFunctionValue tran:AuxiliaryTrafficAreaFunctionValue ) ] ;
+            owl:unionOf ( tran:RailwayFunctionValue tran:TrafficSpaceFunctionValue tran:AuxiliaryTrafficAreaFunctionValue tran:AuxiliaryTrafficSpaceFunctionValue tran:TrackFunctionValue tran:SquareFunctionValue tran:WaterwayFunctionValue tran:RoadFunctionValue tran:TrafficAreaFunctionValue ) ] ;
     skos:definition "Specifies the intended purposes of the AuxiliaryTrafficArea."@en,
         "Specifies the intended purposes of the AuxiliaryTrafficSpace."@en,
         "Specifies the intended purposes of the Railway."@en,
@@ -545,7 +545,7 @@ tran:TrafficDirectionValue a rdfs:Datatype ;
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( tran:TrafficSpaceUsageValue tran:TrafficAreaUsageValue tran:TrackUsageValue tran:SquareUsageValue tran:WaterwayUsageValue tran:RailwayUsageValue tran:AuxiliaryTrafficAreaUsageValue tran:RoadUsageValue tran:AuxiliaryTrafficSpaceUsageValue ) ] ;
+            owl:unionOf ( tran:TrafficSpaceUsageValue tran:AuxiliaryTrafficAreaUsageValue tran:TrackUsageValue tran:WaterwayUsageValue tran:RailwayUsageValue tran:SquareUsageValue tran:AuxiliaryTrafficSpaceUsageValue tran:TrafficAreaUsageValue tran:RoadUsageValue ) ] ;
     skos:definition "Specifies the actual uses of the AuxiliaryTrafficArea."@en,
         "Specifies the actual uses of the AuxiliaryTrafficSpace."@en,
         "Specifies the actual uses of the Railway."@en,
@@ -633,7 +633,7 @@ tran:AbstractTransportationSpace a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( tran:AuxiliaryTrafficAreaClassValue tran:TrackClassValue tran:SectionClassValue tran:SquareClassValue tran:WaterwayClassValue tran:HoleClassValue tran:TrafficAreaClassValue tran:AuxiliaryTrafficSpaceClassValue tran:RoadClassValue tran:TrafficSpaceClassValue tran:MarkingClassValue tran:ClearanceSpaceClassValue tran:RailwayClassValue tran:IntersectionClassValue ) ] ;
+            owl:unionOf ( tran:AuxiliaryTrafficSpaceClassValue tran:TrafficAreaClassValue tran:SquareClassValue tran:MarkingClassValue tran:SectionClassValue tran:HoleClassValue tran:ClearanceSpaceClassValue tran:IntersectionClassValue tran:RoadClassValue tran:AuxiliaryTrafficAreaClassValue tran:TrafficSpaceClassValue tran:TrackClassValue tran:WaterwayClassValue tran:RailwayClassValue ) ] ;
     skos:definition "Indicates the specific type of the AuxiliaryTrafficArea."@en,
         "Indicates the specific type of the AuxiliaryTrafficSpace."@en,
         "Indicates the specific type of the ClearanceSpace."@en,

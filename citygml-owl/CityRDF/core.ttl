@@ -93,6 +93,11 @@ core:TransformationMatrix3x4 a owl:Class ;
     schema:domainIncludes core:AbstractFeature ;
     schema:rangeIncludes xsd:Name .
 
+<https://www.opengis.net/ont/citygml/common/volume> rdfs:label "volume"@en ;
+    skos:definition "Specifies qualified volumes related to the space."@en ;
+    schema:domainIncludes core:AbstractSpace ;
+    schema:rangeIncludes core:QualifiedVolume .
+
 core:DoubleBetween0and1List a owl:Class ;
     rdfs:label "DoubleBetween0and1List"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -114,12 +119,6 @@ core:DoubleOrNilReasonList a owl:Class ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/list> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "DoubleOrNilReasonList is a basic type that represents a list of double values and/or nil reasons."@en .
-
-core:area a owl:DatatypeProperty ;
-    rdfs:label "area"@en ;
-    rdfs:domain core:QualifiedArea ;
-    rdfs:range sc:Measure ;
-    skos:definition "Specifies the value of the QualifiedArea."@en .
 
 core:cityModelMember a owl:ObjectProperty ;
     rdfs:label "cityModelMember"@en ;
@@ -145,29 +144,24 @@ core:generalizesTo a owl:ObjectProperty ;
     rdfs:range core:AbstractCityObject ;
     skos:definition "Relates generalized representations of the same real-world object in different Levels of Detail to the city object. The direction of this relation is from the city object to the corresponding generalized city objects."@en .
 
-core:list a owl:DatatypeProperty ;
-    rdfs:label "list"@en ;
-    rdfs:domain core:DoubleList ;
-    rdfs:range xsd:double ;
-    skos:definition "Specifies the list of double values."@en .
-
 core:relationType a owl:DatatypeProperty ;
     rdfs:label "relationType"@en ;
     rdfs:domain core:ExternalReference ;
     rdfs:range xsd:anyURI ;
     skos:definition "Specifies a URI that additionally qualifies the ExternalReference. The URI can point to a definition from an external ontology (e.g. the sameAs relation from OWL) and allows for mapping the ExternalReference to RDF triples."@en .
 
-core:volume a owl:DatatypeProperty ;
-    rdfs:label "volume"@en ;
-    rdfs:domain core:QualifiedVolume ;
-    rdfs:range sc:Measure ;
-    skos:definition "Specifies the value of the QualifiedVolume."@en .
-
 <https://www.opengis.net/ont/citygml/common/appearance> skos:definition "Relates appearances to the ImplicitGeometry."@en,
         "Relates appearances to the city object."@en ;
     schema:domainIncludes core:AbstractCityObject,
         core:ImplicitGeometry ;
     schema:rangeIncludes core:AbstractAppearance .
+
+<https://www.opengis.net/ont/citygml/common/area> rdfs:label "area"@en ;
+    skos:definition "Specifies qualified areas related to the space."@en,
+        "Specifies qualified areas related to the thematic surface."@en ;
+    schema:domainIncludes core:AbstractSpace,
+        core:AbstractThematicSurface ;
+    schema:rangeIncludes core:QualifiedArea .
 
 <https://www.opengis.net/ont/citygml/common/description> rdfs:label "description"@en ;
     skos:definition "Provides further information on the feature."@en ;
@@ -188,11 +182,6 @@ core:volume a owl:DatatypeProperty ;
 <https://www.opengis.net/ont/citygml/common/referencePoint> skos:definition "Relates to a 3D Point geometry that represents the base point of the object in the world coordinate system."@en ;
     schema:domainIncludes core:ImplicitGeometry ;
     schema:rangeIncludes gmlowl:Point .
-
-<https://www.opengis.net/ont/citygml/common/volume> rdfs:label "volume"@en ;
-    skos:definition "Specifies qualified volumes related to the space."@en ;
-    schema:domainIncludes core:AbstractSpace ;
-    schema:rangeIncludes core:QualifiedVolume .
 
 core:AbstractDynamizer a owl:Class ;
     rdfs:label "AbstractDynamizer"@en ;
@@ -222,17 +211,23 @@ core:Address a owl:Class ;
 core:CityModel a owl:Class ;
     rdfs:label "CityModel"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom iso19111-2019:EngineeringCRS ;
-            owl:onProperty core:engineeringCRS ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass iso19111-2019:EngineeringCRS ;
             owl:onProperty core:engineeringCRS ],
         [ a owl:Restriction ;
             owl:allValuesFrom core:CityModelMember ;
             owl:onProperty core:cityModelMember ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom iso19111-2019:EngineeringCRS ;
+            owl:onProperty core:engineeringCRS ],
         core:AbstractFeatureWithLifespan ;
     skos:definition "CityModel is the container for all objects belonging to a city model."@en .
+
+core:area a owl:DatatypeProperty ;
+    rdfs:label "area"@en ;
+    rdfs:domain core:QualifiedArea ;
+    rdfs:range sc:Measure ;
+    skos:definition "Specifies the value of the QualifiedArea."@en .
 
 core:engineeringCRS a owl:ObjectProperty ;
     rdfs:label "engineeringCRS"@en ;
@@ -269,6 +264,12 @@ core:libraryObject a owl:DatatypeProperty ;
     rdfs:domain core:ImplicitGeometry ;
     rdfs:range xsd:anyURI ;
     skos:definition "Specifies the URI that points to the prototypical geometry stored in an external file."@en .
+
+core:list a owl:DatatypeProperty ;
+    rdfs:label "list"@en ;
+    rdfs:domain core:DoubleList ;
+    rdfs:range xsd:double ;
+    skos:definition "Specifies the list of double values."@en .
 
 core:lod0Point a owl:ObjectProperty ;
     rdfs:label "lod0Point"@en ;
@@ -429,18 +430,17 @@ core:typeOfVolume a owl:ObjectProperty ;
     rdfs:range core:QualifiedVolumeTypeValue ;
     skos:definition "Indicates the specific type of the QualifiedVolume."@en .
 
+core:volume a owl:DatatypeProperty ;
+    rdfs:label "volume"@en ;
+    rdfs:domain core:QualifiedVolume ;
+    rdfs:range sc:Measure ;
+    skos:definition "Specifies the value of the QualifiedVolume."@en .
+
 core:xalAddress a owl:ObjectProperty ;
     rdfs:label "xalAddress"@en ;
     rdfs:domain core:Address ;
     rdfs:range core:XALAddress ;
     skos:definition "Relates an OASIS address object to the Address."@en .
-
-<https://www.opengis.net/ont/citygml/common/area> rdfs:label "area"@en ;
-    skos:definition "Specifies qualified areas related to the space."@en,
-        "Specifies qualified areas related to the thematic surface."@en ;
-    schema:domainIncludes core:AbstractSpace,
-        core:AbstractThematicSurface ;
-    schema:rangeIncludes core:QualifiedArea .
 
 <https://www.opengis.net/ont/citygml/common/relatedTo> skos:definition "Relates other city objects to the city object. It also describes how the city objects are related to each other."@en ;
     schema:domainIncludes core:AbstractCityObject,
@@ -617,6 +617,14 @@ core:uRI a owl:DatatypeProperty ;
     rdfs:range xsd:anyURI ;
     skos:definition "Specifies a URI that points to a resource that describes the nil reason."@en .
 
+<https://www.opengis.net/ont/citygml/common/list> rdfs:label "list"@en ;
+    skos:definition "Specifies the list of double values and/or nil reasons."@en,
+        "Specifies the list of double values."@en ;
+    schema:domainIncludes core:DoubleBetween0and1List,
+        core:DoubleOrNilReasonList ;
+    schema:rangeIncludes core:DoubleBetween0and1,
+        core:DoubleOrNilReason .
+
 <https://www.opengis.net/ont/citygml/common/lod0MultiCurve> skos:definition "Relates to a 3D MultiCurve geometry that represents the space in Level of Detail 0."@en,
         "Relates to a 3D MultiCurve geometry that represents the thematic surface in Level of Detail 0."@en ;
     schema:domainIncludes core:AbstractSpace,
@@ -651,7 +659,7 @@ core:DoubleList a owl:Class ;
     rdfs:label "DoubleList"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/list> ],
+            owl:onProperty core:list ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:double ;
             owl:onProperty core:list ;
@@ -673,16 +681,8 @@ core:QualifiedVolume a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom sc:Measure ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/volume> ] ;
+            owl:onProperty core:volume ] ;
     skos:definition "QualifiedVolume is an application-dependent measure of the volume of a space."@en .
-
-<https://www.opengis.net/ont/citygml/common/list> rdfs:label "list"@en ;
-    skos:definition "Specifies the list of double values and/or nil reasons."@en,
-        "Specifies the list of double values."@en ;
-    schema:domainIncludes core:DoubleBetween0and1List,
-        core:DoubleOrNilReasonList ;
-    schema:rangeIncludes core:DoubleBetween0and1,
-        core:DoubleOrNilReason .
 
 core:AbstractPointCloud a owl:Class ;
     rdfs:label "AbstractPointCloud"@en ;
@@ -795,7 +795,7 @@ core:QualifiedArea a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:allValuesFrom sc:Measure ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/area> ],
+            owl:onProperty core:area ],
         [ a owl:Restriction ;
             owl:onDataRange sc:Measure ;
             owl:onProperty core:area ;

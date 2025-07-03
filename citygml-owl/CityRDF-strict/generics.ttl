@@ -204,12 +204,6 @@ gen:UriAttribute a owl:Class ;
         core:AbstractGenericAttribute ;
     skos:definition "UriAttribute is a data type used to define generic attributes of type \"URI\"."@en .
 
-gen:value a owl:ObjectProperty ;
-    rdfs:label "value"@en ;
-    rdfs:domain gen:CodeAttribute ;
-    rdfs:range iso19136-bt:Code ;
-    skos:definition "Specifies the \"Code\" value."@en .
-
 gen:CodeAttribute a owl:Class ;
     rdfs:label "CodeAttribute"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -304,6 +298,12 @@ gen:codeSpace a owl:DatatypeProperty ;
     rdfs:range xsd:anyURI ;
     skos:definition "Associates the GenericAttributeSet with an authority that maintains the collection of generic attributes."@en .
 
+gen:value a owl:ObjectProperty ;
+    rdfs:label "value"@en ;
+    rdfs:domain gen:CodeAttribute ;
+    rdfs:range iso19136-bt:Code ;
+    skos:definition "Specifies the \"Code\" value."@en .
+
 gen:GenericLogicalSpaceClassValue a owl:Class ;
     rdfs:label "GenericLogicalSpaceClassValue"@en ;
     rdfs:subClassOf skos:Concept ;
@@ -326,7 +326,7 @@ gen:GenericUnoccupiedSpaceClassValue a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( gen:GenericOccupiedSpaceFunctionValue gen:GenericThematicSurfaceFunctionValue gen:GenericUnoccupiedSpaceFunctionValue gen:GenericLogicalSpaceFunctionValue ) ] ;
+            owl:unionOf ( gen:GenericOccupiedSpaceFunctionValue gen:GenericLogicalSpaceFunctionValue gen:GenericThematicSurfaceFunctionValue gen:GenericUnoccupiedSpaceFunctionValue ) ] ;
     skos:definition "Specifies the intended purposes of the GenericLogicalSpace."@en,
         "Specifies the intended purposes of the GenericOccupiedSpace."@en,
         "Specifies the intended purposes of the GenericThematicSurface."@en,
@@ -334,7 +334,7 @@ gen:GenericUnoccupiedSpaceClassValue a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( gen:GenericLogicalSpaceUsageValue gen:GenericThematicSurfaceUsageValue gen:GenericOccupiedSpaceUsageValue gen:GenericUnoccupiedSpaceUsageValue ) ] ;
+            owl:unionOf ( gen:GenericOccupiedSpaceUsageValue gen:GenericThematicSurfaceUsageValue gen:GenericLogicalSpaceUsageValue gen:GenericUnoccupiedSpaceUsageValue ) ] ;
     skos:definition "Specifies the actual uses of the GenericLogicalSpace."@en,
         "Specifies the actual uses of the GenericOccupiedSpace."@en,
         "Specifies the actual uses of the GenericThematicSurface."@en,
@@ -342,7 +342,7 @@ gen:GenericUnoccupiedSpaceClassValue a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( gen:GenericOccupiedSpaceClassValue gen:GenericLogicalSpaceClassValue gen:GenericThematicSurfaceClassValue gen:GenericUnoccupiedSpaceClassValue ) ] ;
+            owl:unionOf ( gen:GenericOccupiedSpaceClassValue gen:GenericUnoccupiedSpaceClassValue gen:GenericThematicSurfaceClassValue gen:GenericLogicalSpaceClassValue ) ] ;
     skos:definition "Indicates the specific type of the GenericLogicalSpace."@en,
         "Indicates the specific type of the GenericOccupiedSpace."@en,
         "Indicates the specific type of the GenericThematicSurface."@en,
@@ -350,7 +350,7 @@ gen:GenericUnoccupiedSpaceClassValue a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/value> rdfs:label "value"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( xsd:string xsd:integer xsd:date xsd:anyURI xsd:double sc:Measure ) ] ;
+            owl:unionOf ( xsd:date xsd:anyURI xsd:string xsd:double sc:Measure xsd:integer ) ] ;
     skos:definition "Specifies the \"Date\" value."@en,
         "Specifies the \"Double\" value."@en,
         "Specifies the \"Integer\" value."@en,

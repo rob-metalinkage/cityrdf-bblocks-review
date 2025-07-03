@@ -82,14 +82,14 @@ wksp:Scenario a owl:Class ;
 wksp:Space a owl:Class ;
     rdfs:label "Space"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass wksp:Scenario ;
+            owl:onProperty wksp:scenarioMember ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty wksp:creator ],
         [ a owl:Restriction ;
             owl:allValuesFrom wksp:Scenario ;
-            owl:onProperty wksp:scenarioMember ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass wksp:Scenario ;
             owl:onProperty wksp:scenarioMember ],
         core:AbstractFeatureWithLifespan .
 

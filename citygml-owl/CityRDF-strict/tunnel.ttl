@@ -249,7 +249,7 @@ tun:AbstractTunnel a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( tun:TunnelConstructiveElementFunctionValue tun:TunnelInstallationFunctionValue tun:TunnelFunctionValue tun:TunnelFurnitureFunctionValue tun:HollowSpaceFunctionValue ) ] ;
+            owl:unionOf ( tun:TunnelFunctionValue tun:TunnelConstructiveElementFunctionValue tun:TunnelInstallationFunctionValue tun:HollowSpaceFunctionValue tun:TunnelFurnitureFunctionValue ) ] ;
     skos:definition "Specifies the intended purposes of the HollowSpace."@en,
         "Specifies the intended purposes of the Tunnel or TunnelPart."@en,
         "Specifies the intended purposes of the TunnelConstructiveElement."@en,
@@ -258,7 +258,7 @@ tun:AbstractTunnel a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( tun:TunnelInstallationUsageValue tun:TunnelConstructiveElementUsageValue tun:HollowSpaceUsageValue tun:TunnelFurnitureUsageValue tun:TunnelUsageValue ) ] ;
+            owl:unionOf ( tun:TunnelConstructiveElementUsageValue tun:HollowSpaceUsageValue tun:TunnelFurnitureUsageValue tun:TunnelUsageValue tun:TunnelInstallationUsageValue ) ] ;
     skos:definition "Specifies the actual uses of the HollowSpace."@en,
         "Specifies the actual uses of the Tunnel or TunnelPart."@en,
         "Specifies the actual uses of the TunnelConstructiveElement."@en,
@@ -267,7 +267,7 @@ tun:AbstractTunnel a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( tun:HollowSpaceClassValue tun:TunnelFurnitureClassValue tun:TunnelClassValue tun:TunnelConstructiveElementClassValue tun:TunnelInstallationClassValue ) ] ;
+            owl:unionOf ( tun:TunnelClassValue tun:TunnelInstallationClassValue tun:HollowSpaceClassValue tun:TunnelFurnitureClassValue tun:TunnelConstructiveElementClassValue ) ] ;
     skos:definition "Indicates the specific type of the HollowSpace."@en,
         "Indicates the specific type of the Tunnel or TunnelPart."@en,
         "Indicates the specific type of the TunnelConstructiveElement."@en,

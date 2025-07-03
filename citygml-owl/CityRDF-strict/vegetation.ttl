@@ -20,7 +20,7 @@
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( veg:SolitaryVegetationObjectFunctionValue veg:PlantCoverFunctionValue ) ] ;
+            owl:unionOf ( veg:PlantCoverFunctionValue veg:SolitaryVegetationObjectFunctionValue ) ] ;
     skos:definition "Specifies the intended purposes of the PlantCover."@en,
         "Specifies the intended purposes of the SolitaryVegetationObject."@en .
 
@@ -117,6 +117,19 @@ veg:PlantCover a owl:Class ;
             owl:onDataRange sc:Measure ;
             owl:onProperty veg:minHeight ],
         [ a owl:Restriction ;
+            owl:allValuesFrom veg:PlantCoverClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom veg:PlantCoverFunctionValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/function> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange sc:Measure ;
+            owl:onProperty veg:averageHeight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sc:Measure ;
+            owl:onProperty veg:maxHeight ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass veg:PlantCoverClassValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
@@ -133,19 +146,6 @@ veg:PlantCover a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom sc:Measure ;
             owl:onProperty veg:averageHeight ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom veg:PlantCoverClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom veg:PlantCoverFunctionValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/function> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange sc:Measure ;
-            owl:onProperty veg:averageHeight ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sc:Measure ;
-            owl:onProperty veg:maxHeight ],
         veg:AbstractVegetationObject ;
     skos:definition "A PlantCover represents a space covered by vegetation."@en .
 
@@ -166,7 +166,7 @@ veg:SpeciesValue a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( veg:PlantCoverClassValue veg:SolitaryVegetationObjectClassValue ) ] ;
+            owl:unionOf ( veg:SolitaryVegetationObjectClassValue veg:PlantCoverClassValue ) ] ;
     skos:definition "Indicates the specific type of the PlantCover."@en,
         "Indicates the specific type of the SolitaryVegetationObject."@en .
 

@@ -351,14 +351,14 @@ con:relationToConstruction a owl:DatatypeProperty ;
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( con:OtherConstructionFunctionValue con:WindowFunctionValue con:DoorFunctionValue ) ] ;
+            owl:unionOf ( con:DoorFunctionValue con:WindowFunctionValue con:OtherConstructionFunctionValue ) ] ;
     skos:definition "Specifies the intended purposes of the Door."@en,
         "Specifies the intended purposes of the OtherConstruction."@en,
         "Specifies the intended purposes of the Window."@en .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( con:OtherConstructionUsageValue con:WindowUsageValue con:DoorUsageValue ) ] ;
+            owl:unionOf ( con:OtherConstructionUsageValue con:DoorUsageValue con:WindowUsageValue ) ] ;
     skos:definition "Specifies the actual uses of the Door."@en,
         "Specifies the actual uses of the OtherConstruction."@en,
         "Specifies the actual uses of the Window."@en .
@@ -457,7 +457,7 @@ con:Elevation a owl:Class ;
     skos:definition "Elevation is a data type that includes the elevation value itself and information on how this elevation was measured. [cf. INSPIRE]"@en .
 
 <https://www.opengis.net/ont/citygml/common/boundary> rdfs:range [ a owl:Class ;
-            owl:unionOf ( con:DoorSurface con:WindowSurface core:AbstractThematicSurface ) ] ;
+            owl:unionOf ( con:DoorSurface core:AbstractThematicSurface con:WindowSurface ) ] ;
     skos:definition "Relates to the door surfaces that bound the Door. This relation is inherited from the Core module."@en,
         "Relates to the surfaces that bound the construction. This relation is inherited from the Core module."@en,
         "Relates to the surfaces that bound the constructive element. This relation is inherited from the Core module."@en,
@@ -466,7 +466,7 @@ con:Elevation a owl:Class ;
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( con:DoorClassValue con:WindowClassValue con:OtherConstructionClassValue ) ] ;
+            owl:unionOf ( con:OtherConstructionClassValue con:WindowClassValue con:DoorClassValue ) ] ;
     skos:definition "Indicates the specific type of the Door."@en,
         "Indicates the specific type of the OtherConstruction."@en,
         "Indicates the specific type of the Window."@en .
