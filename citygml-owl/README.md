@@ -362,7 +362,7 @@ The results are stored in the folder `/CityRDF-optimal`.
 
 ### Post-processing
 
-There was detected a case when in a majority of occurences some reusable property is defined in `common` package as, e.g., owl:ObjectProperty, but in one package an owl:DatatypeProperty property exists with the same name, or vica verse. To overcome this, we do post-processing (SPARQL queries #14-#15)[(./scripts/update-triples.sh)], ensuring that package level attribute with the same name is used when required. E.g., we have 
+There was detected a case when in a majority of occurences some reusable property is defined in `common` package as, e.g., owl:ObjectProperty, but in one package an owl:DatatypeProperty property exists with the same name, or vica verse. To overcome this, we do post-processing (SPARQL queries #14-#15)[./scripts/update-triples.sh], ensuring that package level attribute with the same name is used when required. E.g., we have 
 
 ```turtle
 common:list  rdf:type owl:ObjectProperty; rdfs:label "list"@en .
@@ -387,6 +387,7 @@ core:DoubleList a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "DoubleList is an ordered sequence of double values."@en .
 ```
+Here usage of `common:list` is wrong because it is the owl:ObjectProperty. 
 This post-processing step ensures that in axioms the locally defined property is used.
 
 ```turtle
