@@ -112,7 +112,7 @@
   "name": "Building Blocks - CityGML Profiles",
   "abstract": "This repository is for the development, testing and publication of CityGML profiles.\n\nBuilding blocks represent different levels of abstraction, from conceptual to  implementation modules to individuals Feature Types, and ways of combining these.\n",
   "description": "TBD\n",
-  "modified": "2025-07-18T05:37:18.588800",
+  "modified": "2025-07-18T06:24:16.960753",
   "tooling": {
     "bblocks-postprocess": {
       "commitId": "\"562cb4d09d8e02b0438ef0cae7481e61c4910c0b",
@@ -256,8 +256,8 @@
       "maturity": "development",
       "scope": "unstable",
       "dependsOn": [
-        "ogc.geo.citygml.common",
-        "ogc.geo.citygml.construction"
+        "ogc.geo.citygml.construction",
+        "ogc.geo.citygml.common"
       ],
       "tags": [
         "feature",
@@ -309,8 +309,8 @@
       "maturity": "development",
       "scope": "unstable",
       "dependsOn": [
-        "ogc.geo.citygml.common",
-        "ogc.geo.citygml.construction"
+        "ogc.geo.citygml.construction",
+        "ogc.geo.citygml.common"
       ],
       "tags": [
         "feature",
@@ -1146,8 +1146,8 @@
       "maturity": "development",
       "scope": "unstable",
       "dependsOn": [
-        "ogc.geo.citygml.common",
-        "ogc.geo.citygml.construction"
+        "ogc.geo.citygml.construction",
+        "ogc.geo.citygml.common"
       ],
       "tags": [
         "feature",
@@ -1200,24 +1200,24 @@
       "scope": "unstable",
       "dependsOn": [
         "ogc.geo.citygml.relief",
-        "ogc.geo.citygml.construction",
-        "ogc.geo.citygml.transportation",
-        "ogc.geo.citygml.waterbody",
-        "ogc.geo.citygml.workspace",
-        "ogc.geo.citygml.dynamizer",
-        "ogc.geo.citygml.appearance",
-        "ogc.geo.citygml.document",
-        "ogc.geo.citygml.generics",
-        "ogc.geo.citygml.vegetation",
-        "ogc.geo.citygml.pointcloud",
         "ogc.geo.citygml.landuse",
+        "ogc.geo.citygml.transportation",
+        "ogc.geo.citygml.document",
+        "ogc.geo.citygml.building",
+        "ogc.geo.citygml.generics",
         "ogc.geo.citygml.common",
-        "ogc.geo.citygml.tunnel",
         "ogc.geo.citygml.versioning",
         "ogc.geo.citygml.cityfurniture",
-        "ogc.geo.citygml.bridge",
-        "ogc.geo.citygml.building",
-        "ogc.geo.citygml.cityobjectgroup"
+        "ogc.geo.citygml.dynamizer",
+        "ogc.geo.citygml.appearance",
+        "ogc.geo.citygml.pointcloud",
+        "ogc.geo.citygml.waterbody",
+        "ogc.geo.citygml.vegetation",
+        "ogc.geo.citygml.construction",
+        "ogc.geo.citygml.tunnel",
+        "ogc.geo.citygml.cityobjectgroup",
+        "ogc.geo.citygml.workspace",
+        "ogc.geo.citygml.bridge"
       ],
       "tags": [
         "feature",
@@ -1269,23 +1269,23 @@
       "maturity": "development",
       "scope": "unstable",
       "dependsOn": [
-        "ogc.geo.citygml.generics",
-        "ogc.geo.citygml.relief",
         "ogc.geo.citygml.transportation",
-        "ogc.geo.citygml.waterbody",
-        "ogc.geo.citygml.cityfurniture",
-        "ogc.geo.citygml.vegetation",
-        "ogc.geo.citygml.dynamizer",
-        "ogc.geo.citygml.bridge",
-        "ogc.geo.citygml.workspace",
-        "ogc.geo.citygml.appearance",
-        "ogc.geo.citygml.landuse",
-        "ogc.geo.citygml.common",
+        "ogc.geo.citygml.relief",
         "ogc.geo.citygml.construction",
-        "ogc.geo.citygml.document",
         "ogc.geo.citygml.tunnel",
+        "ogc.geo.citygml.document",
+        "ogc.geo.citygml.appearance",
+        "ogc.geo.citygml.dynamizer",
+        "ogc.geo.citygml.landuse",
         "ogc.geo.citygml.building",
-        "ogc.geo.citygml.cityobjectgroup"
+        "ogc.geo.citygml.generics",
+        "ogc.geo.citygml.vegetation",
+        "ogc.geo.citygml.common",
+        "ogc.geo.citygml.cityobjectgroup",
+        "ogc.geo.citygml.workspace",
+        "ogc.geo.citygml.bridge",
+        "ogc.geo.citygml.cityfurniture",
+        "ogc.geo.citygml.waterbody"
       ],
       "tags": [
         "feature",
