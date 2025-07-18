@@ -16,19 +16,19 @@
     skos:definition "The LandUse module supports representation of areas of the earth’s surface dedicated to a specific land use."@en .
 
 <https://www.opengis.net/ont/citygml/common/function> rdfs:label "function"@en ;
-    rdfs:range luse:LandUseFunctionValue ;
     skos:definition "Specifies the intended purposes of the LandUse."@en ;
-    schema:domainIncludes luse:LandUse .
+    schema:domainIncludes luse:LandUse ;
+    schema:rangeIncludes luse:LandUseFunctionValue .
 
 <https://www.opengis.net/ont/citygml/common/usage> rdfs:label "usage"@en ;
-    rdfs:range luse:LandUseUsageValue ;
     skos:definition "Specifies the actual uses of the LandUse."@en ;
-    schema:domainIncludes luse:LandUse .
+    schema:domainIncludes luse:LandUse ;
+    schema:rangeIncludes luse:LandUseUsageValue .
 
 <https://www.opengis.net/ont/citygml/common/class> rdfs:label "class"@en ;
-    rdfs:range luse:LandUseClassValue ;
     skos:definition "Indicates the specific type of the LandUse."@en ;
-    schema:domainIncludes luse:LandUse .
+    schema:domainIncludes luse:LandUse ;
+    schema:rangeIncludes luse:LandUseClassValue .
 
 luse:LandUseFunctionValue a owl:Class ;
     rdfs:label "LandUseFunctionValue"@en ;
