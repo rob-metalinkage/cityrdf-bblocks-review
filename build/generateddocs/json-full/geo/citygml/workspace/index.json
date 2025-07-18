@@ -9,7 +9,7 @@
   "itemClass": "schema",
   "register": "citygml",
   "version": "3.0.0",
-  "dateOfLastChange": "2025-06-26",
+  "dateOfLastChange": "2025-07-18",
   "sources": [
     {
       "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -19,8 +19,8 @@
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.citygml.versioning",
-    "ogc.geo.citygml.common"
+    "ogc.geo.citygml.common",
+    "ogc.geo.citygml.versioning"
   ],
   "tags": [
     "feature",

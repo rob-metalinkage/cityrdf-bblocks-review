@@ -112,12 +112,12 @@
   "name": "Building Blocks - CityGML Profiles",
   "abstract": "This repository is for the development, testing and publication of CityGML profiles.\n\nBuilding blocks represent different levels of abstraction, from conceptual to  implementation modules to individuals Feature Types, and ways of combining these.\n",
   "description": "TBD\n",
-  "modified": "2025-06-26T07:36:11.229551",
+  "modified": "2025-07-18T05:37:18.588800",
   "tooling": {
     "bblocks-postprocess": {
-      "commitId": "\"fefb79b13766e7c935eb926409c3e6816b4f7593",
-      "shortCommitId": "\"fefb79",
-      "date": "2025-06-04T13:13:08+00:00\""
+      "commitId": "\"562cb4d09d8e02b0438ef0cae7481e61c4910c0b",
+      "shortCommitId": "\"562cb4",
+      "date": "2025-07-16T11:05:23+00:00\""
     }
   },
   "gitRepository": "https://github.com/rob-metalinkage/cityrdf-bblocks-review",
@@ -128,6 +128,7 @@
   "imports": [
     "https://opengeospatial.github.io/bblocks/register.json"
   ],
+  "remoteCacheDir": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/annotated/_cache",
   "@type": [
     "skos:ConceptScheme",
     "dcat:Catalog"
@@ -143,7 +144,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -165,13 +166,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/common/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/common/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/common/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -193,7 +194,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -217,17 +218,123 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/appearance/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/appearance/index.json"
         },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/appearance/index.md"
+        },
         "bblocks-viewer": {
           "mediatype": "text/html",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.appearance"
+        }
+      },
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset"
+      ]
+    },
+    {
+      "itemIdentifier": "ogc.geo.citygml.bridge",
+      "name": "CityGML Bridge module",
+      "abstract": "The Bridge module supports representation of thematic and spatial aspects of bridges, bridge parts, bridge installations, and interior bridge structures.",
+      "status": "under-development",
+      "dateTimeAddition": "2023-05-19T00:00:00Z",
+      "itemClass": "schema",
+      "register": "citygml",
+      "version": "3.0.0",
+      "dateOfLastChange": "2025-07-18",
+      "sources": [
+        {
+          "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
+          "link": "https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7"
+        }
+      ],
+      "maturity": "development",
+      "scope": "unstable",
+      "dependsOn": [
+        "ogc.geo.citygml.common",
+        "ogc.geo.citygml.construction"
+      ],
+      "tags": [
+        "feature",
+        "examples"
+      ],
+      "group": "Implementations",
+      "highlighted": true,
+      "shaclRules": {},
+      "ontology": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/annotated/geo/citygml/bridge/ontology.ttl",
+      "sourceFiles": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/_sources/bridge/",
+      "rdfData": [],
+      "validationPassed": true,
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/bridge/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/bridge/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.bridge"
+        }
+      },
+      "@type": [
+        "bblocks:Schema",
+        "skos:Concept",
+        "dcat:Dataset"
+      ]
+    },
+    {
+      "itemIdentifier": "ogc.geo.citygml.building",
+      "name": "CityGML Building module",
+      "abstract": "The Building module supports representation of thematic and spatial aspects of buildings, building parts, building installations, building subdivisions, and interior building structures.",
+      "status": "under-development",
+      "dateTimeAddition": "2023-05-19T00:00:00Z",
+      "itemClass": "schema",
+      "register": "citygml",
+      "version": "3.0.0",
+      "dateOfLastChange": "2025-07-18",
+      "sources": [
+        {
+          "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
+          "link": "https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7"
+        }
+      ],
+      "maturity": "development",
+      "scope": "unstable",
+      "dependsOn": [
+        "ogc.geo.citygml.common",
+        "ogc.geo.citygml.construction"
+      ],
+      "tags": [
+        "feature",
+        "examples"
+      ],
+      "group": "Implementations",
+      "highlighted": true,
+      "shaclRules": {},
+      "ontology": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/annotated/geo/citygml/building/ontology.ttl",
+      "sourceFiles": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/_sources/building/",
+      "rdfData": [],
+      "validationPassed": true,
+      "documentation": {
+        "json-full": {
+          "mediatype": "application/json",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/building/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/building/index.md"
+        },
+        "bblocks-viewer": {
+          "mediatype": "text/html",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.building"
         }
       },
       "@type": [
@@ -245,7 +352,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -269,13 +376,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/cityfurniture/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/cityfurniture/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/cityfurniture/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -297,7 +404,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -321,13 +428,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/cityobjectgroup/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/cityobjectgroup/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/cityobjectgroup/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -349,7 +456,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -373,13 +480,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/document/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/document/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/document/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -401,7 +508,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -425,13 +532,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/dynamizer/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/dynamizer/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/dynamizer/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -453,7 +560,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -477,13 +584,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/generics/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/generics/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/generics/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -505,7 +612,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -529,13 +636,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/landuse/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/landuse/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/landuse/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -557,7 +664,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -581,13 +688,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/pointcloud/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/pointcloud/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/pointcloud/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -609,7 +716,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -633,13 +740,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/relief/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/relief/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/relief/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -661,7 +768,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -685,70 +792,17 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/transportation/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/transportation/index.json"
         },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/transportation/index.md"
+        },
         "bblocks-viewer": {
           "mediatype": "text/html",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.transportation"
-        }
-      },
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset"
-      ]
-    },
-    {
-      "itemIdentifier": "ogc.geo.citygml.tunnel",
-      "name": "CityGML Tunnel module",
-      "abstract": "The Tunnel module supports representation of thematic and spatial aspects of tunnels, tunnel parts, tunnel installations, and interior tunnel structures.",
-      "status": "under-development",
-      "dateTimeAddition": "2023-05-19T00:00:00Z",
-      "itemClass": "schema",
-      "register": "citygml",
-      "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
-      "sources": [
-        {
-          "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
-          "link": "https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7"
-        }
-      ],
-      "maturity": "development",
-      "scope": "unstable",
-      "dependsOn": [
-        "ogc.geo.citygml.construction",
-        "ogc.geo.citygml.common"
-      ],
-      "tags": [
-        "feature",
-        "examples"
-      ],
-      "group": "Implementations",
-      "highlighted": true,
-      "shaclRules": {},
-      "ontology": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/annotated/geo/citygml/tunnel/ontology.ttl",
-      "sourceFiles": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/_sources/tunnel/",
-      "rdfData": [],
-      "validationPassed": true,
-      "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/tunnel/index.md"
-        },
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/tunnel/index.json"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.tunnel"
         }
       },
       "@type": [
@@ -766,7 +820,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -790,13 +844,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/vegetation/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/vegetation/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/vegetation/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -818,7 +872,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -842,13 +896,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/versioning/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/versioning/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/versioning/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -870,7 +924,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -894,13 +948,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/waterbody/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/waterbody/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/waterbody/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -922,7 +976,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -932,10 +986,10 @@
       "maturity": "development",
       "scope": "unstable",
       "dependsOn": [
-        "ogc.geo.citygml.bridge",
-        "ogc.geo.citygml.building",
         "ogc.geo.citygml.tunnel",
-        "ogc.geo.citygml.common"
+        "ogc.geo.citygml.common",
+        "ogc.geo.citygml.bridge",
+        "ogc.geo.citygml.building"
       ],
       "tags": [
         "feature",
@@ -949,13 +1003,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/construction/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/construction/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/construction/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -977,7 +1031,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -1001,13 +1055,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/transactiontypevalues/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/transactiontypevalues/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/transactiontypevalues/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -1029,7 +1083,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -1039,8 +1093,8 @@
       "maturity": "development",
       "scope": "unstable",
       "dependsOn": [
-        "ogc.geo.citygml.versioning",
-        "ogc.geo.citygml.common"
+        "ogc.geo.citygml.common",
+        "ogc.geo.citygml.versioning"
       ],
       "tags": [
         "feature",
@@ -1054,13 +1108,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/workspace/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/workspace/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/workspace/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -1074,15 +1128,15 @@
       ]
     },
     {
-      "itemIdentifier": "ogc.geo.citygml.bridge",
-      "name": "CityGML Bridge module",
-      "abstract": "The Bridge module supports representation of thematic and spatial aspects of bridges, bridge parts, bridge installations, and interior bridge structures.",
+      "itemIdentifier": "ogc.geo.citygml.tunnel",
+      "name": "CityGML Tunnel module",
+      "abstract": "The Tunnel module supports representation of thematic and spatial aspects of tunnels, tunnel parts, tunnel installations, and interior tunnel structures.",
       "status": "under-development",
       "dateTimeAddition": "2023-05-19T00:00:00Z",
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -1092,8 +1146,8 @@
       "maturity": "development",
       "scope": "unstable",
       "dependsOn": [
-        "ogc.geo.citygml.construction",
-        "ogc.geo.citygml.common"
+        "ogc.geo.citygml.common",
+        "ogc.geo.citygml.construction"
       ],
       "tags": [
         "feature",
@@ -1102,75 +1156,22 @@
       "group": "Implementations",
       "highlighted": true,
       "shaclRules": {},
-      "ontology": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/annotated/geo/citygml/bridge/ontology.ttl",
-      "sourceFiles": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/_sources/bridge/",
+      "ontology": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/annotated/geo/citygml/tunnel/ontology.ttl",
+      "sourceFiles": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/_sources/tunnel/",
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/bridge/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/bridge/index.json"
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/tunnel/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/tunnel/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.bridge"
-        }
-      },
-      "@type": [
-        "bblocks:Schema",
-        "skos:Concept",
-        "dcat:Dataset"
-      ]
-    },
-    {
-      "itemIdentifier": "ogc.geo.citygml.building",
-      "name": "CityGML Building module",
-      "abstract": "The Building module supports representation of thematic and spatial aspects of buildings, building parts, building installations, building subdivisions, and interior building structures.",
-      "status": "under-development",
-      "dateTimeAddition": "2023-05-19T00:00:00Z",
-      "itemClass": "schema",
-      "register": "citygml",
-      "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
-      "sources": [
-        {
-          "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
-          "link": "https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7"
-        }
-      ],
-      "maturity": "development",
-      "scope": "unstable",
-      "dependsOn": [
-        "ogc.geo.citygml.construction",
-        "ogc.geo.citygml.common"
-      ],
-      "tags": [
-        "feature",
-        "examples"
-      ],
-      "group": "Implementations",
-      "highlighted": true,
-      "shaclRules": {},
-      "ontology": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/annotated/geo/citygml/building/ontology.ttl",
-      "sourceFiles": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/_sources/building/",
-      "rdfData": [],
-      "validationPassed": true,
-      "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/building/index.md"
-        },
-        "json-full": {
-          "mediatype": "application/json",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/building/index.json"
-        },
-        "bblocks-viewer": {
-          "mediatype": "text/html",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.building"
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.tunnel"
         }
       },
       "@type": [
@@ -1188,7 +1189,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -1198,25 +1199,25 @@
       "maturity": "development",
       "scope": "unstable",
       "dependsOn": [
-        "ogc.geo.citygml.workspace",
+        "ogc.geo.citygml.relief",
+        "ogc.geo.citygml.construction",
         "ogc.geo.citygml.transportation",
         "ogc.geo.citygml.waterbody",
-        "ogc.geo.citygml.building",
-        "ogc.geo.citygml.versioning",
-        "ogc.geo.citygml.generics",
-        "ogc.geo.citygml.construction",
-        "ogc.geo.citygml.vegetation",
+        "ogc.geo.citygml.workspace",
         "ogc.geo.citygml.dynamizer",
-        "ogc.geo.citygml.tunnel",
-        "ogc.geo.citygml.cityobjectgroup",
-        "ogc.geo.citygml.document",
-        "ogc.geo.citygml.cityfurniture",
         "ogc.geo.citygml.appearance",
-        "ogc.geo.citygml.bridge",
+        "ogc.geo.citygml.document",
+        "ogc.geo.citygml.generics",
+        "ogc.geo.citygml.vegetation",
         "ogc.geo.citygml.pointcloud",
         "ogc.geo.citygml.landuse",
         "ogc.geo.citygml.common",
-        "ogc.geo.citygml.relief"
+        "ogc.geo.citygml.tunnel",
+        "ogc.geo.citygml.versioning",
+        "ogc.geo.citygml.cityfurniture",
+        "ogc.geo.citygml.bridge",
+        "ogc.geo.citygml.building",
+        "ogc.geo.citygml.cityobjectgroup"
       ],
       "tags": [
         "feature",
@@ -1230,13 +1231,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/CityRDF/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/CityRDF/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/CityRDF/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -1258,7 +1259,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -1268,23 +1269,23 @@
       "maturity": "development",
       "scope": "unstable",
       "dependsOn": [
-        "ogc.geo.citygml.bridge",
-        "ogc.geo.citygml.building",
-        "ogc.geo.citygml.cityobjectgroup",
-        "ogc.geo.citygml.dynamizer",
-        "ogc.geo.citygml.workspace",
-        "ogc.geo.citygml.document",
-        "ogc.geo.citygml.landuse",
-        "ogc.geo.citygml.tunnel",
         "ogc.geo.citygml.generics",
+        "ogc.geo.citygml.relief",
         "ogc.geo.citygml.transportation",
+        "ogc.geo.citygml.waterbody",
         "ogc.geo.citygml.cityfurniture",
         "ogc.geo.citygml.vegetation",
-        "ogc.geo.citygml.construction",
+        "ogc.geo.citygml.dynamizer",
+        "ogc.geo.citygml.bridge",
+        "ogc.geo.citygml.workspace",
+        "ogc.geo.citygml.appearance",
+        "ogc.geo.citygml.landuse",
         "ogc.geo.citygml.common",
-        "ogc.geo.citygml.waterbody",
-        "ogc.geo.citygml.relief",
-        "ogc.geo.citygml.appearance"
+        "ogc.geo.citygml.construction",
+        "ogc.geo.citygml.document",
+        "ogc.geo.citygml.tunnel",
+        "ogc.geo.citygml.building",
+        "ogc.geo.citygml.cityobjectgroup"
       ],
       "tags": [
         "feature",
@@ -1298,13 +1299,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/core/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/core/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/core/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",
@@ -1326,7 +1327,7 @@
       "itemClass": "schema",
       "register": "citygml",
       "version": "3.0.0",
-      "dateOfLastChange": "2025-06-26",
+      "dateOfLastChange": "2025-07-18",
       "sources": [
         {
           "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
@@ -1336,8 +1337,8 @@
       "maturity": "development",
       "scope": "unstable",
       "dependsOn": [
-        "ogc.geo.citygml.core",
-        "ogc.geo.citygml.common"
+        "ogc.geo.citygml.common",
+        "ogc.geo.citygml.core"
       ],
       "tags": [
         "feature",
@@ -1351,13 +1352,13 @@
       "rdfData": [],
       "validationPassed": true,
       "documentation": {
-        "markdown": {
-          "mediatype": "text/markdown",
-          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/cityrdf-all/index.md"
-        },
         "json-full": {
           "mediatype": "application/json",
           "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/cityrdf-all/index.json"
+        },
+        "markdown": {
+          "mediatype": "text/markdown",
+          "url": "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/cityrdf-all/index.md"
         },
         "bblocks-viewer": {
           "mediatype": "text/html",

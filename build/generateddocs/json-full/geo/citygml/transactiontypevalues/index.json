@@ -9,7 +9,7 @@
   "itemClass": "schema",
   "register": "citygml",
   "version": "",
-  "dateOfLastChange": "2025-06-26",
+  "dateOfLastChange": "2025-07-18",
   "sources": [
     {
       "title": "OGC API - Features, Part 1, 7.16.2: Feature Response",
