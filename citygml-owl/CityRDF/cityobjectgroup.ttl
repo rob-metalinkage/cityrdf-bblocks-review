@@ -84,23 +84,23 @@ grp:Role a owl:Class ;
 grp:CityObjectGroup a owl:Class ;
     rdfs:label "CityObjectGroup"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom grp:CityObjectGroupClassValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom grp:Role ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/groupMember> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:AbstractCityObject ;
+            owl:onProperty grp:parent ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom grp:CityObjectGroupClassValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/class> ],
         [ a owl:Restriction ;
             owl:allValuesFrom grp:CityObjectGroupUsageValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/usage> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractCityObject ;
-            owl:onProperty grp:parent ],
-        [ a owl:Restriction ;
             owl:allValuesFrom grp:CityObjectGroupFunctionValue ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/function> ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:AbstractCityObject ;
+            owl:allValuesFrom core:AbstractCityObject ;
             owl:onProperty grp:parent ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;

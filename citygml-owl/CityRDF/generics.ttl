@@ -18,12 +18,6 @@
     owl:versionInfo "3.0.0" ;
     skos:definition "The Generics module supports application-specific extensions to the CityGML conceptual model. These extensions may be used to model and exchange additional attributes and features not covered by the predefined thematic classes of CityGML. Generic extensions shall only be used if appropriate thematic classes or attributes are not provided by any other CityGML module."@en .
 
-gen:value a owl:ObjectProperty ;
-    rdfs:label "value"@en ;
-    rdfs:domain gen:CodeAttribute ;
-    rdfs:range iso19136-bt:Code ;
-    skos:definition "Specifies the \"Code\" value."@en .
-
 <https://www.opengis.net/ont/citygml/common/genericAttribute> skos:definition "Relates to the generic attributes that are part of the GenericAttributeSet."@en ;
     schema:domainIncludes gen:GenericAttributeSet ;
     schema:rangeIncludes core:AbstractGenericAttribute .
@@ -207,21 +201,20 @@ gen:codeSpace a owl:DatatypeProperty ;
     rdfs:range xsd:anyURI ;
     skos:definition "Associates the GenericAttributeSet with an authority that maintains the collection of generic attributes."@en .
 
+gen:value a owl:ObjectProperty ;
+    rdfs:label "value"@en ;
+    rdfs:domain gen:CodeAttribute ;
+    rdfs:range iso19136-bt:Code ;
+    skos:definition "Specifies the \"Code\" value."@en .
+
 gen:GenericAttributeSet a owl:Class ;
     rdfs:label "GenericAttributeSet"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/name> ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/name> ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:allValuesFrom core:AbstractGenericAttribute ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/genericAttribute> ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:AbstractGenericAttribute ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/genericAttribute> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:AbstractGenericAttribute ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/genericAttribute> ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:anyURI ;
@@ -230,6 +223,13 @@ gen:GenericAttributeSet a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:anyURI ;
             owl:onProperty gen:codeSpace ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/name> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/name> ],
         core:AbstractGenericAttribute ;
     skos:definition "A GenericAttributeSet is a named collection of generic attributes."@en .
 

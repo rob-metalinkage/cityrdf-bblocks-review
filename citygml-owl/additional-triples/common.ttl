@@ -40,7 +40,7 @@ common:lod3MultiSurface  rdf:type owl:ObjectProperty; rdfs:label "lod3MultiSurfa
 common:lowReference  rdf:type owl:ObjectProperty; rdfs:label "lowReference"@en .
 common:mimeType rdf:type owl:ObjectProperty; rdfs:label "mimeType"@en.
 common:occupancy  rdf:type owl:ObjectProperty; rdfs:label "occupancy"@en .
-common:occupancy rdf:type owl:ObjectProperty; rdfs:label "occupancy"@en.
+
 common:pointCloud  rdf:type owl:ObjectProperty; rdfs:label "pointCloud"@en .
 common:referencePoint  rdf:type owl:ObjectProperty; rdfs:label "referencePoint"@en .
 common:referringTo  rdf:type owl:ObjectProperty; rdfs:label "referringTo"@en .

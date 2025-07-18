@@ -18,15 +18,13 @@
 
 wksp:ConcensusSpace a owl:Class ;
     rdfs:label "ConcensusSpace"@en ;
-    rdfs:subClassOf wksp:Space ;
-    owl:disjointWith wksp:PropositionSpace .
-
-<https://www.opengis.net/ont/citygml/common/versionMember> rdfs:domain wksp:Scenario ;
-    rdfs:range vers:Version .
+    rdfs:subClassOf wksp:Space .
 
 wksp:PropositionSpace a owl:Class ;
     rdfs:label "PropositionSpace"@en ;
     rdfs:subClassOf wksp:Space .
+
+<https://www.opengis.net/ont/citygml/common/versionMember> rdfs:range vers:Version .
 
 wksp:versionTransitionMember a owl:ObjectProperty ;
     rdfs:label "versionTransitionMember"@en ;
@@ -84,14 +82,14 @@ wksp:Scenario a owl:Class ;
 wksp:Space a owl:Class ;
     rdfs:label "Space"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass wksp:Scenario ;
+            owl:onProperty wksp:scenarioMember ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty wksp:creator ],
         [ a owl:Restriction ;
             owl:allValuesFrom wksp:Scenario ;
-            owl:onProperty wksp:scenarioMember ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass wksp:Scenario ;
             owl:onProperty wksp:scenarioMember ],
         core:AbstractFeatureWithLifespan .
 
