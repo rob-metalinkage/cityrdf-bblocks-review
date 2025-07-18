@@ -21,3 +21,9 @@ echo '=== optional stage 4 ==='
 ./refactor-strict.sh
 ./refactor-optimal.sh
 echo 'Done!'
+
+
+## TODO - add in building blocks creation
+#
+# cd ../..
+# ./citygml-owl/scripts/create_bblocks2.py "citygml-owl/CityRDF/*.ttl" --exclude "*cityrdf-all.ttl" "*core.ttl"

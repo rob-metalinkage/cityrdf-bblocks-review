@@ -16,7 +16,7 @@
   ],
   "maturity": "development",
   "scope": "unstable",
-  "dependsOn": ["ogc.geo.citygml.bridge", "ogc.geo.citygml.building", "ogc.geo.citygml.common", "ogc.geo.citygml.tunnel"],
+  "dependsOn": ["ogc.geo.citygml.common"],
   "tags": [
   "feature",
   "examples"

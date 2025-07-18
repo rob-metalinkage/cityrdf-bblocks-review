@@ -20,6 +20,14 @@
     owl:versionInfo "3.0.0" ;
     skos:definition "The Appearance module supports the modelling of the observable surface properties of CityGML features in the form of textures and material."@en .
 
+app:ParameterizedTexture a owl:Class ;
+    rdfs:label "ParameterizedTexture"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom app:TextureAssociation ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/textureParameterization> ],
+        app:AbstractTexture ;
+    skos:definition "A ParameterizedTexture is a texture that uses texture coordinates or a transformation matrix for parameterization."@en .
+
 app:surfaceData a owl:ObjectProperty ;
     rdfs:label "surfaceData"@en ;
     rdfs:domain app:Appearance ;
@@ -41,14 +49,6 @@ app:Appearance a owl:Class ;
         core:AbstractAppearance ;
     skos:definition "An Appearance is a collection of surface data, i.e. observable properties for surface geometry objects in the form of textures and material."@en .
 
-app:ParameterizedTexture a owl:Class ;
-    rdfs:label "ParameterizedTexture"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom app:TextureAssociation ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/textureParameterization> ],
-        app:AbstractTexture ;
-    skos:definition "A ParameterizedTexture is a texture that uses texture coordinates or a transformation matrix for parameterization."@en .
-
 app:TexCoordGen a owl:Class ;
     rdfs:label "TexCoordGen"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -66,8 +66,26 @@ app:TexCoordGen a owl:Class ;
             owl:onProperty app:worldToTexture ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         app:AbstractTextureParameterization ;
-    owl:disjointWith app:TexCoordList ;
     skos:definition "TexCoordGen defines texture parameterization using a transformation matrix."@en .
+
+app:TexCoordList a owl:Class ;
+    rdfs:label "TexCoordList"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty app:ring ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom core:DoubleList ;
+            owl:onProperty app:textureCoordinates ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:DoubleList ;
+            owl:onProperty app:textureCoordinates ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty app:ring ],
+        app:AbstractTextureParameterization ;
+    skos:definition "TexCoordList defines texture parameterization using texture coordinates."@en .
 
 app:ambientIntensity a owl:ObjectProperty ;
     rdfs:label "ambientIntensity"@en ;
@@ -184,32 +202,18 @@ app:wrapMode a owl:DatatypeProperty ;
     skos:definition "Specifies the behaviour of the texture when the texture is smaller than the surface to which it is applied."@en .
 
 <https://www.opengis.net/ont/citygml/common/mimeType> rdfs:label "mimeType"@en ;
-    rdfs:range core:MimeTypeValue ;
     skos:definition "Specifies the MIME type of the external point cloud file."@en ;
-    schema:domainIncludes app:AbstractTexture .
+    schema:domainIncludes app:AbstractTexture ;
+    schema:rangeIncludes core:MimeTypeValue .
 
-<https://www.opengis.net/ont/citygml/common/referencePoint> rdfs:range gmlowl:Point ;
-    skos:definition "Relates to the 2D Point geometry that represents the center of the upper left image pixel in world space."@en ;
-    schema:domainIncludes app:GeoreferencedTexture .
+<https://www.opengis.net/ont/citygml/common/referencePoint> skos:definition "Relates to the 2D Point geometry that represents the center of the upper left image pixel in world space."@en ;
+    schema:domainIncludes app:GeoreferencedTexture ;
+    schema:rangeIncludes gmlowl:Point .
 
-app:TexCoordList a owl:Class ;
-    rdfs:label "TexCoordList"@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:DoubleList ;
-            owl:onProperty app:textureCoordinates ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty app:ring ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:anyURI ;
-            owl:onProperty app:ring ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:DoubleList ;
-            owl:onProperty app:textureCoordinates ],
-        app:AbstractTextureParameterization ;
-    skos:definition "TexCoordList defines texture parameterization using texture coordinates."@en .
+app:ColorPlusOpacity a owl:Class ;
+    rdfs:label "ColorPlusOpacity"@en ;
+    rdfs:subClassOf core:DoubleBetween0and1List ;
+    skos:definition "Color is a list of four double values between 0 and 1 defining an RGBA color value. Opacity value of 0 means transparent."@en .
 
 app:TextureType a rdfs:Datatype ;
     rdfs:label "TextureType"@en ;
@@ -223,29 +227,28 @@ app:WrapMode a rdfs:Datatype ;
             owl:oneOf ( "none" "wrap" "mirror" "clamp" "border" ) ] ;
     skos:definition "WrapMode enumerates the different fill modes for textures."@en .
 
-<https://www.opengis.net/ont/citygml/common/textureParameterization> rdfs:range [ a owl:Class ;
-            owl:unionOf ( app:AbstractTextureParameterization app:TextureAssociation ) ] ;
-    skos:definition "Relates to the texture coordinates or transformation matrices used for parameterization."@en ;
+<https://www.opengis.net/ont/citygml/common/textureParameterization> skos:definition "Relates to the texture coordinates or transformation matrices used for parameterization."@en ;
     schema:domainIncludes app:ParameterizedTexture,
+        app:TextureAssociation ;
+    schema:rangeIncludes app:AbstractTextureParameterization,
         app:TextureAssociation .
-
-app:ColorPlusOpacity a owl:Class ;
-    rdfs:label "ColorPlusOpacity"@en ;
-    rdfs:subClassOf core:DoubleBetween0and1List ;
-    skos:definition "Color is a list of four double values between 0 and 1 defining an RGBA color value. Opacity value of 0 means transparent."@en .
 
 app:GeoreferencedTexture a owl:Class ;
     rdfs:label "GeoreferencedTexture"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/target> ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:TransformationMatrix2x2 ;
+            owl:onProperty app:orientation ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:boolean ;
-            owl:onProperty app:preferWorldFile ],
+            owl:allValuesFrom core:TransformationMatrix2x2 ;
+            owl:onProperty app:orientation ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass gmlowl:Point ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/referencePoint> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/target> ],
         [ a owl:Restriction ;
             owl:allValuesFrom gmlowl:Point ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/referencePoint> ],
@@ -254,42 +257,37 @@ app:GeoreferencedTexture a owl:Class ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty app:preferWorldFile ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:TransformationMatrix2x2 ;
-            owl:onProperty app:orientation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:TransformationMatrix2x2 ;
-            owl:onProperty app:orientation ],
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty app:preferWorldFile ],
         app:AbstractTexture ;
-    owl:disjointWith app:ParameterizedTexture ;
     skos:definition "A GeoreferencedTexture is a texture that uses a planimetric projection. It contains an implicit parameterization that is either stored within the image file, an accompanying world file or specified using the orientation and referencePoint elements."@en .
 
 app:TextureAssociation a owl:Class ;
     rdfs:label "TextureAssociation"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/target> ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:anyURI ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/target> ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:allValuesFrom app:AbstractTextureParameterization ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/textureParameterization> ],
         [ a owl:Restriction ;
             owl:onClass app:AbstractTextureParameterization ;
             owl:onProperty <https://www.opengis.net/ont/citygml/common/textureParameterization> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/target> ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:anyURI ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/target> ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "TextureAssociation denotes the relation of a texture to a surface geometry object."@en .
 
 <https://www.opengis.net/ont/citygml/common/target> rdfs:label "target"@en ;
-    rdfs:range xsd:anyURI ;
     skos:definition "Specifies the URI that points to the surface geometry object to which the texture is applied."@en,
         "Specifies the URI that points to the surface geometry objects to which the material is applied."@en,
         "Specifies the URI that points to the surface geometry objects to which the texture is applied."@en ;
     schema:domainIncludes app:GeoreferencedTexture,
         app:TextureAssociation,
-        app:X3DMaterial .
+        app:X3DMaterial ;
+    schema:rangeIncludes xsd:anyURI .
 
 app:AbstractSurfaceData a owl:Class ;
     rdfs:label "AbstractSurfaceData"@en ;
@@ -313,53 +311,59 @@ app:AbstractTexture a owl:Class ;
     rdfs:label "AbstractTexture"@en ;
     iso19150-2:isAbstract true ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty app:imageURI ],
+            owl:allValuesFrom core:MimeTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom app:ColorPlusOpacity ;
-            owl:onProperty app:borderColor ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass core:MimeTypeValue ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:anyURI ;
             owl:onProperty app:imageURI ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:MimeTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
+            owl:allValuesFrom app:WrapMode ;
+            owl:onProperty app:wrapMode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom app:ColorPlusOpacity ;
+            owl:onProperty app:borderColor ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty app:imageURI ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange app:WrapMode ;
             owl:onProperty app:wrapMode ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange app:TextureType ;
-            owl:onProperty app:textureType ],
+            owl:onClass app:ColorPlusOpacity ;
+            owl:onProperty app:borderColor ],
         [ a owl:Restriction ;
             owl:allValuesFrom app:TextureType ;
             owl:onProperty app:textureType ],
         [ a owl:Restriction ;
-            owl:allValuesFrom app:WrapMode ;
-            owl:onProperty app:wrapMode ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:MimeTypeValue ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/mimeType> ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass app:ColorPlusOpacity ;
-            owl:onProperty app:borderColor ],
+            owl:onDataRange app:TextureType ;
+            owl:onProperty app:textureType ],
         app:AbstractSurfaceData ;
-    owl:disjointWith app:X3DMaterial ;
     skos:definition "AbstractTexture is the abstract superclass to represent the common attributes of the classes ParameterizedTexture and GeoreferencedTexture."@en .
-
-app:Color a owl:Class ;
-    rdfs:label "Color"@en ;
-    rdfs:subClassOf core:DoubleBetween0and1List ;
-    owl:disjointWith app:ColorPlusOpacity ;
-    skos:definition "Color is a list of three double values between 0 and 1 defining an RGB color value."@en .
 
 app:X3DMaterial a owl:Class ;
     rdfs:label "X3DMaterial"@en ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom core:DoubleBetween0and1 ;
+            owl:onProperty app:shininess ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom app:Color ;
+            owl:onProperty app:diffuseColor ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty <https://www.opengis.net/ont/citygml/common/target> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass app:Color ;
+            owl:onProperty app:specularColor ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:boolean ;
             owl:onProperty app:isSmooth ],
         [ a owl:Restriction ;
@@ -367,50 +371,42 @@ app:X3DMaterial a owl:Class ;
             owl:onClass app:Color ;
             owl:onProperty app:emissiveColor ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass core:DoubleBetween0and1 ;
-            owl:onProperty app:transparency ],
-        [ a owl:Restriction ;
             owl:allValuesFrom core:DoubleBetween0and1 ;
             owl:onProperty app:ambientIntensity ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom app:Color ;
-            owl:onProperty app:emissiveColor ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass app:Color ;
-            owl:onProperty app:specularColor ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom core:DoubleBetween0and1 ;
-            owl:onProperty app:shininess ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty app:isSmooth ],
         [ a owl:Restriction ;
-            owl:allValuesFrom app:Color ;
-            owl:onProperty app:specularColor ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass app:Color ;
+            owl:onProperty app:diffuseColor ],
         [ a owl:Restriction ;
             owl:allValuesFrom app:Color ;
-            owl:onProperty app:diffuseColor ],
+            owl:onProperty app:specularColor ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:DoubleBetween0and1 ;
             owl:onProperty app:ambientIntensity ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty <https://www.opengis.net/ont/citygml/common/target> ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass app:Color ;
-            owl:onProperty app:diffuseColor ],
+            owl:onClass core:DoubleBetween0and1 ;
+            owl:onProperty app:transparency ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass core:DoubleBetween0and1 ;
             owl:onProperty app:shininess ],
         [ a owl:Restriction ;
+            owl:allValuesFrom app:Color ;
+            owl:onProperty app:emissiveColor ],
+        [ a owl:Restriction ;
             owl:allValuesFrom core:DoubleBetween0and1 ;
             owl:onProperty app:transparency ],
         app:AbstractSurfaceData ;
     skos:definition "X3DMaterial defines properties for surface geometry objects based on the material definitions from the X3D and COLLADA standards."@en .
+
+app:Color a owl:Class ;
+    rdfs:label "Color"@en ;
+    rdfs:subClassOf core:DoubleBetween0and1List ;
+    skos:definition "Color is a list of three double values between 0 and 1 defining an RGB color value."@en .
 
