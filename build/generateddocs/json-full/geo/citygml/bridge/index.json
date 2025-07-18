@@ -19,8 +19,8 @@
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.citygml.common",
-    "ogc.geo.citygml.construction"
+    "ogc.geo.citygml.construction",
+    "ogc.geo.citygml.common"
   ],
   "tags": [
     "feature",

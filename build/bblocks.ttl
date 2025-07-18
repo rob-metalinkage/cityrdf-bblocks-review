@@ -15,10 +15,10 @@
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
     dct:description [ dct:format "application/json" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/CityRDF/index.json" ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.CityRDF" ],
         [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/CityRDF/index.md" ] ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/CityRDF/index.md" ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.CityRDF" ] ;
     dct:hasVersion "3.0.0" ;
     dct:modified "2025-07-18"^^xsd:date ;
     dct:source <https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7> ;
@@ -76,10 +76,10 @@
     rdfs:label "CityGML Type module" ;
     dct:abstract "An ontology containing the default values, schemes, and collections for the CityGML 3.0 transactionType concept."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/transactiontypevalues/index.md" ],
-        [ dct:format "application/json" ;
+    dct:description [ dct:format "application/json" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/transactiontypevalues/index.json" ],
+        [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/transactiontypevalues/index.md" ],
         [ dct:format "text/html" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.transactiontypevalues" ] ;
     dct:hasVersion "" ;
@@ -98,10 +98,10 @@
     rdfs:label "CityGML Core module" ;
     dct:abstract "The Core module defines the basic components of the CityGML conceptual model. This includes abstract base classes that define the core properties of more specialized thematic classes defined in other modules as well as concrete classes that are common to other modules, for example basic data types."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.core" ],
-        [ dct:format "application/json" ;
+    dct:description [ dct:format "application/json" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/core/index.json" ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.core" ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/core/index.md" ] ;
     dct:hasVersion "3.0.0" ;
@@ -180,12 +180,12 @@
     rdfs:label "CityGML CityFurniture module" ;
     dct:abstract "The CityFurniture module supports representation of city furniture objects. City furniture objects are immovable objects like lanterns, traffic signs, advertising columns, benches, or bus stops that can be found in traffic areas, residential areas, on squares, or in built-up areas."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
+    dct:description [ dct:format "application/json" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/cityfurniture/index.json" ],
+        [ dct:format "text/html" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.cityfurniture" ],
         [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/cityfurniture/index.md" ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/cityfurniture/index.json" ] ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/cityfurniture/index.md" ] ;
     dct:hasVersion "3.0.0" ;
     dct:modified "2025-07-18"^^xsd:date ;
     dct:source <https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7> ;
@@ -202,10 +202,10 @@
     rdfs:label "CityGML CityObjectGroup module" ;
     dct:abstract "The CityObjectGroup module supports grouping of city objects. Arbitrary city objects may be aggregated in groups according to user-defined criteria. A group may be further classified by application-specific attributes."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/cityobjectgroup/index.json" ],
-        [ dct:format "text/html" ;
+    dct:description [ dct:format "text/html" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.cityobjectgroup" ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/cityobjectgroup/index.json" ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/cityobjectgroup/index.md" ] ;
     dct:hasVersion "3.0.0" ;
@@ -226,10 +226,10 @@
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
     dct:description [ dct:format "text/markdown" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/document/index.md" ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/document/index.json" ],
         [ dct:format "text/html" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.document" ] ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.document" ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/document/index.json" ] ;
     dct:hasVersion "3.0.0" ;
     dct:modified "2025-07-18"^^xsd:date ;
     dct:source <https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7> ;
@@ -268,12 +268,12 @@
     rdfs:label "CityGML Generics module" ;
     dct:abstract "The Generics module supports application-specific extensions to the CityGML conceptual model. These extensions may be used to model and exchange additional attributes and features not covered by the predefined thematic classes of CityGML. Generic extensions shall only be used if appropriate thematic classes or attributes are not provided by any other CityGML module."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/generics/index.json" ],
+    dct:description [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/generics/index.md" ],
         [ dct:format "text/html" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.generics" ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/generics/index.md" ] ;
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/generics/index.json" ] ;
     dct:hasVersion "3.0.0" ;
     dct:modified "2025-07-18"^^xsd:date ;
     dct:source <https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7> ;
@@ -290,10 +290,10 @@
     rdfs:label "CityGML LandUse module" ;
     dct:abstract "The LandUse module supports representation of areas of the earth’s surface dedicated to a specific land use."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/landuse/index.json" ],
-        [ dct:format "text/markdown" ;
+    dct:description [ dct:format "text/markdown" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/landuse/index.md" ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/landuse/index.json" ],
         [ dct:format "text/html" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.landuse" ] ;
     dct:hasVersion "3.0.0" ;
@@ -314,10 +314,10 @@
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
     dct:description [ dct:format "text/markdown" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/relief/index.md" ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.relief" ],
         [ dct:format "application/json" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/relief/index.json" ] ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/relief/index.json" ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.relief" ] ;
     dct:hasVersion "3.0.0" ;
     dct:modified "2025-07-18"^^xsd:date ;
     dct:source <https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7> ;
@@ -334,12 +334,12 @@
     rdfs:label "CityGML Transportation module" ;
     dct:abstract "The Transportation module supports representation of the transportation infrastructure. Transportation features include roads, tracks, waterways, railways, and squares. Transportation features may be represented as a network and/or as a collection of spaces or surface elements embedded in a three-dimensional space."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/transportation/index.json" ],
+    dct:description [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/transportation/index.md" ],
         [ dct:format "text/html" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.transportation" ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/transportation/index.md" ] ;
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/transportation/index.json" ] ;
     dct:hasVersion "3.0.0" ;
     dct:modified "2025-07-18"^^xsd:date ;
     dct:source <https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7> ;
@@ -358,10 +358,10 @@
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
     dct:description [ dct:format "text/html" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.vegetation" ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/vegetation/index.md" ],
         [ dct:format "application/json" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/vegetation/index.json" ] ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/vegetation/index.json" ],
+        [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/vegetation/index.md" ] ;
     dct:hasVersion "3.0.0" ;
     dct:modified "2025-07-18"^^xsd:date ;
     dct:source <https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7> ;
@@ -380,10 +380,10 @@
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
     dct:description [ dct:format "text/markdown" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/waterbody/index.md" ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/waterbody/index.json" ],
         [ dct:format "text/html" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.waterbody" ] ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.waterbody" ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/waterbody/index.json" ] ;
     dct:hasVersion "3.0.0" ;
     dct:modified "2025-07-18"^^xsd:date ;
     dct:source <https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7> ;
@@ -402,10 +402,10 @@
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
     dct:description [ dct:format "application/json" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/workspace/index.json" ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.workspace" ],
         [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/workspace/index.md" ] ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/workspace/index.md" ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.workspace" ] ;
     dct:hasVersion "3.0.0" ;
     dct:modified "2025-07-18"^^xsd:date ;
     dct:source <https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7> ;
@@ -423,10 +423,10 @@
     rdfs:label "CityGML Bridge module" ;
     dct:abstract "The Bridge module supports representation of thematic and spatial aspects of bridges, bridge parts, bridge installations, and interior bridge structures."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.bridge" ],
-        [ dct:format "text/markdown" ;
+    dct:description [ dct:format "text/markdown" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/bridge/index.md" ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.bridge" ],
         [ dct:format "application/json" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/bridge/index.json" ] ;
     dct:hasVersion "3.0.0" ;
@@ -446,12 +446,12 @@
     rdfs:label "CityGML Building module" ;
     dct:abstract "The Building module supports representation of thematic and spatial aspects of buildings, building parts, building installations, building subdivisions, and interior building structures."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.building" ],
+    dct:description [ dct:format "application/json" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/building/index.json" ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/building/index.md" ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/building/index.json" ] ;
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.building" ] ;
     dct:hasVersion "3.0.0" ;
     dct:modified "2025-07-18"^^xsd:date ;
     dct:source <https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7> ;
@@ -469,10 +469,10 @@
     rdfs:label "CityGML Tunnel module" ;
     dct:abstract "The Tunnel module supports representation of thematic and spatial aspects of tunnels, tunnel parts, tunnel installations, and interior tunnel structures."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/tunnel/index.json" ],
-        [ dct:format "text/html" ;
+    dct:description [ dct:format "text/html" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.tunnel" ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/tunnel/index.json" ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/tunnel/index.md" ] ;
     dct:hasVersion "3.0.0" ;
@@ -492,12 +492,12 @@
     rdfs:label "CityGML Versioning module" ;
     dct:abstract "The Versioning module supports representation of multiple versions of CityGML features within a single CityGML model. In addition, also the version transitions and transactions that lead to the different versions can be represented."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/versioning/index.json" ],
-        [ dct:format "text/markdown" ;
+    dct:description [ dct:format "text/markdown" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/versioning/index.md" ],
         [ dct:format "text/html" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.versioning" ] ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.versioning" ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/versioning/index.json" ] ;
     dct:hasVersion "3.0.0" ;
     dct:modified "2025-07-18"^^xsd:date ;
     dct:source <https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7> ;
@@ -516,10 +516,10 @@
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
     dct:description [ dct:format "application/json" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/construction/index.json" ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.construction" ],
         [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/construction/index.md" ] ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/construction/index.md" ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.construction" ] ;
     dct:hasVersion "3.0.0" ;
     dct:modified "2025-07-18"^^xsd:date ;
     dct:source <https://docs.ogc.org/is/17-069r3/17-069r3.html#_response_7> ;
@@ -539,10 +539,10 @@
     rdfs:label "CityGML Common module" ;
     dct:abstract "The Common module supports definitions of object and datatype properties reusable several times across packages of CityGML."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-05-19T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.common" ],
-        [ dct:format "text/markdown" ;
+    dct:description [ dct:format "text/markdown" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/markdown/geo/citygml/common/index.md" ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/bblock/ogc.geo.citygml.common" ],
         [ dct:format "application/json" ;
             rdfs:isDefinedBy "https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/generateddocs/json-full/geo/citygml/common/index.json" ] ;
     dct:hasVersion "3.0.0" ;
@@ -570,15 +570,15 @@ Building blocks represent different levels of abstraction, from conceptual to  i
     bblocks:imports <https://opengeospatial.github.io/bblocks/register.json> .
 
 [] a prov:Activity ;
-    prov:endedAtTime "2025-07-18T05:37:20.258080"^^xsd:dateTime ;
-    prov:startedAtTime "2025-07-18T05:37:20.116748"^^xsd:dateTime ;
+    prov:endedAtTime "2025-07-18T06:24:18.589964"^^xsd:dateTime ;
+    prov:startedAtTime "2025-07-18T06:24:18.451750"^^xsd:dateTime ;
     prov:used [ a prov:Entity ;
-            dct:format "application/yaml" ;
-            rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ],
-        [ a prov:Entity ;
             dct:format "application/json" ;
-            dct:hasVersion "git:81c6b851c39030c9f77e1acca8f81007815d5bb3" ;
-            rdfs:seeAlso <https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/register.json> ] ;
+            dct:hasVersion "git:dba7f7b0e5ea83b332ab63110dffec86a6ff49bb" ;
+            rdfs:seeAlso <https://rob-metalinkage.github.io/cityrdf-bblocks-review/build/register.json> ],
+        [ a prov:Entity ;
+            dct:format "application/yaml" ;
+            rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ] ;
     prov:wasAssociatedWith [ a prov:Agent,
                 schema:SoftwareApplication ;
             rdfs:label "OGC-NA tools" ;
